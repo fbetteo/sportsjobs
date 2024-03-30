@@ -43,7 +43,6 @@ latest_jobs = [
     for row in all
     if (row["fields"]["creation_date"] > data["creation_date"])
     and (row["fields"]["Name"] != "Unlock this job")
-    and (row["fields"]["random"] < 25)
 ]
 
 # post to reddit
@@ -70,7 +69,11 @@ token_type = response.json()["token_type"]
 # posting in my community sportsjobs_online
 for job in latest_jobs[::-1]:
     post_data = {
-        "title": job["fields"]["Name"] + " - " + job["fields"]["company"],
+        "title": job["fields"]["Name"]
+        + " - "
+        + job["fields"]["company"]
+        + " - "
+        + job["fields"].get("location", ""),
         "kind": "link",
         "sr": SUBREDDIT,
         "url": job["fields"]["job_detail_url"]

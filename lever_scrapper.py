@@ -9,6 +9,8 @@ import requests.auth
 import re
 from dotenv import load_dotenv, find_dotenv
 
+from utils import is_remote_global, add_job_area, search_for_png_image
+
 os.getcwd()
 
 # load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/redditbot/.env"))
@@ -30,23 +32,49 @@ recent_urls = [record["fields"]["url"] for record in all]
 skills_column = [field for field in table.schema().fields if field.name == "skills"]
 skills = [skill.name for skill in skills_column[0].options.choices]
 
-skill_to_remove = [
-    "Data",
-    "Media",
-    "IT",
-    "Sports",
-    "Manager",
-    "Gaming",
-    "Social Media",
-    "baseball",
-    "kpi",
-    "Networks",
-    "Excel",
-]
-for skill in skill_to_remove:
-    skills.remove(skill)
 
-skills_to_list_in_site = skills + skill_to_remove
+### THIS WAS WHEN I WANTED TO REMOVE ONLY A FEW SKILLS TO LOOK FROM
+# skill_to_remove = [
+#     "Data",
+#     "Media",
+#     "IT",
+#     "Sports",
+#     "Manager",
+#     "Gaming",
+#     "Social Media",
+#     "baseball",
+#     "kpi",
+#     "Networks",
+#     "Excel",
+# ]
+# for skill in skill_to_remove:
+#     skills.remove(skill)
+
+# skills_to_list_in_site = skills + skill_to_remove
+
+
+skills_to_search = [
+    "Devops",
+    "Machine Learning",
+    "Data Science",
+    "Data Scientist",
+    # "Data Analytics",
+    "Business Intelligence",
+    "Bayesian",
+    "Data Engineering",
+    "Data Engineer",
+    "MLOps",
+    "ETL",
+    "DBT",
+    "Sports Analytics",
+    "Data Visualization",
+    "A/B testing",
+    "Tableau",
+    "Power BI",
+]
+
+
+skills = skills + skills_to_search
 
 now = datetime.now()
 current_time = now.strftime("%Y-%m-%d")
@@ -283,15 +311,33 @@ companies = {
             }
         ],
     },
-    # "Betstamp": {
-    #     "lever_name": "Betstamp",
-    #     "logo": [
-    #         {
-    #             "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/ccfa9849-85c7-4334-994a-e2eb3f913c54-1633288684940.png",
-    #             "filename": "betstamp.png",
-    #         }
-    #     ],
-    # },
+    "AllTrails": {
+        "lever_name": "alltrails",
+        "logo": [
+            {
+                "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/0b932cb7-122b-498f-a60f-f1db6c304e25-1673646830510.png",
+                "filename": "alltrails.png",
+            }
+        ],
+        "Simplebet": {
+            "lever_name": "simplebet",
+            "logo": [
+                {
+                    "url": "https://lever-client-logos.s3-us-west-2.amazonaws.com/23bcb157-0aad-44d5-a8bf-43f1d6e6aeea-1589315589879.png",
+                    "filename": "simplebet.png",
+                }
+            ],
+        },
+    },
+    # # "Betstamp": {
+    # #     "lever_name": "Betstamp",
+    # #     "logo": [
+    # #         {
+    # #             "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/ccfa9849-85c7-4334-994a-e2eb3f913c54-1633288684940.png",
+    # #             "filename": "betstamp.png",
+    # #         }
+    # #     ],
+    # # },
 }
 
 for company, attributes in companies.items():
@@ -322,30 +368,32 @@ for company, attributes in companies.items():
           {soup_parsed}"""
 
         # Just techinical skills we want to filter by
-        pattern = r"\b(?:" + "|".join(skills) + r")\b"
+        pattern = r"\b(?:" + "|".join(skills_to_search) + r")\b"
         skills_required = [
             skill.lower()
-            for skill in set(re.findall(pattern, full_description, re.IGNORECASE))
+            for skill in set(
+                re.findall(pattern, full_description + " " + job["text"], re.IGNORECASE)
+            )
         ]
         skills_required_format = [
             skill for skill in skills if skill.lower() in skills_required
         ]
 
-        none_skill = len(skills_required) == 0
+        none_skill = len(skills_required) < 2
 
         if (job["hostedUrl"] in recent_urls) or (none_skill):
             continue
 
         # Duplicate but to add all skills. I should create a function to avoid duplicating.
-        pattern = r"\b(?:" + "|".join(skills_to_list_in_site) + r")\b"
+        pattern = r"\b(?:" + "|".join(skills) + r")\b"
         skills_required = [
             skill.lower()
-            for skill in set(re.findall(pattern, full_description, re.IGNORECASE))
+            for skill in set(
+                re.findall(pattern, full_description + " " + job["text"], re.IGNORECASE)
+            )
         ]
         skills_required_format = [
-            skill
-            for skill in skills_to_list_in_site
-            if skill.lower() in skills_required
+            skill for skill in skills if skill.lower() in skills_required
         ]
 
         title = job["text"]
@@ -407,6 +455,9 @@ for company, attributes in companies.items():
         else:
             accepts_remote = "No"
 
+        remote_office = is_remote_global(full_description + " " + title)
+        job_area = add_job_area(skills_required_format)
+
         if re.search(
             r"\b(?:intern|internship|internships)\b",
             title,
@@ -436,6 +487,62 @@ for company, attributes in companies.items():
         if hours != "Part time" and hours != "Fulltime":
             hours = "Fulltime"
 
+        # Industry
+        industry = []
+        if re.search(
+            r"\b(?:sports betting|betting|gambling)\b",
+            title + " " + description,
+            re.IGNORECASE,
+        ):
+            industry += ["Betting"]
+        elif re.search(
+            r"\b(?:esports|esport)\b", title + " " + description, re.IGNORECASE
+        ):
+            industry += ["Esports"]
+        else:
+            industry += ["Sports"]
+
+        # Sport
+        sport_list = []
+        if re.search(
+            r"\b(?:basketball|nba)\b",
+            title + " " + description,
+            re.IGNORECASE,
+        ):
+            sport_list += ["Basketball"]
+        elif re.search(
+            r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Football"]
+        elif re.search(
+            r"\b(?:football|soccer|MLS)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Football"]
+        elif re.search(
+            r"\b(?:baseball|MLB)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Baseball"]
+        elif re.search(r"\b(?:hockey|NHL)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Hockey"]
+        elif re.search(r"\b(?:golf|PGA)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Golf"]
+        elif re.search(r"\b(?:tennis|ATP)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Tennis"]
+        elif re.search(r"\b(?:rugby|NRL)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Rugby"]
+        elif re.search(r"\b(?:mma|ufc)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["MMA"]
+        elif re.search(r"\b(?:boxing)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Boxing"]
+
+        logo = attributes.get("logo", [])
+        if len(logo) == 0:
+            google_logo = search_for_png_image(company)
+            if google_logo:
+                logo = google_logo
+            else:
+                logo = []
+
         record = {
             "Name": title,
             "validated": True,
@@ -446,14 +553,18 @@ for company, attributes in companies.items():
             "country": country,
             "seniority": seniority,
             "desciption": full_description,
+            "sport_list": sport_list,
             "skills": skills_required_format,
+            "job_area": job_area,
             "remote": accepts_remote,
+            "remote_office": remote_office,
             "salary": None,
             "language": ["English"],
             "company": company,
+            "industry": industry,
             "type": ["Permanent"],
             "hours": [hours],
-            "logo": attributes.get("logo", []),
+            "logo": logo,
             "SEO:Index": "1",
         }
         table.create(record)

@@ -73,3 +73,34 @@ for job in all:
 #     }}"""
 
 #     response, content = http.request(ENDPOINT, method="POST", body=content)
+
+
+# # Deleteing batch of URL from deleted_jobd view
+# import requests
+# access_token = "pathar3UoJ0PrdpIE.700c76038885c1b2cf7226e530aa46c551257268bcdb4f3c3d68f2bebe5e8db2"
+# headers = {"Authorization": "Bearer " + access_token}
+# result = requests.get(
+#         "https://api.airtable.com/v0/app61I7CwlK0gHEIX/jobs?view=deleted_jobs",
+#         headers=headers,
+#     )
+
+# for job in result.json()['records']:
+#     http = credentials.authorize(httplib2.Http())
+
+#     # Define contents here as a JSON string.
+#     # This example shows a simple update request.
+#     # Other types of requests are described in the next step.
+#     # print(f"""{{
+#     # "url": {job['fields']['job_detail_url']},
+#     # "type": "URL_UPDATED"
+#     # }}""")
+#     content = f"""{{
+#     "url": "{job['fields']['job_detail_url']}",
+#     "type": "URL_DELETED"
+#     }}"""
+
+#     response, content = http.request(ENDPOINT, method="POST", body=content)
+
+
+# IF("Data Engineer" | "Data Engineering" | "ETL" in skills, "Data Engineer",
+# IF("Data Science" | "Data Scientist" | "Machine Learning") in skills, "DS/ML/AI", "Analytics")

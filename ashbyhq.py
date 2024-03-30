@@ -1,4 +1,4 @@
-### Greenhouse
+### Ashbyhq
 
 import requests
 from bs4 import BeautifulSoup, NavigableString, Tag
@@ -92,9 +92,12 @@ current_time = now.strftime("%Y-%m-%d")
 # if they are on airtable, update the last updated date MAYBE
 
 
-response = requests.get(
-    f"https://boards-api.greenhouse.io/v1/boards/majorleaguebaseball/jobs?content=true"
-)
+# response = requests.get(
+#     f"https://api.ashbyhq.com/posting-api/job-board/sleeper?includeCompensation=true"
+# )
+
+
+# response.json()["jobs"][0]
 
 
 # decoded = html.unescape(asd.json()["jobs"][0]["content"])
@@ -155,179 +158,35 @@ def html_to_markdown(element):
 
 
 companies = {
-    "The Score": {
-        "greenhouse_name": "scoremediaandgaminginc",
+    "Sleeper": {
+        "name": "sleeper",
         "logo": [
             {
-                "url": "https://play-lh.googleusercontent.com/dDjFtNHe0GExF_0ldvkanmLP3MR3khTepvsn_HrlwsKX7-50itYY3YT1ohxsvmyhcg",
-                "filename": "theScore.png",
+                "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/4e79ba20-10c6-4335-954a-b0917a08a1d1/5b880aa8-8278-4da5-8eef-4b88b172ffc9.png",
+                "filename": "sleeper.png",
             }
         ],
     },
-    "Urban Sports Club": {
-        "greenhouse_name": "urbansportsclub",
+    "Hawk-Eye Innovations": {
+        "name": "hawkeyeinnovations",
         "logo": [
             {
-                "url": "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/761/500/resized/1616171296475.jpeg?1633091741",
-                "filename": "urban_sports_club.png",
+                "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/4f986611-16b6-40b0-a7c5-f32d9f756a83/05af0471-fb28-42f9-a8f8-3d31bea1a45a.png",
+                "filename": "hawk-eye-innovations.png",
             }
         ],
     },
-    "Genius Sports": {
-        "greenhouse_name": "geniussports",
+    "Sorare": {
+        "name": "Sorare",
         "logo": [
             {
-                "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/097/300/resized/Logo_genius_1.png?1626023064",
-                "filename": "genius_sports.png",
+                "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/04de55dd-d142-4ba7-ba52-70b026fe4c90/319269e8-b78f-4df7-927f-8213f12d757d.png",
+                "filename": "sorare.png",
             }
         ],
     },
-    "Golden State Warriors": {
-        "greenhouse_name": "goldenstatewarriors",
-        "logo": [
-            {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Golden_State_Warriors_logo.svg/1200px-Golden_State_Warriors_logo.svg.png",
-                "filename": "golden_state_warriors.png",
-            }
-        ],
-    },
-    "UnderDog Fantasy": {
-        "greenhouse_name": "underdogfantasy",
-        "logo": [
-            {
-                "url": "https://s5-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/278/300/resized/Main_Logo.png?1656375980",
-                "filename": "underdog_fantasy.png",
-            }
-        ],
-    },
-    "Zelus Analytics": {
-        "greenhouse_name": "zelusanalytics",
-        "logo": [
-            {
-                "url": "https://media.licdn.com/dms/image/C4D0BAQGpEcNUokAFNA/company-logo_200_200/0/1630558648297/zelus_analytics_logo?e=2147483647&v=beta&t=GbnYvq4etaKk26yby2FgevjeLQBsR7oAY5AcX9sTM0I",
-                "filename": "zelus_analytics.png",
-            }
-        ],
-    },
-    "Barstool Sports": {
-        "greenhouse_name": "barstoolsports",
-        "logo": [
-            {
-                "url": "https://www.barstoolsports.com/static/images/logo-white.png",
-                "filename": "barstool_sports.png",
-            }
-        ],
-    },
-    # "Lear Field": {
-    #     "greenhouse_name": "learfield",
-    #     "logo": [
-    #         {
-    #             "url": "https://cdn.learfield.com/wp-content/uploads/2023/12/Learfield_Logo_White-1.png",
-    #             "filename": "lear_field.png",
-    #         }
-    #     ],
-    # },
-    "Excel Sports Management": {
-        "greenhouse_name": "excelsportsmanagement",
-        "logo": [
-            {
-                "url": "https://s5-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/440/800/resized/EXCEL_SPORTS_MANAGEMENT__LLC-1553200528-85460.png?1665090576",
-                "filename": "excelsportsmanagement.png",
-            }
-        ],
-    },
-    "Monumental Sports & Entertainment": {
-        "greenhouse_name": "monumentalsports",
-        "logo": [
-            {
-                "url": "https://s7-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/381/000/resized/Monumental-Logo-Large-Light-Background.png?1701188822",
-                "filename": "monumental_sports_entertainment.png",
-            }
-        ],
-    },
-    # "FanDuel": {
-    #     "greenhouse_name": "fanduel",
-    #     "logo": [
-    #         {
-    #             "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAbFBMVEUAce4Ab+4AbO4Aau0AaO0AZu0AZO0ddu55o/Kqw/XG1/ja5fnm7fqzyfYAX+27zvcnee6eu/T///3///xZkfFll/E7gvDD1Pj9//zt8/sAVOz2+fyQsvRAhPDf6PmFqvNunfKauPQAWuwAY+1/YJLWAAABKUlEQVR4Aa2RRaIDIRBEYbDRSDEaHbn/HX9Dx2X1UxvkNVSL+L9korSxSmiVyBeirEuzvCir1TpLN1bJOzJuWwLwHnUDUrl15oJl2xHoSX7YFWHjga5laveIBMDW4Rq3twwHOgL5oaHoY3PIAYIDQ3PyPc7GxDQpaWPO6P3JRKg7gmMilU44iWQk2Om4VxPts7k95GemOqPoSXG2NcGhAJAyXEqC9aUWExLw/fVCtqA9W7IpyYNrM5Vny9u/pC7lhwLXT24mfj2zo+3oUC5MOHcKblTMvQn7kQM5OrbUhSa44F7Yx5FtYseklEns5eZppOpMFFvtIkuVeJKt0Pt83gdWWfGipYMf5jCDjjN9pmvATUDF7JUeMG1wsOKj9LEzrRJfJDU17yf6A4tMGL31Dd89AAAAAElFTkSuQmCC",
-    #             "filename": "fanduel.png",
-    #         }
-    #     ],
-    # },
-    "Swish Analytics": {
-        "greenhouse_name": "swishanalytics",
-        "logo": [
-            {
-                "url": "https://s5-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/119/500/resized/Swish-Logo-2023-Black-Square-2.jpg?1693486896",
-                "filename": "swish_analytics.png",
-            }
-        ],
-    },
-    "Catapult Sports": {
-        "greenhouse_name": "catapultsports",
-        "logo": [
-            {
-                "url": "https://recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/000/010/502/resized/Catapult_logo_-_black.png?1634256060",
-                "filename": "catapult_sports.png",
-            }
-        ],
-    },
-    "Kaizen Gaming": {
-        "greenhouse_name": "kaizengaming",
-        "logo": [
-            {
-                "url": "https://productioncms.kaizengaming.com/uploads/header_Logo_b1c17ae784.svg",
-                "filename": "kaizen_gaming.png",
-            }
-        ],
-    },
-    "The Florida Panthers": {
-        "greenhouse_name": "thefloridapanthers",
-        "logo": [
-            {
-                "url": "https://s6-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/048/500/resized/panthers_logo_2.png?1672848760",
-                "filename": "florida_panthers.png",
-            }
-        ],
-    },
-    "MLB": {
-        "greenhouse_name": "majorleaguebaseball",
-        "logo": [
-            {
-                "url": "https://images.ctfassets.net/iiozhi00a8lc/VtQp1Uvhf7RPuqOjXgk2N/3527993b96002b528239944121b9c512/1.svg",
-                "filename": "mlb.png",
-            }
-        ],
-    },
-    "Second Spectrum": {
-        "greenhouse_name": "secondspectrum",
-        "logo": [
-            {
-                "url": "",
-                "filename": "second_spectrum.png",
-            }
-        ],
-    },
-    "Tempus Ex": {
-        "greenhouse_name": "txm",
-        "logo": [
-            {
-                "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/014/700/resized/txm-logo.png?1619552318",
-                "filename": "tempus_ex.png",
-            }
-        ],
-    },
-    "Wargaming": {
-        "greenhouse_name": "wargamingen",
-        "logo": [
-            {
-                "url": "https://logo.clearbit.com/https://wargaming.com/",
-                "filename": "wargaming.png",
-            }
-        ],
-    },
-    "Epic Games": {
-        "greenhouse_name": "epicgames",
+    "GameChanger": {
+        "name": "gamechanger",
         "logo": [],
     },
 }
@@ -335,12 +194,12 @@ companies = {
 for company, attributes in companies.items():
 
     response = requests.get(
-        f"https://boards-api.greenhouse.io/v1/boards/{attributes['greenhouse_name']}/jobs?content=true"
+        f"https://api.ashbyhq.com/posting-api/job-board/{attributes['name']}?jobsincludeCompensation=true"
     )
 
     for job in response.json()["jobs"]:
 
-        description = job["content"]
+        description = job["descriptionPlain"]
         # list_text = ""
         # for list_topics in job["lists"]:
 
@@ -350,10 +209,11 @@ for company, attributes in companies.items():
 
         # soup = BeautifulSoup(list_text, "html.parser")
         # soup_parsed = soup.get_text()
-        decoded = html.unescape(description)
-        soup = BeautifulSoup(decoded, "html.parser")
+        # decoded = html.unescape(description)
+        # soup = BeautifulSoup(decoded, "html.parser")
 
-        full_description = f"""{soup.get_text()}"""
+        # full_description = f"""{soup.get_text()}"""
+        full_description = description
 
         # Just techinical skills we want to filter by
         pattern = r"\b(?:" + "|".join(skills_to_search) + r")\b"
@@ -371,7 +231,7 @@ for company, attributes in companies.items():
 
         none_skill = len(skills_required) < 2
 
-        if (job["absolute_url"] in recent_urls) or (none_skill):
+        if (job["jobUrl"] in recent_urls) or (none_skill):
             continue
 
         # Duplicate but to add all skills. I should create a function to avoid duplicating.
@@ -389,9 +249,9 @@ for company, attributes in companies.items():
         ]
 
         title = job["title"]
-        createdAt = job["updated_at"]
-        url = job["absolute_url"]
-        location = job["location"]["name"]
+        createdAt = job["publishedAt"]
+        url = job["jobUrl"]
+        location = job["location"]
 
         country = find_country(location).lower()
 
@@ -403,6 +263,9 @@ for company, attributes in companies.items():
             accepts_remote = "Yes"
         else:
             accepts_remote = "No"
+
+        if job["isRemote"]:
+            accepts_remote = "Yes"
         # workplaceType = job["workplaceType"]
         # if workplaceType.upper() == "REMOTE":
         #     accepts_remote = "Yes"
@@ -424,16 +287,14 @@ for company, attributes in companies.items():
             seniority = "With Experience"
 
         # hours = job["categories"].get("commitment", "Fulltime")
-        hours = "Fulltime"
+        hours = job.get("employmentType", "Fulltime")
 
         if re.search(
             r"\b(?:part time|parttime)\b", title + " " + description, re.IGNORECASE
         ):
             hours = "Part time"
 
-        if hours in [
-            "Full-time",
-        ]:
+        if hours in ["Full-time", "FullTime"]:
             hours = "Fulltime"
 
         if hours in ["Part-time", "Parttime"]:
@@ -519,7 +380,7 @@ for company, attributes in companies.items():
             "industry": industry,
             "type": ["Permanent"],
             "hours": [hours],
-            "logo": attributes.get("logo", []),
+            "logo": logo,
             "SEO:Index": "1",
         }
         table.create(record)

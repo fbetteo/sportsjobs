@@ -9,6 +9,8 @@ import requests.auth
 import re
 from dotenv import load_dotenv, find_dotenv
 
+from utils import is_remote_global, add_job_area, search_for_png_image
+
 os.getcwd()
 
 # load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/redditbot/.env"))
@@ -89,7 +91,9 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         pattern = r"\b(?:" + "|".join(skills) + r")\b"
         skills_required = [
             skill.lower()
-            for skill in set(re.findall(pattern, soup_parsed, re.IGNORECASE))
+            for skill in set(
+                re.findall(pattern, soup_parsed + " " + job["title"], re.IGNORECASE)
+            )
         ]
         skills_required_format = [
             skill for skill in skills if skill.lower() in skills_required
@@ -112,6 +116,10 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         else:
             accepts_remote = "No"
 
+        remote_office = is_remote_global(description)
+
+        job_area = add_job_area(skills_required_format)
+
         if re.search(
             r"\b(?:intern|internship|internships)\b",
             title + " " + soup_parsed,
@@ -123,6 +131,60 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         else:
             seniority = "With Experience"
 
+            # Industry
+        industry = []
+        if re.search(
+            r"\b(?:sports betting|betting|gambling)\b",
+            title + " " + description,
+            re.IGNORECASE,
+        ):
+            industry += ["Betting"]
+        elif re.search(
+            r"\b(?:esports|esport)\b", title + " " + description, re.IGNORECASE
+        ):
+            industry += ["Esports"]
+        else:
+            industry += ["Sports"]
+
+        # Sport
+        sport_list = []
+        if re.search(
+            r"\b(?:basketball|nba)\b",
+            title + " " + description,
+            re.IGNORECASE,
+        ):
+            sport_list += ["Basketball"]
+        elif re.search(
+            r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Football"]
+        elif re.search(
+            r"\b(?:football|soccer|MLS)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Football"]
+        elif re.search(
+            r"\b(?:baseball|MLB)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Baseball"]
+        elif re.search(r"\b(?:hockey|NHL)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Hockey"]
+        elif re.search(r"\b(?:golf|PGA)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Golf"]
+        elif re.search(r"\b(?:tennis|ATP)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Tennis"]
+        elif re.search(r"\b(?:rugby|NRL)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Rugby"]
+        elif re.search(r"\b(?:mma|ufc)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["MMA"]
+        elif re.search(r"\b(?:boxing)\b", title + " " + description, re.IGNORECASE):
+            sport_list += ["Boxing"]
+
+        google_logo = search_for_png_image(job["company"])
+        if google_logo:
+            logo = google_logo
+        else:
+            logo = []
+
         record = {
             "Name": title,
             "validated": True,
@@ -133,14 +195,18 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "country": country,
             "seniority": seniority,
             "desciption": soup_parsed,
+            "sport_list": sport_list,
             "skills": skills_required_format,
             "remote": accepts_remote,
+            "remote_office": remote_office,
+            "job_area": job_area,
             "salary": None,
             "language": ["English"],
             "company": job["company"],
+            "industry": industry,
             "type": ["Permanent"],
             "hours": ["Fulltime"],
-            "logo": [],
+            "logo": logo,
             "SEO:Index": "1",
         }
         table.create(record)
