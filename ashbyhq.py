@@ -359,6 +359,11 @@ for company, attributes in companies.items():
             else:
                 logo = []
 
+        if len(logo) > 0:
+            logo_permanent_url = logo[0]["url"]
+        else:
+            logo_permanent_url = ""
+
         record = {
             "Name": title,
             "validated": True,
@@ -381,6 +386,7 @@ for company, attributes in companies.items():
             "type": ["Permanent"],
             "hours": [hours],
             "logo": logo,
+            "logo_permanent_url": logo_permanent_url,
             "SEO:Index": "1",
         }
         table.create(record)

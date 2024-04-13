@@ -185,6 +185,11 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         else:
             logo = []
 
+        if len(logo) > 0:
+            logo_permanent_url = logo[0]["url"]
+        else:
+            logo_permanent_url = ""
+
         record = {
             "Name": title,
             "validated": True,
@@ -207,6 +212,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "type": ["Permanent"],
             "hours": ["Fulltime"],
             "logo": logo,
+            "logo_permanent_url": logo_permanent_url,
             "SEO:Index": "1",
         }
         table.create(record)
