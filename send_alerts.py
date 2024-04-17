@@ -114,13 +114,13 @@ def create_filter(jobs_data, alert):
     if "sport_list" in alert:
         sport_mask = jobs_data["sport_list"].apply(
             lambda x: (
-                set(x).issuperset(set(alert["sport_list"])) if x is not None else False
+                len(set(x) & (set(alert["sport_list"]))) > 0 if x is not None else False
             )
         )
     if "skills" in alert:
         skills_mask = jobs_data["skills"].apply(
             lambda x: (
-                set(x).issuperset(set(alert["skills"])) if x is not None else False
+                len(set(x) & (set(alert["skills"]))) > 0 if x is not None else False
             )
         )
     if "remote_office" in alert:
@@ -128,11 +128,15 @@ def create_filter(jobs_data, alert):
     if "industry" in alert:
         industry_mask = jobs_data["industry"].apply(
             lambda x: (
-                set(x).issuperset(set(alert["industry"])) if x is not None else False
+                len(set(x) & (set(alert["industry"]))) > 0 if x is not None else False
             )
         )
     if "hours" in alert:
-        hours_mask = jobs_data["hours"].isin(alert["hours"])
+        hours_mask = jobs_data["hours"].apply(
+            lambda x: (
+                len(set(x) & (set(alert["hours"]))) > 0 if x is not None else False
+            )
+        )
 
     return (
         np.array(country_mask)
