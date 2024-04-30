@@ -5,6 +5,7 @@ import requests.auth
 import time
 import json
 
+
 # from dotenv import load_dotenv, find_dotenv
 
 os.getcwd()
@@ -73,7 +74,7 @@ for job in latest_jobs[::-1]:
         + " - "
         + job["fields"]["company"]
         + " - "
-        + job["fields"].get("location", ""),
+        + job["fields"].get("country", "").capitalize(),
         "kind": "link",
         "sr": SUBREDDIT,
         "url": job["fields"]["job_detail_url"]

@@ -256,12 +256,12 @@ weekday_name = today.strftime("%A")
 
 if weekday_name == "Wednesday":
 
+    alerts_used = []
     for free_member in merged_df.loc[merged_df["frequency"] == "weekly"].iterrows():
-        alerts_used = []
         for i, alert in enumerate(alerts_table_to_deplete):
             if alert["fields"]["email"] == free_member[1]["email"]:
                 print(alert["fields"]["email"])
-                alerts_used.append(i)
+                alerts_used.append(alert["id"])
                 try:
                     job_filter = create_filter(jobs_data, alert["fields"])
                 except:
@@ -315,7 +315,7 @@ if weekday_name == "Wednesday":
                 )
 
             alerts_table_to_deplete = [
-                i for j, i in enumerate(alerts_table_to_deplete) if j not in alerts_used
+                i for i in alerts_table_to_deplete if i["id"] not in alerts_used
             ]
 
             # To avoid bugs sending to other people
