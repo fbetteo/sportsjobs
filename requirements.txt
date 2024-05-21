@@ -16,6 +16,7 @@ pyparsing==3.1.1
 pyspark==3.1.2
 python-dotenv==1.0.1
 requests==2.31.0
+resend==0.8.0
 rsa==4.9
 six==1.16.0
 typing_extensions==4.10.0
