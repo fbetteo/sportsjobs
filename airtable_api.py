@@ -32,9 +32,14 @@ api = Api(AIRTABLE_TOKEN)
 table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
 all = table.all(sort=["-creation_date"], max_records=30)
 
+from datetime import datetime, timedelta
 
-with open("latest_posted.json", "r") as f:
-    data = json.load(f)
+# Get today's date
+data = {"creation_date": str(datetime.now().replace(hour=0, minute=0, second=0))}
+
+## This was used when I ran it from my pc
+# with open("latest_posted.json", "r") as f:
+#     data = json.load(f)
 
 
 # unlock are the hook for free users
