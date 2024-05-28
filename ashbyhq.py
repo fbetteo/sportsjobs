@@ -197,6 +197,8 @@ for company, attributes in companies.items():
         f"https://api.ashbyhq.com/posting-api/job-board/{attributes['name']}?jobsincludeCompensation=true"
     )
 
+    if response.status_code != 200:
+        continue
     for job in response.json()["jobs"]:
 
         description = job["descriptionPlain"]
