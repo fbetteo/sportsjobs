@@ -7,6 +7,7 @@ from pyairtable import Api
 import requests
 import requests.auth
 import re
+import time
 from dotenv import load_dotenv, find_dotenv
 
 from utils import is_remote_global, add_job_area, search_for_png_image
@@ -49,7 +50,19 @@ def getIP():
     return r.compile(r"Address: (\d+\.\d+\.\d+\.\d+)").search(d).group(1)
 
 
-IP = getIP()
+max_trials = 5
+trial = 0
+while trial < max_trials:
+    try:
+        IP = getIP()
+        break
+    except Exception as e:
+        print(f"Attempt {trial+1} failed. Retrying...")
+        trial += 1
+        time.sleep(2)  # wait for 2 seconds before retrying
+        if trial == max_trials:
+            print(f"Failed to get IP after {max_trials} attempts. Ending script.")
+            exit(1)
 
 
 for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
