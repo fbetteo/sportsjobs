@@ -1,9 +1,46 @@
 import re
 import os
 import requests
+from pyairtable import Api
+from geopy.geocoders import Nominatim
 
 GOOGLE_API_LOGO = os.getenv("GOOGLE_API_LOGO")
 GOOGLE_SEARCHENGINE_KEY = os.getenv("GOOGLE_SEARCHENGINE_KEY")
+
+AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
+AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
+AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
+
+api = Api(AIRTABLE_TOKEN)
+table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
+
+
+SKILLS_TO_SEARCH = [
+    "Devops",
+    "Machine Learning",
+    "Data Science",
+    "Data Scientist",
+    # "Data Analytics",
+    "Business Intelligence",
+    "Bayesian",
+    # "Data Engineering",
+    "Data Engineer",
+    "MLOps",
+    "ETL",
+    "DBT",
+    "Sports Analytics",
+    "Data Visualization",
+    "A/B testing",
+    "Tableau",
+    "Power BI",
+]
+
+
+def get_recent_urls():
+    # URLS POSTED IN THE LAST MONTH
+    all = table.all(formula="{days_since_uploaded} < 30")
+    recent_urls = [record["fields"]["url"] for record in all]
+    return recent_urls
 
 
 def is_remote_global(full_description):
@@ -55,7 +92,7 @@ def is_remote_global(full_description):
 # print(is_remote_global(full_description))
 
 
-def add_sport_list(description):
+def add_sport_list(title, description):
     # Sport
     sport_list = []
     if re.search(
@@ -64,38 +101,40 @@ def add_sport_list(description):
         re.IGNORECASE,
     ):
         sport_list += ["Basketball"]
-    elif re.search(r"\b(?:football|NFL)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Football"]
-    elif re.search(r"\b(?:football|soccer|MLS)\b", description, re.IGNORECASE):
+    elif re.search(
+        r"\b(?:football|soccer|MLS)\b", title + " " + description, re.IGNORECASE
+    ):
         sport_list += ["Football"]
-    elif re.search(r"\b(?:baseball|MLB)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:baseball|MLB)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Baseball"]
-    elif re.search(r"\b(?:hockey|NHL)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:hockey|NHL)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Hockey"]
-    elif re.search(r"\b(?:golf|PGA)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:golf|PGA)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Golf"]
-    elif re.search(r"\b(?:tennis|ATP)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:tennis|ATP)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Tennis"]
-    elif re.search(r"\b(?:rugby|NRL)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:rugby|NRL)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Rugby"]
-    elif re.search(r"\b(?:mma|ufc)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:mma|ufc)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["MMA"]
-    elif re.search(r"\b(?:boxing)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:boxing)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Boxing"]
 
     return sport_list
 
 
-def add_industry(description):
+def add_industry(title, description):
     # Industry
     industry = []
     if re.search(
         r"\b(?:sports betting|betting|gambling)\b",
-        description,
+        title + " " + description,
         re.IGNORECASE,
     ):
         industry += ["Betting"]
-    elif re.search(r"\b(?:esports|esport)\b", description, re.IGNORECASE):
+    elif re.search(r"\b(?:esports|esport)\b", title + " " + description, re.IGNORECASE):
         industry += ["Esports"]
     else:
         industry += ["Sports"]
@@ -141,3 +180,98 @@ def search_for_png_image(search_term):
     first_image_url = images[0]["link"]
     # print("Found image URL:", first_image_url)
     return [{"url": first_image_url, "filename": f"{search_term}.png"}]
+
+
+def get_skills_required(description, skills_to_search=SKILLS_TO_SEARCH):
+
+    skills_column = [field for field in table.schema().fields if field.name == "skills"]
+    skills = [skill.name for skill in skills_column[0].options.choices]
+
+    skills = skills + skills_to_search
+
+    # These are the main skills we want to filter by
+    pattern = r"\b(?:" + "|".join(skills_to_search) + r")\b"
+    skills_required = [
+        skill.lower() for skill in set(re.findall(pattern, description, re.IGNORECASE))
+    ]
+    skills_required_format = [
+        skill for skill in skills if skill.lower() in skills_required
+    ]
+
+    # These are all the skills including some generic ones such as Data, Analytics, etc that could appear in other jobs that we don't want to keep only because they have those.
+    pattern = r"\b(?:" + "|".join(skills) + r")\b"
+    all_skills = [
+        skill.lower() for skill in set(re.findall(pattern, description, re.IGNORECASE))
+    ]
+    all_skills_format = [skill for skill in skills if skill.lower() in all_skills]
+
+    return skills_required_format, all_skills_format
+
+
+def clean_location(location):
+    location = location.lower()
+    location = location.split("/")[0]
+    location = location.split("-")[0]
+    location = location.split("or")[0]
+    location = location.replace("remote", "")
+    location = location.replace("hybrid", "")
+    location = location.replace("in office", "")
+    return location
+
+
+def find_country(location_str):
+    location_str = clean_location(location_str)
+    geolocator = Nominatim(user_agent="sportsjobs")
+    location = geolocator.geocode(
+        location_str, exactly_one=True, addressdetails=True, language="en"
+    )
+
+    if location:
+        # Access the address dictionary
+        address = location.raw.get("address", {})
+        # Get the country
+        country = address.get("country", "Country not found")
+        return country.lower()
+    else:
+        return "united states"
+
+
+def get_remote_status(full_description, location, title):
+    if (
+        ("remote" in location.lower())
+        | ("remote" in title.lower())
+        | ("remote" in full_description.lower())
+    ):
+        accepts_remote = "Yes"
+    else:
+        accepts_remote = "No"
+    return accepts_remote
+
+
+def get_seniority_level(title):
+    if re.search(
+        r"\b(?:intern|internship|internships)\b",
+        title,
+        re.IGNORECASE,
+    ):
+        seniority = "Internship"
+    elif re.search(r"\b(?:junior)\b", title, re.IGNORECASE):
+        seniority = "Junior"
+    else:
+        seniority = "With Experience"
+    return seniority
+
+
+def get_hours(title, description, hours="Full-time"):
+    if re.search(
+        r"\b(?:part time|parttime)\b", title + " " + description, re.IGNORECASE
+    ):
+        hours = "Part time"
+
+    if hours in ["Part-time", "Parttime"]:
+        hours = "Part time"
+
+    if hours != "Part time" and hours != "Fulltime":
+        hours = "Fulltime"
+
+    return hours

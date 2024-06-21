@@ -304,6 +304,7 @@ for company, attributes in companies.items():
 
         if hours != "Part time" and hours != "Fulltime":
             hours = "Fulltime"
+        # CHANGE THIS FOR GET_HOURS IN UTILS. I'M WORKING ON ANOTHER THING BUT I SHOULD CHECK THIS
 
         # Industry
         industry = []
