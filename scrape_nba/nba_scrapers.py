@@ -342,3 +342,14 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
 
 
 # aa._create_record(enriched_job)
+
+driver = webdriver.Chrome()
+teams = [DetroitPistons, GoldenStateWarriors, HoustonRockets, IndianaPacers]
+
+for team in teams:
+    # try:
+    print(f"Running {team.__name__} main()")
+    team_instance = team(driver=driver)
+    team_instance.main()
+# except Exception as e:
+#     print(f"Error running {team.__name__} main(): {e}")

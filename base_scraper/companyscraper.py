@@ -39,9 +39,11 @@ KEYWORDS = [
 
 class CompanyScraper:
 
-    def __init__(self, driver=None, keywords=KEYWORDS, table=table):
+    def __init__(self, driver=None, keywords=None, table=table):
         now = datetime.now()
-        self.keywords = keywords
+        self.keywords = (
+            keywords if keywords is not None else self.get_default_keywords()
+        )
         self.table = table
         self.current_time = now.strftime("%Y-%m-%d")
         self.driver = driver
@@ -54,6 +56,18 @@ class CompanyScraper:
         ]
         self.base_url = ""
         self.recent_urls = utils.get_recent_urls()
+
+    def get_default_keywords(self):
+        return [
+            "data",
+            "engineer",
+            "analyst",
+            "scientist",
+            "machine learning",
+            "deep learning",
+            "artificial intelligence",
+            "analytics",
+        ]
 
     def open_site(self):
         self.driver.get(self.base_url)
