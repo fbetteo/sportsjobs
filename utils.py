@@ -188,6 +188,7 @@ def get_skills_required(description, skills_to_search=SKILLS_TO_SEARCH):
     skills = [skill.name for skill in skills_column[0].options.choices]
 
     skills = skills + skills_to_search
+    skills = sorted(skills, key=len, reverse=True)
 
     # These are the main skills we want to filter by
     pattern = r"\b(?:" + "|".join(skills_to_search) + r")\b"
@@ -195,11 +196,12 @@ def get_skills_required(description, skills_to_search=SKILLS_TO_SEARCH):
         skill.lower() for skill in set(re.findall(pattern, description, re.IGNORECASE))
     ]
     skills_required_format = [
-        skill for skill in skills if skill.lower() in skills_required
+        skill for skill in set(skills) if skill.lower() in skills_required
     ]
 
     # These are all the skills including some generic ones such as Data, Analytics, etc that could appear in other jobs that we don't want to keep only because they have those.
-    pattern = r"\b(?:" + "|".join(skills) + r")\b"
+    escaped_skills = [re.escape(skill) for skill in skills]
+    pattern = r"\b(?:" + "|".join(escaped_skills) + r")\b"
     all_skills = [
         skill.lower() for skill in set(re.findall(pattern, description, re.IGNORECASE))
     ]
@@ -220,19 +222,23 @@ def clean_location(location):
 
 
 def find_country(location_str):
-    location_str = clean_location(location_str)
-    geolocator = Nominatim(user_agent="sportsjobs")
-    location = geolocator.geocode(
-        location_str, exactly_one=True, addressdetails=True, language="en"
-    )
+    try:
+        location_str = clean_location(location_str)
+        geolocator = Nominatim(user_agent="sportsjobs")
+        location = geolocator.geocode(
+            location_str, exactly_one=True, addressdetails=True, language="en"
+        )
 
-    if location:
-        # Access the address dictionary
-        address = location.raw.get("address", {})
-        # Get the country
-        country = address.get("country", "Country not found")
-        return country.lower()
-    else:
+        if location:
+            # Access the address dictionary
+            address = location.raw.get("address", {})
+            # Get the country
+            country = address.get("country", "Country not found")
+            return country.lower()
+        else:
+            return "united states"
+    except Exception as e:
+        print(f"Error finding country: {e}")
         return "united states"
 
 
