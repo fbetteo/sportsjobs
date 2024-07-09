@@ -328,6 +328,13 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
             return None
 
 
+class MilwaukeeBucks(base_scraper.companyscraper.CompanyScraper):
+    # Use this site
+    # https://careers-bucks.icims.com/jobs/intro?mobile=false&width=1250&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240
+    pass
+
+
+###########
 # For debug
 # driver = webdriver.Chrome()
 # aa = IndianaPacers(driver=driver)
@@ -342,6 +349,7 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
 
 
 # aa._create_record(enriched_job)
+
 
 driver = webdriver.Chrome()
 teams = [DetroitPistons, GoldenStateWarriors, HoustonRockets, IndianaPacers]

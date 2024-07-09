@@ -186,11 +186,6 @@ class CompanyScraper:
         self._scrape_jobs(jobs)
 
 
-asd = {"a": 1, "b": 2}
-dd = {"c": 3, "d": 4}
-
-asd | {}
-asd
 # # Set up the Selenium WebDriver (assuming you're using Chrome)
 # # driver_path = '/path/to/chromedriver'  # Update this with your actual path
 # driver = webdriver.Chrome()
