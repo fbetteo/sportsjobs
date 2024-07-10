@@ -353,9 +353,13 @@ class MilwaukeeBucks(base_scraper.companyscraper.CompanyScraper):
 
 
 # aa._create_record(enriched_job)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--remote-debugging-port=9222")
 
-
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=chrome_options)
 teams = [DetroitPistons, GoldenStateWarriors, HoustonRockets, IndianaPacers]
 
 for team in teams:
