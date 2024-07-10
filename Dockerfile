@@ -6,8 +6,8 @@ WORKDIR /app
 
 # Install Chrome
 RUN apt-get update &&  apt-get install -y wget unzip
-RUN  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb ||  apt-get -f install -y google-chrome --version
+RUN  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i google-chrome-stable_current_amd64.deb ||  apt-get -f install -y 
+RUN google-chrome --version
 
 
 # Set display port to avoid crash
