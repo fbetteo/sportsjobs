@@ -428,8 +428,8 @@ class MemphisGrizzlies(base_scraper.companyscraper.CompanyScraper):
         ]
         self.base_url = "https://careers-grizzlies.icims.com/jobs/search?ss=1&searchKeyword=&searchCategory=&searchZip=&searchRadius=20"
 
-    # COULDN?T FIND ANYTHING
-   pass
+        # COULDN'T FIND ANYTHING
+        pass
 
 
 class MiamiHeat(base_scraper.companyscraper.CompanyScraper):
@@ -487,16 +487,16 @@ class MiamiHeat(base_scraper.companyscraper.CompanyScraper):
             )
 
             location_value = self.driver.find_element(
-            By.CSS_SELECTOR, "span[data-automation='city-state-zip-country-label']"
-        ).text
+                By.CSS_SELECTOR, "span[data-automation='city-state-zip-country-label']"
+            ).text
 
-            hours =  self.driver.find_element(
-            By.CSS_SELECTOR, "span[data-automation='JobFullTime']"
-        ).text
+            hours = self.driver.find_element(
+                By.CSS_SELECTOR, "span[data-automation='JobFullTime']"
+            ).text
 
             description_raw = self.driver.find_element(
-            By.CSS_SELECTOR, "p[data-automation='job-description']"
-        ).get_attribute("innerHTML")
+                By.CSS_SELECTOR, "p[data-automation='job-description']"
+            ).get_attribute("innerHTML")
             soup = BeautifulSoup(description_raw, "html.parser")
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
