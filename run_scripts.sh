@@ -31,6 +31,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+python scrape_f1/f1_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script6.py failed"
+    exit 1
+fi
 
 # Run the retryable script up to 5 times if it fails
 max_retries=7
