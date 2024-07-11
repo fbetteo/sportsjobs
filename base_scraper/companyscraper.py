@@ -145,8 +145,8 @@ class CompanyScraper:
         )
         none_skill = len(skills_required_format) < 2
 
-        # if (job["url"] in self.recent_urls) or (none_skill):
-        #     return None
+        if (job["url"] in self.recent_urls) or (none_skill):
+            return None
 
         country = utils.find_country(location_value)
         accepts_remote = utils.get_remote_status(
