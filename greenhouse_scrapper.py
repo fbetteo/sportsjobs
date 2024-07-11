@@ -77,6 +77,7 @@ skills_to_search = [
     "A/B testing",
     "Tableau",
     "Power BI",
+    "AI",
 ]
 
 
@@ -330,6 +331,15 @@ companies = {
         "greenhouse_name": "epicgames",
         "logo": [],
     },
+    "Los Angeles Clippers": {
+        "greenhouse_name": "laclippers",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/Los_Angeles_Clippers_%282024%29.svg/220px-Los_Angeles_Clippers_%282024%29.svg.png",
+                "filename": "laclippers.png",
+            }
+        ],
+    },
 }
 
 for company, attributes in companies.items():
@@ -500,7 +510,7 @@ for company, attributes in companies.items():
 
         if len(logo) > 0:
             logo_permanent_url = logo[0]["url"]
-        else: 
+        else:
             logo_permanent_url = ""
 
         record = {

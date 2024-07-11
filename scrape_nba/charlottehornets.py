@@ -79,7 +79,7 @@ jobs_rows = [{"title": job.text, "url": job.get_attribute("href")} for job in jo
 
 recent_urls = utils.get_recent_urls()
 
-for job in jobs_rows[1:2]:
+for job in jobs_rows:
     try:
         # Extract job details
         driver.get(job["url"])
