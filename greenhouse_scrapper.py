@@ -340,6 +340,15 @@ companies = {
             }
         ],
     },
+    "Madison Square Garden": {
+        "greenhouse_name": "msgsports",
+        "logo": [
+            {
+                "url": "https://www.msgsports.com/wp-content/uploads/2020/03/MadisonSquareGarden_Sports_Logo_White.png",
+                "filename": "msg.png",
+            }
+        ],
+    },
 }
 
 for company, attributes in companies.items():
