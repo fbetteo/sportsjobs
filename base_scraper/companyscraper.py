@@ -187,9 +187,22 @@ class CompanyScraper:
                     print(f"Job {job['title']} was not created")
 
     def main(self):
-        self.open_site()
-        jobs = self.get_jobs_available()
-        self._scrape_jobs(jobs)
+        max_tries = 3
+        for i in range(max_tries):
+            try:
+                self.open_site()
+                jobs = self.get_jobs_available()
+                self._scrape_jobs(jobs)
+                break
+            except Exception as e:
+                print(f"Error scraping jobs: {e}")
+                print(f"Retrying... {i + 1}")
+                if i == max_tries - 1:
+                    print(f"Max retries reached. Exiting this {self.company}...")
+                    return None
+        # self.open_site()
+        # jobs = self.get_jobs_available()
+        # self._scrape_jobs(jobs)
 
 
 # # Set up the Selenium WebDriver (assuming you're using Chrome)
