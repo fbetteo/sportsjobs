@@ -548,7 +548,17 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
 
 driver = webdriver.Chrome(options=chrome_options)
-teams = [Mclaren]
+teams = [
+    Mclaren,
+    Mercedes,
+    RedBull,
+    Haas,
+    Williams,
+    Alpine,
+    Ferrari,
+    AstonMartin,
+    FormulaOne,
+]
 
 for team in teams:
     # try:
