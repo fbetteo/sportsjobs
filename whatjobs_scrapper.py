@@ -93,6 +93,10 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         "https://api.whatjobs.com/api/v1/jobs.json", params=parameters
     )
 
+    if response.status_code != 200:
+        print("Error in request")
+        continue
+
     for job in response.json().get("data", []):
 
         description = job["snippet"]
