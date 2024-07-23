@@ -99,7 +99,7 @@ def add_sport_list(title, description):
     sport_list = []
     if re.search(
         r"\b(?:basketball|nba)\b",
-        description,
+        title + " " + description,
         re.IGNORECASE,
     ):
         sport_list += ["Basketball"]
@@ -123,6 +123,8 @@ def add_sport_list(title, description):
         sport_list += ["MMA"]
     elif re.search(r"\b(?:boxing)\b", title + " " + description, re.IGNORECASE):
         sport_list += ["Boxing"]
+    elif re.search(r"\b(?:formula1)\b", title + " " + description, re.IGNORECASE):
+        sport_list += ["Formula 1"]
 
     return sport_list
 

@@ -15,6 +15,407 @@ import re
 import utils
 
 
+##########
+class AtlantaHawks(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Atlanta Hawks"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Atlanta_Hawks_logo.svg/200px-Atlanta_Hawks_logo.svg.png",
+                "filename": "atlantahawks.png",
+            }
+        ]
+        self.base_url = "https://wd1.myworkdaysite.com/en-US/recruiting/hawks/External"
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "css-19uc56f"))
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(By.CLASS_NAME, "css-19uc56f")
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {"title": job.text, "url": job.get_attribute("href")} for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            self.driver.get(job["url"])
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "css-cygeeu"))
+            )
+
+            location_div = self.driver.find_element(By.CLASS_NAME, "css-cygeeu")
+            location_value = location_div.find_element(
+                By.CLASS_NAME, "css-129m7dg"
+            ).text
+
+            time_div = self.driver.find_element(
+                By.CSS_SELECTOR, '[data-automation-id="time"]'
+            )
+            hours = time_div.find_element(By.CLASS_NAME, "css-129m7dg").text
+
+            description_raw = self.driver.find_element(
+                By.CSS_SELECTOR, '[data-automation-id="jobPostingDescription"]'
+            ).text
+            soup = BeautifulSoup(description_raw, "html.parser")
+            description = soup.get_text(separator="\n").strip()
+            full_description = f"{description}"
+
+            return {
+                "job": job,
+                "location_value": location_value,
+                "hours": hours,
+                "full_description": full_description,
+            }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
+class BostonCeltics(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Boston Celtics"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg",
+                "filename": "bostonceltics.png",
+            }
+        ]
+        self.base_url = "https://www.nba.com/celtics/careers"
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "a[x-show='linkedInUrl']")
+                )
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(
+                By.CSS_SELECTOR, "a[x-show='linkedInUrl']"
+            )
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {"title": job.text, "url": job.get_attribute("href")} for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            # IMPLEMENT LINKEDIN SCRAPING
+            # NOT USABLE NOW
+            self.driver.get(job["url"])
+
+            time.sleep(1)
+            if "trk=expired_jd_redirect" in driver.current_url:
+                print("Redirected to a page with trk=expired_jd_redirect")
+                return None
+        #     WebDriverWait(self.driver, 10).until(
+        #         EC.presence_of_element_located(
+        #             (By.CLASS_NAME, "opportunity-preview__body")
+        #         )
+        #     )
+
+        #     info_elements = self.driver.find_elements(
+        #         By.CLASS_NAME, "opportunity-preview__info-content-item"
+        #     )
+        #     location_value = info_elements[1].text
+        #     hours = info_elements[0].text
+
+        #     description_raw = self.driver.find_element(
+        #         By.CLASS_NAME, "opportunity-preview__body"
+        #     ).get_attribute("innerHTML")
+        #     soup = BeautifulSoup(description_raw, "html.parser")
+        #     description = soup.get_text(separator="\n").strip()
+        #     full_description = f"{description}"
+
+        #     return {
+        #         "job": job,
+        #         "location_value": location_value,
+        #         "hours": hours,
+        #         "full_description": full_description,
+        #     }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
+class BrooklynNets(base_scraper.companyscraper.CompanyScraper):
+    ### IMPLEMENT WHEN THEY HAVE COME CATEGORY FOR ANALYTICS
+    pass
+
+
+class CharlotteHornets(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Charlotte Hornets"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Charlotte_Hornets_%282014%29.svg/220px-Charlotte_Hornets_%282014%29.svg.png",
+                "filename": "charlottehornets.png",
+            }
+        ]
+        self.base_url = "https://recruiting.ultipro.com/HOR1011HORNT/JobBoard/5b257d2d-0813-4167-b64c-95fb001e0d96/?q=&o=postedDateDesc"
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "a[data-automation='job-title']")
+                )
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(
+                By.CSS_SELECTOR, "a[data-automation='job-title']"
+            )
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {
+                "title": job.text,
+                "url": job.get_attribute("href"),
+            }
+            for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            self.driver.get(job["url"])
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "h3[data-automation='descriptions-title']")
+                )
+            )
+
+            location_value = self.driver.find_element(
+                By.CSS_SELECTOR, "span[data-automation='city-state-zip-country-label']"
+            ).text
+            hours = self.driver.find_element(
+                By.CSS_SELECTOR, "span[data-automation='JobFullTime']"
+            ).text
+
+            description_div = self.driver.find_element(
+                By.CSS_SELECTOR, "p[data-automation='job-description']"
+            )
+
+            description_raw = description_div.get_attribute("innerHTML")
+            soup = BeautifulSoup(description_raw, "html.parser")
+            description = soup.get_text(separator="\n").strip()
+            full_description = f"{description}"
+
+            return {
+                "job": job,
+                "location_value": location_value,
+                "hours": hours,
+                "full_description": full_description,
+            }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
+class ChicagoBulls(base_scraper.companyscraper.CompanyScraper):
+    pass
+
+
+class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Cleveland Cavaliers"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/160px-Cleveland_Cavaliers_logo.svg.png",
+                "filename": "clevelandcavaliers.png",
+            }
+        ]
+        self.base_url = "https://www.teamworkonline.com/basketball-jobs/cleveland-cavaliers/cleveland-cavaliers-jobs"
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "organization-portal__job-details")
+                )
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(
+                By.CLASS_NAME, "organization-portal__job-title"
+            )
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {
+                "title": job.find_element(By.TAG_NAME, "a").text,
+                "url": job.find_element(By.TAG_NAME, "a").get_attribute("href"),
+            }
+            for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            self.driver.get(job["url"])
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "opportunity-preview__body")
+                )
+            )
+
+            info_elements = self.driver.find_elements(
+                By.CLASS_NAME, "opportunity-preview__info-content-item"
+            )
+            location_value = info_elements[1].text
+            hours = info_elements[0].text
+
+            description_raw = self.driver.find_element(
+                By.CLASS_NAME, "opportunity-preview__body"
+            ).get_attribute("innerHTML")
+            soup = BeautifulSoup(description_raw, "html.parser")
+            description = soup.get_text(separator="\n").strip()
+            full_description = f"{description}"
+
+            return {
+                "job": job,
+                "location_value": location_value,
+                "hours": hours,
+                "full_description": full_description,
+            }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
+class DallasMavericks(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Dallas Mavericks"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Dallas_mavericks_wordmark.gif/320px-Dallas_mavericks_wordmark.gif",
+                "filename": "dallasmavericks.png",
+            }
+        ]
+        self.base_url = "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883c68eee9454018ef2f81a7d05a4"
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "gnewtonCareerGroupJobTitleClass")
+                )
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(
+                By.CLASS_NAME, "gnewtonCareerGroupJobTitleClass"
+            )
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {
+                "title": job.find_element(By.TAG_NAME, "a").text,
+                "url": job.find_element(By.TAG_NAME, "a").get_attribute("href"),
+            }
+            for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            self.driver.get(job["url"])
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "gnewtonCareerBodyClass")
+                )
+            )
+
+            location_value = "Dallas, TX"
+            hours = "Full-time"
+
+            description_raw = self.driver.find_element(
+                By.ID, "gnewtonJobDescriptionText"
+            ).text
+            soup = BeautifulSoup(description_raw, "html.parser")
+            description = soup.get_text(separator="\n").strip()
+            full_description = f"{description}"
+
+            return {
+                "job": job,
+                "location_value": location_value,
+                "hours": hours,
+                "full_description": full_description,
+            }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
+class DenverNuggets(base_scraper.companyscraper.CompanyScraper):
+    pass
+
+
 class DetroitPistons(base_scraper.companyscraper.CompanyScraper):
 
     def __init__(self, driver=None, keywords=None):
@@ -1283,6 +1684,86 @@ class WashingtonWizards(base_scraper.companyscraper.CompanyScraper):
             return None
 
 
+class WNBA(base_scraper.companyscraper.CompanyScraper):
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "WNBA"
+        self.logo = [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/WNBA_logo.png/200px-WNBA_logo.png",
+                "filename": "wnba.png",
+            }
+        ]
+        self.base_url = (
+            "https://www.teamworkonline.com/basketball-jobs/wnbateamjobs/wnba-team-jobs"
+        )
+
+    def open_site(self):
+        self.driver.get(self.base_url)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "organization-portal__job-details")
+                )
+            )
+        except:
+            print("Failed to load job listings")
+            exit()
+
+    def get_jobs_available(self):
+        jobs_rows = []
+        jobs = [
+            job
+            for job in self.driver.find_elements(
+                By.CLASS_NAME, "organization-portal__job-title"
+            )
+            if any(keyword in job.text.lower() for keyword in self.keywords)
+        ]
+
+        jobs_rows = [
+            {
+                "title": job.find_element(By.TAG_NAME, "a").text,
+                "url": job.find_element(By.TAG_NAME, "a").get_attribute("href"),
+            }
+            for job in jobs
+        ]
+        return jobs_rows
+
+    def _scrape_job(self, job):
+        try:
+            # Extract job details
+            self.driver.get(job["url"])
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "opportunity-preview__body")
+                )
+            )
+
+            info_elements = self.driver.find_elements(
+                By.CLASS_NAME, "opportunity-preview__info-content-item"
+            )
+            location_value = info_elements[1].text
+            hours = info_elements[0].text
+
+            description_raw = self.driver.find_element(
+                By.CLASS_NAME, "opportunity-preview__body"
+            ).get_attribute("innerHTML")
+            soup = BeautifulSoup(description_raw, "html.parser")
+            description = soup.get_text(separator="\n").strip()
+            full_description = f"{description}"
+
+            return {
+                "job": job,
+                "location_value": location_value,
+                "hours": hours,
+                "full_description": full_description,
+            }
+        except Exception as e:
+            print(f"Error extracting event: {e}")
+            return None
+
+
 ###########
 # # For debug
 # driver = webdriver.Chrome()
@@ -1311,6 +1792,14 @@ chrome_options.add_argument("--remote-debugging-port=9222")
 
 driver = webdriver.Chrome(options=chrome_options)
 teams = [
+    AtlantaHawks,
+    # BostonCeltics,
+    # BrooklynNets,
+    CharlotteHornets,
+    # ChicagoBulls,
+    ClevelandCavaliers,
+    DallasMavericks,
+    # DenverNuggets,
     DetroitPistons,
     GoldenStateWarriors,
     HoustonRockets,
@@ -1331,6 +1820,7 @@ teams = [
     # TorontoRaptors,
     UtahJazz,
     WashingtonWizards,
+    WNBA,
 ]
 
 for team in teams:

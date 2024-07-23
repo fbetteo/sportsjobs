@@ -349,6 +349,24 @@ companies = {
             }
         ],
     },
+    "NFL": {
+        "greenhouse_name": "nflcareers",
+        "logo": [
+            {
+                "url": "https://s8-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/029/800/resized/LOGO.png?1716219119",
+                "filename": "nfl.png",
+            }
+        ],
+    },
+    "Philadelphia Eagles": {
+        "greenhouse_name": "philadelphiaeagles",
+        "logo": [
+            {
+                "url": "https://s6-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/224/900/resized/Diving_Eagle_Head.jpg?1678976564",
+                "filename": "philadelphia_eagles.png",
+            }
+        ],
+    },
 }
 
 for company, attributes in companies.items():

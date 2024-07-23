@@ -84,6 +84,8 @@ class FormulaOne(base_scraper.companyscraper.CompanyScraper):
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
 
+            job["title"] += " - Formula1"
+
             return {
                 "job": job,
                 "location_value": location_value,
@@ -169,6 +171,8 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
             soup = BeautifulSoup(description_raw, "html.parser")
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
+
+            job["title"] += " - Formula1"
 
             return {
                 "job": job,
@@ -259,6 +263,8 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
 
+            job["title"] += " - Formula1"
+
             return {
                 "job": job,
                 "location_value": location_value,
@@ -320,9 +326,9 @@ class RedBull(base_scraper.companyscraper.CompanyScraper):
                 EC.presence_of_element_located((By.CLASS_NAME, "css-cygeeu"))
             )
 
-            info_elements = self.driver.find_elements(
-                By.CLASS_NAME, "opportunity-preview__info-content-item"
-            )
+            # info_elements = self.driver.find_elements(
+            #     By.CLASS_NAME, "opportunity-preview__info-content-item"
+            # )
             location_div = self.driver.find_element(By.CLASS_NAME, "css-cygeeu")
             location_value = location_div.find_element(
                 By.CLASS_NAME, "css-129m7dg"
@@ -340,6 +346,8 @@ class RedBull(base_scraper.companyscraper.CompanyScraper):
             soup = BeautifulSoup(description_raw, "html.parser")
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
+
+            job["title"] += " - Formula1"
 
             return {
                 "job": job,
@@ -419,6 +427,8 @@ class Haas(base_scraper.companyscraper.CompanyScraper):
             soup = BeautifulSoup(description_raw, "html.parser")
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
+
+            job["title"] += " - Formula1"
 
             return {
                 "job": job,
@@ -518,6 +528,8 @@ class Williams(base_scraper.companyscraper.CompanyScraper):
             soup = BeautifulSoup(description_raw, "html.parser")
             description = soup.get_text(separator="\n").strip()
             full_description = f"{description}"
+
+            job["title"] += " - Formula1"
 
             return {
                 "job": job,
