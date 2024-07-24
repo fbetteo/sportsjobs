@@ -428,3 +428,4 @@ for team in teams:
     print(f"Running {team.__name__} main()")
     team_instance = team(driver=driver)
     team_instance.main()
+driver.quit()

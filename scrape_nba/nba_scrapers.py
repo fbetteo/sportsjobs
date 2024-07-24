@@ -1830,3 +1830,4 @@ for team in teams:
     team_instance.main()
 # except Exception as e:
 #     print(f"Error running {team.__name__} main(): {e}")
+driver.quit()

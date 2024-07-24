@@ -392,5 +392,4 @@ for company, attributes in companies.items():
             "logo_permanent_url": logo_permanent_url,
             "SEO:Index": "1",
         }
-        print(record)
         table.create(record)
