@@ -1,42 +1,50 @@
 #!/bin/bash
 
 # Run the first four Python scripts sequentially
-python lever_scrapper.py
-if [ $? -ne 0 ]; then
-    echo "script1.py failed"
-    exit 1
-fi
 
-python whatjobs_scrapper.py
-if [ $? -ne 0 ]; then
-    echo "script2.py failed"
-    exit 1
-fi
+echo "Lever running"
+# python lever_scrapper.py
+# if [ $? -ne 0 ]; then
+#     echo "script1.py failed"
+#     exit 1
+# fi
 
-python greenhouse_scrapper.py
-if [ $? -ne 0 ]; then
-    echo "script3.py failed"
-    exit 1
-fi
+echo "whatjobs running"
+# python whatjobs_scrapper.py
+# if [ $? -ne 0 ]; then
+#     echo "script2.py failed"
+#     exit 1
+# fi
 
-python ashbyhq.py
-if [ $? -ne 0 ]; then
-    echo "script4.py failed"
-    exit 1
-fi
+echo "greenhouse running"
+# python greenhouse_scrapper.py
+# if [ $? -ne 0 ]; then
+#     echo "script3.py failed"
+#     exit 1
+# fi
 
+echo "ashbyhq running"
+# python ashbyhq.py
+# if [ $? -ne 0 ]; then
+#     echo "script4.py failed"
+#     exit 1
+# fi
+
+echo "scraping nba"
 python scrape_nba/nba_scrapers.py
 if [ $? -ne 0 ]; then
     echo "script5.py failed"
     exit 1
 fi
 
+echo "scraping f1"
 python scrape_f1/f1_scrapers.py
 if [ $? -ne 0 ]; then
     echo "script6.py failed"
     exit 1
 fi
 
+echo "scraping nfl"
 python scrape_nfl/nfl_scrapers.py
 if [ $? -ne 0 ]; then
     echo "script7.py failed"
