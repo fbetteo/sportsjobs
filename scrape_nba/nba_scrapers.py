@@ -1767,7 +1767,7 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
 ###########
 # # For debug
 # driver = webdriver.Chrome()
-# aa = WashingtonWizards(driver=driver)
+# aa = OrlandoMagic(driver=driver)
 
 # aa.open_site()
 # jobs = aa.get_jobs_available()
