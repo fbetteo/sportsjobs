@@ -567,9 +567,9 @@ teams = [
     RedBull,
     Haas,
     Williams,
-    Alpine,
-    Ferrari,
-    AstonMartin,
+    # Alpine,
+    # Ferrari,
+    # AstonMartin,
     FormulaOne,
 ]
 
