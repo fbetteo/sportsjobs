@@ -9,8 +9,8 @@ import requests.auth
 import re
 import time
 from dotenv import load_dotenv, find_dotenv
-
-from utils import is_remote_global, add_job_area, search_for_png_image
+import markdownify
+from utils import is_remote_global, add_job_area, search_for_png_image, extract_salary
 
 os.getcwd()
 
@@ -100,10 +100,11 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
     for job in response.json().get("data", []):
 
         description = job["snippet"]
-        list_text = description.replace("<li>", "* ").replace("</li>", "  \n")
+        # list_text = description.replace("<li>", "* ").replace("</li>", "  \n")
 
-        soup = BeautifulSoup(list_text, "html.parser")
-        soup_parsed = soup.get_text()
+        # soup = BeautifulSoup(list_text, "html.parser")
+        # soup_parsed = soup.get_text()
+        full_description = markdownify.markdownify(description, heading_style="ATX")
 
         pattern = r"\b(?:" + "|".join(skills) + r")\b"
         skills_required = [
@@ -207,6 +208,11 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         else:
             logo_permanent_url = ""
 
+        try:
+            salary = extract_salary(full_description)[-1]
+        except:
+            salary = None
+
         record = {
             "Name": title,
             "validated": True,
@@ -222,7 +228,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": None,
+            "salary": salary,
             "language": ["English"],
             "company": job["company"],
             "industry": industry,

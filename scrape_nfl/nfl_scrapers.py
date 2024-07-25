@@ -13,6 +13,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import utils
+import markdownify
 
 
 class NFL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
@@ -91,9 +92,12 @@ class NFL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -181,9 +185,13 @@ class SeattleSeahawks(base_scraper.companyscraper.CompanyScraper):
                 By.CLASS_NAME, "job_description"
             ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -265,9 +273,12 @@ class TampaBayBuccaneers(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div[test-id='job-detail-body']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -354,10 +365,14 @@ class BaltimoreRavens(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div.job-posting-content"
-            ).text
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            ).get_attribute("innerHTML")
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - NFL"
 

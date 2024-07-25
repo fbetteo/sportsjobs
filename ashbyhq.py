@@ -12,8 +12,8 @@ import requests
 import requests.auth
 import re
 from dotenv import load_dotenv, find_dotenv
-
-from utils import is_remote_global, add_job_area, search_for_png_image
+import markdownify
+from utils import is_remote_global, add_job_area, search_for_png_image, extract_salary
 
 os.getcwd()
 
@@ -201,7 +201,7 @@ for company, attributes in companies.items():
         continue
     for job in response.json()["jobs"]:
 
-        description = job["descriptionPlain"]
+        description = job["descriptionHtml"]
         # list_text = ""
         # for list_topics in job["lists"]:
 
@@ -215,7 +215,8 @@ for company, attributes in companies.items():
         # soup = BeautifulSoup(decoded, "html.parser")
 
         # full_description = f"""{soup.get_text()}"""
-        full_description = description
+        # full_description = description
+        full_description = markdownify.markdownify(description, heading_style="ATX")
 
         # Just techinical skills we want to filter by
         pattern = r"\b(?:" + "|".join(skills_to_search) + r")\b"
@@ -367,6 +368,11 @@ for company, attributes in companies.items():
         else:
             logo_permanent_url = ""
 
+        try:
+            salary = extract_salary(full_description)[-1]
+        except:
+            salary = None
+
         record = {
             "Name": title,
             "validated": True,
@@ -382,7 +388,7 @@ for company, attributes in companies.items():
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": None,
+            "salary": salary,
             "language": ["English"],
             "company": company,
             "industry": industry,
