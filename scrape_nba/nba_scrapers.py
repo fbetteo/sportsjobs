@@ -13,6 +13,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import utils
+import markdownify
 
 
 ##########
@@ -72,10 +73,13 @@ class AtlantaHawks(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, '[data-automation-id="jobPostingDescription"]'
-            ).text
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            ).get_attribute("innerHTML")
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -240,9 +244,12 @@ class CharlotteHornets(base_scraper.companyscraper.CompanyScraper):
             )
 
             description_raw = description_div.get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -322,9 +329,13 @@ class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -396,10 +407,14 @@ class DallasMavericks(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.ID, "gnewtonJobDescriptionText"
-            ).text
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            ).get_attribute("innerHTML")
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -479,9 +494,9 @@ class DetroitPistons(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -559,9 +574,12 @@ class GoldenStateWarriors(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -634,10 +652,14 @@ class HoustonRockets(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.ID, "gnewtonJobDescriptionText"
-            ).text
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            ).get_attribute("innerHTML")
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -718,9 +740,12 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div.jobDesc"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -801,9 +826,12 @@ class LosAngelesLakers(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -898,9 +926,12 @@ class MiamiHeat(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "p[data-automation='job-description']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -988,9 +1019,12 @@ class MinnesotaTimberwolves(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div[test-id='job-detail-body']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1075,10 +1109,14 @@ class NewOrleansPelicans(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div.job-posting-content"
-            ).text
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            ).get_attribute("innerHTML")
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -1168,15 +1206,18 @@ class OklahomaThunder(base_scraper.companyscraper.CompanyScraper):
             # Concatenate the text content of all paragraph elements
             description_raw = "\n".join(
                 [
-                    element.text
+                    element.get_attribute("innerHTML")
                     for element in description_elements
                     if element.text.strip() != ""
                 ]
             )
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1254,9 +1295,12 @@ class OrlandoMagic(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "p[data-automation='job-description']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1339,9 +1383,12 @@ class PhoenixSuns(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "p[data-automation='job-description']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1422,9 +1469,12 @@ class SacramentoKings(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1506,9 +1556,12 @@ class SanAntonioSpurs(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, "div[test-id='job-detail-body']"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1591,9 +1644,12 @@ class UtahJazz(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1669,9 +1725,12 @@ class WashingtonWizards(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,
@@ -1749,9 +1808,12 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
 
             return {
                 "job": job,

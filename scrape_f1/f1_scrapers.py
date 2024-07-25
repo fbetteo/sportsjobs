@@ -13,6 +13,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import utils
+import markdownify
 
 
 class FormulaOne(base_scraper.companyscraper.CompanyScraper):
@@ -78,11 +79,15 @@ class FormulaOne(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, '[data-automation-id="jobPostingDescription"]'
-            ).text
+            ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -168,9 +173,13 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
                 By.CLASS_NAME, "vacancylist_vacancies__details__jIOyz"
             ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -259,9 +268,13 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
             ):
                 description_raw += job_section.get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -341,11 +354,15 @@ class RedBull(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, '[data-automation-id="jobPostingDescription"]'
-            ).text
+            ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -424,9 +441,13 @@ class Haas(base_scraper.companyscraper.CompanyScraper):
                 By.CLASS_NAME, "BambooRichText"
             ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -523,11 +544,15 @@ class Williams(base_scraper.companyscraper.CompanyScraper):
 
             description_raw = self.driver.find_element(
                 By.CSS_SELECTOR, '[data-automation-id="jobPostingDescription"]'
-            ).text
+            ).get_attribute("innerHTML")
 
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 

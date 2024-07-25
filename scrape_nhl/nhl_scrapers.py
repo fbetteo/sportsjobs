@@ -13,6 +13,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import utils
+import markdownify
 
 
 class NHL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
@@ -91,9 +92,13 @@ class NHL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             description_raw = self.driver.find_element(
                 By.CLASS_NAME, "opportunity-preview__body"
             ).get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             # to be sure the sport is identified in utils.add_sport_list()
             job["title"] += " - NHL"
@@ -180,9 +185,13 @@ class CalgaryFlames(base_scraper.companyscraper.CompanyScraper):
             )
 
             description_raw = description_div.get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,
@@ -281,9 +290,13 @@ class VancouverCanucks(base_scraper.companyscraper.CompanyScraper):
             )
 
             description_raw = description_div.get_attribute("innerHTML")
-            soup = BeautifulSoup(description_raw, "html.parser")
-            description = soup.get_text(separator="\n").strip()
-            full_description = f"{description}"
+
+            full_description = markdownify.markdownify(
+                description_raw, heading_style="ATX"
+            )
+            # soup = BeautifulSoup(description_raw, "html.parser")
+            # description = soup.get_text(separator="\n").strip()
+            # full_description = f"{description}"
 
             return {
                 "job": job,

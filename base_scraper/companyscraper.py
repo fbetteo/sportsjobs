@@ -159,6 +159,11 @@ class CompanyScraper:
         industry = utils.add_industry(job["title"], full_description)
         sport_list = utils.add_sport_list(job["title"], full_description)
 
+        try:
+            salary = extract_salary(full_description)[-1]
+        except:
+            salary = None
+
         return {
             "Name": job["title"],
             "url": job["url"],
@@ -171,7 +176,7 @@ class CompanyScraper:
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": None,
+            "salary": salary,
             "industry": industry,
             "hours": [hours],
         } | other_data
