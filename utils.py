@@ -287,20 +287,53 @@ def get_hours(title, description, hours="Full-time"):
     return hours
 
 
-def extract_salary(full_description):
-    # Define regex patterns to match salary formats
+# def extract_salary(full_description):
+#     # Define regex patterns to match salary formats
+#     salary_patterns = [
+#         r"\$\d+(?:,\d{3})*(?:\.\d+)?",  # matches $ followed by numbers with optional commas and decimal point
+#         r"\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches numbers followed by USD with optional commas and decimal point
+#         r"\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches numbers followed by 'dollars' or 'Dollars'
+#         r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches salary ranges like "50,000 - 60,000 USD"
+#         r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches salary ranges like "50,000 - 60,000 dollars"
+#     ]
+
+#     # Combine all patterns into a single pattern
+#     combined_pattern = "|".join(salary_patterns)
+
+#     # Search for the pattern in the text
+#     matches = re.findall(combined_pattern, full_description)
+
+#     return matches
+
+
+def extract_salary(text):
+    # Define regex patterns to match salary formats including ranges and prefixes
     salary_patterns = [
-        r"\$\d+(?:,\d{3})*(?:\.\d+)?",  # matches $ followed by numbers with optional commas and decimal point
-        r"\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches numbers followed by USD with optional commas and decimal point
-        r"\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches numbers followed by 'dollars' or 'Dollars'
-        r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches salary ranges like "50,000 - 60,000 USD"
-        r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches salary ranges like "50,000 - 60,000 dollars"
+        r"\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?\s?[-to]\s?\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches "$40,000-$60,000", "$40k-$100k USD"
+        r"\d{1,3}(?:,\d{3})*(?:k)?\s?[-to]\s?\d{1,3}(?:,\d{3})*(?:k)?(?:\s?\$)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches "40k-100k USD", "100,000-190,000", "125k-$145k USD"
+        # r'\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?', # matches single amounts like "$40,000", "$40k"
+        r"\d{1,3}(?:,\d{3})*(?:k)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches single amounts like "40k USD", "100,000 Dollars"
+        r"\$\d+\.\d{2}\s?(?:USD|usd|Usd)?/?\s?(?:hour|hr)",  # matches hourly rates like "$17.50 USD/hour"
+        r"\$?\d{1,3}(?:,\d{3})*(?:k)?\s?[-to]\s?\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?",  # matches "$110-145,000"
     ]
 
     # Combine all patterns into a single pattern
     combined_pattern = "|".join(salary_patterns)
 
     # Search for the pattern in the text
-    matches = re.findall(combined_pattern, full_description)
+    matches = re.findall(combined_pattern, text, re.IGNORECASE)
 
-    return matches
+    # Clean the matches to remove any prefixes
+    cleaned_matches = []
+    for match in matches:
+        # Remove any prefixes and whitespace around the match
+        cleaned_match = re.sub(
+            r"^(?:pay range|base pay|salary|compensation|earnings|base salary)[:\s]*",
+            "",
+            match,
+            flags=re.IGNORECASE,
+        ).strip()
+        cleaned_matches.append(cleaned_match)
+
+    # Return the cleaned matches
+    return cleaned_matches

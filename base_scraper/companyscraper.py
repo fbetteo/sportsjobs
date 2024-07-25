@@ -160,7 +160,7 @@ class CompanyScraper:
         sport_list = utils.add_sport_list(job["title"], full_description)
 
         try:
-            salary = extract_salary(full_description)[-1]
+            salary = extract_salary(full_description)[0]
         except:
             salary = None
 

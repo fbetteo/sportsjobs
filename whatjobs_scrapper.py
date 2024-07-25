@@ -213,7 +213,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             logo_permanent_url = ""
 
         try:
-            salary = extract_salary(full_description)[-1]
+            salary = extract_salary(full_description)[0]
         except:
             salary = None
 

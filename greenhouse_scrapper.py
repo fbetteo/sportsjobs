@@ -553,7 +553,7 @@ for company, attributes in companies.items():
 
         if not salary:
             try:
-                salary = utils.extract_salary(full_description)[-1]
+                salary = utils.extract_salary(full_description)[0]
             except:
                 salary = None
 
