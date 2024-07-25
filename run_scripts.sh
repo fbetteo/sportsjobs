@@ -3,32 +3,32 @@
 # Run the first four Python scripts sequentially
 
 echo "Lever running"
-# python lever_scrapper.py
-# if [ $? -ne 0 ]; then
-#     echo "script1.py failed"
-#     exit 1
-# fi
+python lever_scrapper.py
+if [ $? -ne 0 ]; then
+    echo "script1.py failed"
+    exit 1
+fi
 
 echo "whatjobs running"
-# python whatjobs_scrapper.py
-# if [ $? -ne 0 ]; then
-#     echo "script2.py failed"
-#     exit 1
-# fi
+python whatjobs_scrapper.py
+if [ $? -ne 0 ]; then
+    echo "script2.py failed"
+    exit 1
+fi
 
 echo "greenhouse running"
-# python greenhouse_scrapper.py
-# if [ $? -ne 0 ]; then
-#     echo "script3.py failed"
-#     exit 1
-# fi
+python greenhouse_scrapper.py
+if [ $? -ne 0 ]; then
+    echo "script3.py failed"
+    exit 1
+fi
 
 echo "ashbyhq running"
-# python ashbyhq.py
-# if [ $? -ne 0 ]; then
-#     echo "script4.py failed"
-#     exit 1
-# fi
+python ashbyhq.py
+if [ $? -ne 0 ]; then
+    echo "script4.py failed"
+    exit 1
+fi
 
 echo "scraping nba"
 python scrape_nba/nba_scrapers.py
