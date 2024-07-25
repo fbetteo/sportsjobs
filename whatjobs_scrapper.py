@@ -110,7 +110,9 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         skills_required = [
             skill.lower()
             for skill in set(
-                re.findall(pattern, soup_parsed + " " + job["title"], re.IGNORECASE)
+                re.findall(
+                    pattern, full_description + " " + job["title"], re.IGNORECASE
+                )
             )
         ]
         skills_required_format = [
@@ -140,11 +142,13 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
 
         if re.search(
             r"\b(?:intern|internship|internships)\b",
-            title + " " + soup_parsed,
+            title + " " + full_description,
             re.IGNORECASE,
         ):
             seniority = "Internship"
-        elif re.search(r"\b(?:junior)\b", title + " " + soup_parsed, re.IGNORECASE):
+        elif re.search(
+            r"\b(?:junior)\b", title + " " + full_description, re.IGNORECASE
+        ):
             seniority = "Junior"
         else:
             seniority = "With Experience"
@@ -222,7 +226,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "location": location,
             "country": country,
             "seniority": seniority,
-            "desciption": soup_parsed,
+            "desciption": full_description,
             "sport_list": sport_list,
             "skills": skills_required_format,
             "remote": accepts_remote,
