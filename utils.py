@@ -285,3 +285,22 @@ def get_hours(title, description, hours="Full-time"):
         hours = "Fulltime"
 
     return hours
+
+
+def extract_salary(full_description):
+    # Define regex patterns to match salary formats
+    salary_patterns = [
+        r"\$\d+(?:,\d{3})*(?:\.\d+)?",  # matches $ followed by numbers with optional commas and decimal point
+        r"\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches numbers followed by USD with optional commas and decimal point
+        r"\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches numbers followed by 'dollars' or 'Dollars'
+        r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?USD",  # matches salary ranges like "50,000 - 60,000 USD"
+        r"\d+\s?-\s?\d+(?:,\d{3})*(?:\.\d+)?\s?(?:dollars|Dollars)",  # matches salary ranges like "50,000 - 60,000 dollars"
+    ]
+
+    # Combine all patterns into a single pattern
+    combined_pattern = "|".join(salary_patterns)
+
+    # Search for the pattern in the text
+    matches = re.findall(combined_pattern, full_description)
+
+    return matches
