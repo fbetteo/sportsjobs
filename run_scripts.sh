@@ -51,6 +51,35 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "scraping nhl"
+python scrape_nhl/nhl_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script8.py failed"
+    exit 1
+fi
+
+echo "scraping mls"
+python scrape_soccer/mls_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script9.py failed"
+    exit 1
+fi
+
+echo "scraping jobsinfootball"
+python scrape_soccer/jobsinfootball_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script10.py failed"
+    exit 1
+fi
+
+echo "scraping soccer clubs"
+python scrape_soccer/clubs_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script11.py failed"
+    exit 1
+fi
+
+
 # Run the retryable script up to 5 times if it fails
 max_retries=7
 retry_count=0

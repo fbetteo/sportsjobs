@@ -33,6 +33,7 @@ KEYWORDS = [
     "deep learning",
     "artificial intelligence",
     "analytics",
+    "business intelligence",
 ]
 # COMPANY = "Atlanta Hawks"
 # LOGO = [
@@ -73,6 +74,7 @@ class CompanyScraper:
             "deep learning",
             "artificial intelligence",
             "analytics",
+            "business intelligence",
         ]
 
     def open_site(self):
@@ -160,7 +162,7 @@ class CompanyScraper:
         sport_list = utils.add_sport_list(job["title"], full_description)
 
         try:
-            salary = extract_salary(full_description)[0]
+            salary = utils.extract_salary(full_description)[0]
         except:
             salary = None
 
