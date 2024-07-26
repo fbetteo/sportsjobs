@@ -312,7 +312,7 @@ def extract_salary(text):
         r"\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?\s?[-to]\s?\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches "$40,000-$60,000", "$40k-$100k USD"
         r"\d{1,3}(?:,\d{3})*(?:k)?\s?[-to]\s?\d{1,3}(?:,\d{3})*(?:k)?(?:\s?\$)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches "40k-100k USD", "100,000-190,000", "125k-$145k USD"
         # r'\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?', # matches single amounts like "$40,000", "$40k"
-        r"\d{1,3}(?:,\d{3})*(?:k)?(?:\s?(?:USD|Dollars|dollars)?)?",  # matches single amounts like "40k USD", "100,000 Dollars"
+        r"\d{1,3}(?:,\d{3})*(?:k)?(?:\s?(?:USD|Dollars|dollars|K|k))",  # matches single amounts like "40k USD", "100,000 Dollars"
         r"\$\d+\.\d{2}\s?(?:USD|usd|Usd)?/?\s?(?:hour|hr)",  # matches hourly rates like "$17.50 USD/hour"
         r"\$?\d{1,3}(?:,\d{3})*(?:k)?\s?[-to]\s?\$\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:k)?",  # matches "$110-145,000"
     ]
