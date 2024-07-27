@@ -227,7 +227,7 @@ class JobsInFootballDataAnalyst(base_scraper.companyscraper.CompanyScraper):
 
 chrome_options = Options()
 # required with the current docker image
-# chrome_options.add_argument("--headless=new")
+chrome_options.add_argument("--headless=new")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
