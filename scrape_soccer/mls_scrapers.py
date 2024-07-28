@@ -197,7 +197,7 @@ class VancouverWhitecaps(base_scraper.companyscraper.CompanyScraper):
             # description = soup.get_text(separator="\n").strip()
             # full_description = f"{description}"
 
-            job["title"] += " - Formula1"
+            job["title"] += " - MLS"
 
             return {
                 "job": job,
