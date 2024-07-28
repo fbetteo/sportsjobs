@@ -129,7 +129,7 @@ class TorontoFC(base_scraper.companyscraper.CompanyScraper):
 class VancouverWhitecaps(base_scraper.companyscraper.CompanyScraper):
     def __init__(self, driver=None, keywords=None):
         super().__init__(driver=driver, keywords=keywords)
-        self.company = "Haas F1 Team"
+        self.company = "Vancouver Whitecaps"
         self.logo = [
             {
                 "url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Vancouver_Whitecaps_FC_logo.svg/190px-Vancouver_Whitecaps_FC_logo.svg.png",
