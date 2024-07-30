@@ -1,20 +1,14 @@
 import requests
-from bs4 import BeautifulSoup
-
-
 import os
 from pyairtable import Api
 import requests
 import requests.auth
 import re
-from dotenv import load_dotenv, find_dotenv
 import markdownify
+from datetime import datetime
 
 from utils import is_remote_global, add_job_area, search_for_png_image, extract_salary
 
-os.getcwd()
-
-# load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/redditbot/.env"))
 
 AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
@@ -23,7 +17,6 @@ AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
 api = Api(AIRTABLE_TOKEN)
 table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
 
-from datetime import datetime
 
 # URLS POSTED IN THE LAST MONTH
 all = table.all(formula="{days_since_uploaded} < 30")

@@ -10,7 +10,6 @@ import numpy as np
 
 # from dotenv import load_dotenv, find_dotenv
 
-os.getcwd()
 
 # load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/sportsjobs/.env"))
 
@@ -164,7 +163,6 @@ def get_jobs_per_alert(alerts_table, days_before):
 
 
 alerts_table_to_deplete = alerts_table.copy()
-alerts_table_to_deplete
 
 # to debug
 alerts_table_to_deplete.append(
