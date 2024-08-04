@@ -13,7 +13,7 @@ import requests.auth
 import re
 from dotenv import load_dotenv, find_dotenv
 
-from utils import is_remote_global, add_job_area, search_for_png_image
+from utils import is_remote_global, add_job_area, search_for_png_image, find_country
 import markdownify
 import utils
 
@@ -103,32 +103,32 @@ response = requests.get(
 # decoded = html.unescape(asd.json()["jobs"][0]["content"])
 # soup = BeautifulSoup(decoded, "html.parser")
 # markdown_text = html_to_markdown(soup)
-def clean_location(location):
-    location = location.lower()
-    location = location.split("/")[0]
-    location = location.split("-")[0]
-    location = location.split("or")[0]
-    location = location.replace("remote", "")
-    location = location.replace("hybrid", "")
-    location = location.replace("in office", "")
-    return location
+# def clean_location(location):
+#     location = location.lower()
+#     location = location.split("/")[0]
+#     location = location.split("-")[0]
+#     location = location.split("or")[0]
+#     location = location.replace("remote", "")
+#     location = location.replace("hybrid", "")
+#     location = location.replace("in office", "")
+#     return location
 
 
-def find_country(location_str):
-    location_str = clean_location(location_str)
-    geolocator = Nominatim(user_agent="sportsjobs")
-    location = geolocator.geocode(
-        location_str, exactly_one=True, addressdetails=True, language="en"
-    )
+# def find_country(location_str):
+#     location_str = clean_location(location_str)
+#     geolocator = Nominatim(user_agent="sportsjobs")
+#     location = geolocator.geocode(
+#         location_str, exactly_one=True, addressdetails=True, language="en"
+#     )
 
-    if location:
-        # Access the address dictionary
-        address = location.raw.get("address", {})
-        # Get the country
-        country = address.get("country", "Country not found")
-        return country
-    else:
-        return "united states"
+#     if location:
+#         # Access the address dictionary
+#         address = location.raw.get("address", {})
+#         # Get the country
+#         country = address.get("country", "Country not found")
+#         return country
+#     else:
+#         return "united states"
 
 
 # Example usage
@@ -431,7 +431,8 @@ for company, attributes in companies.items():
         url = job["absolute_url"]
         location = job["location"]["name"]
 
-        country = find_country(location).lower()
+        country = find_country(location)["country"]
+        country_code = find_country(location)["country_code"]
 
         if (
             ("remote" in location.lower())
@@ -565,6 +566,7 @@ for company, attributes in companies.items():
             "url": url,
             "location": location,
             "country": country,
+            "country_code": country_code,
             "seniority": seniority,
             "desciption": full_description,
             "sport_list": sport_list,

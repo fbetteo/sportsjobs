@@ -445,6 +445,8 @@ for company, attributes in companies.items():
         except:
             country = ""
 
+        country_code = raw_country.upper()
+
         workplaceType = job["workplaceType"]
         if workplaceType.upper() == "REMOTE":
             accepts_remote = "Yes"
@@ -561,6 +563,7 @@ for company, attributes in companies.items():
             "url": url,
             "location": location[0],
             "country": country,
+            "country_code": country_code,
             "seniority": seniority,
             "desciption": full_description,
             "sport_list": sport_list,

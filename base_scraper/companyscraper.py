@@ -111,6 +111,7 @@ class CompanyScraper:
             "url": job_data.get("url"),
             "location": job_data.get("location"),
             "country": job_data.get("country"),
+            "country_code": job_data.get("country_code"),
             "seniority": job_data.get("seniority"),
             "desciption": job_data.get("desciption"),
             "sport_list": job_data.get("sport_list"),
@@ -150,7 +151,8 @@ class CompanyScraper:
         if (job["url"] in self.recent_urls) or (none_skill):
             return None
 
-        country = utils.find_country(location_value)
+        country = utils.find_country(location_value)["country"]
+        country_code = utils.find_country(location_value)["country_code"]
         accepts_remote = utils.get_remote_status(
             full_description, location_value, job["title"]
         )
@@ -171,6 +173,7 @@ class CompanyScraper:
             "url": job["url"],
             "location": location_value,
             "country": country,
+            "country_code": country_code,
             "seniority": seniority,
             "desciption": full_description,
             "sport_list": sport_list,

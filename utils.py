@@ -238,9 +238,10 @@ def find_country(location_str):
             address = location.raw.get("address", {})
             # Get the country
             country = address.get("country", "Country not found")
-            return country.lower()
+            country_code = address.get("country_code", "Country code not found")
+            return {"country": country.lower(), "country_code": country_code.upper()}
         else:
-            return "united states"
+            return {"country": "united states", "country_code": "US"}
     except Exception as e:
         print(f"Error finding country: {e}")
         return "united states"

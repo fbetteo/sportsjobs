@@ -69,12 +69,12 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
     print(country_id)
 
     country_map = {
-        5039: "united states",
-        5040: "united kingdom",
-        5041: "germany",
-        5042: "australia",
-        5043: "canada",
-        5044: "india",
+        5039: ["united states", "US"],
+        5040: ["united kingdom", "GB"],
+        5041: ["germany", "DE"],
+        5042: ["australia", "AU"],
+        5043: ["canada", "CA"],
+        5044: ["india", "IN"],
     }
 
     parameters = {
@@ -128,7 +128,8 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         createdAt = job["age"]
         url = job["url"]
         location = job["location"]
-        country = country_map[country_id]
+        country = country_map[country_id][0]
+        country_code = country_map[country_id][1]
         # I don't know how REMOTE positions appear. Putting this as default
         workplaceType = job["location"]
         if workplaceType.upper() == "REMOTE":
@@ -225,6 +226,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "url": url,
             "location": location,
             "country": country,
+            "country_code": country_code,
             "seniority": seniority,
             "desciption": full_description,
             "sport_list": sport_list,

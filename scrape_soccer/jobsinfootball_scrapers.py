@@ -16,7 +16,6 @@ import utils
 import markdownify
 
 
-# Replace "YourCompanyName" with the actual company name
 class JobsInFootballDataScience(base_scraper.companyscraper.CompanyScraper):
 
     def __init__(self, driver=None, keywords=None):
