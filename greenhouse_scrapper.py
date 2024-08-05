@@ -331,7 +331,12 @@ companies = {
     },
     "Epic Games": {
         "greenhouse_name": "epicgames",
-        "logo": [],
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Epic_Games_logo.svg/150px-Epic_Games_logo.svg.png",
+                "filename": "epicgames.png",
+            }
+        ],
     },
     "Los Angeles Clippers": {
         "greenhouse_name": "laclippers",
