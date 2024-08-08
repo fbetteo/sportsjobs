@@ -234,7 +234,7 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": salary,
+            "salary": str(salary),
             "language": ["English"],
             "company": job["company"],
             "industry": industry,

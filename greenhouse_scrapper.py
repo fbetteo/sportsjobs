@@ -579,7 +579,7 @@ for company, attributes in companies.items():
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": salary,
+            "salary": str(salary),
             "language": ["English"],
             "company": company,
             "industry": industry,

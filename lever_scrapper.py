@@ -571,7 +571,7 @@ for company, attributes in companies.items():
             "job_area": job_area,
             "remote": accepts_remote,
             "remote_office": remote_office,
-            "salary": salary,
+            "salary": str(salary),
             "language": ["English"],
             "company": company,
             "industry": industry,

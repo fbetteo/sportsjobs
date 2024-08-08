@@ -181,7 +181,7 @@ class CompanyScraper:
             "remote": accepts_remote,
             "remote_office": remote_office,
             "job_area": job_area,
-            "salary": salary,
+            "salary": str(salary),
             "industry": industry,
             "hours": [hours],
         } | other_data
