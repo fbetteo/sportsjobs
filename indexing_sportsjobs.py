@@ -45,7 +45,7 @@ for job in all:
     # "type": "URL_UPDATED"
     # }}""")
     content = f"""{{
-    "url": "{job['fields']['job_detail_url']}",
+    "url": "{job['fields']['new_job_url']}",
     "type": "URL_UPDATED"
     }}"""
 
