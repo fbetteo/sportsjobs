@@ -388,7 +388,7 @@ for company, attributes in companies.items():
             "url": url,
             "location": location,
             "country": country,
-            "counrty_code": country_code,
+            "country_code": country_code,
             "seniority": seniority,
             "desciption": full_description,
             "sport_list": sport_list,
