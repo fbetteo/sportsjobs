@@ -207,7 +207,7 @@ for premium_member in merged_df.loc[merged_df["frequency"] == "daily"].iterrows(
             <tbody>
                 <tr>
                     <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><img src="{job[1]['logo_permanent_url']}" alt="Logo" width="75" style="vertical-align: middle;"></td>
-                    <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['job_detail_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['new_job_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -285,13 +285,13 @@ if weekday_name == "Wednesday":
                 <tbody>
                     <tr>
                         <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><img src="{job[1]['logo_permanent_url']}" alt="Logo" width="75" style="vertical-align: middle;"></td>
-                        <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['job_detail_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
+                        <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['new_job_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
                     </tr>
                 </tbody>
             </table>
             """
                 html_body += f"""
-                        <h2><a href="https://www.sportsjobs.online/member-plan?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">Becoming a Premium Member</a></h2>
+                        <h2><a href="https://www.sportsjobs.online/signup?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">Becoming a Premium Member</a></h2>
             <ol style="text-align: left; display: inline-block; text-align: left;">
                 <li style="margin-bottom: 10px;">🔔 Premium members receive daily alerts instead of weekly. <strong>Apply before all your competition.</strong></li>
                 <li style="margin-bottom: 10px;">🔎 By becoming a premium member you get <strong>access to all the jobs anytime.</strong></li>
@@ -300,7 +300,7 @@ if weekday_name == "Wednesday":
                 <li style="margin-bottom: 10px;">🏋️ You support me in this adventure -> I can add more jobs increasing the size of the database and use more time to find useful content.</li>
             </ol>
             
-            <a href="https://www.sportsjobs.online/member-plan?utm_source=alerts" target="_blank" style="display: inline-block; background-color: #0066cc; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 19px; text-decoration: none;">Become Premium!</a>
+            <a href="https://www.sportsjobs.online/signup?utm_source=alerts" target="_blank" style="display: inline-block; background-color: #0066cc; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 19px; text-decoration: none;">Become Premium!</a>
         </div>"""
 
                 r = resend.Emails.send(
