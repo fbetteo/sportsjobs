@@ -108,7 +108,7 @@ class MLS_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
                 "location_value": location_value,
                 "hours": hours,
                 "full_description": full_description,
-                "sport_list": ["Football - Soccer"],
+                "other_data": {"sport_list": ["Football - Soccer"]},
             }
         except Exception as e:
             print(f"Error extracting event: {e}")
@@ -205,7 +205,7 @@ class VancouverWhitecaps(base_scraper.companyscraper.CompanyScraper):
                 "location_value": location_value,
                 "hours": hours,
                 "full_description": full_description,
-                "sport_list": ["Football - Soccer"],
+                "other_data": {"sport_list": ["Football - Soccer"]},
             }
         except Exception as e:
             print(f"Error extracting event: {e}")
@@ -306,7 +306,7 @@ class NWSL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
                 "location_value": location_value,
                 "hours": hours,
                 "full_description": full_description,
-                "sport_list": ["Football - Soccer"],
+                "other_data": {"sport_list": ["Football - Soccer"]},
             }
         except Exception as e:
             print(f"Error extracting event: {e}")
