@@ -512,11 +512,11 @@ for company, attributes in companies.items():
         elif re.search(
             r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE
         ):
-            sport_list += ["Football"]
+            sport_list += ["Football - NFL"]
         elif re.search(
             r"\b(?:football|soccer|MLS)\b", title + " " + description, re.IGNORECASE
         ):
-            sport_list += ["Football"]
+            sport_list += ["Football - Soccer"]
         elif re.search(
             r"\b(?:baseball|MLB)\b", title + " " + description, re.IGNORECASE
         ):

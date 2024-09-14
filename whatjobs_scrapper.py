@@ -178,13 +178,13 @@ for country_id in [5039, 5040, 5041, 5042, 5043, 5044]:
         ):
             sport_list += ["Basketball"]
         elif re.search(
-            r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE
-        ):
-            sport_list += ["Football"]
-        elif re.search(
             r"\b(?:football|soccer|MLS)\b", title + " " + description, re.IGNORECASE
         ):
-            sport_list += ["Football"]
+            sport_list += ["Football - Soccer"]
+        elif re.search(
+            r"\b(?:football|NFL)\b", title + " " + description, re.IGNORECASE
+        ):
+            sport_list += ["Football - NFL"]
         elif re.search(
             r"\b(?:baseball|MLB)\b", title + " " + description, re.IGNORECASE
         ):
