@@ -436,8 +436,12 @@ for company, attributes in companies.items():
         url = job["absolute_url"]
         location = job["location"]["name"]
 
-        country = find_country(location)["country"]
-        country_code = find_country(location)["country_code"]
+        try:
+            country = find_country(location)["country"]
+            country_code = find_country(location)["country_code"]
+        except:
+            country = "united states"
+            country_code = "US"
 
         if (
             ("remote" in location.lower())
