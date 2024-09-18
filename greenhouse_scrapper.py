@@ -80,6 +80,7 @@ skills_to_search = [
     "Tableau",
     "Power BI",
     "AI",
+    "Intern",
 ]
 
 

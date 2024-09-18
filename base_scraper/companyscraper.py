@@ -75,6 +75,8 @@ class CompanyScraper:
             "artificial intelligence",
             "analytics",
             "business intelligence",
+            "intern",
+            "internship",
         ]
 
     def open_site(self):
