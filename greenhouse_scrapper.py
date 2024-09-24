@@ -382,6 +382,10 @@ for company, attributes in companies.items():
         f"https://boards-api.greenhouse.io/v1/boards/{attributes['greenhouse_name']}/jobs?content=true"
     )
 
+    if response.status_code != 200:
+        print(f"Error in request for {company}")
+        continue
+
     for job in response.json()["jobs"]:
 
         description = job["content"]
