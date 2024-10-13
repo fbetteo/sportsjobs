@@ -22,9 +22,9 @@ def insert_record(data):
     try:
         insert_query = """
         INSERT INTO users (name, email)
-        VALUES (%s, %s, ...);
+        VALUES (%s, %s);
         """
-        cursor.execute(insert_query, (data["name"], data["email"], ...))
+        cursor.execute(insert_query, (data["name"], data["email"]))
         conn.commit()
     except Exception as e:
         print(f"Error inserting record: {e}")
