@@ -1,5 +1,6 @@
 import psycopg2
 import os
+from sys import exit
 
 try:
     conn = psycopg2.connect(
