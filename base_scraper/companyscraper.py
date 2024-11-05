@@ -127,8 +127,8 @@ class CompanyScraper:
             "industry": job_data.get("industry"),
             "type": job_data.get("type", ["Permanent"]),
             "hours": job_data.get("hours"),
-            "logo": self.logo,
-            "logo_permanent_url": self.logo[0].get("url"),
+            "logo": job_data.get("logo", self.logo),
+            "logo_permanent_url": job_data.get("logo", self.logo)[0].get("url"),
             "SEO:Index": "1",
         }
         self.table.create(record)
