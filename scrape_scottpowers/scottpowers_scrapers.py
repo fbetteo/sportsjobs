@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import markdownify
 import utils
+import time
 
 
 # replace SportJobs with the name of the site or a relevant identifier in the class name
@@ -41,8 +42,11 @@ class ScottPowersScraper(base_scraper.companyscraper.CompanyScraper):
             # Enter credentials
             username_input = self.driver.find_element(By.ID, "username")
             password_input = self.driver.find_element(By.ID, "password")
+            time.sleep(1)
             username_input.send_keys(os.getenv("LINKEDIN_USERNAME"))
+            time.sleep(1)
             password_input.send_keys(os.getenv("LINKEDIN_PASSWORD"))
+            time.sleep(0.5)
 
             # Click login button
             self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
@@ -280,6 +284,10 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
 chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument(
+    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+)
+
 
 driver = webdriver.Chrome(options=chrome_options)
 print(f"Running ScottPowersScraper main()")
