@@ -79,12 +79,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "scraping Scott Powers board teams"
-python scrape_scottpowers/scottpowers_scrapers.py
-if [ $? -ne 0 ]; then
-    echo "script12.py failed"
-    exit 1
-fi
+# echo "scraping Scott Powers board teams"
+# python scrape_scottpowers/scottpowers_scrapers.py
+# if [ $? -ne 0 ]; then
+#     echo "script12.py failed"
+#     exit 1
+# fi
 
 
 # Run the retryable script up to 5 times if it fails
