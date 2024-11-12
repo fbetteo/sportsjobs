@@ -34,7 +34,6 @@ HEADERS_LINKEDIN = {
     "Content-Type": "application/json",
 }
 
-"serbia".capitalize()
 
 for record in records:
     job_title = record["fields"].get("Name", "New Job")
