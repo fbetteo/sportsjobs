@@ -65,12 +65,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "scraping jobsinfootball"
-python scrape_soccer/jobsinfootball_scrapers.py
-if [ $? -ne 0 ]; then
-    echo "script10.py failed"
-    exit 1
-fi
+# echo "scraping jobsinfootball"
+# python scrape_soccer/jobsinfootball_scrapers.py
+# if [ $? -ne 0 ]; then
+#     echo "script10.py failed"
+#     exit 1
+# fi
 
 echo "scraping soccer clubs"
 python scrape_soccer/clubs_scrapers.py
