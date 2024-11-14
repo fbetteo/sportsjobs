@@ -44,7 +44,8 @@ for record in records:
 
     🏀⚽🏈 {job_title} - {company} - {country}
 
-    Apply and find more opportunities here: www.sportsjobs.online
+    Apply and find more opportunities here: www.sportsjobs.online  
+    Follow us for more job opportunities in sports analytics!
     """
 
     content = {
