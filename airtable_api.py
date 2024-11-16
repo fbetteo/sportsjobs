@@ -110,27 +110,28 @@ if job:
         json.dump(latest_posted, f)
 
 
-for job in latest_jobs[::-1]:
-    if job["fields"]["remote"] == "Yes":
+## Workremotely. Restricted posting now.
+# for job in latest_jobs[::-1]:
+#     if job["fields"]["remote"] == "Yes":
 
-        post_data = {
-            "title": "[HIRING] " + job["fields"]["Name"],
-            "kind": "link",
-            "sr": "workremotely",
-            "url": job["fields"]["job_detail_url"]
-            + f"?utm_source=reddit&utm_medium=bot_workremotely",
-            "resubmit": "true",
-            "api_type": "json",
-            "sendreplies": "true",
-            "text": job["fields"]["desciption"],
-        }
+#         post_data = {
+#             "title": "[HIRING] " + job["fields"]["Name"],
+#             "kind": "link",
+#             "sr": "workremotely",
+#             "url": job["fields"]["job_detail_url"]
+#             + f"?utm_source=reddit&utm_medium=bot_workremotely",
+#             "resubmit": "true",
+#             "api_type": "json",
+#             "sendreplies": "true",
+#             "text": job["fields"]["desciption"],
+#         }
 
-        requests.post(
-            "https://oauth.reddit.com/api/submit",
-            headers={
-                "Authorization": "bearer " + access_token,
-                "User-Agent": "ChangeMeClient/0.1 by YourUsername",
-            },
-            data=post_data,
-        )
-        time.sleep(1)
+#         requests.post(
+#             "https://oauth.reddit.com/api/submit",
+#             headers={
+#                 "Authorization": "bearer " + access_token,
+#                 "User-Agent": "ChangeMeClient/0.1 by YourUsername",
+#             },
+#             data=post_data,
+#         )
+#         time.sleep(1)
