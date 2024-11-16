@@ -1,5 +1,6 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
+from datetime import datetime
 
 SCOPES = ["https://www.googleapis.com/auth/indexing"]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
@@ -30,11 +31,19 @@ AIRTABLE_BLOG_TABLE = os.getenv("AIRTABLE_BLOG_TABLE")
 api = Api(AIRTABLE_TOKEN)
 
 # JOBS
+# table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
+# all = table.all(sort=["-creation_date"], max_records=20)
 table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
-all = table.all(sort=["-creation_date"], max_records=20)
+today = datetime.now().strftime("%Y-%m-%d")  # Format to ISO format for better filtering
+
+# Adjust filter formula to compare the formatted start date
+# Convert Airtable's "Start date" to an ISO date string for comparison
+records = table.all(
+    formula=f"DATETIME_FORMAT({{Start date}}, 'YYYY-MM-DD') = '{today}'"
+)
 
 
-for job in all:
+for job in records:
     http = credentials.authorize(httplib2.Http())
 
     # Define contents here as a JSON string.
