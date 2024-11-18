@@ -17,6 +17,12 @@ import time
 import utils
 import os
 from pyairtable import Api
+from hetzner_utils import (
+    start_postgres_connection,
+    get_recent_urls,
+    get_skills,
+    insert_records,
+)
 
 AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
@@ -24,6 +30,8 @@ AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
 
 api = Api(AIRTABLE_TOKEN)
 table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
+
+
 KEYWORDS = [
     "data",
     "engineer",
@@ -47,12 +55,12 @@ KEYWORDS = [
 class CompanyScraper:
 
     def __init__(self, driver=None, keywords=None, table=table):
-        now = datetime.now()
+        self.now = datetime.now()
         self.keywords = (
             keywords if keywords is not None else self.get_default_keywords()
         )
         self.table = table
-        self.current_time = now.strftime("%Y-%m-%d")
+        self.current_time = self.now.strftime("%Y-%m-%d")
         self.driver = driver
         self.company = None
         self.logo = [
@@ -62,7 +70,20 @@ class CompanyScraper:
             }
         ]
         self.base_url = ""
-        self.recent_urls = utils.get_recent_urls()
+
+        try:
+            conn = start_postgres_connection()
+            with conn as conn:
+                self.recent_urls = get_recent_urls(conn)
+        except Exception as e:
+            print(f"Error getting recent urls: {e}")
+            self.recent_urls = []
+        finally:
+            # Ensure the connection is closed if still open
+            if conn and conn.closed == 0:
+                conn.close()
+                print("Connection closed.")
+        # self.recent_urls = utils.get_recent_urls()
 
     def get_default_keywords(self):
         return [
@@ -132,6 +153,54 @@ class CompanyScraper:
             "SEO:Index": "1",
         }
         self.table.create(record)
+        try:
+            conn = start_postgres_connection()
+            with conn as conn:
+                record = {
+                    "name": job_data.get("Name"),
+                    "status": "Open",
+                    "start_date": self.current_time,
+                    "url": job_data.get("url"),
+                    "location": job_data.get("location"),
+                    "country": job_data.get("country"),
+                    "country_code": job_data.get("country_code"),
+                    "seniority": job_data.get("seniority"),
+                    "description": job_data.get("desciption"),
+                    "sport_list": (
+                        job_data.get("sport_list")[0]
+                        if job_data.get("sport_list")
+                        else None
+                    ),
+                    "skills": job_data.get("skills"),
+                    "job_area": job_data.get("job_area"),
+                    "remote": job_data.get("remote"),
+                    "remote_office": job_data.get("remote_office"),
+                    "salary": str(job_data.get("salary")),
+                    "language": job_data.get("language", ["English"]),
+                    "company": job_data.get("company", self.company),
+                    "industry": (
+                        job_data.get("industry")[0]
+                        if job_data.get("industry")
+                        else None
+                    ),
+                    "job_type": "Permanent",
+                    "hours": job_data.get("hours"),
+                    "logo_permanent_url": self.logo[0].get("url"),
+                    "post_duration": 30,
+                    "post_tier": "Free",
+                    "featured": "1 - regular",
+                    "creation_date": self.now,
+                }
+
+                insert_records(conn, "jobs", record)
+        except Exception as e:
+            print(f"Error inserting record: {e}")
+            self.recent_urls = []
+        finally:
+            # Ensure the connection is closed if still open
+            if conn and conn.closed == 0:
+                conn.close()
+                print("Connection closed.")
 
     def _scrape_job(self, job):
         return {}

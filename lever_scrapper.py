@@ -29,7 +29,7 @@ conn = start_postgres_connection()
 # recent_urls = [record["fields"]["url"] for record in all]
 try:
     with conn as conn:
-        recent_urls = get_recent_urls(conn)
+        recent_urls = get_recent_urls(conn, days=30)
 
         # LIST OF SKILLS AVAILABLE IN AIRTABLE
         # skills_column = [field for field in table.schema().fields if field.name == "skills"]
@@ -347,12 +347,12 @@ try:
         }
 
         companies = {
-            "AllTrails": {
-                "lever_name": "alltrails",
+            "Legend": {
+                "lever_name": "Legend",
                 "logo": [
                     {
-                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/0b932cb7-122b-498f-a60f-f1db6c304e25-1673646830510.png",
-                        "filename": "alltrails.png",
+                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/7215073c-e908-41d8-a877-4199bc726c98-1698847110583.png",
+                        "filename": "legend.png",
                     }
                 ],
             }
@@ -645,7 +645,7 @@ try:
                     "company": company,
                     "industry": industry[0] if industry else None,
                     "job_type": "Permanent",
-                    "hours": hours[0] if hours else None,
+                    "hours": hours,
                     "logo_permanent_url": logo_permanent_url,
                     "post_duration": 30,
                     "post_tier": "Free",

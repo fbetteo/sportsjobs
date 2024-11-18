@@ -104,17 +104,17 @@ if [ $success -ne 1 ]; then
     exit 1
 fi
 
-python indexing_sportsjobs.py
-if [ $? -ne 0 ]; then
-    echo "indexing_sportsjobs.py failed"
-    exit 1
-fi
+# python indexing_sportsjobs.py
+# if [ $? -ne 0 ]; then
+#     echo "indexing_sportsjobs.py failed"
+#     exit 1
+# fi
 
 # Run the final Python script
-python send_alerts.py
-if [ $? -ne 0 ]; then
-    echo "send_alerts.py failed"
-    exit 1
-fi
+# python send_alerts.py
+# if [ $? -ne 0 ]; then
+#     echo "send_alerts.py failed"
+#     exit 1
+# fi
 
 echo "All scripts executed successfully"

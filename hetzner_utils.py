@@ -22,9 +22,9 @@ def start_postgres_connection():
     return conn
 
 
-def get_recent_urls(conn):
+def get_recent_urls(conn, days=30):
     with conn.cursor() as cursor:
-        cursor.execute("SELECT url FROM jobs where CURRENT_DATE - start_date < 30")
+        cursor.execute(f"SELECT url FROM jobs where CURRENT_DATE - start_date < {days}")
         records = cursor.fetchall()
         url_list = [url[0] for url in records]
     return url_list

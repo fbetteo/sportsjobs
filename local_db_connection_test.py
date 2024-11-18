@@ -1,11 +1,24 @@
 import psycopg2
+from dotenv import load_dotenv
+from pathlib import Path
+import os
+
+env_path = Path("sportsjobs") / ".env"
+load_dotenv(dotenv_path=env_path)
+# Airtable configuration
+
+# PostgreSQL configuration
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
 
 conn = psycopg2.connect(
     host="localhost",
     port="5432",
-    dbname="sportsjobs",
-    user="admin",
-    password="carotex1",
+    dbname=DB_NAME,
+    user=DB_USER,
+    password=DB_PASSWORD,
 )
 
 cursor = conn.cursor()
