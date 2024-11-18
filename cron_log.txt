@@ -1,0 +1,16 @@
+/bin/sh: 1: poetry: not found
+/bin/sh: 1: poetry: not found
+/bin/sh: 1: poetry: not found
+Command not found: ./run_scripts
+Lever running
+Connected to PostgreSQL database!
+Connection closed.
+All scripts executed successfully
+Lever running
+Connected to PostgreSQL database!
+Connection closed.
+All scripts executed successfully
+Lever running
+Connected to PostgreSQL database!
+Connection closed.
+All scripts executed successfully

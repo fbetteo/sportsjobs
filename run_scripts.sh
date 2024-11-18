@@ -5,7 +5,7 @@ export $(grep -v '^#' .env | xargs)
 
 
 echo "Lever running"
-python lever_scrapper.py
+python3 lever_scrapper.py
 if [ $? -ne 0 ]; then
     echo "script1.py failed"
     exit 1
@@ -82,7 +82,7 @@ if [ $? -ne 0 ]; then
 fi
 
 
-# Run the retryable script up to 5 times if it fails
+Run the retryable script up to 5 times if it fails
 max_retries=7
 retry_count=0
 success=0
@@ -112,11 +112,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Run the final Python script
-# python send_alerts.py
-# if [ $? -ne 0 ]; then
-#     echo "send_alerts.py failed"
-#     exit 1
-# fi
+Run the final Python script
+python send_alerts.py
+if [ $? -ne 0 ]; then
+    echo "send_alerts.py failed"
+    exit 1
+fi
 
 echo "All scripts executed successfully"
