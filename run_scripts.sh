@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Run the first four Python scripts sequentially
+export $(grep -v '^#' .env | xargs)
+
 
 echo "Lever running"
 python lever_scrapper.py
@@ -86,7 +88,7 @@ retry_count=0
 success=0
 
 while [ $retry_count -lt $max_retries ]; do
-    python3 airtable_api.py
+    python airtable_api.py
     if [ $? -eq 0 ]; then
         success=1
         break
@@ -104,11 +106,11 @@ if [ $success -ne 1 ]; then
     exit 1
 fi
 
-# python indexing_sportsjobs.py
-# if [ $? -ne 0 ]; then
-#     echo "indexing_sportsjobs.py failed"
-#     exit 1
-# fi
+python indexing_sportsjobs.py
+if [ $? -ne 0 ]; then
+    echo "indexing_sportsjobs.py failed"
+    exit 1
+fi
 
 # Run the final Python script
 # python send_alerts.py

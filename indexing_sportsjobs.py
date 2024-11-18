@@ -13,45 +13,63 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(
 
 
 import os
-from pyairtable import Api
+
+# from pyairtable import Api
 import requests.auth
 from dotenv import load_dotenv, find_dotenv
+from hetzner_utils import (
+    start_postgres_connection,
+    get_recent_urls,
+    get_skills,
+    insert_records,
+    get_recent_jobs,
+)
 
 os.getcwd()
 
 # load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/sportsjobs/.env"))
 
-AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
-AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
-AIRTABLE_BLOG_TABLE = os.getenv("AIRTABLE_BLOG_TABLE")
+# AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
+# AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
+# AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
+# AIRTABLE_BLOG_TABLE = os.getenv("AIRTABLE_BLOG_TABLE")
 
 
-api = Api(AIRTABLE_TOKEN)
+# api = Api(AIRTABLE_TOKEN)
 
-# JOBS
-table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
-all = table.all(sort=["-creation_date"], max_records=20)
+# # JOBS
+# table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
+# all = table.all(sort=["-creation_date"], max_records=20)
+conn = start_postgres_connection()
 
+try:
+    with conn as conn:
+        latest_jobs = get_recent_jobs(conn)
 
-for job in all:
-    http = credentials.authorize(httplib2.Http())
+        for job in latest_jobs:
+            http = credentials.authorize(httplib2.Http())
 
-    # Define contents here as a JSON string.
-    # This example shows a simple update request.
-    # Other types of requests are described in the next step.
-    # print(f"""{{
-    # "url": {job['fields']['job_detail_url']},
-    # "type": "URL_UPDATED"
-    # }}""")
-    content = f"""{{
-    "url": "{job['fields']['new_job_url']}",
-    "type": "URL_UPDATED"
-    }}"""
+            # Define contents here as a JSON string.
+            # This example shows a simple update request.
+            # Other types of requests are described in the next step.
+            # print(f"""{{
+            # "url": {job['fields']['job_detail_url']},
+            # "type": "URL_UPDATED"
+            # }}""")
+            content = f"""{{
+            "url": f"https://sportsjobs.online/job/{job['job_id']}",
+            "type": "URL_UPDATED"
+            }}"""
 
-    response, content = http.request(ENDPOINT, method="POST", body=content)
+            response, content = http.request(ENDPOINT, method="POST", body=content)
 
-
+except Exception as e:
+    print(f"Error occurred: {e}")
+finally:
+    # Ensure the connection is closed if still open
+    if conn and conn.closed == 0:
+        conn.close()
+        print("Connection closed.")
 # # BLOG
 # table = api.table(AIRTABLE_BASE, AIRTABLE_BLOG_TABLE)
 # all = table.all(sort=["-creation_date"], max_records=1)

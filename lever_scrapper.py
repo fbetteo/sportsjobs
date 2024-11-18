@@ -20,6 +20,7 @@ AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
 AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
 
+
 api = Api(AIRTABLE_TOKEN)
 table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
 conn = start_postgres_connection()

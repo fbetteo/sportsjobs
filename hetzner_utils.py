@@ -1,6 +1,8 @@
 import psycopg2
 import os
 from psycopg2 import sql
+from psycopg2.extras import DictCursor
+import pandas as pd
 
 
 def start_postgres_connection():
@@ -28,6 +30,28 @@ def get_recent_urls(conn, days=30):
         records = cursor.fetchall()
         url_list = [url[0] for url in records]
     return url_list
+
+
+def get_recent_jobs(conn, days=1):
+    with conn.cursor(cursor_factory=DictCursor) as cursor:
+        cursor.execute(f"SELECT * FROM jobs where CURRENT_DATE - start_date < {days}")
+        records = cursor.fetchall()
+        result = [dict(record) for record in records]
+    return result
+
+
+def get_recent_jobs_df(conn, days=1):
+    query = f"SELECT * FROM jobs WHERE CURRENT_DATE - start_date < {days}"
+    df = pd.read_sql_query(query, conn)
+    return df
+
+
+def get_table(conn, table):
+    with conn.cursor(cursor_factory=DictCursor) as cursor:
+        cursor.execute(f"SELECT * FROM {table}")
+        records = cursor.fetchall()
+        result = [dict(record) for record in records]
+    return result
 
 
 def get_skills(conn):
