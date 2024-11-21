@@ -443,12 +443,11 @@ for company, attributes in companies.items():
             "bg": "bulgaria",
             "je": "jersey",
             "ar": "argentina",
+            "gi": "gibraltar",
         }
 
         try:
             country = country_map.get(raw_country.lower(), raw_country.lower())
-            if country not in country_available_options:
-                country = ""
         except:
             country = ""
 
