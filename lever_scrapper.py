@@ -26,6 +26,11 @@ recent_urls = [record["fields"]["url"] for record in all]
 skills_column = [field for field in table.schema().fields if field.name == "skills"]
 skills = [skill.name for skill in skills_column[0].options.choices]
 
+country_column = [field for field in table.schema().fields if field.name == "country"]
+country_available_options = [
+    country.name for country in country_column[0].options.choices
+]
+
 
 ### THIS WAS WHEN I WANTED TO REMOVE ONLY A FEW SKILLS TO LOOK FROM
 # skill_to_remove = [
@@ -442,6 +447,8 @@ for company, attributes in companies.items():
 
         try:
             country = country_map.get(raw_country.lower(), raw_country.lower())
+            if country not in country_available_options:
+                country = ""
         except:
             country = ""
 
