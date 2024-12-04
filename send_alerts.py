@@ -212,15 +212,21 @@ for premium_member in merged_df.loc[merged_df["frequency"] == "daily"].iterrows(
             </tbody>
         </table>
         """
-
-            r = resend.Emails.send(
-                {
-                    "from": "noreply@alerts.sportsjobs.online",
-                    "to": alert["fields"]["email"],
-                    "subject": "Sports Jobs of the day! - Check out the new jobs available",
-                    "html": html_body,
-                }
-            )
+            trials = 0
+            while trials < 3:
+                try:
+                    r = resend.Emails.send(
+                        {
+                            "from": "noreply@alerts.sportsjobs.online",
+                            "to": alert["fields"]["email"],
+                            "subject": "Sports Jobs of the day! - Check out the new jobs available",
+                            "html": html_body,
+                        }
+                    )
+                    break
+                except:
+                    trials += 1
+                    time.sleep(1)
 
         alerts_table_to_deplete = [
             i for j, i in enumerate(alerts_table_to_deplete) if j not in alerts_used
@@ -302,15 +308,21 @@ if weekday_name == "Wednesday":
             
             <a href="https://www.sportsjobs.online/signup?utm_source=alerts" target="_blank" style="display: inline-block; background-color: #0066cc; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 19px; text-decoration: none;">Become Premium!</a>
         </div>"""
-
-                r = resend.Emails.send(
-                    {
-                        "from": "noreply@alerts.sportsjobs.online",
-                        "to": alert["fields"]["email"],
-                        "subject": "Sports Jobs of the day! - Check out the new jobs available",
-                        "html": html_body,
-                    }
-                )
+                trials = 0
+                while trials < 3:
+                    try:
+                        r = resend.Emails.send(
+                            {
+                                "from": "noreply@alerts.sportsjobs.online",
+                                "to": alert["fields"]["email"],
+                                "subject": "Sports Jobs of the day! - Check out the new jobs available",
+                                "html": html_body,
+                            }
+                        )
+                        break
+                    except:
+                        trials += 1
+                        time.sleep(1)
 
             alerts_table_to_deplete = [
                 i for i in alerts_table_to_deplete if i["id"] not in alerts_used
