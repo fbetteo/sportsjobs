@@ -82,7 +82,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "scraping scottpowers_scrapers"
-python scrape_scottpowers/scottpowers_scrapers.py
+python scrape_scottpowers/scottspower_scrapers.py
 if [ $? -ne 0 ]; then
     echo "script12.py failed"
     exit 1
