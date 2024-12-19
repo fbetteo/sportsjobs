@@ -68,6 +68,7 @@ try:
             "@pd.to_datetime(`start_date`) >= @yesterday "
         )
 
+
         # def get_users_with_alerts(alerts_table):
         #     new_records = []
         #     keys_to_extract = ["Name", "email"]
@@ -161,6 +162,7 @@ try:
                         else False
                     )
                 )
+
 
             return (
                 np.array(country_mask)

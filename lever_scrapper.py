@@ -26,6 +26,7 @@ table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
 conn = start_postgres_connection()
 
 # URLS POSTED IN THE LAST MONTH
+
 # all = table.all(formula="{days_since_uploaded} < 30")
 # recent_urls = [record["fields"]["url"] for record in all]
 try:
@@ -75,6 +76,7 @@ try:
             "A/B testing",
             "Tableau",
             "Power BI",
+
         ]
 
         skills = skills + skills_to_search
@@ -347,16 +349,7 @@ try:
             # # },
         }
 
-        companies = {
-            "Legend": {
-                "lever_name": "Legend",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/7215073c-e908-41d8-a877-4199bc726c98-1698847110583.png",
-                        "filename": "legend.png",
-                    }
-                ],
-            }
+
         }
         for company, attributes in companies.items():
 

@@ -21,4 +21,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Command to run your script (can be overridden in Render's cron job settings)
-CMD ["bash", "run_scripts.sh"]
+# CMD ["bash", "run_scripts.sh"]

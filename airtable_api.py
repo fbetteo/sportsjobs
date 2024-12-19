@@ -70,6 +70,7 @@ try:
         latest_jobs = get_recent_jobs(conn)
         # post to reddit
 
+
         # username = REDDIT_USERNAME
         # subreddit = SUBREDDIT
         # subreddit_display_name = SUBREDDIT_DISPLAY_NAME
@@ -175,3 +176,4 @@ finally:
     if conn and conn.closed == 0:
         conn.close()
         print("Connection closed.")
+

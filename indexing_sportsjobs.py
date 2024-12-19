@@ -1,5 +1,6 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
+from datetime import datetime
 
 SCOPES = ["https://www.googleapis.com/auth/indexing"]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
@@ -28,6 +29,7 @@ from hetzner_utils import (
 os.getcwd()
 
 # load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/sportsjobs/.env"))
+
 
 # AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 # AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
@@ -70,6 +72,7 @@ finally:
     if conn and conn.closed == 0:
         conn.close()
         print("Connection closed.")
+
 # # BLOG
 # table = api.table(AIRTABLE_BASE, AIRTABLE_BLOG_TABLE)
 # all = table.all(sort=["-creation_date"], max_records=1)
