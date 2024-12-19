@@ -373,3 +373,354 @@ Traceback (most recent call last):
          ^^^^^^^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: './sportsjobs-81587141c98e.json'
 indexing_sportsjobs.py failed
+Lever running
+Connected to PostgreSQL database!
+Connection closed.
+whatjobs running
+Connected to PostgreSQL database!
+5039
+5040
+5041
+5042
+5043
+5044
+Connection closed.
+greenhouse running
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error in request for Zelus Analytics
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error in request for Tempus Ex
+Connection closed.
+ashbyhq running
+Connected to PostgreSQL database!
+Connection closed.
+scraping nba
+Running AtlantaHawks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Brand Communications, HBCU Pathways Internship was not created
+Job Diversity, Equity and Inclusion, HBCU Pathways Internship was not created
+Job Recruiting, HBCU Pathways Internship was not created
+Job Marketing, HBCU Pathways Internship was not created
+Job Ticket Sales, HBCU Pathways Internship was not created
+Job Creative Video Producer (Hawk Studios), HBCU Pathways Internship was not created
+Job Project Management Office (PMO), HBCU Pathways Internship was not created
+Job Global Partnerships, HBCU Pathways Internship was not created
+Job Director, People Operations & Analytics was not created
+Running CharlotteHornets main()
+Connected to PostgreSQL database!
+Connection closed.
+Error scraping jobs: Message: unknown error: net::ERR_CONNECTION_RESET
+  (Session info: chrome=131.0.6778.69)
+Stacktrace:
+#0 0x618ff60e88fa <unknown>
+#1 0x618ff5bf9d20 <unknown>
+#2 0x618ff5bf1f34 <unknown>
+#3 0x618ff5be22c9 <unknown>
+#4 0x618ff5be3fd4 <unknown>
+#5 0x618ff5be257d <unknown>
+#6 0x618ff5be1dd6 <unknown>
+#7 0x618ff5be1cce <unknown>
+#8 0x618ff5bdfd06 <unknown>
+#9 0x618ff5be037a <unknown>
+#10 0x618ff5bfc649 <unknown>
+#11 0x618ff5c8c1b5 <unknown>
+#12 0x618ff5c6caf2 <unknown>
+#13 0x618ff5c8b560 <unknown>
+#14 0x618ff5c6c893 <unknown>
+#15 0x618ff5c3b30d <unknown>
+#16 0x618ff5c3c32e <unknown>
+#17 0x618ff60b500b <unknown>
+#18 0x618ff60b8f97 <unknown>
+#19 0x618ff60a171c <unknown>
+#20 0x618ff60b9b17 <unknown>
+#21 0x618ff60866cf <unknown>
+#22 0x618ff60d76b8 <unknown>
+#23 0x618ff60d7880 <unknown>
+#24 0x618ff60e7776 <unknown>
+#25 0x79918649ca94 <unknown>
+#26 0x799186529c3c <unknown>
+
+Retrying... 1
+Error scraping jobs: Message: unknown error: net::ERR_CONNECTION_RESET
+  (Session info: chrome=131.0.6778.69)
+Stacktrace:
+#0 0x618ff60e88fa <unknown>
+#1 0x618ff5bf9d20 <unknown>
+#2 0x618ff5bf1f34 <unknown>
+#3 0x618ff5be22c9 <unknown>
+#4 0x618ff5be3fd4 <unknown>
+#5 0x618ff5be257d <unknown>
+#6 0x618ff5be1dd6 <unknown>
+#7 0x618ff5be1cce <unknown>
+#8 0x618ff5bdfd06 <unknown>
+#9 0x618ff5be037a <unknown>
+#10 0x618ff5bfc649 <unknown>
+#11 0x618ff5c8c1b5 <unknown>
+#12 0x618ff5c6caf2 <unknown>
+#13 0x618ff5c8b560 <unknown>
+#14 0x618ff5c6c893 <unknown>
+#15 0x618ff5c3b30d <unknown>
+#16 0x618ff5c3c32e <unknown>
+#17 0x618ff60b500b <unknown>
+#18 0x618ff60b8f97 <unknown>
+#19 0x618ff60a171c <unknown>
+#20 0x618ff60b9b17 <unknown>
+#21 0x618ff60866cf <unknown>
+#22 0x618ff60d76b8 <unknown>
+#23 0x618ff60d7880 <unknown>
+#24 0x618ff60e7776 <unknown>
+#25 0x79918649ca94 <unknown>
+#26 0x799186529c3c <unknown>
+
+Retrying... 2
+Error scraping jobs: Message: unknown error: net::ERR_CONNECTION_RESET
+  (Session info: chrome=131.0.6778.69)
+Stacktrace:
+#0 0x618ff60e88fa <unknown>
+#1 0x618ff5bf9d20 <unknown>
+#2 0x618ff5bf1f34 <unknown>
+#3 0x618ff5be22c9 <unknown>
+#4 0x618ff5be3fd4 <unknown>
+#5 0x618ff5be257d <unknown>
+#6 0x618ff5be1dd6 <unknown>
+#7 0x618ff5be1cce <unknown>
+#8 0x618ff5bdfd06 <unknown>
+#9 0x618ff5be037a <unknown>
+#10 0x618ff5bfc649 <unknown>
+#11 0x618ff5c8c1b5 <unknown>
+#12 0x618ff5c6caf2 <unknown>
+#13 0x618ff5c8b560 <unknown>
+#14 0x618ff5c6c893 <unknown>
+#15 0x618ff5c3b30d <unknown>
+#16 0x618ff5c3c32e <unknown>
+#17 0x618ff60b500b <unknown>
+#18 0x618ff60b8f97 <unknown>
+#19 0x618ff60a171c <unknown>
+#20 0x618ff60b9b17 <unknown>
+#21 0x618ff60866cf <unknown>
+#22 0x618ff60d76b8 <unknown>
+#23 0x618ff60d7880 <unknown>
+#24 0x618ff60e7776 <unknown>
+#25 0x79918649ca94 <unknown>
+#26 0x799186529c3c <unknown>
+
+Retrying... 3
+Max retries reached. Exiting this Charlotte Hornets...
+Running ClevelandCavaliers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DallasMavericks main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DetroitPistons main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+scraping f1
+Running Mclaren main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior/Lead Front-End Engineer - Formula1 was not created
+Job Software Engineer - Formula1 was not created
+Job Senior Race Testing Operations Engineer - Formula1 was not created
+Job Finance Analyst - Adaptive Planning - Formula1 was not created
+Job Software Development Engineer (All Levels) - Formula1 was not created
+Job Radio Engineer - Formula1 was not created
+Running Mercedes main()
+Connected to PostgreSQL database!
+Connection closed.
+Running RedBull main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Laminating Production Engineer - Formula1 was not created
+Job IT Support Engineer - Formula1 was not created
+Job Structures Analyst (6-12 Months FTC) - Formula1 was not created
+Job Senior R&D Engineer - Formula1 was not created
+Job Lead Test Engineer - Formula1 was not created
+Job Aerodynamics Engineer - Formula1 was not created
+Job Junior Aerodynamics Engineer - Formula1 was not created
+Job Senior Aerodynamics Engineer - Formula1 was not created
+Job Junior Wind Tunnel Operations Engineer - Formula1 was not created
+Running Haas main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+scraping nfl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Digital Marketing & Media Intern was not created
+Job Ticket Sales and Service Intern was not created
+Job Partnership Marketing Intern was not created
+Job Photographic Services Intern was not created
+Job Events Intern: Part-Time was not created
+Job Events Intern was not created
+Job Community Impact Intern was not created
+Job Marketing Intern was not created
+Job Football Development Intern was not created
+Job Mascot Program Intern was not created
+Job Cheer Marketing Intern was not created
+Job Business Analytics Intern was not created
+Job Equipment Operations Intern 2025 was not created
+Job Assistant Broadcast Engineer was not created
+Job Corporate Partnerships Intern was not created
+Job Senior Broadcast Engineer was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Privacy Analyst was not created
+Job Senior Director of Business Analytics was not created
+Job Legal & Business Affairs Internship - Washington Commanders was not created
+Job Employee Experience Intern was not created
+Job U.S. National Teams Operations Intern (Remote) was not created
+Job Programs and Engagement Intern (Remote) was not created
+Job Consulting Sales Intern (Remote) was not created
+Job Events Intern (Remote) was not created
+Job Partnership Marketing Intern (Remote) was not created
+Job Marketing Intern (Remote) was not created
+Job Senior Manager, International Business - New England Patriots was not created
+Job Sports Field (Event Operations) Internship was not created
+Job Finance/Accounting Internship was not created
+Job Guest Services Internship was not created
+Job Special Events Internship was not created
+Job Event Operations Internship was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Marketing Internship was not created
+Job Facility Operation Internship was not created
+Job Broadcast Internship was not created
+Job Incident Tracking Analyst - Seasonal/Part-time was not created
+Job Stadium Engineer - Washington Commanders was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Running TampaBayBuccaneers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running BaltimoreRavens main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Broadcasting - Audio Visual and Broadcast Systems Engineer - NFL was not created
+Job Information Technology - Data Engineer - NFL was not created
+Job Fields Stadium - Intern Grounds Stadium - NFL was not created
+scraping nhl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Accounting Intern - NHL was not created
+Job Intern, IslesU (Summer 2025) - NHL was not created
+Job Performance Psychology Intern - NHL was not created
+Job Analyst, Partnership Strategy & Insights - NHL was not created
+Job Summer Intern, Data Engineer—LA Kings - NHL was not created
+Job Graphic Design Internship - NHL was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Spring Intern, Data Engineer—LA Kings - NHL was not created
+Job Content Producer/Editor Intern - NHL was not created
+Job Director, Data Science - NHL was not created
+Job Data Engineer/ETL Developer (Professional Sports Required) - NHL was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Entertainment Intern - NHL was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+scraping mls
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Video Content Intern - CLTFC - MLS was not created
+Job Photo & Digital Asset Management (DAM) Intern - CLTFC - MLS was not created
+Job Team Operations - Head of Analytics & Insights - MLS was not created
+Job Team Operations - Data Engineer - MLS was not created
+Job Entertainment Intern - MLS was not created
+Job Marketing Intern - MLS was not created
+Job Ticket Operations & Services Intern - MLS was not created
+Job Director, Business Strategy & Analytics - MLS was not created
+Job 2025 Summer Intern - Legal - MLS was not created
+Job 2025 Summer Intern - Community Engagement/Player Engagement/Engagement & Inclusion (rotation) - MLS was not created
+Job 2025 Summer Intern - Properties (Leagues Cup) - MLS was not created
+Job 2025 Summer Intern - Technology - MLS was not created
+Job 2025 Summer Intern - Strategy & Business Intelligence - MLS was not created
+Job 2025 Summer Intern - Player Relations - MLS was not created
+Job Corporate Partnership Activation (Game Day) Intern - MLS was not created
+Job 2025 Summer Intern - Consumer Products - MLS was not created
+Job 2025 Summer Intern - Club Performance - MLS was not created
+Job 2025 Summer Intern - Player Finance - MLS was not created
+Job 2025 Summer Intern - Brand Alliances - MLS was not created
+Job 2025 Summer Intern - Operations - MLS was not created
+Job 2025 Summer Intern - Events & Hospitality - MLS was not created
+Job 2025 Summer Intern - Marketing - MLS was not created
+Job 2025 Summer Intern - Communications - MLS was not created
+Job Turf Operations Intern (MHTC) - MLS was not created
+Job Turf Operations Intern (TQLS) - MLS was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Corporate Partnership Graphic Design Intern - MLS was not created
+Job Match Presentation & Entertainment Intern - MLS was not created
+Job Team Admin Intern - MLS was not created
+Job Business Strategy Internship - MLS was not created
+Job Data Engineer/Analyst Internship - MLS was not created
+Job Ticket Sales & Service Intern - MLS was not created
+Job FCC Fan Engagement Intern - MLS was not created
+Job Accounting & Finance Intern - MLS was not created
+Job Mental Performance Intern - MLS was not created
+Job Match Production Intern - MLS was not created
+Job 1st Team Equipment Intern - MLS was not created
+Job Strength & Conditioning Intern - MLS was not created
+Job Analyst, Business and Data Strategy - MLS was not created
+Job Marketing Intern - MLS was not created
+Job FCC2 Equipment Intern - MLS was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Communications Intern - MLS was not created
+Job Corporate Partnership Activation Intern - MLS was not created
+Job Academy Equipment Intern - MLS was not created
+Job Marketing Intern - MLS was not created
+Job Matchday Presentation Intern - MLS was not created
+Job Vice President of Strategy and Analytics - MLS was not created
+Job Software Engineer - MLS was not created
+Job Strategy & Analytics - CRM and Sales Analyst - MLS was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job 2025 Marketing Matchday Activation Intern - MLS was not created
+Job Performance Scientist, LAFC 2 and Academy - MLS was not created
+Job Spring 2025 Ticket Sales and Service Intern - MLS was not created
+Job PART-TIME - Associate, Data Strategy - MLS was not created
+Job Creative Media Content Intern - MLS was not created
+Job Retail and Merchandising Internship - MLS was not created
+Job LA Galaxy, Senior Data Engineer (On-Site) - MLS was not created
+Running VancouverWhitecaps main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+scraping jobsinfootball
+Running JobsInFootballDataScience main()
+Connected to PostgreSQL database!
+Connection closed.
+Running JobsInFootballDataAnalyst main()
+Connected to PostgreSQL database!
+Connection closed.
+scraping soccer clubs
+Running Liverpool main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior Strategy Analyst was not created
+scraping scottpowers_scrapers
+python: can't open file '/home/sportsjobs/scrape_scottpowers/scottpowers_scrapers.py': [Errno 2] No such file or directory
+script12.py failed
