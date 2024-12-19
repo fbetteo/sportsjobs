@@ -408,7 +408,7 @@ try:
                 try:
                     salary = extract_salary(full_description)[0]
                 except:
-                    salary = None
+                    salary = ""
 
                 record = {
                     "Name": title,

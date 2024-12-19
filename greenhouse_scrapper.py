@@ -592,15 +592,15 @@ try:
                     try:
                         salary = int(salary) / 100
                     except:
-                        salary = None
+                        salary = ""
                 else:
-                    salary = None
+                    salary = ""
 
                 if not salary:
                     try:
                         salary = utils.extract_salary(full_description)[0]
                     except:
-                        salary = None
+                        salary = ""
 
                 record = {
                     "Name": title,

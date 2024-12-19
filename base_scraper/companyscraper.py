@@ -237,7 +237,7 @@ class CompanyScraper:
         try:
             salary = utils.extract_salary(full_description)[0]
         except:
-            salary = None
+            salary = ""
 
         return {
             "Name": job["title"],
