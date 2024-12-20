@@ -119,6 +119,14 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "posting to linkedin"
+python post_to_linkedin.py
+if [ $? -ne 0 ]; then
+    echo "post_to_linkedin failed"
+    exit 1
+fi
+
+
 # Run the final Python script
 python send_alerts.py
 if [ $? -ne 0 ]; then
