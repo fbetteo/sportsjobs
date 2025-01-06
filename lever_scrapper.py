@@ -347,17 +347,17 @@ try:
             # # },
         }
 
-        companies = {
-            "Legend": {
-                "lever_name": "Legend",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/7215073c-e908-41d8-a877-4199bc726c98-1698847110583.png",
-                        "filename": "legend.png",
-                    }
-                ],
-            }
-        }
+        # companies = {
+        #     "Legend": {
+        #         "lever_name": "Legend",
+        #         "logo": [
+        #             {
+        #                 "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/7215073c-e908-41d8-a877-4199bc726c98-1698847110583.png",
+        #                 "filename": "legend.png",
+        #             }
+        #         ],
+        #     }
+        # }
         for company, attributes in companies.items():
 
             if not attributes.get("europe", False):
