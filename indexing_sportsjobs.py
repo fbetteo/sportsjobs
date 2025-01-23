@@ -57,7 +57,7 @@ try:
             # "type": "URL_UPDATED"
             # }}""")
             content = f"""{{
-            "url": f"https://sportsjobs.online/job/{job['job_id']}",
+            "url": f"https://sportsjobs.online/jobs/{job['job_id']}",
             "type": "URL_UPDATED"
             }}"""
 

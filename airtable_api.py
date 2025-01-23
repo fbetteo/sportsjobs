@@ -101,7 +101,7 @@ try:
                 + job.get("country", "").capitalize(),
                 "kind": "link",
                 "sr": SUBREDDIT,
-                "url": f"https://sportsjobs.online/job/{job['job_id']}"
+                "url": f"https://sportsjobs.online/jobs/{job['job_id']}"
                 + f"?utm_source=reddit&utm_medium=bot_{SUBREDDIT}",
                 "resubmit": "true",
                 "api_type": "json",
