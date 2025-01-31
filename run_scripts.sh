@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+echo "Starting scripts at $(date '+%Y-%m-%d %H:%M:%S')"
+echo "----------------------------------------"
 # Run the first four Python scripts sequentially
 export $(grep -v '^#' .env | xargs)
 
