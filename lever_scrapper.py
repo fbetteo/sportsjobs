@@ -75,6 +75,8 @@ try:
             "A/B testing",
             "Tableau",
             "Power BI",
+            "Engineer",
+            "Analytics"
         ]
 
         skills = skills + skills_to_search
@@ -369,6 +371,10 @@ try:
                     f"https://api.eu.lever.co/v0/postings/{attributes['lever_name']}"
                 )
 
+            if response.status_code != 200:
+                print(f"Error {response.status_code} for {company}")
+                continue
+
             for job in response.json():
 
                 description = job["description"]
@@ -397,7 +403,7 @@ try:
                     skill for skill in skills if skill.lower() in skills_required
                 ]
 
-                none_skill = len(skills_required) < 2
+                none_skill = len(skills_required) < 1
 
                 if (job["hostedUrl"] in recent_urls) or (none_skill):
                     continue
@@ -599,33 +605,33 @@ try:
                     except:
                         salary = ""
                 # Airtable
-                record = {
-                    "Name": title,
-                    "validated": True,
-                    "Status": "Open",
-                    "Start date": current_time,
-                    "url": url,
-                    "location": location[0],
-                    "country": country,
-                    "country_code": country_code,
-                    "seniority": seniority,
-                    "desciption": full_description,
-                    "sport_list": sport_list,
-                    "skills": skills_required_format,
-                    "job_area": job_area,
-                    "remote": accepts_remote,
-                    "remote_office": remote_office,
-                    "salary": str(salary),
-                    "language": ["English"],
-                    "company": company,
-                    "industry": industry,
-                    "type": ["Permanent"],
-                    "hours": [hours],
-                    "logo": logo,
-                    "logo_permanent_url": logo_permanent_url,
-                    "SEO:Index": "1",
-                }
-                table.create(record)
+                # record = {
+                #     "Name": title,
+                #     "validated": True,
+                #     "Status": "Open",
+                #     "Start date": current_time,
+                #     "url": url,
+                #     "location": location[0],
+                #     "country": country,
+                #     "country_code": country_code,
+                #     "seniority": seniority,
+                #     "desciption": full_description,
+                #     "sport_list": sport_list,
+                #     "skills": skills_required_format,
+                #     "job_area": job_area,
+                #     "remote": accepts_remote,
+                #     "remote_office": remote_office,
+                #     "salary": str(salary),
+                #     "language": ["English"],
+                #     "company": company,
+                #     "industry": industry,
+                #     "type": ["Permanent"],
+                #     "hours": [hours],
+                #     "logo": logo,
+                #     "logo_permanent_url": logo_permanent_url,
+                #     "SEO:Index": "1",
+                # }
+                # table.create(record)
                 record = {
                     "name": title,
                     "status": "Open",
@@ -657,6 +663,7 @@ try:
                 insert_records(conn, "jobs", record)
 except Exception as e:
     print(f"Error occurred: {e}")
+    print(record)
 finally:
     # Ensure the connection is closed if still open
     if conn and conn.closed == 0:
