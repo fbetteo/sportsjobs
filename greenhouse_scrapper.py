@@ -385,6 +385,15 @@ try:
                     }
                 ],
             },
+            "Philadelphia Phillies": {
+                "greenhouse_name": "philadelphiaphilliesrddepartment",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Philadelphia_Phillies_%282019%29_logo.svg/169px-Philadelphia_Phillies_%282019%29_logo.svg.png",
+                        "filename": "philadelphia_phillies.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
@@ -602,33 +611,33 @@ try:
                     except:
                         salary = ""
 
-                record = {
-                    "Name": title,
-                    "validated": True,
-                    "Status": "Open",
-                    "Start date": current_time,
-                    "url": url,
-                    "location": location,
-                    "country": country,
-                    "country_code": country_code,
-                    "seniority": seniority,
-                    "desciption": full_description,
-                    "sport_list": sport_list,
-                    "skills": skills_required_format,
-                    "remote": accepts_remote,
-                    "remote_office": remote_office,
-                    "job_area": job_area,
-                    "salary": str(salary),
-                    "language": ["English"],
-                    "company": company,
-                    "industry": industry,
-                    "type": ["Permanent"],
-                    "hours": [hours],
-                    "logo": logo,
-                    "logo_permanent_url": logo_permanent_url,
-                    "SEO:Index": "1",
-                }
-                table.create(record)
+                # record = {
+                #     "Name": title,
+                #     "validated": True,
+                #     "Status": "Open",
+                #     "Start date": current_time,
+                #     "url": url,
+                #     "location": location,
+                #     "country": country,
+                #     "country_code": country_code,
+                #     "seniority": seniority,
+                #     "desciption": full_description,
+                #     "sport_list": sport_list,
+                #     "skills": skills_required_format,
+                #     "remote": accepts_remote,
+                #     "remote_office": remote_office,
+                #     "job_area": job_area,
+                #     "salary": str(salary),
+                #     "language": ["English"],
+                #     "company": company,
+                #     "industry": industry,
+                #     "type": ["Permanent"],
+                #     "hours": [hours],
+                #     "logo": logo,
+                #     "logo_permanent_url": logo_permanent_url,
+                #     "SEO:Index": "1",
+                # }
+                # table.create(record)
                 record = {
                     "name": title,
                     "status": "Open",
