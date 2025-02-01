@@ -76,7 +76,8 @@ try:
             "Tableau",
             "Power BI",
             "Engineer",
-            "Analytics"
+            "Analytics",
+            "Software Engineer",
         ]
 
         skills = skills + skills_to_search
@@ -403,7 +404,7 @@ try:
                     skill for skill in skills if skill.lower() in skills_required
                 ]
 
-                none_skill = len(skills_required) < 1
+                none_skill = len(skills_required) < 2
 
                 if (job["hostedUrl"] in recent_urls) or (none_skill):
                     continue
