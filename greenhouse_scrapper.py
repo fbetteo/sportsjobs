@@ -214,15 +214,15 @@ try:
                     }
                 ],
             },
-            "Zelus Analytics": {
-                "greenhouse_name": "zelusanalytics",
-                "logo": [
-                    {
-                        "url": "https://media.licdn.com/dms/image/C4D0BAQGpEcNUokAFNA/company-logo_200_200/0/1630558648297/zelus_analytics_logo?e=2147483647&v=beta&t=GbnYvq4etaKk26yby2FgevjeLQBsR7oAY5AcX9sTM0I",
-                        "filename": "zelus_analytics.png",
-                    }
-                ],
-            },
+            # "Zelus Analytics": {
+            #     "greenhouse_name": "zelusanalytics",
+            #     "logo": [
+            #         {
+            #             "url": "https://media.licdn.com/dms/image/C4D0BAQGpEcNUokAFNA/company-logo_200_200/0/1630558648297/zelus_analytics_logo?e=2147483647&v=beta&t=GbnYvq4etaKk26yby2FgevjeLQBsR7oAY5AcX9sTM0I",
+            #             "filename": "zelus_analytics.png",
+            #         }
+            #     ],
+            # },
             "Barstool Sports": {
                 "greenhouse_name": "barstoolsports",
                 "logo": [
@@ -322,15 +322,15 @@ try:
                     }
                 ],
             },
-            "Tempus Ex": {
-                "greenhouse_name": "txm",
-                "logo": [
-                    {
-                        "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/014/700/resized/txm-logo.png?1619552318",
-                        "filename": "tempus_ex.png",
-                    }
-                ],
-            },
+            # "Tempus Ex": {
+            #     "greenhouse_name": "txm",
+            #     "logo": [
+            #         {
+            #             "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/014/700/resized/txm-logo.png?1619552318",
+            #             "filename": "tempus_ex.png",
+            #         }
+            #     ],
+            # },
             "Wargaming": {
                 "greenhouse_name": "wargamingen",
                 "logo": [
