@@ -1,6 +1,6 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
-
+import json
 SCOPES = ["https://www.googleapis.com/auth/indexing"]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
 
@@ -56,12 +56,14 @@ try:
             # "url": {job['fields']['job_detail_url']},
             # "type": "URL_UPDATED"
             # }}""")
-            content = f"""{{
-            "url": f"https://sportsjobs.online/jobs/{job['job_id']}",
-            "type": "URL_UPDATED"
-            }}"""
+            content = json.dumps({
+                "url": f"https://sportsjobs.online/jobs/{job['job_id']}",
+                "type": "URL_UPDATED"
+            })
 
-            response, content = http.request(ENDPOINT, method="POST", body=content)
+            response, response_content = http.request(ENDPOINT, method="POST", body=content)
+            print(f"Status: {response.status}")
+            print(f"Response: {response}")
 
 except Exception as e:
     print(f"Error occurred: {e}")
