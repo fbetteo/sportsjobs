@@ -44,6 +44,8 @@ try:
         # skills = [skill.name for skill in skills_column[0].options.choices]
 
         skills = get_skills(conn)
+        remove_skills = {"IT", "Media", "Sports Science",  "baseball", "Sports", "Manager"}
+        skills = [item for item in skills if item not in remove_skills]
 
         now = datetime.now()
         current_time = now.strftime("%Y-%m-%d")
@@ -110,6 +112,10 @@ try:
 
             for job in response.json().get("data", []):
 
+                # I'm getting those jobs directly from another API
+                if job.get('company') == "Swish Analytics":
+                    continue
+
                 description = job["snippet"]
                 # list_text = description.replace("<li>", "* ").replace("</li>", "  \n")
 
@@ -120,7 +126,7 @@ try:
                 )
 
                 pattern = r"\b(?:" + "|".join(skills) + r")\b"
-                skills_required = [
+                skills_required = list({
                     skill.lower()
                     for skill in set(
                         re.findall(
@@ -128,13 +134,12 @@ try:
                             full_description + " " + job["title"],
                             re.IGNORECASE,
                         )
-                    )
-                ]
+                    )})
                 skills_required_format = [
                     skill for skill in skills if skill.lower() in skills_required
                 ]
 
-                none_skill = len(skills_required) == 0
+                none_skill = len(skills_required) < 2
 
                 if (
                     (job["url"] in recent_urls)
