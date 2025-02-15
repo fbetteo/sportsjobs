@@ -14,12 +14,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "whatjobs running"
-python whatjobs_scrapper.py
-if [ $? -ne 0 ]; then
-    echo "script2.py failed"
-    exit 1
-fi
+# echo "whatjobs running"
+# python whatjobs_scrapper.py
+# if [ $? -ne 0 ]; then
+#     echo "script2.py failed"
+#     exit 1
+# fi
 
 echo "greenhouse running"
 python greenhouse_scrapper.py
