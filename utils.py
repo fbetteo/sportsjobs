@@ -35,6 +35,9 @@ SKILLS_TO_SEARCH = [
     "A/B testing",
     "Tableau",
     "Power BI",
+    "Engineer",
+    "Analytics",
+    "AI",
 ]
 
 

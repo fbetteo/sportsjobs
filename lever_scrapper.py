@@ -78,6 +78,7 @@ try:
             "Engineer",
             "Analytics",
             "Software Engineer",
+            "AI",
         ]
 
         skills = skills + skills_to_search

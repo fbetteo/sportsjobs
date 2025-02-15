@@ -98,6 +98,9 @@ class CompanyScraper:
             "business intelligence",
             "intern",
             "internship",
+            "engineer",
+            "software engineer",
+            "data engineer"
         ]
 
     def open_site(self):
