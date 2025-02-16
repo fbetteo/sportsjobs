@@ -54,7 +54,7 @@ class JobsInFootballDataScience(base_scraper.companyscraper.CompanyScraper):
                 keyword
                 in job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
-                ).text.lower()
+                ).get_attribute("innerHTML").lower()
                 for keyword in self.keywords
             )
         ]
@@ -64,7 +64,7 @@ class JobsInFootballDataScience(base_scraper.companyscraper.CompanyScraper):
             {
                 "title": job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
-                ).text,
+                ).get_attribute("innerHTML"),
                 "url": job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
                 ).get_attribute("href"),
@@ -160,7 +160,7 @@ class JobsInFootballDataAnalyst(base_scraper.companyscraper.CompanyScraper):
                 keyword
                 in job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
-                ).text.lower()
+                ).get_attribute("innerHTML").lower()
                 for keyword in self.keywords
             )
         ]
@@ -170,7 +170,7 @@ class JobsInFootballDataAnalyst(base_scraper.companyscraper.CompanyScraper):
             {
                 "title": job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
-                ).text,
+                ).get_attribute("innerHTML"),
                 "url": job.find_element(
                     By.CSS_SELECTOR, ".media-heading.listing-item__title a"
                 ).get_attribute("href"),
@@ -248,3 +248,26 @@ for team in teams:
     team_instance = team(driver=driver)
     team_instance.main()
 driver.quit()
+
+
+## TO DEBUG
+# chrome_options = Options()
+# # required with the current docker image
+# chrome_options.add_argument("--headless=new")
+# chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("--disable-dev-shm-usage")
+# chrome_options.add_argument("--remote-debugging-port=9222")
+# chrome_options.add_argument("--disable-gpu")
+
+# driver = webdriver.Chrome(options=chrome_options)
+# aa = JobsInFootballDataScience(driver=driver)
+
+# aa.open_site()
+# jobs = aa.get_jobs_available()
+
+
+# for job in jobs[0:1]:
+#     job_data = aa._scrape_job(job)
+
+
+
