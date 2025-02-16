@@ -137,4 +137,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+python deindex_expired_jobs.py
+if [ $? -ne 0 ]; then
+    echo "deindex_expired_jobs.py failed"
+    exit 1
+fi
+
 echo "All scripts executed successfully"
