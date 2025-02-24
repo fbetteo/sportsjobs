@@ -96,7 +96,7 @@ try:
             post_data = {
                 "title": job["name"]
                 + " - "
-                + job["company"]
+               # + job["company"]
                 + " - "
                 + job.get("country", "").capitalize(),
                 "kind": "link",
