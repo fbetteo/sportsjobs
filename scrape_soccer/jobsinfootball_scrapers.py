@@ -39,7 +39,7 @@ class JobsInFootballDataScience(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -145,8 +145,8 @@ class JobsInFootballDataAnalyst(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
-
+            raise Exception("Failed to load  job listings") 
+        
     def get_jobs_available(self):
         jobs_rows = []
         # find the different jobs, could be rows, divs, title, whatever is easier to loop

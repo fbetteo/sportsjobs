@@ -38,7 +38,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load job listings")  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []

@@ -39,7 +39,7 @@ class NHL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load TeamworkOnline job listings")  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -142,7 +142,7 @@ class CalgaryFlames(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -247,7 +247,7 @@ class VancouverCanucks(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -345,3 +345,14 @@ for team in teams:
     team_instance = team(driver=driver)
     team_instance.main()
 driver.quit()
+
+
+
+# driver = webdriver.Chrome(options=chrome_options)
+# aa = VancouverCanucks(driver=driver)
+
+# aa.open_site()
+# jobs = aa.get_jobs_available()
+
+# for job in jobs[0:1]:
+#     job_data = aa._scrape_job(job)

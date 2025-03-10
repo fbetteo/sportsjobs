@@ -34,7 +34,7 @@ class NFL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load TeamworkOnline job listings")  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -137,7 +137,7 @@ class SeattleSeahawks(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -220,7 +220,7 @@ class TampaBayBuccaneers(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -311,7 +311,7 @@ class BaltimoreRavens(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            exit()
+            raise Exception("Failed to load  job listings") 
 
     def get_jobs_available(self):
         jobs_rows = []
