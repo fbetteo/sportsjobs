@@ -129,33 +129,33 @@ class CompanyScraper:
         # jobs_rows = [{"title": job.text, "url": job.get_attribute("href")} for job in jobs]
 
     def _create_record(self, job_data):
-        record = {
-            "Name": job_data.get("Name"),
-            "validated": True,
-            "Status": "Open",
-            "Start date": self.current_time,
-            "url": job_data.get("url"),
-            "location": job_data.get("location"),
-            "country": job_data.get("country"),
-            "country_code": job_data.get("country_code"),
-            "seniority": job_data.get("seniority"),
-            "desciption": job_data.get("desciption"),
-            "sport_list": job_data.get("sport_list"),
-            "skills": job_data.get("skills"),
-            "remote": job_data.get("remote"),
-            "remote_office": job_data.get("remote_office"),
-            "job_area": job_data.get("job_area"),
-            "salary": job_data.get("salary"),
-            "language": job_data.get("language", ["English"]),
-            "company": job_data.get("company", self.company),
-            "industry": job_data.get("industry"),
-            "type": job_data.get("type", ["Permanent"]),
-            "hours": job_data.get("hours"),
-            "logo": self.logo,
-            "logo_permanent_url": self.logo[0].get("url"),
-            "SEO:Index": "1",
-        }
-        self.table.create(record)
+        # record = {
+        #     "Name": job_data.get("Name"),
+        #     "validated": True,
+        #     "Status": "Open",
+        #     "Start date": self.current_time,
+        #     "url": job_data.get("url"),
+        #     "location": job_data.get("location"),
+        #     "country": job_data.get("country"),
+        #     "country_code": job_data.get("country_code"),
+        #     "seniority": job_data.get("seniority"),
+        #     "desciption": job_data.get("desciption"),
+        #     "sport_list": job_data.get("sport_list"),
+        #     "skills": job_data.get("skills"),
+        #     "remote": job_data.get("remote"),
+        #     "remote_office": job_data.get("remote_office"),
+        #     "job_area": job_data.get("job_area"),
+        #     "salary": job_data.get("salary"),
+        #     "language": job_data.get("language", ["English"]),
+        #     "company": job_data.get("company", self.company),
+        #     "industry": job_data.get("industry"),
+        #     "type": job_data.get("type", ["Permanent"]),
+        #     "hours": job_data.get("hours"),
+        #     "logo": self.logo,
+        #     "logo_permanent_url": self.logo[0].get("url"),
+        #     "SEO:Index": "1",
+        # }
+        # self.table.create(record)
         try:
             conn = start_postgres_connection()
             with conn as conn:
