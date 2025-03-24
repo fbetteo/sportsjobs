@@ -30,7 +30,7 @@ conn = start_postgres_connection()
 # recent_urls = [record["fields"]["url"] for record in all]
 try:
     with conn as conn:
-        recent_urls = get_recent_urls(conn, days=30)
+        recent_urls = get_recent_urls(conn)
 
         # LIST OF SKILLS AVAILABLE IN AIRTABLE
         # skills_column = [field for field in table.schema().fields if field.name == "skills"]
