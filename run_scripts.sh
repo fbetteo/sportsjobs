@@ -129,6 +129,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "posting to twitter"
+python twitter_bot.py
+if [ $? -ne 0 ]; then
+    echo "post_to_twitter failed"
+    exit 1
+fi
 
 # Run the final Python script
 python send_alerts.py
