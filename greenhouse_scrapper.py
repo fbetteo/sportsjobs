@@ -335,7 +335,7 @@ try:
                 "greenhouse_name": "wargamingen",
                 "logo": [
                     {
-                        "url": "https://logo.clearbit.com/https://wargaming.com/",
+                        "url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Wargaming_logo.svg/220px-Wargaming_logo.svg.png",
                         "filename": "wargaming.png",
                     }
                 ],

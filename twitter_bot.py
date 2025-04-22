@@ -44,12 +44,10 @@ def post_daily_jobs_to_twitter():
             for job in todays_jobs:
                 job_title, company, country = job
                 tweet_text = f"""New job in sports analytics!
+🏀⚽🏈 {job_title} - {company} - {country.capitalize()}
 
-                🏀⚽🏈 {job_title} - {company} - {country.capitalize()}
-
-                Apply and find more: www.sportsjobs.online
-                #sportsanalytics #sportsjobs
-                """.strip()
+Apply and find more: www.sportsjobs.online
+#sportsanalytics #sportsjobs""".strip()
                 
                 # Ensure tweet isn't too long (Twitter's limit is 280 characters)
                 if len(tweet_text) > 280:
