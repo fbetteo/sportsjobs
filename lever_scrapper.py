@@ -16,13 +16,13 @@ from hetzner_utils import (
     insert_records,
 )
 
-AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
-AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
+# AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
+# AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
+# AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
 
 
-api = Api(AIRTABLE_TOKEN)
-table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
+# api = Api(AIRTABLE_TOKEN)
+# table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
 conn = start_postgres_connection()
 
 # URLS POSTED IN THE LAST MONTH
@@ -268,15 +268,15 @@ try:
                     }
                 ],
             },
-            "Dazn": {
-                "lever_name": "dazn",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.amazonaws.com/53e8aff7-f3d4-4c1b-9e27-d738a16ea713-1550137638864.png",
-                        "filename": "dazn.png",
-                    }
-                ],
-            },
+            # "Dazn": {
+            #     "lever_name": "dazn",
+            #     "logo": [
+            #         {
+            #             "url": "https://lever-client-logos.s3.amazonaws.com/53e8aff7-f3d4-4c1b-9e27-d738a16ea713-1550137638864.png",
+            #             "filename": "dazn.png",
+            #         }
+            #     ],
+            # },
             "Winamax": {
                 "lever_name": "winamax",
                 "logo": [
