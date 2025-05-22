@@ -41,7 +41,7 @@ try:
             """
 
             content = {
-                "author": f"urn:li:organization:{LINKEDIN_COMPANY_ID}",
+                "author": f"urn:li:company:{LINKEDIN_COMPANY_ID}",
                 "lifecycleState": "PUBLISHED",
                 "specificContent": {
                     "com.linkedin.ugc.ShareContent": {
