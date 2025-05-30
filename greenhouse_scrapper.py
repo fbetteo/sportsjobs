@@ -394,6 +394,33 @@ try:
                     }
                 ],
             },
+            "Denver Broncos": {
+                "greenhouse_name": "denverbroncosteamllc",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Denver_Broncos_logo.svg/250px-Denver_Broncos_logo.svg.png",
+                        "filename": "denver_broncos.png",
+                    }
+                ],
+            },
+            "Gympass": {
+                "greenhouse_name": "gympass",
+                "logo": [
+                    {
+                        "url": "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/188/200/original/vertical-complete-logo-black_-_copia.png?1741191495",
+                        "filename": "gympass.png",
+                    }
+                ],
+            },
+            "LA2028": {
+                "greenhouse_name": "la2028",
+                "logo": [
+                    {
+                        "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/127/700/original/LA28_Dual_Emblem_GradientScript_Prism.png?1644376425",
+                        "filename": "la2028.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():

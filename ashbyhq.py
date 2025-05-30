@@ -203,6 +203,15 @@ try:
                 "name": "gamechanger",
                 "logo": [],
             },
+            "Beyondsports": {
+                "name": "beyondsports",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/8291de43-863d-4596-9247-b509a7d53b5b/eccfa951-7978-4b57-8d39-ab61bd7da60a/93134029-690f-49f8-944b-f671133812da.png",
+                        "filename": "beyondsports.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
