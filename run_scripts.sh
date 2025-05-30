@@ -35,6 +35,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "riplling running"
+python rippling_scrapper.py
+if [ $? -ne 0 ]; then
+    echo "script rippling.py failed"
+    exit 1
+fi
+
 echo "scraping nba"
 python scrape_nba/nba_scrapers.py
 if [ $? -ne 0 ]; then

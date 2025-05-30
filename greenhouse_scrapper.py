@@ -105,9 +105,9 @@ try:
         # post them if they are not on airtable
         # if they are on airtable, update the last updated date MAYBE
 
-        response = requests.get(
-            f"https://boards-api.greenhouse.io/v1/boards/majorleaguebaseball/jobs?content=true"
-        )
+        # response = requests.get(
+        #     f"https://boards-api.greenhouse.io/v1/boards/majorleaguebaseball/jobs?content=true"
+        # )
 
         # decoded = html.unescape(asd.json()["jobs"][0]["content"])
         # soup = BeautifulSoup(decoded, "html.parser")
