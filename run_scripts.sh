@@ -36,7 +36,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "riplling running"
-python rippling_scrapper.py
+python rippling_scraper.py
 if [ $? -ne 0 ]; then
     echo "script rippling.py failed"
     exit 1
@@ -116,7 +116,7 @@ while [ $retry_count -lt $max_retries ]; do
         success=1
         break
     else
-        echo "airtable_api.py failed, retrying... ($((retry_count + 1))/$max_retries)"
+        echo "airtable_api.py failed, retrying... $((retry_count + 1))/$max_retries"
         retry_count=$((retry_count + 1))
     fi
 done
