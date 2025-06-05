@@ -73,6 +73,24 @@ try:
                     }
                 ],
             },
+              "tempo_gaming": {
+                "board_name": "tempocareers",
+                "logo": [
+                    {
+                        "url": "",
+                        "filename": "tempo_gaming.png",
+                    }
+                ],
+            },
+            "stadium_live": {
+                "board_name": "stadium-live-studios",
+                "logo": [
+                    {
+                        "url": "",
+                        "filename": "stadium_live.png",
+                    }
+                ],
+            },
         }
 
         def html_to_markdown(element):

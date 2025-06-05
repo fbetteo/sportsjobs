@@ -212,6 +212,15 @@ try:
                     }
                 ],
             },
+            "LIV-golf": {
+                "name": "LIV-golf",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/d15080ba-019e-4291-b2c9-ed9999729018/a6a20431-b5ae-468c-b39f-979e56034bd7/55356c92-17dd-4674-b274-06bb4143de01.png",
+                        "filename": "liv-golf.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():

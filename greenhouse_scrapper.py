@@ -421,6 +421,15 @@ try:
                     }
                 ],
             },
+            "FC Cincinnati": {
+                "greenhouse_name": "fccincinnati",
+                "logo": [
+                    {
+                        "url": "https://s3-recruiting.cdn.greenhouse.io/job_board_renderer/job_board_configurations/banners/400/017/600/original/Banner.png?1722460301",
+                        "filename": "fccincinnati.png",
+                    }
+                ],
+            }
         }
 
         for company, attributes in companies.items():
