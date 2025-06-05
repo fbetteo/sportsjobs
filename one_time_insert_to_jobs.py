@@ -16,124 +16,77 @@ from datetime import datetime
 from markdownify import markdownify as md
 
 description_raw = """
-Backend Data Engineer
-Denver
-The Denver Broncos are one of the most popular franchises in all of sports. Whether judged by the measure of wins and championships, attendance, national television exposure or by the Broncos' reputation locally and throughout the NFL, there are few parallels in the world of professional sports. We are dedicated to being the best team to cheer for, play for, and work for across all of sports. We are looking for employees who are passionate about what they do, have fun doing it, and proud to represent the Denver Broncos Football Club and Empower Field at Mile High.
+Position Overview:
+This position will be an integral part of the Washington Commanders and will help refine the data environment to meet business needs, strategically problem solve, and achieve overall organizational objectives.
 
-Job Summary: The Denver Broncos Football Technology and Research Department is looking for a hard-working and talented Backend Data Engineer to join our software engineering team. The Backend Data Engineer will be responsible for building and maintaining the systems and infrastructure that enable data collection, transformation, storage, and access across the Football Operations departments. This role involves working with complex data pipelines, optimizing data flow, and ensuring the reliability, accuracy and security of datasets. You will work closely with data scientists, analysts, and software engineers in support of our internal applications, ensuring that data pipelines are reliable, scalable, and secure. The ideal candidate will collaborate with team members to drive projects from design to deployment.
+You will be working alongside members of the Business Intelligence department to help develop and maintain our business data warehouse. This includes managing connections to existing data sources, integrating new data sources, modeling current and historical data, and developing logic to ensure clean data. 
+ 
+Responsibilities:
+
+·       Collaborate with the Business Intelligence and ticket ops teams to clean and transform/model historical ticketing data from Ticketmaster to current SeatGeek language.
+
+·       Develop and maintain ETL processes via API from various sources into our data warehouse.
+
+·       Assist in the design of both data models and structures to support modeling and reporting processes.
+
+·       Assist in the creation and maintenance of documentation – GitHub, in code, and about solution architecture.
+
+·       Conduct thorough testing and seamless implementation of changes within the data warehouse environment.
+
+·       Respond promptly and professionally to ad hoc requests from diverse departments within the organization.
 
  
 
-Key Responsibilities
+Qualifications:
 
-· Develop, optimize, and maintain ETL pipelines for efficient data processing.
+·       Bachelor's degree (in progress) in Computer Science, Engineering, Math, or related field
 
-· Design and implement data models, storage solutions, and retrieval mechanisms.
+·       Strong knowledge of SQL, including Common Table Expressions (CTEs) and window functions.
 
-· Perform data extraction, transformation, and loading from various structured and unstructured sources.
+·       Strong programming skills in Python or other scripting language used for data manipulation.
 
-· Ensure data integrity, accuracy, and security through effective governance policies and unit testing.
+·       Understanding common practices and tools for building end-to-end data pipelines.
 
-· Develop and maintain data infrastructure on-premise and in cloud-based environments such as AWS, Azure, or Google Cloud.
+·       Problem-solving capabilities to discover, address and resolve issues
 
-· Automate data pipeline deployment, monitoring, and optimization using DevOps tools.
+·       Exceptional communication skills with non-technical parties
 
-· Troubleshoot data-related issues and implement solutions for performance improvement.
+·       Independent worker with close attention to detail 
 
-· Develop and maintain RESTful APIs for data access and integration with our front-end applications.
+·       Experience with data visualization tools such as Tableau or Power BI is a plus
 
-· Work with our research team to support data analysis, visualization, and reporting.
+·       Familiarity with Azure environment is a plus
 
-· Create and maintain documentation of data engineering processes, tools, workflows and API endpoints.
+·       Familiarity with Linux based servers is a plus
 
- 
+Salary: $15.00/hour
 
- 
-
-Minimum Requirements
-
-· Bachelor’s degree in Computer Science, Information Systems or a related field (or equivalent work experience) with a strong technical background
-
-· 5+ years of professional experience in data engineering, software engineering or related role.
-
- 
-
- 
-
-Preferred Skills and Ability
-
-· Experience with workflow orchestration tools (Airflow, Conductor, Azure Data Factory, etc.)
-
-· Experience with cloud based big data platforms (Data Bricks, Google Big Data, etc.)
-
-· Proficient in using Python or R for data transformation.
-
-· Experience with C# and Entity Framework
-
-· Proficiency in SQL and database management systems (SQL Server, PostgreSQL) with knowledge of NoSQL systems.
-
-· Familiarity with DevOps tools such as Docker, Kubernetes, and CI/CD pipelines.
-
-· Familiarity with machine learning/MLOps workflows
-
-· Ability to develop, optimize and maintain APIs on multiple platforms.
-
-· Able to own and drive individual projects as well as work on a high performing team in a fast-paced environment.
-
-· Detail oriented with strong analytical skills and a willingness to learn and implement new technologies, must have a growth mindset.
-
-· Strong interpersonal and relationship management skills.
-
-· The ability to work long and flexible hours, including evenings, weekends and holidays.
-
-· Strong knowledge of football is a plus
-
-Note: This document describes typical duties and responsibilities and is not intended to limited management from assigning other work as required or desired.
-
- 
-
-In accordance with the Colorado Equal Pay for Equal Work Act, the salary for this role is $124,700 - $141,200. This position may require you to work flexible hours including weekends, evenings and holidays outside of a normal working hour as needed.
 """
 full_description = md(description_raw, heading_style="ATX")
 
 
 record = {
-    "name": "Backend Data Engineer",
+    "name": "Intern, Data Engineering",
     "status": "Open",
     "start_date": datetime.utcnow().date(),
-    "url": "https://job-boards.greenhouse.io/denverbroncosteamllc/jobs/4742698008",
-    "location": "Denver, CO",
+    "url": "https://www.teamworkonline.com/football-jobs/washington-commanders-jobs/washington-commanders-jobs/intern-data-engineering-2123133",
+    "location": "College Park, MD",
     "country": "united states",
     "country_code": "US",
-    "seniority": "With Experience",
+    "seniority": "Internship",
     "description": full_description,
     "sport_list": "Football - NFL",
-    "skills": [
-        "Python",
-        "SQL",
-        "Airflow",
-        "Azure",
-        "Databricks",
-        "AWS",
-        "Postgres",
-        "NoSQL",
-        "Docker",
-        "Kubernetes",
-        "Devops",
-        "R",
-        "Data Engineering",
-        "MLOps",
-    ],
+    "skills": ["SQL", "Python", "Tableau", "Power BI"],
     "job_area": "Data Engineer",
     "remote": False,
     "remote_office": "On-site",
-    "salary": "124700-141200",
+    "salary": "15.00",
     "language": ["English"],
-    "company": "Denver Broncos",
+    "company": "Washington Commanders",
     "industry": "Sports",
-    "job_type": "Permanent",
+    "job_type": "Temporary",
     "hours": "Fulltime",
-    "logo_permanent_url": "https://s8-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/132/200/original/logo-lockup-db-smc.png?1717454743",
+    "logo_permanent_url": "https://cf-production.teamworkonline.com/uploads/public/thumb_b1afc48e-0215-4c8d-afea-b4239b5e22ab.jpg",
     "post_duration": 30,
     "post_tier": "Free",
     "featured": "1 - regular",
