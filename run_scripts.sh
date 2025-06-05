@@ -129,6 +129,7 @@ if [ $success -ne 1 ]; then
     exit 1
 fi
 
+echo "indexing sportsjobs"
 python indexing_sportsjobs.py
 if [ $? -ne 0 ]; then
     echo "indexing_sportsjobs.py failed"
