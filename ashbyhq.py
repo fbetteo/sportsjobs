@@ -221,6 +221,24 @@ try:
                     }
                 ],
             },
+            "Flosports": {
+                "name": "flosports",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/08c3e766-02ea-4c1c-a159-5da52a4dda84/c6d0616f-4dde-41cb-b87f-971da689fd21/e3de9f86-d408-456f-aad6-e69c6e944ac9.png",
+                        "filename": "flosports.png",
+                    }
+                ],
+            },
+            "Playson": {
+                "name": "playson",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/096be22c-a56d-4f1f-a5fd-f07d907f5f0b/312884e1-0e7b-4d6b-927d-2cbecc531669/828c48c9-ea1e-4cf4-aa06-416745c93ef0.png",
+                        "filename": "playson.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
