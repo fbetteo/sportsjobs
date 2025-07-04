@@ -81,9 +81,18 @@ def post_daily_jobs_to_twitter():
 
                 try:
                     response = api.create_tweet(text=tweet_text)
-                    logger.info(
-                        f"Successfully posted tweet for: {job_title} at {company}"
-                    )
+
+                    # Validate the response
+                    if response and response.data and response.data.get("id"):
+                        tweet_id = response.data["id"]
+                        logger.info(
+                            f"Successfully posted tweet for: {job_title} at {company} (Tweet ID: {tweet_id})"
+                        )
+                    else:
+                        logger.error(
+                            f"Tweet creation failed for {job_title} at {company}: No tweet ID returned"
+                        )
+
                 except Exception as e:
                     logger.error(f"Failed to post tweet for {job_title}: {e}")
 
