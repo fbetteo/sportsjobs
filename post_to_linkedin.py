@@ -3,6 +3,7 @@ import requests
 import logging
 from typing import List, Tuple, Optional, Dict, Any
 from datetime import datetime
+from io import BytesIO
 from hetzner_utils import start_postgres_connection
 
 # Set up logging
@@ -53,6 +54,7 @@ def get_todays_jobs() -> List[Tuple]:
 def upload_image_to_linkedin(image_url: str) -> Optional[str]:
     """
     Uploads an image to LinkedIn and returns the asset ID.
+    Resizes image to be more appropriate for social media.
 
     Args:
         image_url (str): URL of the image to upload
@@ -107,7 +109,43 @@ def upload_image_to_linkedin(image_url: str) -> Optional[str]:
 
         image_data = image_response.content
 
-        # Step 3: Upload the image to LinkedIn
+        # Step 3: Resize image if PIL is available
+        try:
+            from PIL import Image
+
+            # Open image and resize to reasonable dimensions for LinkedIn
+            img = Image.open(BytesIO(image_data))
+
+            # Target size for LinkedIn posts (recommended: 1200x627 or similar ratio)
+            max_width = 400
+            max_height = 400
+
+            # Calculate new size maintaining aspect ratio
+            img.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
+
+            # Convert to RGB if necessary (for JPEG compatibility)
+            if img.mode in ("RGBA", "LA", "P"):
+                background = Image.new("RGB", img.size, (255, 255, 255))
+                if img.mode == "P":
+                    img = img.convert("RGBA")
+                background.paste(
+                    img, mask=img.split()[-1] if img.mode == "RGBA" else None
+                )
+                img = background
+
+            # Save resized image to bytes
+            output = BytesIO()
+            img.save(output, format="JPEG", quality=85, optimize=True)
+            image_data = output.getvalue()
+
+            logger.info(f"Image resized to {img.size[0]}x{img.size[1]}")
+
+        except ImportError:
+            logger.warning("PIL not available, uploading original image size")
+        except Exception as e:
+            logger.warning(f"Failed to resize image, using original: {e}")
+
+        # Step 4: Upload the image to LinkedIn
         upload_response = requests.put(
             upload_url,
             data=image_data,
@@ -141,14 +179,14 @@ def post_job_to_linkedin(job_details: Tuple) -> bool:
     try:
         job_title, company, country, logo_url = job_details
 
-        post_text = f"""
-        New job in sports analytics!
+        post_text = f"""🚀 {job_title}
+🏢 {company}
+🌍 {country.capitalize()}
 
-        🏀⚽🏈 {job_title} - {company} - {country.capitalize()}
+💼 Apply now: www.sportsjobs.online
+👥 Follow us for more sports opportunities!
 
-        Apply and find more opportunities here: www.sportsjobs.online  
-        Follow us for more job opportunities in sports analytics!
-        """
+#SportsJobs #SportsAnalytics #SportsCareers #DataScience"""
 
         content: Dict[str, Any] = {
             "author": f"urn:li:company:{LINKEDIN_COMPANY_ID}",
