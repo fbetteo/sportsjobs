@@ -430,6 +430,15 @@ try:
                     }
                 ],
             },
+            "Cleveland Guardians": {
+                "greenhouse_name": "clevelandguardiansbops",
+                "logo": [
+                    {
+                        "url": "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/664/000/original/Diamond_C_FC_onLight.png?1637335497",
+                        "filename": "clevelandguardiansbops.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
