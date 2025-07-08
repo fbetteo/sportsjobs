@@ -259,15 +259,15 @@ try:
                     }
                 ],
             },
-            # "FanDuel": {
-            #     "greenhouse_name": "fanduel",
-            #     "logo": [
-            #         {
-            #             "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAbFBMVEUAce4Ab+4AbO4Aau0AaO0AZu0AZO0ddu55o/Kqw/XG1/ja5fnm7fqzyfYAX+27zvcnee6eu/T///3///xZkfFll/E7gvDD1Pj9//zt8/sAVOz2+fyQsvRAhPDf6PmFqvNunfKauPQAWuwAY+1/YJLWAAABKUlEQVR4Aa2RRaIDIRBEYbDRSDEaHbn/HX9Dx2X1UxvkNVSL+L9korSxSmiVyBeirEuzvCir1TpLN1bJOzJuWwLwHnUDUrl15oJl2xHoSX7YFWHjga5laveIBMDW4Rq3twwHOgL5oaHoY3PIAYIDQ3PyPc7GxDQpaWPO6P3JRKg7gmMilU44iWQk2Om4VxPts7k95GemOqPoSXG2NcGhAJAyXEqC9aUWExLw/fVCtqA9W7IpyYNrM5Vny9u/pC7lhwLXT24mfj2zo+3oUC5MOHcKblTMvQn7kQM5OrbUhSa44F7Yx5FtYseklEns5eZppOpMFFvtIkuVeJKt0Pt83gdWWfGipYMf5jCDjjN9pmvATUDF7JUeMG1wsOKj9LEzrRJfJDU17yf6A4tMGL31Dd89AAAAAElFTkSuQmCC",
-            #             "filename": "fanduel.png",
-            #         }
-            #     ],
-            # },
+            "FanDuel": {
+                "greenhouse_name": "fanduel",
+                "logo": [
+                    {
+                        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAbFBMVEUAce4Ab+4AbO4Aau0AaO0AZu0AZO0ddu55o/Kqw/XG1/ja5fnm7fqzyfYAX+27zvcnee6eu/T///3///xZkfFll/E7gvDD1Pj9//zt8/sAVOz2+fyQsvRAhPDf6PmFqvNunfKauPQAWuwAY+1/YJLWAAABKUlEQVR4Aa2RRaIDIRBEYbDRSDEaHbn/HX9Dx2X1UxvkNVSL+L9korSxSmiVyBeirEuzvCir1TpLN1bJOzJuWwLwHnUDUrl15oJl2xHoSX7YFWHjga5laveIBMDW4Rq3twwHOgL5oaHoY3PIAYIDQ3PyPc7GxDQpaWPO6P3JRKg7gmMilU44iWQk2Om4VxPts7k95GemOqPoSXG2NcGhAJAyXEqC9aUWExLw/fVCtqA9W7IpyYNrM5Vny9u/pC7lhwLXT24mfj2zo+3oUC5MOHcKblTMvQn7kQM5OrbUhSa44F7Yx5FtYseklEns5eZppOpMFFvtIkuVeJKt0Pt83gdWWfGipYMf5jCDjjN9pmvATUDF7JUeMG1wsOKj9LEzrRJfJDU17yf6A4tMGL31Dd89AAAAAElFTkSuQmCC",
+                        "filename": "fanduel.png",
+                    }
+                ],
+            },
             "Swish Analytics": {
                 "greenhouse_name": "swishanalytics",
                 "logo": [
@@ -429,7 +429,7 @@ try:
                         "filename": "fccincinnati.png",
                     }
                 ],
-            }
+            },
         }
 
         for company, attributes in companies.items():
