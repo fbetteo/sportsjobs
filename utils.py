@@ -38,6 +38,20 @@ SKILLS_TO_SEARCH = [
     "Engineer",
     "Analytics",
     "AI",
+    "Researcher",
+    "research",
+    "STEM",
+    "NFL",
+    "NBA",
+    "MLB",
+    "NHL",
+    "Soccer",
+    "Football",
+    "Baseball",
+    "Hockey",
+    "Basketball",
+    "Golf",
+    "Tennis",
 ]
 
 

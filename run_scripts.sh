@@ -105,6 +105,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "scraping Other Companies"
+python scrape_others/other_companies_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script14.py failed"
+    exit 1
+fi
+
 # Run the retryable script up to 5 times if it fails
 max_retries=7
 retry_count=0

@@ -100,7 +100,9 @@ class CompanyScraper:
             "internship",
             "engineer",
             "software engineer",
-            "data engineer"
+            "data engineer",
+            "researcher",
+            "software developer",
         ]
 
     def open_site(self):
@@ -221,6 +223,8 @@ class CompanyScraper:
             full_description
         )
         none_skill = len(skills_required_format) < 2
+        if none_skill:
+            print(f"Job {job['title']} has no skills required, skipping...")
 
         if (job["url"] in self.recent_urls) or (none_skill):
             return None
