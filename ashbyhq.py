@@ -176,7 +176,7 @@ try:
                 "name": "sleeper",
                 "logo": [
                     {
-                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/4e79ba20-10c6-4335-954a-b0917a08a1d1/5b880aa8-8278-4da5-8eef-4b88b172ffc9.png",
+                        "url": "https://play-lh.googleusercontent.com/L5sDy5zFKKLLMndpR7wJfD3aum4w0FVL_rRK6W1t9T5-d4BYc-4A7LTXa2nGeP62TCo",
                         "filename": "sleeper.png",
                     }
                 ],
