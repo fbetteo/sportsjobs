@@ -59,7 +59,7 @@ try:
                 "board_name": "teamworks-careers",
                 "logo": [
                     {
-                        "url": "",
+                        "url": "https://play-lh.googleusercontent.com/uEbrrKJCzy3G5z9gPLg3NBI4cd4jhbhtMNz6HWFnhtcUcnALdRAKrFgWlSnLcvuAUg=w240-h480-rw",
                         "filename": "teamworks-careers.png",
                     }
                 ],
@@ -73,7 +73,7 @@ try:
                     }
                 ],
             },
-              "tempo_gaming": {
+            "tempo_gaming": {
                 "board_name": "tempocareers",
                 "logo": [
                     {

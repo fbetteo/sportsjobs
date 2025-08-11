@@ -191,7 +191,7 @@ try:
                 "greenhouse_name": "geniussports",
                 "logo": [
                     {
-                        "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/097/300/resized/Logo_genius_1.png?1626023064",
+                        "url": "https://media.licdn.com/dms/image/v2/C4D0BAQECVe0MtzRTyw/company-logo_200_200/company-logo_200_200/0/1630542077380/geniussports_logo?e=2147483647&v=beta&t=RZaFIXUp2oosgnBrjfh2IADIcC6GG6Y-ESK9o26rEBg",
                         "filename": "genius_sports.png",
                     }
                 ],
@@ -209,7 +209,7 @@ try:
                 "greenhouse_name": "underdogfantasy",
                 "logo": [
                     {
-                        "url": "https://s5-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/278/300/resized/Main_Logo.png?1656375980",
+                        "url": "https://media.licdn.com/dms/image/v2/D4E0BAQHd9DxN9YVoyg/company-logo_200_200/company-logo_200_200/0/1738175556198/underdogfantasy_logo?e=2147483647&v=beta&t=J189bhu5Y-PUU2hRy3MJiS8sIYjzPpeK8Zmg-u0qSFw",
                         "filename": "underdog_fantasy.png",
                     }
                 ],
