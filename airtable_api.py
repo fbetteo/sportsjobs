@@ -132,7 +132,7 @@ try:
                 },
                 data=post_data,
             )
-            time.sleep(120)
+            time.sleep(30)
 
         # to check if there was an actual update
         # if job:
