@@ -120,29 +120,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Run the retryable script up to 5 times if it fails
-max_retries=7
-retry_count=0
-success=0
 
-while [ $retry_count -lt $max_retries ]; do
-    python airtable_api.py
-    if [ $? -eq 0 ]; then
-        success=1
-        break
-    else
-        echo "airtable_api.py failed, retrying... $((retry_count + 1))/$max_retries"
-        retry_count=$((retry_count + 1))
-    fi
-done
-
-
-
-
-if [ $success -ne 1 ]; then
-    echo "airtable_api.py failed after $max_retries attempts"
-    exit 1
-fi
 
 echo "indexing sportsjobs"
 python indexing_sportsjobs.py
@@ -177,5 +155,32 @@ if [ $? -ne 0 ]; then
     echo "deindex_expired_jobs.py failed"
     exit 1
 fi
+
+# Run the retryable script up to 5 times if it fails
+# in the end because it has 2 min wait and it is sync right now
+max_retries=7
+retry_count=0
+success=0
+
+while [ $retry_count -lt $max_retries ]; do
+    python airtable_api.py
+    if [ $? -eq 0 ]; then
+        success=1
+        break
+    else
+        echo "airtable_api.py failed, retrying... $((retry_count + 1))/$max_retries"
+        retry_count=$((retry_count + 1))
+    fi
+done
+
+
+
+
+if [ $success -ne 1 ]; then
+    echo "airtable_api.py failed after $max_retries attempts"
+    exit 1
+fi
+
+
 
 echo "All scripts executed successfully"

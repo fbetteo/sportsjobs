@@ -80,11 +80,12 @@ try:
             "username": REDDIT_USERNAME,
             "password": REDDIT_PASS,
         }
-        headers = {"User-Agent": "ChangeMeClient/0.1 by YourUsername"}
+        headers = {"User-Agent": "Sportsjobs-online/0.1"}
         response = requests.post(
             "https://www.reddit.com/api/v1/access_token",
             auth=client_auth,
             data=post_data,
+            headers=headers,
         )
         response.json()
 
@@ -94,11 +95,9 @@ try:
         # posting in my community sportsjobs_online
         for job in latest_jobs[::-1]:
             post_data = {
-                "title": job["name"]
-                + " - "
-               # + job["company"]
-                + " - "
-                + job.get("country", "").capitalize(),
+                "title": job["name"] + " - "
+                # + job["company"]
+                + " - " + job.get("country", "").capitalize(),
                 "kind": "link",
                 "sr": SUBREDDIT,
                 "url": f"https://sportsjobs.online"
@@ -133,7 +132,7 @@ try:
                 },
                 data=post_data,
             )
-            time.sleep(1)
+            time.sleep(120)
 
         # to check if there was an actual update
         # if job:
