@@ -439,6 +439,15 @@ try:
                     }
                 ],
             },
+            "Hudl": {
+                "greenhouse_name": "hudl",
+                "logo": [
+                    {
+                        "url": "https://recruiting.cdn.greenhouse.io/job_board_renderer/job_board_configurations/banners/000/000/729/original/Greenhouse_JobPost_Header.png?1742397631",
+                        "filename": "hudl.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
