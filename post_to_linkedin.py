@@ -201,22 +201,22 @@ def post_job_to_linkedin(job_details: Tuple) -> bool:
         }
 
         # Add image if logo URL exists
-        if logo_url:
-            asset_id = upload_image_to_linkedin(logo_url)
-            if asset_id:
-                # Update content to include the image
-                content["specificContent"]["com.linkedin.ugc.ShareContent"][
-                    "shareMediaCategory"
-                ] = "IMAGE"
-                content["specificContent"]["com.linkedin.ugc.ShareContent"]["media"] = [
-                    {
-                        "status": "READY",
-                        "description": {"text": f"Logo for {company}"},
-                        "media": asset_id,
-                        "title": {"text": company},
-                    }
-                ]
-                logger.info(f"Added logo image to post for {company}")
+        # if logo_url:
+        #     asset_id = upload_image_to_linkedin(logo_url)
+        #     if asset_id:
+        #         # Update content to include the image
+        #         content["specificContent"]["com.linkedin.ugc.ShareContent"][
+        #             "shareMediaCategory"
+        #         ] = "IMAGE"
+        #         content["specificContent"]["com.linkedin.ugc.ShareContent"]["media"] = [
+        #             {
+        #                 "status": "READY",
+        #                 "description": {"text": f"Logo for {company}"},
+        #                 "media": asset_id,
+        #                 "title": {"text": company},
+        #             }
+        #         ]
+        #         logger.info(f"Added logo image to post for {company}")
 
         response = requests.post(
             "https://api.linkedin.com/v2/ugcPosts",
