@@ -35,7 +35,7 @@ def get_todays_jobs() -> List[Tuple]:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT name, company, country, logo_permanent_url
+                SELECT name, company, country, logo_permanent_url, slug
                 FROM jobs 
                 WHERE DATE(start_date) = %s
                 """,
@@ -177,13 +177,12 @@ def post_job_to_linkedin(job_details: Tuple) -> bool:
         bool: True if posted successfully, False otherwise
     """
     try:
-        job_title, company, country, logo_url = job_details
+        job_title, company, country, logo_url, slug = job_details
 
         post_text = f"""🚀 {job_title}
 🏢 {company}
 🌍 {country.capitalize()}
-
-💼 Apply now: www.sportsjobs.online
+💼 Apply now: www.sportsjobs.online/jobs/{slug}"
 👥 Follow us for more sports opportunities!
 
 #SportsJobs #SportsAnalytics #SportsCareers #DataScience"""

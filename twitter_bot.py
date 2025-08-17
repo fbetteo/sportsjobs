@@ -36,7 +36,7 @@ def post_daily_jobs_to_twitter():
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT name, company, country 
+                SELECT name, company, country, slug
                 FROM jobs 
                 WHERE DATE(start_date) = %s
                 """,
@@ -52,15 +52,15 @@ def post_daily_jobs_to_twitter():
 
             # Post each job to Twitter
             for job in todays_jobs:
-                job_title, company, country = job
+                job_title, company, country, slug = job
                 tweet_text = f"""🚀 {job_title}
 🏢 {company}
 🌍 {country.capitalize()}
 
-💼 Apply: www.sportsjobs.online
+💼 Apply: www.sportsjobs.online/jobs/{slug}
 👥 Follow for more opportunities!
 
-#SportsJobs #SportsAnalytics #SportsCareers #DataScience""".strip()
+#SportsJobs #SportsAnalytics #SportsCareers #DataScience #jobsearch #jobs""".strip()
 
                 # Ensure tweet isn't too long (Twitter's limit is 280 characters)
                 if len(tweet_text) > 280:
@@ -72,10 +72,10 @@ def post_daily_jobs_to_twitter():
 🏢 {company}
 🌍 {country.capitalize()}
 
-💼 Apply: www.sportsjobs.online
+💼 Apply: www.sportsjobs.online/jobs/{slug}
 👥 Follow for more opportunities!
 
-#SportsJobs #SportsAnalytics #SportsCareers #DataScience""".strip()
+#SportsJobs #SportsAnalytics #SportsCareers #DataScience #jobsearch #jobs""".strip()
                     else:
                         tweet_text = tweet_text[:277] + "..."
 

@@ -129,18 +129,26 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "posting to linkedin"
-python post_to_linkedin.py
-if [ $? -ne 0 ]; then
-    echo "post_to_linkedin failed"
-    exit 1
-fi
+# Check if today is Monday (1), Wednesday (3), or Sunday (7)
+day_of_week=$(date +%u)
+if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 3 ] || [ "$day_of_week" -eq 7 ]; then
+    echo "Today is a scheduled day for social media posting (Monday/Wednesday/Sunday)"
+    
+    echo "posting to linkedin"
+    python post_to_linkedin.py
+    if [ $? -ne 0 ]; then
+        echo "post_to_linkedin failed"
+        exit 1
+    fi
 
-echo "posting to twitter"
-python twitter_bot.py
-if [ $? -ne 0 ]; then
-    echo "post_to_twitter failed"
-    exit 1
+    echo "posting to twitter"
+    python twitter_bot.py
+    if [ $? -ne 0 ]; then
+        echo "post_to_twitter failed"
+        exit 1
+    fi
+else
+    echo "Skipping social media posting - today is not a scheduled day (Monday/Wednesday/Sunday)"
 fi
 
 # Run the final Python script
@@ -158,27 +166,30 @@ fi
 
 # Run the retryable script up to 5 times if it fails
 # in the end because it has 2 min wait and it is sync right now
-max_retries=7
-retry_count=0
-success=0
+# Only run on Monday, Wednesday, Sunday
+if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 3 ] || [ "$day_of_week" -eq 7 ]; then
+    echo "Running airtable_api.py on scheduled day"
+    max_retries=7
+    retry_count=0
+    success=0
 
-while [ $retry_count -lt $max_retries ]; do
-    python airtable_api.py
-    if [ $? -eq 0 ]; then
-        success=1
-        break
-    else
-        echo "airtable_api.py failed, retrying... $((retry_count + 1))/$max_retries"
-        retry_count=$((retry_count + 1))
+    while [ $retry_count -lt $max_retries ]; do
+        python airtable_api.py
+        if [ $? -eq 0 ]; then
+            success=1
+            break
+        else
+            echo "airtable_api.py failed, retrying... $((retry_count + 1))/$max_retries"
+            retry_count=$((retry_count + 1))
+        fi
+    done
+
+    if [ $success -ne 1 ]; then
+        echo "airtable_api.py failed after $max_retries attempts"
+        exit 1
     fi
-done
-
-
-
-
-if [ $success -ne 1 ]; then
-    echo "airtable_api.py failed after $max_retries attempts"
-    exit 1
+else
+    echo "Skipping airtable_api.py - today is not a scheduled day (Monday/Wednesday/Sunday)"
 fi
 
 

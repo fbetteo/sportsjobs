@@ -95,12 +95,14 @@ try:
         # posting in my community sportsjobs_online
         for job in latest_jobs[::-1]:
             post_data = {
-                "title": job["name"] + " - "
-                # + job["company"]
-                + " - " + job.get("country", "").capitalize(),
+                "title": job["name"]
+                + " - "
+                + job["company"]
+                + " - "
+                + job.get("country", "").capitalize(),
                 "kind": "link",
                 "sr": SUBREDDIT,
-                "url": f"https://sportsjobs.online"
+                "url": f"https://sportsjobs.online/jobs/{job['slug']}"
                 + f"?utm_source=reddit&utm_medium=bot_{SUBREDDIT}",
                 "resubmit": "true",
                 "api_type": "json",
