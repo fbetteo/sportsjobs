@@ -118498,3 +118498,2008 @@ Connected to PostgreSQL database!
 Error occurred: 'access_token'
 Connection closed.
 All scripts executed successfully
+Starting scripts at 2025-08-15 13:00:02
+----------------------------------------
+Lever running
+Connected to PostgreSQL database!
+Error 404 for GameTime
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error 404 for Grundens
+Error 404 for Fanatics
+Connection closed.
+greenhouse running
+Connected to PostgreSQL database!
+Error in request for The Score
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error finding country: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=s%C3%A3o+paulo&format=json&limit=1&addressdetails=1&accept-language=en (Caused by ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)"))
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error finding country: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=london%2C+united+kingdom&format=json&limit=1&addressdetails=1&accept-language=en (Caused by ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)"))
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+ashbyhq running
+Connected to PostgreSQL database!
+Connection closed.
+riplling running
+Connected to PostgreSQL database!
+personio running
+Connected to PostgreSQL database!
+Connection closed.
+scraping nba
+Running AtlantaHawks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Visual Merchandiser & Data Entry Specialist was not created
+Running CharlotteHornets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job IPTV Engineer was not created
+Running ClevelandCavaliers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DallasMavericks main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DetroitPistons main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Detroit Pistons...
+Running GoldenStateWarriors main()
+Connected to PostgreSQL database!
+Connection closed.
+Running HoustonRockets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Relations Intern (Full-Season) has no skills required, skipping...
+Job Community Relations Intern (Full-Season) was not created
+Job Facilities Intern (Full Season) has no skills required, skipping...
+Job Facilities Intern (Full Season) was not created
+Job Live Production & Entertainment Intern (Full-Season) was not created
+Job Social Media Intern (Full-Season) has no skills required, skipping...
+Job Social Media Intern (Full-Season) was not created
+Job Video Production Intern (Full-Season) has no skills required, skipping...
+Job Video Production Intern (Full-Season) was not created
+Job Security Intern (Full-Season) has no skills required, skipping...
+Job Security Intern (Full-Season) was not created
+Running IndianaPacers main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Engagement Intern - Fall 2025 was not created
+Job Ticket Sales Intern - Fall 2025 has no skills required, skipping...
+Job Ticket Sales Intern - Fall 2025 was not created
+Job Digital Retail Intern - Fall 2025 has no skills required, skipping...
+Job Digital Retail Intern - Fall 2025 was not created
+Job Merchandising & Retail Intern - Fall 2025 has no skills required, skipping...
+Job Merchandising & Retail Intern - Fall 2025 was not created
+Job Ticket Analytics Intern - Fall 2025 was not created
+Running LosAngelesLakers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running MiamiHeat main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Intern, Season Ticket Memberships has no skills required, skipping...
+Job Intern, Season Ticket Memberships was not created
+Job Intern, Marketing has no skills required, skipping...
+Job Intern, Marketing was not created
+Job Product Marketing Intern was not created
+Job Intern, Event Services has no skills required, skipping...
+Job Intern, Event Services was not created
+Job Content Studio Intern has no skills required, skipping...
+Job Content Studio Intern was not created
+Running MinnesotaTimberwolves main()
+Connected to PostgreSQL database!
+Connection closed.
+Running NewOrleansPelicans main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this New Orleans Pelicans / Saints...
+Running OklahomaThunder main()
+Connected to PostgreSQL database!
+Connection closed.
+Running OrlandoMagic main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Part Time Solar Bears Game Night Intern has no skills required, skipping...
+Job Part Time Solar Bears Game Night Intern was not created
+Running PhoenixSuns main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Digital Experience Intern has no skills required, skipping...
+Job Digital Experience Intern was not created
+Running SacramentoKings main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job A/V Department Intern has no skills required, skipping...
+Job A/V Department Intern was not created
+Job Performance Marketing Intern has no skills required, skipping...
+Job Performance Marketing Intern was not created
+Job Community Impact Intern, Stockton Kings has no skills required, skipping...
+Job Community Impact Intern, Stockton Kings was not created
+Job Business Intelligence Intern was not created
+Job Accounting Intern has no skills required, skipping...
+Job Accounting Intern was not created
+Job Event Production Intern has no skills required, skipping...
+Job Event Production Intern was not created
+Job Partnership Activation & Solutions Intern was not created
+Job Fan Engagement Marketing Intern has no skills required, skipping...
+Job Fan Engagement Marketing Intern was not created
+Job Retail Marketing Intern has no skills required, skipping...
+Job Retail Marketing Intern was not created
+Job Ticket Sales & Services Intern, Stockton Kings has no skills required, skipping...
+Job Ticket Sales & Services Intern, Stockton Kings was not created
+Job Sales Operations Intern has no skills required, skipping...
+Job Sales Operations Intern was not created
+Job Youth & Community Engagement Intern was not created
+Job Partnership Activation Intern has no skills required, skipping...
+Job Partnership Activation Intern was not created
+Job Visual Design Intern has no skills required, skipping...
+Job Visual Design Intern was not created
+Job Social Impact & Inclusion Intern has no skills required, skipping...
+Job Social Impact & Inclusion Intern was not created
+Job Retail Buying Intern has no skills required, skipping...
+Job Retail Buying Intern was not created
+Job Technology Operations Intern has no skills required, skipping...
+Job Technology Operations Intern was not created
+Job Social Media Intern has no skills required, skipping...
+Job Social Media Intern was not created
+Job Ticket Sales & Service Intern has no skills required, skipping...
+Job Ticket Sales & Service Intern was not created
+Job Graphic Design Intern has no skills required, skipping...
+Job Graphic Design Intern was not created
+Job Arena Lighting & Sound Engineer was not created
+Running SanAntonioSpurs main()
+Connected to PostgreSQL database!
+Connection closed.
+Running UtahJazz main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Membership Experience Intern has no skills required, skipping...
+Job Membership Experience Intern was not created
+Job Youth Programs Intern was not created
+Job Game Night Graphic Design Intern has no skills required, skipping...
+Job Game Night Graphic Design Intern was not created
+Job Gameday Ticketing Intern has no skills required, skipping...
+Job Gameday Ticketing Intern was not created
+Job Ticket Operations Intern has no skills required, skipping...
+Job Ticket Operations Intern was not created
+Running WashingtonWizards main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Washington Wizards Social Media (Part-Time/Seasonal) was not created
+Job Internship: Sales Event Planning (Part-Time/Seasonal) was not created
+Job Internship: Fan Development (Part-Time/Seasonal) was not created
+Job Internship: Senior Sales (Part-Time/Seasonal) was not created
+Job Internship: Digital Graphic Design (Part-Time/Seasonal) was not created
+Job Internship: Membership Services (Part-Time/Seasonal) was not created
+Job Internship: Game Presentation (Part-Time/Seasonal) was not created
+Job Internship: Group Sales (Part-Time/Seasonal) was not created
+Running WNBA main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Basketball Operations Intern - FALL - Credit ONLY has no skills required, skipping...
+Job Basketball Operations Intern - FALL - Credit ONLY was not created
+Job Internship: Franchise Ticket Sales (Part-Time/Seasonal) was not created
+Job Internship: Franchise Marketing (Part-Time/Seasonal) was not created
+Job Corporate Partnership Intern - Fall- College Credit Only has no skills required, skipping...
+Job Corporate Partnership Intern - Fall- College Credit Only was not created
+Job Community & Foundation Internship - Fall - College Credit Only has no skills required, skipping...
+Job Community & Foundation Internship - Fall - College Credit Only was not created
+Job Game Entertainment Internship - Fall - College Credit ONLY has no skills required, skipping...
+Job Game Entertainment Internship - Fall - College Credit ONLY was not created
+scraping f1
+Running Mclaren main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Tyre Performance Engineer - Formula1 has no skills required, skipping...
+Job Tyre Performance Engineer - Formula1 was not created
+Job Control Systems Engineer - Formula1 has no skills required, skipping...
+Job Control Systems Engineer - Formula1 was not created
+Job Simulator Engineer - Formula1 has no skills required, skipping...
+Job Simulator Engineer - Formula1 was not created
+Job Car Systems Engineering Support - Formula1 has no skills required, skipping...
+Job Car Systems Engineering Support - Formula1 was not created
+Job Sports Scientist - Human Data Science - Formula1 has no skills required, skipping...
+Job Sports Scientist - Human Data Science - Formula1 was not created
+Job Senior Specialist, Software Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineering - Formula1 was not created
+Job Senior Specialist, Aero Performance Engineer - Formula1 has no skills required, skipping...
+Job Senior Specialist, Aero Performance Engineer - Formula1 was not created
+Job Senior Specialist, Software Engineer - Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineer - Engineering - Formula1 was not created
+Job Vehicle Modelling Engineer - Formula1 has no skills required, skipping...
+Job Vehicle Modelling Engineer - Formula1 was not created
+Job Simulation Development Engineer - Formula1 has no skills required, skipping...
+Job Simulation Development Engineer - Formula1 was not created
+Running Mercedes main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Mercedes...
+Running RedBull main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Electrical Design Engineer (Contract) - Formula1 has no skills required, skipping...
+Job Electrical Design Engineer (Contract) - Formula1 was not created
+Job Senior Event IT Engineer - Formula1 has no skills required, skipping...
+Job Senior Event IT Engineer - Formula1 was not created
+Job IT Support Engineer - Formula1 has no skills required, skipping...
+Job IT Support Engineer - Formula1 was not created
+Job Senior Aerodynamics Engineer - Formula1 has no skills required, skipping...
+Job Senior Aerodynamics Engineer - Formula1 was not created
+Job Simulation & Modelling Engineer - Formula1 was not created
+Job Senior Strategy Engineer - Formula1 has no skills required, skipping...
+Job Senior Strategy Engineer - Formula1 was not created
+Running Haas main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Haas F1 Team...
+Running Williams main()
+Connected to PostgreSQL database!
+Connection closed.
+Running FormulaOne main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Security Engineer - Formula1 was not created
+Job Senior Systems Engineer - Formula1 has no skills required, skipping...
+Job Senior Systems Engineer - Formula1 was not created
+Job Track Systems Engineer - Formula1 has no skills required, skipping...
+Job Track Systems Engineer - Formula1 was not created
+Job Senior Vehicle Performance Engineer - Formula1 was not created
+scraping nfl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Engineer was not created
+Job Intern, Partnership Solutions was not created
+Job Systems Engineer was not created
+Job Seasonal Intern, International was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Graphic Design Intern has no skills required, skipping...
+Job Graphic Design Intern was not created
+Job Analyst, Partnership Solutions was not created
+Job Ticket Sales & Service Intern was not created
+Job Stadium Engineer has no skills required, skipping...
+Job Stadium Engineer was not created
+Job Development Analyst: Real Estate has no skills required, skipping...
+Job Development Analyst: Real Estate was not created
+Job Event Experience Intern (Year-Long) was not created
+Job IT Support Analyst has no skills required, skipping...
+Job IT Support Analyst was not created
+Job Growth and Recruitment Intern (Remote) has no skills required, skipping...
+Job Growth and Recruitment Intern (Remote) was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Programs Intern (Remote) has no skills required, skipping...
+Job Community Programs Intern (Remote) was not created
+Job Intern, Studio Operations was not created
+Job Cloud Infrastructure Engineer was not created
+Job Graphic Designer - International has no skills required, skipping...
+Job Graphic Designer - International was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Incident Tracking Analyst - Seasonal has no skills required, skipping...
+Job Incident Tracking Analyst - Seasonal was not created
+Job Ticketing Intern (Year-Long) has no skills required, skipping...
+Job Ticketing Intern (Year-Long) was not created
+Running TampaBayBuccaneers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running BaltimoreRavens main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Baltimore Ravens...
+scraping nhl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Ticketing Senior Analyst - NHL was not created
+Job Part Time Engineer - NHL has no skills required, skipping...
+Job Part Time Engineer - NHL was not created
+Job Photography & Digital Media Intern - NHL was not created
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Job Foundation Intern - NHL was not created
+Job Intern, Sales & Service - NHL has no skills required, skipping...
+Job Intern, Sales & Service - NHL was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Intern, Finance - NHL was not created
+Job Intern, Community Development & Blues for Kids - NHL has no skills required, skipping...
+Job Intern, Community Development & Blues for Kids - NHL was not created
+Job Social Editor Intern - NHL has no skills required, skipping...
+Job Social Editor Intern - NHL was not created
+Job Game Presentation Entertainment Intern - NHL was not created
+Job Intern, Production Associate - NHL was not created
+Job Software Developer - NHL was not created
+Job Machine Learning Engineer - NHL was not created
+Job Sr. Software Engineer - NHL was not created
+Job Director, Business Intelligence - NHL was not created
+Job Intern, Graphic Design - NHL has no skills required, skipping...
+Job Intern, Graphic Design - NHL was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Sales Operations (Part-Time/Seasonal) - NHL was not created
+Job Internship: Youth Hockey Development (Part-Time/Seasonal) - NHL was not created
+Job Internship: Marketing (Part-Time/Seasonal) - NHL was not created
+Job Internship: Digital Media (Part-Time/Seasonal) - NHL was not created
+Job ServiceNow Platform Developer – Administration & Analytics - NHL was not created
+Job Senior Network Engineer - NHL was not created
+Job Communications Intern - NHL has no skills required, skipping...
+Job Communications Intern - NHL was not created
+Job Editorial Manager, NHL.com International - NHL was not created
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Facilities Engineer - War Memorial - NHL was not created
+Running CalgaryFlames main()
+Connected to PostgreSQL database!
+Connection closed.
+Running VancouverCanucks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Live Entertainment, Intern has no skills required, skipping...
+Job Live Entertainment, Intern was not created
+Job Director, Business Intelligence was not created
+scraping mls
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Corporate Partnerships Internship - MLS has no skills required, skipping...
+Job Corporate Partnerships Internship - MLS was not created
+Job Internship: Business Operations Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Business Operations Intern - Fall 2025 - MLS was not created
+Job Senior Orchestration Engineer (ServiceNow) - MLS was not created
+Job Social Media Intern - MLS has no skills required, skipping...
+Job Social Media Intern - MLS was not created
+Job Academy Video Analyst - MLS has no skills required, skipping...
+Job Academy Video Analyst - MLS was not created
+Job Education Intern - MLS was not created
+Job Internship: Marketing & Communications Intern - Power FC - Fall 2025 - MLS was not created
+Job Internship: Social Media Intern - Fall 2025 - MLS was not created
+Job Match Production Intern - MLS has no skills required, skipping...
+Job Match Production Intern - MLS was not created
+Job 2026 IT Intern - MLS has no skills required, skipping...
+Job 2026 IT Intern - MLS was not created
+Job PART-TIME - Associate, Data Strategy - MLS was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Social Content Intern - MLS has no skills required, skipping...
+Job Social Content Intern - MLS was not created
+Job Facilities Engineer - MLS was not created
+Job Merchandising/Retail Internship - MLS has no skills required, skipping...
+Job Merchandising/Retail Internship - MLS was not created
+Job Community Relations Internship - MLS has no skills required, skipping...
+Job Community Relations Internship - MLS was not created
+Job Marketing Intern - MLS was not created
+Job Media Communications Intern - MLS was not created
+Job Graphic Design Internship - MLS was not created
+Job Internship: Video Production Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Video Production Intern - Fall 2025 - MLS was not created
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS has no skills required, skipping...
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS was not created
+Job Senior Manager, Business Insights & Analytics - MLS was not created
+Job Analyst, Business and Data Strategy - MLS was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Gameday Operations Internship (Fall 2025) - MLS has no skills required, skipping...
+Job Gameday Operations Internship (Fall 2025) - MLS was not created
+Job Senior Staff Machine Learning Engineer - MLS was not created
+Job Director, Business Insights & Analytics - MLS was not created
+Job 2025 Marketing Matchday Activation Intern - MLS has no skills required, skipping...
+Job 2025 Marketing Matchday Activation Intern - MLS was not created
+Job Athletic Training Internship (Educational)- Sounders FC - MLS has no skills required, skipping...
+Job Athletic Training Internship (Educational)- Sounders FC - MLS was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running VancouverWhitecaps main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Vancouver Whitecaps...
+Running NWSL_Teamworkonline main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Tactical Analyst - MLS was not created
+Job Soccer Operations Internship - MLS was not created
+Job Social Media Intern - MLS was not created
+Job Merchandise Intern - MLS was not created
+Job Equipment Manager Internship- Fall 2025 - MLS was not created
+scraping jobsinfootball
+Running JobsInFootballDataScience main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Data &amp; Analytics UWEP Internship - Fall 2025 was not created
+Job Associate, Data Strategy - Part-Time was not created
+Job Senior Data Scientist was not created
+Job Data Strategy Intern has no skills required, skipping...
+Job Data Strategy Intern was not created
+Job Working Student in Power BI &amp; Data Visualization (m/f/d) was not created
+Job Head of Business Data (12-month FTC) was not created
+Job Sports Data Operator was not created
+Running JobsInFootballDataAnalyst main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Club Performance Analyst was not created
+Job Senior Analyst, Transformation was not created
+Job First Team Analyst was not created
+Job Coach Analyst - Men’s 1st Team has no skills required, skipping...
+Job Coach Analyst - Men’s 1st Team was not created
+Job First Team Set Piece Analyst has no skills required, skipping...
+Job First Team Set Piece Analyst was not created
+Job Tactical Analyst was not created
+Job Academy Recruitment Analyst was not created
+Job Ecommerce Analytics Executive was not created
+Job Sr. Director, Marketing &amp; Product Analytics was not created
+Job First Team Training Analyst has no skills required, skipping...
+Job First Team Training Analyst was not created
+Job Lead Performance Analyst has no skills required, skipping...
+Job Lead Performance Analyst was not created
+Job Marketing Analytics &amp; Insights Manager was not created
+scraping soccer clubs
+Running Liverpool main()
+Connected to PostgreSQL database!
+Connection closed.
+scraping scottpowers_scrapers
+Running ScottPowersScraper2 main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Sr Data Scientist was not created
+Job Product Scientist was not created
+Job Basketball Software Engineer was not created
+Job Sr Football Data Analyst was not created
+Job Football Data Operations Manager was not created
+Job Head of Business Data was not created
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Job Sports Science & Biomechanics Coordinator was not created
+scraping MLB
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Business Partnerships Intern has no skills required, skipping...
+Job Business Partnerships Intern was not created
+Job Data Systems Analyst has no skills required, skipping...
+Job Data Systems Analyst was not created
+Job Director of Baseball Data was not created
+Job Event Operations (Florida) - Data Tech / Scouting Role was not created
+Job Event Operations (Northeast) - Data Tech / Scouting Role was not created
+Job Event Operations (Carolinas) - Data Tech / Scouting Role was not created
+Job Analyst Fellow was not created
+Job Analyst, Financial Operations has no skills required, skipping...
+Job Analyst, Financial Operations was not created
+Job Sr. Data Engineer, Baseball Systems was not created
+Job Senior Technical Analyst has no skills required, skipping...
+Job Senior Technical Analyst was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Quantitative Analyst was not created
+Job Senior Software Engineer - Front-End was not created
+Job Assistant Manager, Broadcast Engineering has no skills required, skipping...
+Job Assistant Manager, Broadcast Engineering was not created
+Job Baseball Data Analytics Internship (Fall) - Southeast was not created
+Job Baseball Data Analytics Internship (Fall) - Carolinas was not created
+Job Baseball Data Analytics Internship (Fall) - Northeast was not created
+Job Baseball Data Analytics Internship (Fall) - Midwest was not created
+Job Baseball Scouting Internship (Fall) - Southeast was not created
+Job Baseball Scouting Internship (Fall) - Northeast was not created
+Job Baseball Scouting Internship (Fall) - Carolinas was not created
+Job Baseball Scouting Internship (Fall) - Midwest was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job 2025 Technology Intern, Hudson Valley Renegades was not created
+Job Data Engineer was not created
+Job Dodger Vision Game Day Video Engineer was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+scraping Other Companies
+Running SIG main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Quantitative Sports Researcher – Graduate Hire was not created
+Job Software Developer | Sports Trading Software | Experienced Hire was not created
+Job Software Developer - Sports Analytics was not created
+indexing sportsjobs
+Connected to PostgreSQL database!
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+IndexNow submission successful. Status: 200
+Connection closed.
+posting to linkedin
+2025-08-15 13:16:21,149 - INFO - Found 12 jobs to post
+2025-08-15 13:16:22,132 - INFO - Successfully posted job: Quality Assurance Engineer 1 at Dream Sports
+2025-08-15 13:16:23,046 - INFO - Successfully posted job: SEO Associate at FanDuel
+2025-08-15 13:16:23,962 - INFO - Successfully posted job: Partner Data Specialist at Gympass
+2025-08-15 13:16:24,868 - INFO - Successfully posted job: Machine Learning Engineering Manager at Hudl
+2025-08-15 13:16:25,739 - INFO - Successfully posted job: Marketing Analytics Intern at Hudl
+2025-08-15 13:16:26,663 - INFO - Successfully posted job: Senior Applied Researcher at Hudl
+2025-08-15 13:16:27,530 - INFO - Successfully posted job: Senior MLOps Engineer at Hudl
+2025-08-15 13:16:28,407 - INFO - Successfully posted job: Staff Engineer - Machine Learning at Hudl
+2025-08-15 13:16:29,304 - INFO - Successfully posted job: Staff Quality Assurance Engineer at Hudl
+2025-08-15 13:16:30,194 - INFO - Successfully posted job: Basketball Data Scientist at Miami Heat
+2025-08-15 13:16:31,079 - INFO - Successfully posted job: Communications Intern at Sacramento Kings
+2025-08-15 13:16:31,929 - INFO - Successfully posted job: Analyst, Fan Research & Insights - NHL at NHL Team Jobs
+Connected to PostgreSQL database!
+posting to twitter
+2025-08-15 13:16:32,588 - INFO - Found 12 jobs to post to Twitter
+2025-08-15 13:16:32,966 - INFO - Successfully posted tweet for: Quality Assurance Engineer 1 at Dream Sports (Tweet ID: 1956344257570120066)
+2025-08-15 13:16:33,253 - INFO - Successfully posted tweet for: SEO Associate at FanDuel (Tweet ID: 1956344258828316790)
+2025-08-15 13:16:33,549 - INFO - Successfully posted tweet for: Partner Data Specialist at Gympass (Tweet ID: 1956344260027973719)
+2025-08-15 13:16:33,819 - INFO - Successfully posted tweet for: Machine Learning Engineering Manager at Hudl (Tweet ID: 1956344261214888248)
+2025-08-15 13:16:34,095 - INFO - Successfully posted tweet for: Marketing Analytics Intern at Hudl (Tweet ID: 1956344262359941526)
+2025-08-15 13:16:34,370 - INFO - Successfully posted tweet for: Senior Applied Researcher at Hudl (Tweet ID: 1956344263546912844)
+2025-08-15 13:16:34,654 - INFO - Successfully posted tweet for: Senior MLOps Engineer at Hudl (Tweet ID: 1956344264675168391)
+2025-08-15 13:16:34,938 - INFO - Successfully posted tweet for: Staff Engineer - Machine Learning at Hudl (Tweet ID: 1956344265908318539)
+2025-08-15 13:16:35,083 - ERROR - Failed to post tweet for Staff Quality Assurance Engineer: 429 Too Many Requests
+Too Many Requests
+2025-08-15 13:16:35,229 - ERROR - Failed to post tweet for Basketball Data Scientist: 429 Too Many Requests
+Too Many Requests
+2025-08-15 13:16:35,368 - ERROR - Failed to post tweet for Communications Intern: 429 Too Many Requests
+Too Many Requests
+2025-08-15 13:16:35,519 - ERROR - Failed to post tweet for Analyst, Fan Research & Insights - NHL: 429 Too Many Requests
+Too Many Requests
+Connected to PostgreSQL database!
+/home/sportsjobs/hetzner_utils.py:45: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query(query, conn)
+Connected to PostgreSQL database!
+asin.sam@gmail.com
+Connection closed.
+Connected to PostgreSQL database!
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Fri, 15 Aug 2025 13:16:37 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Fri, 15 Aug 2025 13:16:38 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Fri, 15 Aug 2025 13:16:38 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Fri, 15 Aug 2025 13:16:38 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Connection closed.
+Connected to PostgreSQL database!
+Error occurred: 'access_token'
+Connection closed.
+All scripts executed successfully
+Starting scripts at 2025-08-16 13:00:02
+----------------------------------------
+Lever running
+Connected to PostgreSQL database!
+Error 404 for GameTime
+Error 404 for Grundens
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error 404 for Fanatics
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+greenhouse running
+Connected to PostgreSQL database!
+Error in request for The Score
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+ashbyhq running
+Connected to PostgreSQL database!
+Connection closed.
+riplling running
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+personio running
+Connected to PostgreSQL database!
+Connection closed.
+scraping nba
+Running AtlantaHawks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Visual Merchandiser & Data Entry Specialist was not created
+Running CharlotteHornets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job IPTV Engineer was not created
+Running ClevelandCavaliers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DallasMavericks main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DetroitPistons main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Detroit Pistons...
+Running GoldenStateWarriors main()
+Connected to PostgreSQL database!
+Connection closed.
+Running HoustonRockets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Relations Intern (Full-Season) has no skills required, skipping...
+Job Community Relations Intern (Full-Season) was not created
+Job Facilities Intern (Full Season) has no skills required, skipping...
+Job Facilities Intern (Full Season) was not created
+Job Live Production & Entertainment Intern (Full-Season) was not created
+Job Social Media Intern (Full-Season) has no skills required, skipping...
+Job Social Media Intern (Full-Season) was not created
+Job Video Production Intern (Full-Season) has no skills required, skipping...
+Job Video Production Intern (Full-Season) was not created
+Job Security Intern (Full-Season) has no skills required, skipping...
+Job Security Intern (Full-Season) was not created
+Running IndianaPacers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running LosAngelesLakers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running MiamiHeat main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Basketball Data Scientist was not created
+Job Intern, Season Ticket Memberships has no skills required, skipping...
+Job Intern, Season Ticket Memberships was not created
+Job Intern, Marketing has no skills required, skipping...
+Job Intern, Marketing was not created
+Job Product Marketing Intern was not created
+Job Intern, Event Services has no skills required, skipping...
+Job Intern, Event Services was not created
+Job Content Studio Intern has no skills required, skipping...
+Job Content Studio Intern was not created
+Running MinnesotaTimberwolves main()
+Connected to PostgreSQL database!
+Connection closed.
+Running NewOrleansPelicans main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this New Orleans Pelicans / Saints...
+Running OklahomaThunder main()
+Connected to PostgreSQL database!
+Connection closed.
+Running OrlandoMagic main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Part Time Solar Bears Game Night Intern has no skills required, skipping...
+Job Part Time Solar Bears Game Night Intern was not created
+Running PhoenixSuns main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Digital Experience Intern has no skills required, skipping...
+Job Digital Experience Intern was not created
+Running SacramentoKings main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Communications Intern was not created
+Job A/V Department Intern has no skills required, skipping...
+Job A/V Department Intern was not created
+Job Performance Marketing Intern has no skills required, skipping...
+Job Performance Marketing Intern was not created
+Job Community Impact Intern, Stockton Kings has no skills required, skipping...
+Job Community Impact Intern, Stockton Kings was not created
+Job Business Intelligence Intern was not created
+Job Event Production Intern has no skills required, skipping...
+Job Event Production Intern was not created
+Job Accounting Intern has no skills required, skipping...
+Job Accounting Intern was not created
+Job Retail Marketing Intern has no skills required, skipping...
+Job Retail Marketing Intern was not created
+Job Partnership Activation & Solutions Intern was not created
+Job Fan Engagement Marketing Intern has no skills required, skipping...
+Job Fan Engagement Marketing Intern was not created
+Job Ticket Sales & Services Intern, Stockton Kings has no skills required, skipping...
+Job Ticket Sales & Services Intern, Stockton Kings was not created
+Job Sales Operations Intern has no skills required, skipping...
+Job Sales Operations Intern was not created
+Job Youth & Community Engagement Intern was not created
+Job Visual Design Intern has no skills required, skipping...
+Job Visual Design Intern was not created
+Job Partnership Activation Intern has no skills required, skipping...
+Job Partnership Activation Intern was not created
+Job Social Impact & Inclusion Intern has no skills required, skipping...
+Job Social Impact & Inclusion Intern was not created
+Job Retail Buying Intern has no skills required, skipping...
+Job Retail Buying Intern was not created
+Job Ticket Sales & Service Intern has no skills required, skipping...
+Job Ticket Sales & Service Intern was not created
+Job Social Media Intern has no skills required, skipping...
+Job Social Media Intern was not created
+Job Technology Operations Intern has no skills required, skipping...
+Job Technology Operations Intern was not created
+Job Graphic Design Intern has no skills required, skipping...
+Job Graphic Design Intern was not created
+Job Arena Lighting & Sound Engineer was not created
+Running SanAntonioSpurs main()
+Connected to PostgreSQL database!
+Connection closed.
+Running UtahJazz main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Membership Experience Intern has no skills required, skipping...
+Job Membership Experience Intern was not created
+Job Youth Programs Intern was not created
+Job Game Night Graphic Design Intern has no skills required, skipping...
+Job Game Night Graphic Design Intern was not created
+Job Gameday Ticketing Intern has no skills required, skipping...
+Job Gameday Ticketing Intern was not created
+Job Ticket Operations Intern has no skills required, skipping...
+Job Ticket Operations Intern was not created
+Running WashingtonWizards main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Washington Wizards Social Media (Part-Time/Seasonal) was not created
+Job Internship: Sales Event Planning (Part-Time/Seasonal) was not created
+Job Internship: Fan Development (Part-Time/Seasonal) was not created
+Job Internship: Senior Sales (Part-Time/Seasonal) was not created
+Job Internship: Digital Graphic Design (Part-Time/Seasonal) was not created
+Job Internship: Membership Services (Part-Time/Seasonal) was not created
+Job Internship: Game Presentation (Part-Time/Seasonal) was not created
+Job Internship: Group Sales (Part-Time/Seasonal) was not created
+Running WNBA main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Franchise Ticket Sales (Part-Time/Seasonal) was not created
+Job Internship: Franchise Marketing (Part-Time/Seasonal) was not created
+Job Corporate Partnership Intern - Fall- College Credit Only has no skills required, skipping...
+Job Corporate Partnership Intern - Fall- College Credit Only was not created
+Job Community & Foundation Internship - Fall - College Credit Only has no skills required, skipping...
+Job Community & Foundation Internship - Fall - College Credit Only was not created
+Job Game Entertainment Internship - Fall - College Credit ONLY has no skills required, skipping...
+Job Game Entertainment Internship - Fall - College Credit ONLY was not created
+scraping f1
+Running Mclaren main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Tyre Performance Engineer - Formula1 has no skills required, skipping...
+Job Tyre Performance Engineer - Formula1 was not created
+Job Control Systems Engineer - Formula1 has no skills required, skipping...
+Job Control Systems Engineer - Formula1 was not created
+Job Simulator Engineer - Formula1 has no skills required, skipping...
+Job Simulator Engineer - Formula1 was not created
+Job Car Systems Engineering Support - Formula1 has no skills required, skipping...
+Job Car Systems Engineering Support - Formula1 was not created
+Job Sports Scientist - Human Data Science - Formula1 has no skills required, skipping...
+Job Sports Scientist - Human Data Science - Formula1 was not created
+Job Senior Specialist, Software Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineering - Formula1 was not created
+Job Senior Specialist, Aero Performance Engineer - Formula1 has no skills required, skipping...
+Job Senior Specialist, Aero Performance Engineer - Formula1 was not created
+Job Senior Specialist, Software Engineer - Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineer - Engineering - Formula1 was not created
+Job Vehicle Modelling Engineer - Formula1 has no skills required, skipping...
+Job Vehicle Modelling Engineer - Formula1 was not created
+Job Simulation Development Engineer - Formula1 has no skills required, skipping...
+Job Simulation Development Engineer - Formula1 was not created
+Running Mercedes main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Mercedes...
+Running RedBull main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Electrical Design Engineer (Contract) - Formula1 has no skills required, skipping...
+Job Electrical Design Engineer (Contract) - Formula1 was not created
+Job Senior Event IT Engineer - Formula1 has no skills required, skipping...
+Job Senior Event IT Engineer - Formula1 was not created
+Job IT Support Engineer - Formula1 has no skills required, skipping...
+Job IT Support Engineer - Formula1 was not created
+Job Senior Aerodynamics Engineer - Formula1 has no skills required, skipping...
+Job Senior Aerodynamics Engineer - Formula1 was not created
+Job Simulation & Modelling Engineer - Formula1 was not created
+Job Senior Strategy Engineer - Formula1 has no skills required, skipping...
+Job Senior Strategy Engineer - Formula1 was not created
+Running Haas main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Haas F1 Team...
+Running Williams main()
+Connected to PostgreSQL database!
+Connection closed.
+Running FormulaOne main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Security Engineer - Formula1 was not created
+Job Senior Systems Engineer - Formula1 has no skills required, skipping...
+Job Senior Systems Engineer - Formula1 was not created
+Job Track Systems Engineer - Formula1 has no skills required, skipping...
+Job Track Systems Engineer - Formula1 was not created
+Job Senior Vehicle Performance Engineer - Formula1 was not created
+scraping nfl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Engineer was not created
+Job Intern, Partnership Solutions was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Seasonal Intern, International was not created
+Job Analyst, Partnership Solutions was not created
+Job Ticket Sales & Service Intern was not created
+Job Stadium Engineer has no skills required, skipping...
+Job Stadium Engineer was not created
+Job Development Analyst: Real Estate has no skills required, skipping...
+Job Development Analyst: Real Estate was not created
+Job Event Experience Intern (Year-Long) was not created
+Job IT Support Analyst has no skills required, skipping...
+Job IT Support Analyst was not created
+Job Growth and Recruitment Intern (Remote) has no skills required, skipping...
+Job Growth and Recruitment Intern (Remote) was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Programs Intern (Remote) has no skills required, skipping...
+Job Community Programs Intern (Remote) was not created
+Job Intern, Studio Operations was not created
+Job Cloud Infrastructure Engineer was not created
+Job Graphic Designer - International has no skills required, skipping...
+Job Graphic Designer - International was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Incident Tracking Analyst - Seasonal has no skills required, skipping...
+Job Incident Tracking Analyst - Seasonal was not created
+Job Ticketing Intern (Year-Long) has no skills required, skipping...
+Job Ticketing Intern (Year-Long) was not created
+Running TampaBayBuccaneers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running BaltimoreRavens main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Baltimore Ravens...
+scraping nhl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Marketing Intern - NHL has no skills required, skipping...
+Job Marketing Intern - NHL was not created
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Project Management Intern - NHL has no skills required, skipping...
+Job Project Management Intern - NHL was not created
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Analyst, Fan Research & Insights - NHL was not created
+Job Ticketing Senior Analyst - NHL was not created
+Job Part Time Engineer - NHL has no skills required, skipping...
+Job Part Time Engineer - NHL was not created
+Job Photography & Digital Media Intern - NHL was not created
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Job Foundation Intern - NHL was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Intern, Sales & Service - NHL has no skills required, skipping...
+Job Intern, Sales & Service - NHL was not created
+Job Intern, Finance - NHL was not created
+Job Intern, Community Development & Blues for Kids - NHL has no skills required, skipping...
+Job Intern, Community Development & Blues for Kids - NHL was not created
+Job Social Editor Intern - NHL has no skills required, skipping...
+Job Social Editor Intern - NHL was not created
+Job Game Presentation Entertainment Intern - NHL was not created
+Job Intern, Production Associate - NHL was not created
+Job Software Developer - NHL was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Machine Learning Engineer - NHL was not created
+Job Sr. Software Engineer - NHL was not created
+Job Director, Business Intelligence - NHL was not created
+Job Intern, Graphic Design - NHL has no skills required, skipping...
+Job Intern, Graphic Design - NHL was not created
+Job Internship: Sales Operations (Part-Time/Seasonal) - NHL was not created
+Job Internship: Youth Hockey Development (Part-Time/Seasonal) - NHL was not created
+Job Internship: Marketing (Part-Time/Seasonal) - NHL was not created
+Job Internship: Digital Media (Part-Time/Seasonal) - NHL was not created
+Job ServiceNow Platform Developer – Administration & Analytics - NHL was not created
+Job Senior Network Engineer - NHL was not created
+Job Communications Intern - NHL has no skills required, skipping...
+Job Communications Intern - NHL was not created
+Job Editorial Manager, NHL.com International - NHL was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Job Facilities Engineer - War Memorial - NHL was not created
+Running CalgaryFlames main()
+Connected to PostgreSQL database!
+Connection closed.
+Running VancouverCanucks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Live Entertainment, Intern has no skills required, skipping...
+Job Live Entertainment, Intern was not created
+Job Director, Business Intelligence was not created
+scraping mls
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Corporate Partnerships Internship - MLS has no skills required, skipping...
+Job Corporate Partnerships Internship - MLS was not created
+Job Internship: Business Operations Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Business Operations Intern - Fall 2025 - MLS was not created
+Job Senior Orchestration Engineer (ServiceNow) - MLS was not created
+Job Social Media Intern - MLS has no skills required, skipping...
+Job Social Media Intern - MLS was not created
+Job Academy Video Analyst - MLS has no skills required, skipping...
+Job Academy Video Analyst - MLS was not created
+Job Education Intern - MLS was not created
+Job Internship: Marketing & Communications Intern - Power FC - Fall 2025 - MLS was not created
+Job Internship: Social Media Intern - Fall 2025 - MLS was not created
+Job Match Production Intern - MLS has no skills required, skipping...
+Job Match Production Intern - MLS was not created
+Job 2026 IT Intern - MLS has no skills required, skipping...
+Job 2026 IT Intern - MLS was not created
+Job PART-TIME - Associate, Data Strategy - MLS was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Social Content Intern - MLS has no skills required, skipping...
+Job Social Content Intern - MLS was not created
+Job Facilities Engineer - MLS was not created
+Job Merchandising/Retail Internship - MLS has no skills required, skipping...
+Job Merchandising/Retail Internship - MLS was not created
+Job Community Relations Internship - MLS has no skills required, skipping...
+Job Community Relations Internship - MLS was not created
+Job Marketing Intern - MLS was not created
+Job Media Communications Intern - MLS was not created
+Job Graphic Design Internship - MLS was not created
+Job Internship: Video Production Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Video Production Intern - Fall 2025 - MLS was not created
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS has no skills required, skipping...
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS was not created
+Job Senior Manager, Business Insights & Analytics - MLS was not created
+Job Analyst, Business and Data Strategy - MLS was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Gameday Operations Internship (Fall 2025) - MLS has no skills required, skipping...
+Job Gameday Operations Internship (Fall 2025) - MLS was not created
+Job Senior Staff Machine Learning Engineer - MLS was not created
+Job Director, Business Insights & Analytics - MLS was not created
+Job 2025 Marketing Matchday Activation Intern - MLS has no skills required, skipping...
+Job 2025 Marketing Matchday Activation Intern - MLS was not created
+Job Athletic Training Internship (Educational)- Sounders FC - MLS has no skills required, skipping...
+Job Athletic Training Internship (Educational)- Sounders FC - MLS was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running VancouverWhitecaps main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Vancouver Whitecaps...
+Running NWSL_Teamworkonline main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Tactical Analyst - MLS was not created
+Job Soccer Operations Internship - MLS was not created
+Job Social Media Intern - MLS was not created
+Job Merchandise Intern - MLS was not created
+Job Equipment Manager Internship- Fall 2025 - MLS was not created
+scraping jobsinfootball
+Running JobsInFootballDataScience main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Data &amp; Analytics UWEP Internship - Fall 2025 was not created
+Job Associate, Data Strategy - Part-Time was not created
+Job Senior Data Scientist was not created
+Job Data Strategy Intern has no skills required, skipping...
+Job Data Strategy Intern was not created
+Job Working Student in Power BI &amp; Data Visualization (m/f/d) was not created
+Job Head of Business Data (12-month FTC) was not created
+Job Sports Data Operator was not created
+Running JobsInFootballDataAnalyst main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Club Performance Analyst was not created
+Job Academy Performance Analyst has no skills required, skipping...
+Job Academy Performance Analyst was not created
+Job Men's 1st Team Coach Analyst has no skills required, skipping...
+Job Men's 1st Team Coach Analyst was not created
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Senior Analyst, Transformation was not created
+Job First Team Analyst was not created
+Job Coach Analyst - Men’s 1st Team has no skills required, skipping...
+Job Coach Analyst - Men’s 1st Team was not created
+Job First Team Set Piece Analyst has no skills required, skipping...
+Job First Team Set Piece Analyst was not created
+Job Tactical Analyst was not created
+Job Academy Recruitment Analyst was not created
+Job Ecommerce Analytics Executive was not created
+Job Sr. Director, Marketing &amp; Product Analytics was not created
+Job First Team Training Analyst has no skills required, skipping...
+Job First Team Training Analyst was not created
+scraping soccer clubs
+Running Liverpool main()
+Connected to PostgreSQL database!
+Connection closed.
+scraping scottpowers_scrapers
+Running ScottPowersScraper2 main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Sr Data Scientist was not created
+Job Product Scientist was not created
+Job Basketball Software Engineer was not created
+Job Sr Football Data Analyst was not created
+Job Football Data Operations Manager was not created
+Job Head of Business Data was not created
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Job Sports Science & Biomechanics Coordinator was not created
+scraping MLB
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Intern, Bad Boy Mowers Pinstripe Bowl has no skills required, skipping...
+Job Intern, Bad Boy Mowers Pinstripe Bowl was not created
+Job Business Partnerships Intern has no skills required, skipping...
+Job Business Partnerships Intern was not created
+Job Data Systems Analyst has no skills required, skipping...
+Job Data Systems Analyst was not created
+Job Director of Baseball Data was not created
+Job Event Operations (Florida) - Data Tech / Scouting Role was not created
+Job Event Operations (Northeast) - Data Tech / Scouting Role was not created
+Job Event Operations (Carolinas) - Data Tech / Scouting Role was not created
+Job Analyst Fellow was not created
+Job Analyst, Financial Operations has no skills required, skipping...
+Job Analyst, Financial Operations was not created
+Job Sr. Data Engineer, Baseball Systems was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior Technical Analyst has no skills required, skipping...
+Job Senior Technical Analyst was not created
+Job Quantitative Analyst was not created
+Job Senior Software Engineer - Front-End was not created
+Job Assistant Manager, Broadcast Engineering has no skills required, skipping...
+Job Assistant Manager, Broadcast Engineering was not created
+Job Baseball Data Analytics Internship (Fall) - Southeast was not created
+Job Baseball Data Analytics Internship (Fall) - Carolinas was not created
+Job Baseball Data Analytics Internship (Fall) - Northeast was not created
+Job Baseball Data Analytics Internship (Fall) - Midwest was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Baseball Scouting Internship (Fall) - Southeast was not created
+Job Baseball Scouting Internship (Fall) - Northeast was not created
+Job Baseball Scouting Internship (Fall) - Carolinas was not created
+Job Baseball Scouting Internship (Fall) - Midwest was not created
+Job 2025 Technology Intern, Hudson Valley Renegades was not created
+Job Data Engineer was not created
+Job Dodger Vision Game Day Video Engineer was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+scraping Other Companies
+Running SIG main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Software Developer - Sports Analytics was not created
+Job Software Developer | Sports Trading Software | Experienced Hire was not created
+Job Quantitative Sports Researcher – Graduate Hire was not created
+indexing sportsjobs
+Connected to PostgreSQL database!
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+IndexNow submission successful. Status: 200
+Connection closed.
+posting to linkedin
+2025-08-16 13:16:53,270 - INFO - Found 11 jobs to post
+2025-08-16 13:16:54,161 - INFO - Successfully posted job: iOS Mobile Engineer at Kitman Labs
+2025-08-16 13:16:54,997 - INFO - Successfully posted job: iOS Mobile Engineer at Kitman Labs
+2025-08-16 13:16:55,909 - INFO - Successfully posted job: Senior Software Engineer at Legend
+2025-08-16 13:16:56,791 - INFO - Successfully posted job: Full Stack Software Engineer  at Genius Sports
+2025-08-16 13:16:57,629 - INFO - Successfully posted job: Senior Full Stack Software Engineer  at Genius Sports
+2025-08-16 13:16:58,576 - INFO - Successfully posted job: Senior Software Engineer (Data Platform) - Remote at teamworks
+2025-08-16 13:16:59,472 - INFO - Successfully posted job: LA Kings - Sr. Director, Business Intelligence & Customer Analytics - NHL at Los Angeles Kings
+2025-08-16 13:17:00,477 - INFO - Successfully posted job: NHL Statistics Researcher - NHL at NHL Team Jobs
+2025-08-16 13:17:01,390 - INFO - Successfully posted job: CRM & Operations Analyst - MLS at NJ/NY Gotham FC
+2025-08-16 13:17:02,391 - INFO - Successfully posted job: Academy Recruitment Analyst at Blackburn Rovers FC
+2025-08-16 13:17:03,292 - INFO - Successfully posted job: Senior Data Engineer, Baseball Systems at Atlanta Braves
+Connected to PostgreSQL database!
+posting to twitter
+2025-08-16 13:17:04,028 - INFO - Found 11 jobs to post to Twitter
+2025-08-16 13:17:04,495 - INFO - Successfully posted tweet for: iOS Mobile Engineer at Kitman Labs (Tweet ID: 1956706777455595690)
+2025-08-16 13:17:04,768 - INFO - Successfully posted tweet for: iOS Mobile Engineer at Kitman Labs (Tweet ID: 1956706778906763593)
+2025-08-16 13:17:05,053 - INFO - Successfully posted tweet for: Senior Software Engineer at Legend (Tweet ID: 1956706780098015450)
+2025-08-16 13:17:05,353 - INFO - Successfully posted tweet for: Full Stack Software Engineer  at Genius Sports (Tweet ID: 1956706781276541107)
+2025-08-16 13:17:05,679 - INFO - Successfully posted tweet for: Senior Full Stack Software Engineer  at Genius Sports (Tweet ID: 1956706782505492535)
+2025-08-16 13:17:05,985 - INFO - Successfully posted tweet for: Senior Software Engineer (Data Platform) - Remote at teamworks (Tweet ID: 1956706783952576995)
+2025-08-16 13:17:06,282 - INFO - Successfully posted tweet for: LA Kings - Sr. Director, Business Intelligence & Customer Analytics - NHL at Los Angeles Kings (Tweet ID: 1956706785164710331)
+2025-08-16 13:17:06,552 - INFO - Successfully posted tweet for: NHL Statistics Researcher - NHL at NHL Team Jobs (Tweet ID: 1956706786410475691)
+2025-08-16 13:17:06,914 - INFO - Successfully posted tweet for: CRM & Operations Analyst - MLS at NJ/NY Gotham FC (Tweet ID: 1956706787584778679)
+2025-08-16 13:17:07,195 - INFO - Successfully posted tweet for: Academy Recruitment Analyst at Blackburn Rovers FC (Tweet ID: 1956706789073752480)
+2025-08-16 13:17:07,479 - INFO - Successfully posted tweet for: Senior Data Engineer, Baseball Systems at Atlanta Braves (Tweet ID: 1956706790269206550)
+Connected to PostgreSQL database!
+/home/sportsjobs/hetzner_utils.py:45: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query(query, conn)
+Connected to PostgreSQL database!
+asin.sam@gmail.com
+Connection closed.
+Connected to PostgreSQL database!
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sat, 16 Aug 2025 13:17:09 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sat, 16 Aug 2025 13:17:10 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sat, 16 Aug 2025 13:17:10 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sat, 16 Aug 2025 13:17:10 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sat, 16 Aug 2025 13:17:10 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Connection closed.
+Connected to PostgreSQL database!
+Error occurred: 'access_token'
+Connection closed.
+All scripts executed successfully
+Starting scripts at 2025-08-17 13:00:02
+----------------------------------------
+Lever running
+Connected to PostgreSQL database!
+Error 404 for GameTime
+Error 404 for Grundens
+Error 404 for Fanatics
+Connection closed.
+greenhouse running
+Connected to PostgreSQL database!
+Error in request for The Score
+Connection closed.
+ashbyhq running
+Connected to PostgreSQL database!
+Connection closed.
+riplling running
+Connected to PostgreSQL database!
+personio running
+Connected to PostgreSQL database!
+Connection closed.
+scraping nba
+Running AtlantaHawks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Visual Merchandiser & Data Entry Specialist was not created
+Running CharlotteHornets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job IPTV Engineer was not created
+Running ClevelandCavaliers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DallasMavericks main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DetroitPistons main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Detroit Pistons...
+Running GoldenStateWarriors main()
+Connected to PostgreSQL database!
+Connection closed.
+Running HoustonRockets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Relations Intern (Full-Season) has no skills required, skipping...
+Job Community Relations Intern (Full-Season) was not created
+Job Facilities Intern (Full Season) has no skills required, skipping...
+Job Facilities Intern (Full Season) was not created
+Job Live Production & Entertainment Intern (Full-Season) was not created
+Job Social Media Intern (Full-Season) has no skills required, skipping...
+Job Social Media Intern (Full-Season) was not created
+Job Video Production Intern (Full-Season) has no skills required, skipping...
+Job Video Production Intern (Full-Season) was not created
+Job Security Intern (Full-Season) has no skills required, skipping...
+Job Security Intern (Full-Season) was not created
+Running IndianaPacers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running LosAngelesLakers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running MiamiHeat main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Basketball Data Scientist was not created
+Job Intern, Season Ticket Memberships has no skills required, skipping...
+Job Intern, Season Ticket Memberships was not created
+Job Intern, Marketing has no skills required, skipping...
+Job Intern, Marketing was not created
+Job Product Marketing Intern was not created
+Job Intern, Event Services has no skills required, skipping...
+Job Intern, Event Services was not created
+Job Content Studio Intern has no skills required, skipping...
+Job Content Studio Intern was not created
+Running MinnesotaTimberwolves main()
+Connected to PostgreSQL database!
+Connection closed.
+Running NewOrleansPelicans main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this New Orleans Pelicans / Saints...
+Running OklahomaThunder main()
+Connected to PostgreSQL database!
+Connection closed.
+Running OrlandoMagic main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Part Time Solar Bears Game Night Intern has no skills required, skipping...
+Job Part Time Solar Bears Game Night Intern was not created
+Running PhoenixSuns main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Digital Experience Intern has no skills required, skipping...
+Job Digital Experience Intern was not created
+Running SacramentoKings main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Communications Intern was not created
+Job A/V Department Intern has no skills required, skipping...
+Job A/V Department Intern was not created
+Job Performance Marketing Intern has no skills required, skipping...
+Job Performance Marketing Intern was not created
+Job Community Impact Intern, Stockton Kings has no skills required, skipping...
+Job Community Impact Intern, Stockton Kings was not created
+Job Business Intelligence Intern was not created
+Job Event Production Intern has no skills required, skipping...
+Job Event Production Intern was not created
+Job Accounting Intern has no skills required, skipping...
+Job Accounting Intern was not created
+Job Retail Marketing Intern has no skills required, skipping...
+Job Retail Marketing Intern was not created
+Job Fan Engagement Marketing Intern has no skills required, skipping...
+Job Fan Engagement Marketing Intern was not created
+Job Partnership Activation & Solutions Intern was not created
+Job Partnership Activation Intern has no skills required, skipping...
+Job Partnership Activation Intern was not created
+Job Ticket Sales & Services Intern, Stockton Kings has no skills required, skipping...
+Job Ticket Sales & Services Intern, Stockton Kings was not created
+Job Youth & Community Engagement Intern was not created
+Job Sales Operations Intern has no skills required, skipping...
+Job Sales Operations Intern was not created
+Job Visual Design Intern has no skills required, skipping...
+Job Visual Design Intern was not created
+Job Retail Buying Intern has no skills required, skipping...
+Job Retail Buying Intern was not created
+Job Social Impact & Inclusion Intern has no skills required, skipping...
+Job Social Impact & Inclusion Intern was not created
+Job Technology Operations Intern has no skills required, skipping...
+Job Technology Operations Intern was not created
+Job Ticket Sales & Service Intern has no skills required, skipping...
+Job Ticket Sales & Service Intern was not created
+Job Social Media Intern has no skills required, skipping...
+Job Social Media Intern was not created
+Job Graphic Design Intern has no skills required, skipping...
+Job Graphic Design Intern was not created
+Job Arena Lighting & Sound Engineer was not created
+Running SanAntonioSpurs main()
+Connected to PostgreSQL database!
+Connection closed.
+Running UtahJazz main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Membership Experience Intern has no skills required, skipping...
+Job Membership Experience Intern was not created
+Job Youth Programs Intern was not created
+Job Game Night Graphic Design Intern has no skills required, skipping...
+Job Game Night Graphic Design Intern was not created
+Job Gameday Ticketing Intern has no skills required, skipping...
+Job Gameday Ticketing Intern was not created
+Job Ticket Operations Intern has no skills required, skipping...
+Job Ticket Operations Intern was not created
+Running WashingtonWizards main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Washington Wizards Social Media (Part-Time/Seasonal) was not created
+Job Internship: Sales Event Planning (Part-Time/Seasonal) was not created
+Job Internship: Fan Development (Part-Time/Seasonal) was not created
+Job Internship: Senior Sales (Part-Time/Seasonal) was not created
+Job Internship: Digital Graphic Design (Part-Time/Seasonal) was not created
+Job Internship: Membership Services (Part-Time/Seasonal) was not created
+Job Internship: Game Presentation (Part-Time/Seasonal) was not created
+Job Internship: Group Sales (Part-Time/Seasonal) was not created
+Running WNBA main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship: Franchise Ticket Sales (Part-Time/Seasonal) was not created
+Job Internship: Franchise Marketing (Part-Time/Seasonal) was not created
+scraping f1
+Running Mclaren main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Tyre Performance Engineer - Formula1 has no skills required, skipping...
+Job Tyre Performance Engineer - Formula1 was not created
+Job Control Systems Engineer - Formula1 has no skills required, skipping...
+Job Control Systems Engineer - Formula1 was not created
+Job Simulator Engineer - Formula1 has no skills required, skipping...
+Job Simulator Engineer - Formula1 was not created
+Job Car Systems Engineering Support - Formula1 has no skills required, skipping...
+Job Car Systems Engineering Support - Formula1 was not created
+Job Sports Scientist - Human Data Science - Formula1 has no skills required, skipping...
+Job Sports Scientist - Human Data Science - Formula1 was not created
+Job Senior Specialist, Software Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineering - Formula1 was not created
+Job Senior Specialist, Aero Performance Engineer - Formula1 has no skills required, skipping...
+Job Senior Specialist, Aero Performance Engineer - Formula1 was not created
+Job Senior Specialist, Software Engineer - Engineering - Formula1 has no skills required, skipping...
+Job Senior Specialist, Software Engineer - Engineering - Formula1 was not created
+Job Vehicle Modelling Engineer - Formula1 has no skills required, skipping...
+Job Vehicle Modelling Engineer - Formula1 was not created
+Job Simulation Development Engineer - Formula1 has no skills required, skipping...
+Job Simulation Development Engineer - Formula1 was not created
+Running Mercedes main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Mercedes...
+Running RedBull main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Electrical Design Engineer (Contract) - Formula1 has no skills required, skipping...
+Job Electrical Design Engineer (Contract) - Formula1 was not created
+Job Senior Event IT Engineer - Formula1 has no skills required, skipping...
+Job Senior Event IT Engineer - Formula1 was not created
+Job IT Support Engineer - Formula1 has no skills required, skipping...
+Job IT Support Engineer - Formula1 was not created
+Job Senior Aerodynamics Engineer - Formula1 has no skills required, skipping...
+Job Senior Aerodynamics Engineer - Formula1 was not created
+Job Simulation & Modelling Engineer - Formula1 was not created
+Job Senior Strategy Engineer - Formula1 has no skills required, skipping...
+Job Senior Strategy Engineer - Formula1 was not created
+Running Haas main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Haas F1 Team...
+Running Williams main()
+Connected to PostgreSQL database!
+Connection closed.
+Running FormulaOne main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Security Engineer - Formula1 was not created
+Job Senior Systems Engineer - Formula1 has no skills required, skipping...
+Job Senior Systems Engineer - Formula1 was not created
+Job Track Systems Engineer - Formula1 has no skills required, skipping...
+Job Track Systems Engineer - Formula1 was not created
+Job Senior Vehicle Performance Engineer - Formula1 was not created
+scraping nfl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Engineer was not created
+Job Intern, Partnership Solutions was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Seasonal Intern, International was not created
+Job Analyst, Partnership Solutions was not created
+Job Ticket Sales & Service Intern was not created
+Job Stadium Engineer has no skills required, skipping...
+Job Stadium Engineer was not created
+Job Development Analyst: Real Estate has no skills required, skipping...
+Job Development Analyst: Real Estate was not created
+Job Event Experience Intern (Year-Long) was not created
+Job IT Support Analyst has no skills required, skipping...
+Job IT Support Analyst was not created
+Job Growth and Recruitment Intern (Remote) has no skills required, skipping...
+Job Growth and Recruitment Intern (Remote) was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Community Programs Intern (Remote) has no skills required, skipping...
+Job Community Programs Intern (Remote) was not created
+Job Intern, Studio Operations was not created
+Job Cloud Infrastructure Engineer was not created
+Job Graphic Designer - International has no skills required, skipping...
+Job Graphic Designer - International was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Incident Tracking Analyst - Seasonal has no skills required, skipping...
+Job Incident Tracking Analyst - Seasonal was not created
+Job Ticketing Intern (Year-Long) has no skills required, skipping...
+Job Ticketing Intern (Year-Long) was not created
+Running TampaBayBuccaneers main()
+Connected to PostgreSQL database!
+Connection closed.
+Running BaltimoreRavens main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Baltimore Ravens...
+scraping nhl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Marketing Intern - NHL has no skills required, skipping...
+Job Marketing Intern - NHL was not created
+Job LA Kings - Sr. Director, Business Intelligence & Customer Analytics - NHL was not created
+Job Project Management Intern - NHL has no skills required, skipping...
+Job Project Management Intern - NHL was not created
+Job NHL Statistics Researcher - NHL was not created
+Job Analyst, Fan Research & Insights - NHL was not created
+Job Ticketing Senior Analyst - NHL was not created
+Job Part Time Engineer - NHL has no skills required, skipping...
+Job Part Time Engineer - NHL was not created
+Job Photography & Digital Media Intern - NHL was not created
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Job Foundation Intern - NHL was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Intern, Sales & Service - NHL has no skills required, skipping...
+Job Intern, Sales & Service - NHL was not created
+Job Intern, Finance - NHL was not created
+Job Intern, Community Development & Blues for Kids - NHL has no skills required, skipping...
+Job Intern, Community Development & Blues for Kids - NHL was not created
+Job Social Editor Intern - NHL has no skills required, skipping...
+Job Social Editor Intern - NHL was not created
+Job Game Presentation Entertainment Intern - NHL was not created
+Job Intern, Production Associate - NHL was not created
+Job Software Developer - NHL was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Machine Learning Engineer - NHL was not created
+Job Sr. Software Engineer - NHL was not created
+Job Director, Business Intelligence - NHL was not created
+Job Intern, Graphic Design - NHL has no skills required, skipping...
+Job Intern, Graphic Design - NHL was not created
+Job Internship: Sales Operations (Part-Time/Seasonal) - NHL was not created
+Job Internship: Marketing (Part-Time/Seasonal) - NHL was not created
+Job Internship: Youth Hockey Development (Part-Time/Seasonal) - NHL was not created
+Job Internship: Digital Media (Part-Time/Seasonal) - NHL was not created
+Job ServiceNow Platform Developer – Administration & Analytics - NHL was not created
+Job Senior Network Engineer - NHL was not created
+Job Communications Intern - NHL has no skills required, skipping...
+Job Communications Intern - NHL was not created
+Job Editorial Manager, NHL.com International - NHL was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Job Graphic Design Internship - NHL has no skills required, skipping...
+Job Graphic Design Internship - NHL was not created
+Job Facilities Engineer - War Memorial - NHL was not created
+Running CalgaryFlames main()
+Connected to PostgreSQL database!
+Connection closed.
+Running VancouverCanucks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Live Entertainment, Intern has no skills required, skipping...
+Job Live Entertainment, Intern was not created
+Job Director, Business Intelligence was not created
+scraping mls
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Corporate Partnerships Internship - MLS has no skills required, skipping...
+Job Corporate Partnerships Internship - MLS was not created
+Job Internship: Business Operations Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Business Operations Intern - Fall 2025 - MLS was not created
+Job Senior Orchestration Engineer (ServiceNow) - MLS was not created
+Job Social Media Intern - MLS has no skills required, skipping...
+Job Social Media Intern - MLS was not created
+Job Academy Video Analyst - MLS has no skills required, skipping...
+Job Academy Video Analyst - MLS was not created
+Job Education Intern - MLS was not created
+Job Internship: Marketing & Communications Intern - Power FC - Fall 2025 - MLS was not created
+Job Internship: Social Media Intern - Fall 2025 - MLS was not created
+Job Match Production Intern - MLS has no skills required, skipping...
+Job Match Production Intern - MLS was not created
+Job 2026 IT Intern - MLS has no skills required, skipping...
+Job 2026 IT Intern - MLS was not created
+Job PART-TIME - Associate, Data Strategy - MLS was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Social Content Intern - MLS has no skills required, skipping...
+Job Social Content Intern - MLS was not created
+Job Facilities Engineer - MLS was not created
+Job Merchandising/Retail Internship - MLS has no skills required, skipping...
+Job Merchandising/Retail Internship - MLS was not created
+Job Community Relations Internship - MLS has no skills required, skipping...
+Job Community Relations Internship - MLS was not created
+Job Marketing Intern - MLS was not created
+Job Media Communications Intern - MLS was not created
+Job Graphic Design Internship - MLS was not created
+Job Internship: Video Production Intern - Fall 2025 - MLS has no skills required, skipping...
+Job Internship: Video Production Intern - Fall 2025 - MLS was not created
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS has no skills required, skipping...
+Job College Intern, Houston Dynamo & Dash Soccer Team - MLS was not created
+Job Senior Manager, Business Insights & Analytics - MLS was not created
+Job Analyst, Business and Data Strategy - MLS was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Gameday Operations Internship (Fall 2025) - MLS has no skills required, skipping...
+Job Gameday Operations Internship (Fall 2025) - MLS was not created
+Job Senior Staff Machine Learning Engineer - MLS was not created
+Job Director, Business Insights & Analytics - MLS was not created
+Job 2025 Marketing Matchday Activation Intern - MLS has no skills required, skipping...
+Job 2025 Marketing Matchday Activation Intern - MLS was not created
+Job Athletic Training Internship (Educational)- Sounders FC - MLS has no skills required, skipping...
+Job Athletic Training Internship (Educational)- Sounders FC - MLS was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running VancouverWhitecaps main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Vancouver Whitecaps...
+Running NWSL_Teamworkonline main()
+Connected to PostgreSQL database!
+Connection closed.
+Job CRM & Operations Analyst - MLS was not created
+Job Tactical Analyst - MLS was not created
+Job Soccer Operations Internship - MLS was not created
+Job Social Media Intern - MLS was not created
+Job Merchandise Intern - MLS was not created
+Job Equipment Manager Internship- Fall 2025 - MLS was not created
+scraping jobsinfootball
+Running JobsInFootballDataScience main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Data &amp; Analytics UWEP Internship - Fall 2025 was not created
+Job Associate, Data Strategy - Part-Time was not created
+Job Senior Data Scientist was not created
+Job Data Strategy Intern has no skills required, skipping...
+Job Data Strategy Intern was not created
+Job Working Student in Power BI &amp; Data Visualization (m/f/d) was not created
+Job Head of Business Data (12-month FTC) was not created
+Job Sports Data Operator was not created
+Running JobsInFootballDataAnalyst main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst Club Office has no skills required, skipping...
+Job Data Analyst Club Office was not created
+Job Club Performance Analyst was not created
+Job Academy Performance Analyst has no skills required, skipping...
+Job Academy Performance Analyst was not created
+Job Men's 1st Team Coach Analyst has no skills required, skipping...
+Job Men's 1st Team Coach Analyst was not created
+Job Academy Recruitment Analyst was not created
+Job Senior Analyst, Transformation was not created
+Job First Team Analyst was not created
+Job Coach Analyst - Men’s 1st Team has no skills required, skipping...
+Job Coach Analyst - Men’s 1st Team was not created
+Job First Team Set Piece Analyst has no skills required, skipping...
+Job First Team Set Piece Analyst was not created
+Job Tactical Analyst was not created
+Job Academy Recruitment Analyst was not created
+Job Ecommerce Analytics Executive was not created
+Job Sr. Director, Marketing &amp; Product Analytics was not created
+scraping soccer clubs
+Running Liverpool main()
+Connected to PostgreSQL database!
+Connection closed.
+scraping scottpowers_scrapers
+Running ScottPowersScraper2 main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Sr Data Scientist was not created
+scraping MLB
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior Data Engineer, Baseball Systems was not created
+Job Intern, Bad Boy Mowers Pinstripe Bowl has no skills required, skipping...
+Job Intern, Bad Boy Mowers Pinstripe Bowl was not created
+Job Business Partnerships Intern has no skills required, skipping...
+Job Business Partnerships Intern was not created
+Job Data Systems Analyst has no skills required, skipping...
+Job Data Systems Analyst was not created
+Job Director of Baseball Data was not created
+Job Event Operations (Florida) - Data Tech / Scouting Role was not created
+Job Event Operations (Northeast) - Data Tech / Scouting Role was not created
+Job Event Operations (Carolinas) - Data Tech / Scouting Role was not created
+Job Analyst Fellow was not created
+Job Analyst, Financial Operations has no skills required, skipping...
+Job Analyst, Financial Operations was not created
+Job Sr. Data Engineer, Baseball Systems was not created
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior Technical Analyst has no skills required, skipping...
+Job Senior Technical Analyst was not created
+Job Quantitative Analyst was not created
+Job Senior Software Engineer - Front-End was not created
+Job Assistant Manager, Broadcast Engineering has no skills required, skipping...
+Job Assistant Manager, Broadcast Engineering was not created
+Job Baseball Data Analytics Internship (Fall) - Southeast was not created
+Job Baseball Data Analytics Internship (Fall) - Carolinas was not created
+Job Baseball Data Analytics Internship (Fall) - Northeast was not created
+Job Baseball Data Analytics Internship (Fall) - Midwest was not created
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Job Baseball Scouting Internship (Fall) - Southeast was not created
+Job Baseball Scouting Internship (Fall) - Northeast was not created
+Job Baseball Scouting Internship (Fall) - Carolinas was not created
+Job Baseball Scouting Internship (Fall) - Midwest was not created
+Job 2025 Technology Intern, Hudson Valley Renegades was not created
+Job Data Engineer was not created
+Job Dodger Vision Game Day Video Engineer was not created
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+scraping Other Companies
+Running SIG main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Quantitative Sports Researcher – Graduate Hire was not created
+Job Software Developer - Sports Analytics was not created
+Job Software Developer | Sports Trading Software | Experienced Hire was not created
+indexing sportsjobs
+Connected to PostgreSQL database!
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+IndexNow submission successful. Status: 200
+Connection closed.
+posting to linkedin
+2025-08-17 13:16:27,501 - INFO - Found 9 jobs to post
+2025-08-17 13:16:28,355 - INFO - Successfully posted job: Basketball Data Scientist at Miami Heat
+2025-08-17 13:16:29,215 - INFO - Successfully posted job: Sr Data Engineer at Atlanta Braves
+2025-08-17 13:16:30,084 - INFO - Successfully posted job: Data Engineer at University of Pittsburgh
+2025-08-17 13:16:30,989 - INFO - Successfully posted job: Software Development Intern at Detroit Pistons
+2025-08-17 13:16:31,895 - INFO - Successfully posted job: Basketball Operations Analyst Intern at Oklahoma City Thunder
+2025-08-17 13:16:32,813 - INFO - Successfully posted job: Applied AI Engineer Intern at Oklahoma City Thunder
+2025-08-17 13:16:33,728 - INFO - Successfully posted job: Director of Baseball Data at Miami Marlins
+2025-08-17 13:16:34,645 - INFO - Successfully posted job: Data Engineer at Dallas Mavericks
+2025-08-17 13:16:35,518 - INFO - Successfully posted job: Sports Scientist at McLaren Racing
+Connected to PostgreSQL database!
+posting to twitter
+2025-08-17 13:16:36,248 - INFO - Found 9 jobs to post to Twitter
+2025-08-17 13:16:36,620 - INFO - Successfully posted tweet for: Basketball Data Scientist at Miami Heat (Tweet ID: 1957069048635637931)
+2025-08-17 13:16:36,904 - INFO - Successfully posted tweet for: Sr Data Engineer at Atlanta Braves (Tweet ID: 1957069049860333894)
+2025-08-17 13:16:37,223 - INFO - Successfully posted tweet for: Data Engineer at University of Pittsburgh (Tweet ID: 1957069051068387629)
+2025-08-17 13:16:37,514 - INFO - Successfully posted tweet for: Software Development Intern at Detroit Pistons (Tweet ID: 1957069052435726677)
+2025-08-17 13:16:37,799 - INFO - Successfully posted tweet for: Basketball Operations Analyst Intern at Oklahoma City Thunder (Tweet ID: 1957069053618520323)
+2025-08-17 13:16:38,086 - INFO - Successfully posted tweet for: Applied AI Engineer Intern at Oklahoma City Thunder (Tweet ID: 1957069054797058320)
+2025-08-17 13:16:38,224 - ERROR - Failed to post tweet for Director of Baseball Data: 429 Too Many Requests
+Too Many Requests
+2025-08-17 13:16:38,363 - ERROR - Failed to post tweet for Data Engineer: 429 Too Many Requests
+Too Many Requests
+2025-08-17 13:16:38,506 - ERROR - Failed to post tweet for Sports Scientist: 429 Too Many Requests
+Too Many Requests
+Connected to PostgreSQL database!
+/home/sportsjobs/hetzner_utils.py:45: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query(query, conn)
+Connected to PostgreSQL database!
+asin.sam@gmail.com
+Connection closed.
+Connected to PostgreSQL database!
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:40 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:41 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:41 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:41 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:41 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:42 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Status: 200
+Response: {'content-type': 'application/json; charset=UTF-8', 'vary': 'Origin, X-Origin, Referer', 'date': 'Sun, 17 Aug 2025 13:16:42 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': '200', 'content-length': '88', '-content-encoding': 'gzip'}
+Connection closed.
+Connected to PostgreSQL database!
+Error occurred: 'access_token'
+Connection closed.
+All scripts executed successfully
