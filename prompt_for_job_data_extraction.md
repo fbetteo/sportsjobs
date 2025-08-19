@@ -187,8 +187,7 @@ Internship
 Junior]
 
 remote_office can only be from this list:
-[On-site
-Global Remote
+[Global Remote
 Remote
 Office]
 
@@ -215,5 +214,9 @@ I think I need you to pull the info and create the record in the same way as the
 And tell me then how to insert it into the database with minimal effort. It will probably be a script to connect to the db and insert. I also need the description which should be mardown formatted in json format.
 
 Ask me to send the job description or new job info.
+
+Then return the record dictionary, I'll provide the url of the opening and the logo url
+
+start date and creation date should be today but using python, somewthing like "creation_date": datetime.utcnow().isoformat(), for the description, just put : full_description, it's a variable I have defined in my code.
 </instructions>
 
