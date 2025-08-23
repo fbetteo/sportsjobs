@@ -7,7 +7,7 @@ SCOPES = ["https://www.googleapis.com/auth/indexing"]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
 
 # service_account_file.json is the private key that you created for your service account.
-JSON_KEY_FILE = "./sportsjobs-81587141c98e.json"
+JSON_KEY_FILE = "./sportsjobs-v2-key.json"
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(
     JSON_KEY_FILE, scopes=SCOPES
@@ -76,7 +76,7 @@ try:
         urls_to_submit = []
 
         for job in latest_jobs:
-            url = f"https://sportsjobs.online/jobs/{job['slug']}"
+            url = f"https://www.sportsjobs.online/jobs/{job['slug']}"
             urls_to_submit.append(url)
 
             # Google Indexing API submission
