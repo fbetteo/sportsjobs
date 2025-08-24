@@ -14,6 +14,11 @@ from bs4 import BeautifulSoup
 import re
 import utils
 import markdownify
+import requests
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 
 class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
@@ -38,7 +43,9 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load job listings")  # Raise exception instead of exit
+            raise Exception(
+                "Failed to load job listings"
+            )  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -116,6 +123,11 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
             print("Not a linkedin job, I need to handle those differently")
             return None
 
+        # Try to get job data from GhostGenius API for LinkedIn jobs
+        linkedin_job_data = self._fetch_linkedin_job_via_api(job["url"])
+        if linkedin_job_data:
+            return self._process_linkedin_api_response(linkedin_job_data, job)
+
         ## NOT TRYING TO GO INTO LINKEDIN FOR NOW
         # try:
         #     # Navigate to the job URL
@@ -161,27 +173,211 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         #     except Exception as e:
         #         print("Location not found:", e)
         #         location_value = "Not specified"
-        try:
-            hours = "Full-time"
-            location_value = ""
-            full_description = "To get all the details, please click Apply, you will be redirected to the linkedin job post."
 
-            self.logo = job.get("logo", self.logo)
+        # Fallback to basic job data if API fails
+        return self._fallback_linkedin_job_data(job)
+
+    def _fetch_linkedin_job_via_api(self, linkedin_url: str):
+        """
+        Fetch LinkedIn job data using GhostGenius API
+
+        Args:
+            linkedin_url (str): The LinkedIn job URL to scrape
+
+        Returns:
+            dict: Job data from API or None if failed
+        """
+        api_url = "https://api.ghostgenius.fr/v2/job"
+
+        # Get bearer token from environment variables
+        bearer_token = os.getenv("GHOSTGENIUS_API_TOKEN")
+        if not bearer_token:
+            print("Error: GHOSTGENIUS_API_TOKEN not found in environment variables")
+            return None
+
+        headers = {"Accept": "*/*", "Authorization": f"Bearer {bearer_token}"}
+
+        params = {"url": linkedin_url}
+
+        try:
+            print(f"Fetching LinkedIn job data for: {linkedin_url}")
+            response = requests.get(api_url, headers=headers, params=params, timeout=30)
+            response.raise_for_status()  # Raises an HTTPError for bad responses
+
+            job_data = response.json()
+            print("Successfully fetched job data from GhostGenius API")
+            return job_data
+
+        except requests.exceptions.Timeout:
+            print(f"Timeout error when calling GhostGenius API for {linkedin_url}")
+            return None
+        except requests.exceptions.RequestException as e:
+            print(f"Request error when calling GhostGenius API: {e}")
+            return None
+        except ValueError as e:
+            print(f"JSON decode error from GhostGenius API response: {e}")
+            return None
+        except Exception as e:
+            print(f"Unexpected error when calling GhostGenius API: {e}")
+            return None
+
+    def _process_linkedin_api_response(self, api_response: dict, original_job: dict):
+        """
+        Process the API response and format it for the job pipeline
+
+        Args:
+            api_response (dict): Response from GhostGenius API
+            original_job (dict): Original job data from scraper
+
+        Returns:
+            dict: Formatted job data for processing
+        """
+        try:
+            print("Processing LinkedIn API response...")
+            print(f"Job ID: {api_response.get('id', 'N/A')}")
+            print(f"Job Title: {api_response.get('title', 'N/A')}")
+
+            # Extract job information from API response
+            job_title = api_response.get("title", original_job.get("title", ""))
+            job_description = api_response.get("description", "")
+            contract_type = api_response.get("contract_type", "Full-time")
+            location = api_response.get("location", "")
+            work_place = api_response.get("work_place", "")
+            work_remote_allowed = api_response.get("work_remote_allowed", False)
+            linkedin_url = api_response.get("url", original_job.get("url", ""))
+
+            # Process location - combine location and work_place info
+            location_parts = []
+            if location:
+                location_parts.append(location)
+            if work_place and work_place != location:
+                location_parts.append(work_place)
+            if work_remote_allowed:
+                location_parts.append("Remote")
+
+            location_value = (
+                ", ".join(location_parts) if location_parts else "Not specified"
+            )
+
+            # Map contract type to hours format
+            hours_mapping = {
+                "Full-time": "Fulltime",
+                "Part-time": "Part-time",
+                "Contract": "Fulltime",
+                "Temporary": "Fulltime",
+                "Internship": "Fulltime",
+            }
+            hours = hours_mapping.get(contract_type, contract_type)
+
+            # Get company information
+            company_info = api_response.get("company", {})
+            company_name = company_info.get("full_name", original_job.get("team", ""))
+            company_logo_url = ""
+
+            # Extract company logo (use the largest available)
+            profile_pictures = company_info.get("profile_picture", [])
+            if profile_pictures:
+                # Sort by size and get the largest
+                largest_logo = max(
+                    profile_pictures,
+                    key=lambda x: x.get("width", 0) * x.get("height", 0),
+                )
+                company_logo_url = largest_logo.get("url", "")
+
+            # Get apply URL - prefer company direct URL over LinkedIn easy apply
+            apply_method = api_response.get("apply_method", {})
+            apply_url = (
+                apply_method.get("company_apply_url")
+                or apply_method.get("easy_apply_url")
+                or linkedin_url
+            )
+
+            # Get additional metadata
+            listed_date = api_response.get("listed_at_date", "")
+            job_state = api_response.get("state", "UNKNOWN")
+            is_closed = api_response.get("closed", False)
+
+            # Update job data with API information
+            updated_job = original_job.copy()
+            updated_job.update(
+                {
+                    "title": job_title,
+                    "url": apply_url,  # Use apply URL instead of LinkedIn URL if available
+                    "team": company_name,
+                    "logo": (
+                        company_logo_url
+                        if company_logo_url
+                        else original_job.get("logo", self.logo)
+                    ),
+                }
+            )
+
+            # Set logo for the scraper
+            if company_logo_url:
+                self.logo = [{"url": company_logo_url, "alt": company_name}]
+
+            print(f"Successfully processed LinkedIn job: {job_title} at {company_name}")
+            print(f"Location: {location_value}")
+            print(f"Hours: {hours}")
+            print(f"Apply URL: {apply_url}")
 
             return {
-                "job": job,
+                "job": updated_job,
                 "location_value": location_value,
                 "hours": hours,
-                "full_description": full_description,
+                "full_description": job_description,
                 "other_data": {
-                    "company": job["team"],
-                    "logo": job["logo"],
+                    "company": company_name,
+                    "logo": updated_job["logo"],
+                    "linkedin_job_id": api_response.get("id", ""),
+                    "linkedin_url": linkedin_url,
+                    "contract_type": contract_type,
+                    "work_remote_allowed": work_remote_allowed,
+                    "listed_date": listed_date,
+                    "job_state": job_state,
+                    "is_closed": is_closed,
+                    "company_linkedin_url": company_info.get("url", ""),
+                    "company_headline": company_info.get("headline", ""),
+                    "apply_method": apply_method,
+                    "original_linkedin_url": linkedin_url,
+                    "api_source": "ghostgenius",
                 },
             }
 
         except Exception as e:
-            print(f"Error extracting job details: {e}")
-            return None
+            print(f"Error processing LinkedIn API response: {e}")
+            print(
+                f"API Response structure: {type(api_response)} with keys: {list(api_response.keys()) if isinstance(api_response, dict) else 'Not a dict'}"
+            )
+            # Fallback to original method
+            return self._fallback_linkedin_job_data(original_job)
+
+    def _fallback_linkedin_job_data(self, job: dict):
+        """
+        Fallback method when API fails - returns basic job data
+
+        Args:
+            job (dict): Original job data
+
+        Returns:
+            dict: Basic job data structure
+        """
+        hours = "Full-time"
+        location_value = ""
+        full_description = "To get all the details, please click Apply, you will be redirected to the linkedin job post."
+
+        self.logo = job.get("logo", self.logo)
+
+        return {
+            "job": job,
+            "location_value": location_value,
+            "hours": hours,
+            "full_description": full_description,
+            "other_data": {
+                "company": job["team"],
+                "logo": job["logo"],
+            },
+        }
 
     def _enrich_and_format_job(self, job_data: dict):
 
@@ -191,6 +387,10 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         full_description = job_data.get("full_description")
 
         other_data = job_data.get("other_data", {})
+        # Escape job is status is closed.
+        if other_data.get("is_closed", "False"):
+            print("Job is closed, skipping.")
+            return None
 
         skills_required_format, all_skills_format = utils.get_skills_required(
             full_description
@@ -205,7 +405,8 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         accepts_remote = utils.get_remote_status(
             full_description, location_value, job["title"]
         )
-        hours = utils.get_hours(job["title"], full_description, hours)
+        # hours = utils.get_hours(job["title"], full_description, hours)
+        hours = job_data.get("hours", "Fulltime")
         remote_office = utils.is_remote_global(full_description)
         job_area = "Analytics"
 
