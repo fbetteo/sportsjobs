@@ -665,7 +665,7 @@ try:
                 insert_records(conn, "jobs", record)
 except Exception as e:
     print(f"Error occurred: {e}")
-    print(record)
+    print(company)
 finally:
     # Ensure the connection is closed if still open
     if conn and conn.closed == 0:
