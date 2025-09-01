@@ -158,6 +158,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "running newsletter email sequence"
+python newsletter_email_sequence.py
+if [ $? -ne 0 ]; then
+    echo "newsletter_email_sequence.py failed - continuing with other scripts"
+fi
+
 python deindex_expired_jobs.py
 if [ $? -ne 0 ]; then
     echo "deindex_expired_jobs.py failed"
