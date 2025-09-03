@@ -1,0 +1,21 @@
+2025-09-01 13:13:41,873 - INFO - Starting newsletter email sequence...
+2025-09-01 13:13:41,882 - INFO - Processing 0 users for day2 emails
+2025-09-01 13:13:41,882 - INFO - Processing 0 users for day4 emails
+2025-09-01 13:13:41,882 - INFO - Processing 0 users for day6 emails
+2025-09-01 13:13:41,882 - INFO - Newsletter sequence completed. Total emails sent: 0
+2025-09-02 13:14:52,594 - INFO - Starting newsletter email sequence...
+2025-09-02 13:14:52,603 - INFO - Processing 0 users for day2 emails
+2025-09-02 13:14:52,603 - INFO - Processing 0 users for day4 emails
+2025-09-02 13:14:52,603 - INFO - Processing 0 users for day6 emails
+2025-09-02 13:14:52,603 - INFO - Newsletter sequence completed. Total emails sent: 0
+2025-09-03 13:14:08,243 - INFO - Starting newsletter email sequence...
+2025-09-03 13:14:08,252 - INFO - Processing 3 users for day2 emails
+2025-09-03 13:14:08,645 - INFO - Successfully sent day2 email to fran.bto@hotmail.com
+2025-09-03 13:14:08,660 - INFO - Updated day2_sent tracking for user 1
+2025-09-03 13:14:09,731 - INFO - Successfully sent day2 email to colemanedawkins@gmail.com
+2025-09-03 13:14:09,748 - INFO - Updated day2_sent tracking for user 2
+2025-09-03 13:14:10,549 - INFO - Successfully sent day2 email to lutimoth@gmail.com
+2025-09-03 13:14:10,559 - INFO - Updated day2_sent tracking for user 3
+2025-09-03 13:14:11,060 - INFO - Processing 0 users for day4 emails
+2025-09-03 13:14:11,060 - INFO - Processing 0 users for day6 emails
+2025-09-03 13:14:11,060 - INFO - Newsletter sequence completed. Total emails sent: 3
