@@ -131,7 +131,7 @@ fi
 
 # Check if today is Monday (1), Wednesday (3), or Sunday (7)
 day_of_week=$(date +%u)
-if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 4 ]; then
+if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 3 ]  || [ "$day_of_week" -eq 4 ]; then
     echo "Today is a scheduled day for social media posting (Monday/Wednesday/Sunday)"
     
     echo "posting to linkedin"
@@ -148,7 +148,7 @@ if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 
         exit 1
     fi
 else
-    echo "Skipping social media posting - today is not a scheduled day (Monday/Wednesday/Sunday)"
+    echo "Skipping social media posting - today is not a scheduled day (Monday/Tuesday/Wednesday/Thursday)"
 fi
 
 # Run the final Python script
@@ -173,7 +173,7 @@ fi
 # Run the retryable script up to 5 times if it fails
 # in the end because it has 2 min wait and it is sync right now
 # Only run on Monday, Wednesday, Sunday
-if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 4 ]; then
+if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 3 ] || [ "$day_of_week" -eq 4 ]; then
     echo "Running airtable_api.py on scheduled day"
     max_retries=7
     retry_count=0
@@ -195,7 +195,7 @@ if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 
         exit 1
     fi
 else
-    echo "Skipping airtable_api.py - today is not a scheduled day (Monday/Wednesday/Sunday)"
+    echo "Skipping airtable_api.py - today is not a scheduled day (Monday/Tuesday/Wednesday/Thursday)"
 fi
 
 
