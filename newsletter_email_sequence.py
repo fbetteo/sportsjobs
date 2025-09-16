@@ -75,12 +75,12 @@ def get_welcome_email_template(name=""):
 def get_day2_email_template(name=""):
     """Email 2: The Hidden Value of Filtering (Day 2)"""
     return {
-        "subject": "Why paid members find better roles, faster",
+        "subject": "Why subscribers find better roles, faster",
         "preview": "See how filters + full access + course discounts make the difference.",
         "html": f"""
 <div style="background-color:#2F8164; padding:24px;">
   <div style="font-family:Arial, sans-serif; max-width:600px; margin:auto; background-color:#FFFFFF; padding:30px; line-height:1.6; color:#2D2D2D;">
-    <h1 style="color:#030712; text-align:center; margin:0 0 20px;">Why paid members find better roles, faster</h1>
+    <h1 style="color:#030712; text-align:center; margin:0 0 20px;">Why subscribers find better roles, faster</h1>
 
     <p style="font-size:16px; margin:0 0 16px;">Hi {name if name else 'there'},</p>
 
@@ -192,7 +192,10 @@ def get_day6_email_template(name=""):
     <p style="font-size:16px; margin:0 0 16px;">Hi {name if name else 'there'},</p>
 
     <p style="font-size:16px; margin:0 0 16px;">
-      You’ve seen what’s possible for free. Here’s what paid members unlock every day:
+      You’ve seen what’s possible in Sportsjobs Online.
+      Is there something missing, something you wish you had? Hit an email to franco@sportsjobs.online and I'll try to serve you better!
+       
+     Subscribers unlock every day a boost to their careers:
     </p>
 
     <ul style="font-size:16px; margin:0 0 16px; padding-left:20px;">
