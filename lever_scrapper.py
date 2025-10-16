@@ -339,6 +339,15 @@ try:
                         }
                     ],
                 },
+                "San Francisco Giants": {
+                    "lever_name": "sfgiants",
+                    "logo": [
+                        {
+                            "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/0c75e9ce-4a01-454d-9b83-5da9331aab0b-1694102446828.png",
+                            "filename": "sfgiants.png",
+                        }
+                    ],
+                },
             },
             # # "Betstamp": {
             # #     "lever_name": "Betstamp",

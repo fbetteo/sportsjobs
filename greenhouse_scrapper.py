@@ -448,6 +448,15 @@ try:
                     }
                 ],
             },
+            "Headspace": {
+                "greenhouse_name": "hs",
+                "logo": [
+                    {
+                        "url": "https://recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/000/013/260/original/headspace-logo-RGB-primary.png?1737157141",
+                        "filename": "headspace.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
