@@ -179,7 +179,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
 
     def _fetch_linkedin_job_via_api(self, linkedin_url: str):
         """
-        Fetch LinkedIn job data using GhostGenius API
+        Fetch LinkedIn job data using Brightdata API (two-step process)
 
         Args:
             linkedin_url (str): The LinkedIn job URL to scrape
@@ -187,38 +187,91 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         Returns:
             dict: Job data from API or None if failed
         """
-        api_url = "https://api.ghostgenius.fr/v2/job"
-
         # Get bearer token from environment variables
-        bearer_token = os.getenv("GHOSTGENIUS_API_TOKEN")
+        bearer_token = os.getenv("BRIGHTDATA_API_TOKEN")
         if not bearer_token:
-            print("Error: GHOSTGENIUS_API_TOKEN not found in environment variables")
+            print("Error: BRIGHTDATA_API_TOKEN not found in environment variables")
             return None
 
-        headers = {"Accept": "*/*", "Authorization": f"Bearer {bearer_token}"}
-
-        params = {"url": linkedin_url}
+        dataset_id = os.getenv("BRIGHTDATA_DATASET_ID", "gd_lpfll7v5hcqtkxl6l")
 
         try:
             print(f"Fetching LinkedIn job data for: {linkedin_url}")
-            response = requests.get(api_url, headers=headers, params=params, timeout=30)
-            response.raise_for_status()  # Raises an HTTPError for bad responses
 
-            job_data = response.json()
-            print("Successfully fetched job data from GhostGenius API")
+            # Step 1: Trigger the scraping job
+            trigger_url = "https://api.brightdata.com/datasets/v3/trigger"
+            trigger_headers = {
+                "Authorization": f"Bearer {bearer_token}",
+                "Content-Type": "application/json",
+            }
+            trigger_params = {
+                "dataset_id": dataset_id,
+                "include_errors": "true",
+            }
+            trigger_data = [{"url": linkedin_url}]
+
+            trigger_response = requests.post(
+                trigger_url,
+                headers=trigger_headers,
+                params=trigger_params,
+                json=trigger_data,
+                timeout=30,
+            )
+            trigger_response.raise_for_status()
+            trigger_result = trigger_response.json()
+
+            snapshot_id = trigger_result.get("snapshot_id")
+            if not snapshot_id:
+                print(
+                    f"Error: No snapshot_id returned from Brightdata trigger: {trigger_result}"
+                )
+                return None
+
+            print(f"Trigger successful. Snapshot ID: {snapshot_id}")
+
+            # Step 2: Wait briefly for processing (Brightdata processes quickly but not instant)
+            time.sleep(3)
+
+            # Step 3: Fetch the snapshot data
+            snapshot_url = (
+                f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}"
+            )
+            snapshot_headers = {
+                "Authorization": f"Bearer {bearer_token}",
+            }
+            snapshot_params = {
+                "format": "json",
+            }
+
+            snapshot_response = requests.get(
+                snapshot_url,
+                headers=snapshot_headers,
+                params=snapshot_params,
+                timeout=30,
+            )
+            snapshot_response.raise_for_status()
+            job_data_list = snapshot_response.json()
+
+            # The response is a list, get the first item
+            if not job_data_list or len(job_data_list) == 0:
+                print(f"Error: Empty response from Brightdata snapshot")
+                return None
+
+            job_data = job_data_list[0]
+            print("Successfully fetched job data from Brightdata API")
             return job_data
 
         except requests.exceptions.Timeout:
-            print(f"Timeout error when calling GhostGenius API for {linkedin_url}")
+            print(f"Timeout error when calling Brightdata API for {linkedin_url}")
             return None
         except requests.exceptions.RequestException as e:
-            print(f"Request error when calling GhostGenius API: {e}")
+            print(f"Request error when calling Brightdata API: {e}")
             return None
         except ValueError as e:
-            print(f"JSON decode error from GhostGenius API response: {e}")
+            print(f"JSON decode error from Brightdata API response: {e}")
             return None
         except Exception as e:
-            print(f"Unexpected error when calling GhostGenius API: {e}")
+            print(f"Unexpected error when calling Brightdata API: {e}")
             return None
 
     def _process_linkedin_api_response(self, api_response: dict, original_job: dict):
@@ -226,7 +279,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         Process the API response and format it for the job pipeline
 
         Args:
-            api_response (dict): Response from GhostGenius API
+            api_response (dict): Response from Brightdata API
             original_job (dict): Original job data from scraper
 
         Returns:
@@ -234,30 +287,25 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         """
         try:
             print("Processing LinkedIn API response...")
-            print(f"Job ID: {api_response.get('id', 'N/A')}")
-            print(f"Job Title: {api_response.get('title', 'N/A')}")
+            print(f"Job ID: {api_response.get('job_posting_id', 'N/A')}")
+            print(f"Job Title: {api_response.get('job_title', 'N/A')}")
 
-            # Extract job information from API response
-            job_title = api_response.get("title", original_job.get("title", ""))
-            job_description = api_response.get("description", "")
-            contract_type = api_response.get("contract_type", "Full-time")
-            location = api_response.get("location", "")
-            work_place = api_response.get("work_place", "")
-            work_remote_allowed = api_response.get("work_remote_allowed", False)
+            # Extract job information from Brightdata API response
+            job_title = api_response.get("job_title", original_job.get("title", ""))
+            # Use job_summary as description (it contains the text content)
+            job_description = api_response.get("job_summary", "")
+            contract_type = api_response.get("job_employment_type", "Full-time")
+            location = api_response.get("job_location", "")
             linkedin_url = api_response.get("url", original_job.get("url", ""))
 
-            # Process location - combine location and work_place info
-            location_parts = []
-            if location:
-                location_parts.append(location)
-            if work_place and work_place != location:
-                location_parts.append(work_place)
-            if work_remote_allowed:
-                location_parts.append("Remote")
-
-            location_value = (
-                ", ".join(location_parts) if location_parts else "Not specified"
+            # Infer remote status from location string
+            work_remote_allowed = any(
+                keyword in location.lower()
+                for keyword in ["remote", "hybrid", "anywhere"]
             )
+
+            # Process location
+            location_value = location if location else "Not specified"
 
             # Map contract type to hours format
             hours_mapping = {
@@ -267,42 +315,39 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
                 "Temporary": "Fulltime",
                 "Internship": "Fulltime",
             }
-            hours = hours_mapping.get(contract_type, contract_type)
+            hours = hours_mapping.get(contract_type, "Fulltime")
 
             # Get company information
-            company_info = api_response.get("company", {})
-            company_name = company_info.get("full_name", original_job.get("team", ""))
-            company_logo_url = ""
-
-            # Extract company logo (use the largest available)
-            profile_pictures = company_info.get("profile_picture", [])
-            if profile_pictures:
-                # Sort by size and get the largest
-                largest_logo = max(
-                    profile_pictures,
-                    key=lambda x: x.get("width", 0) * x.get("height", 0),
-                )
-                company_logo_url = largest_logo.get("url", "")
-
-            # Get apply URL - prefer company direct URL over LinkedIn easy apply
-            apply_method = api_response.get("apply_method", {})
-            apply_url = (
-                apply_method.get("company_apply_url")
-                or apply_method.get("easy_apply_url")
-                or linkedin_url
+            company_name = api_response.get(
+                "company_name", original_job.get("team", "")
             )
+            company_logo_url = api_response.get("company_logo", "")
+            company_linkedin_url = api_response.get("company_url", "")
+
+            # Get apply URL - use apply_link if available, otherwise use the original URL
+            apply_url = api_response.get("apply_link") or linkedin_url
 
             # Get additional metadata
-            listed_date = api_response.get("listed_at_date", "")
-            job_state = api_response.get("state", "UNKNOWN")
-            is_closed = api_response.get("closed", False)
+            listed_date = api_response.get("job_posted_date", "")
+            job_posted_time = api_response.get("job_posted_time", "")
+            num_applicants = api_response.get("job_num_applicants", 0)
+            is_easy_apply = api_response.get("is_easy_apply", False)
+            seniority_level = api_response.get("job_seniority_level", "")
+            job_function = api_response.get("job_function", "")
+            job_industries = api_response.get("job_industries", "")
+            base_pay_range = api_response.get("job_base_pay_range", "")
+
+            # Job poster information
+            job_poster = api_response.get("job_poster", {})
+            poster_name = job_poster.get("name", "") if job_poster else ""
+            poster_title = job_poster.get("title", "") if job_poster else ""
 
             # Update job data with API information
             updated_job = original_job.copy()
             updated_job.update(
                 {
                     "title": job_title,
-                    "url": apply_url,  # Use apply URL instead of LinkedIn URL if available
+                    "url": apply_url,  # Use apply URL if available
                     "team": company_name,
                     "logo": (
                         company_logo_url
@@ -320,6 +365,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
             print(f"Location: {location_value}")
             print(f"Hours: {hours}")
             print(f"Apply URL: {apply_url}")
+            print(f"Applicants: {num_applicants}")
 
             return {
                 "job": updated_job,
@@ -329,18 +375,24 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
                 "other_data": {
                     "company": company_name,
                     "logo": updated_job["logo"],
-                    "linkedin_job_id": api_response.get("id", ""),
+                    "linkedin_job_id": api_response.get("job_posting_id", ""),
                     "linkedin_url": linkedin_url,
                     "contract_type": contract_type,
                     "work_remote_allowed": work_remote_allowed,
                     "listed_date": listed_date,
-                    "job_state": job_state,
-                    "is_closed": is_closed,
-                    "company_linkedin_url": company_info.get("url", ""),
-                    "company_headline": company_info.get("headline", ""),
-                    "apply_method": apply_method,
+                    "job_posted_time": job_posted_time,
+                    "num_applicants": num_applicants,
+                    "is_easy_apply": is_easy_apply,
+                    "seniority_level": seniority_level,
+                    "job_function": job_function,
+                    "job_industries": job_industries,
+                    "base_pay_range": base_pay_range,
+                    "company_linkedin_url": company_linkedin_url,
+                    "company_id": api_response.get("company_id", ""),
+                    "poster_name": poster_name,
+                    "poster_title": poster_title,
                     "original_linkedin_url": linkedin_url,
-                    "api_source": "ghostgenius",
+                    "api_source": "brightdata",
                 },
             }
 
@@ -387,10 +439,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
         full_description = job_data.get("full_description")
 
         other_data = job_data.get("other_data", {})
-        # Escape job is status is closed.
-        if other_data.get("is_closed", "False"):
-            print("Job is closed, skipping.")
-            return None
+        # Note: Brightdata doesn't provide job closed status, so we can't filter closed jobs
 
         skills_required_format, all_skills_format = utils.get_skills_required(
             full_description
