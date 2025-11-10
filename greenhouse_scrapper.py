@@ -457,6 +457,15 @@ try:
                     }
                 ],
             },
+            "Detroit Lions": {
+                "greenhouse_name": "detroitlions",
+                "logo": [
+                    {
+                        "url": "https://s5-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/384/500/original/Logo.jpeg?1661888077",
+                        "filename": "detroitlions.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
