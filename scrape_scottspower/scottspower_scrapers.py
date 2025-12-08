@@ -16,6 +16,7 @@ import utils
 import markdownify
 import requests
 from dotenv import load_dotenv
+import html
 
 # Load environment variables
 load_dotenv()
@@ -292,8 +293,18 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
 
             # Extract job information from Brightdata API response
             job_title = api_response.get("job_title", original_job.get("title", ""))
-            # Use job_summary as description (it contains the text content)
-            job_description = api_response.get("job_summary", "")
+
+            # Prefer job_description_formatted (HTML format) and convert to markdown
+            # If not available, fallback to job_summary
+            job_description_raw = api_response.get("job_description_formatted")
+            if job_description_raw:
+                # Unescape HTML entities and convert to markdown (similar to greenhouse_scraper)
+                decoded = html.unescape(job_description_raw)
+                job_description = markdownify.markdownify(decoded, heading_style="ATX")
+            else:
+                # Fallback to job_summary if job_description_formatted doesn't exist
+                job_description = api_response.get("job_summary", "")
+
             contract_type = api_response.get("job_employment_type", "Full-time")
             location = api_response.get("job_location", "")
             linkedin_url = api_response.get("url", original_job.get("url", ""))
