@@ -230,7 +230,7 @@ class ScottPowersScraper2(base_scraper.companyscraper.CompanyScraper):
             print(f"Trigger successful. Snapshot ID: {snapshot_id}")
 
             # Step 2: Wait briefly for processing (Brightdata processes quickly but not instant)
-            time.sleep(3)
+            time.sleep(10)
 
             # Step 3: Fetch the snapshot data
             snapshot_url = (
