@@ -466,6 +466,15 @@ try:
                     }
                 ],
             },
+            "Superbet": {
+                "greenhouse_name": "superbet",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/134/810/original/Super-Logo.jpg?1765813793",
+                        "filename": "superbet.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
