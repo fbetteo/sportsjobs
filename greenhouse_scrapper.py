@@ -475,6 +475,33 @@ try:
                     }
                 ],
             },
+            "beat81": {
+                "greenhouse_name": "beat81",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/job_board_renderer/job_board_configurations/banners/400/207/110/original/Copy_of_Beat81_Logo_-_Red.png?1739812311",
+                        "filename": "beat81.png",
+                    }
+                ],
+            },
+            "vgw": {
+                "greenhouse_name": "vgw",
+                "logo": [
+                    {
+                        "url": "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/188/800/original/VGW_MainLogo_WLG_COL_POS.png?1718086906",
+                        "filename": "vgw.png",
+                    }
+                ],
+            },
+            "2k": {
+                "greenhouse_name": "2k",
+                "logo": [
+                    {
+                        "url": "https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/269/700/original/2K_Logo_Red_solid.png?1742487450",
+                        "filename": "2k.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
