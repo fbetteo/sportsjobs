@@ -45,6 +45,7 @@ def get_recent_jobs_df(conn, days=1):
     df = pd.read_sql_query(query, conn)
     return df
 
+
 def get_expired_jobs(conn, days=61):
     with conn.cursor(cursor_factory=DictCursor) as cursor:
         cursor.execute(f"SELECT * FROM jobs where CURRENT_DATE - start_date = {days}")

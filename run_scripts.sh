@@ -71,6 +71,48 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "scraping college"
+python scrape_college/college_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script college_scrapers.py failed"
+    exit 1
+fi
+
+echo "scraping mma"
+python scrape_mma/mma_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script mma_scrapers.py failed"
+    exit 1
+fi
+
+echo "scraping golf"
+python scrape_golf/golf_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script golf_scrapers.py failed"
+    exit 1
+fi
+
+echo "scraping tennis"
+python scrape_tennis/tennis_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script tennis_scrapers.py failed"
+    exit 1
+fi
+
+echo "scraping motorsports"
+python scrape_motorsports/motorsports_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script motorsports_scrapers.py failed"
+    exit 1
+fi
+
+echo "scraping sports tech"
+python scrape_sportstech/sportstech_scrapers.py
+if [ $? -ne 0 ]; then
+    echo "script sportstech_scrapers.py failed"
+    exit 1
+fi
+
 echo "scraping nhl"
 python scrape_nhl/nhl_scrapers.py
 if [ $? -ne 0 ]; then
