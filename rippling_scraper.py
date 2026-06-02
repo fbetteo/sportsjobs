@@ -50,7 +50,7 @@ try:
                 "board_name": "sumersports",
                 "logo": [
                     {
-                        "url": "",
+                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQya1ua76o6KQNaH8cM_uriozY4lJ852BorFA&s",
                         "filename": "sumersports.png",
                     }
                 ],

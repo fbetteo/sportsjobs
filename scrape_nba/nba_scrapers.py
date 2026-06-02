@@ -38,7 +38,9 @@ class AtlantaHawks(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load TeamworkOnline job listings")  # Raise exception instead of exit
+            raise Exception(
+                "Failed to load TeamworkOnline job listings"
+            )  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -115,7 +117,7 @@ class BostonCeltics(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -201,7 +203,7 @@ class CharlotteHornets(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -273,7 +275,7 @@ class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
         self.company = "Cleveland Cavaliers"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/160px-Cleveland_Cavaliers_logo.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/250px-Cleveland_Cavaliers_logo.svg.png",
                 "filename": "clevelandcavaliers.png",
             }
         ]
@@ -289,7 +291,7 @@ class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -355,7 +357,7 @@ class DallasMavericks(base_scraper.companyscraper.CompanyScraper):
         self.company = "Dallas Mavericks"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Dallas_mavericks_wordmark.gif/320px-Dallas_mavericks_wordmark.gif",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/97/Dallas_Mavericks_logo.svg/250px-Dallas_Mavericks_logo.svg.png",
                 "filename": "dallasmavericks.png",
             }
         ]
@@ -371,7 +373,7 @@ class DallasMavericks(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -454,7 +456,7 @@ class DetroitPistons(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -532,7 +534,7 @@ class GoldenStateWarriors(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -600,7 +602,7 @@ class HoustonRockets(base_scraper.companyscraper.CompanyScraper):
         self.company = "Houston Rockets"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/170px-Houston_Rockets.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/250px-Houston_Rockets.svg.png",
                 "filename": "houstonrockets.png",
             }
         ]
@@ -616,7 +618,7 @@ class HoustonRockets(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -695,7 +697,7 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         job_table = driver.find_element(By.CLASS_NAME, "reqResultTable")
@@ -786,7 +788,7 @@ class LosAngelesLakers(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -884,7 +886,7 @@ class MiamiHeat(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -957,7 +959,7 @@ class MinnesotaTimberwolves(base_scraper.companyscraper.CompanyScraper):
         self.company = "Minnesota Timberwolves"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/200px-Minnesota_Timberwolves_logo.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/250px-Minnesota_Timberwolves_logo.svg.png",
                 "filename": "minnesotatimberwolves.png",
             }
         ]
@@ -971,7 +973,7 @@ class MinnesotaTimberwolves(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1060,7 +1062,7 @@ class NewOrleansPelicans(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1160,7 +1162,7 @@ class OklahomaThunder(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1253,7 +1255,7 @@ class OrlandoMagic(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1341,7 +1343,7 @@ class PhoenixSuns(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1429,7 +1431,7 @@ class SacramentoKings(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1508,7 +1510,7 @@ class SanAntonioSpurs(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1586,7 +1588,7 @@ class UtahJazz(base_scraper.companyscraper.CompanyScraper):
         self.company = "Utah Jazz"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Utah_Jazz_logo_2022.svg/230px-Utah_Jazz_logo_2022.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Utah_Jazz_logo_2025.svg/250px-Utah_Jazz_logo_2025.svg.png",
                 "filename": "utahjazz.png",
             }
         ]
@@ -1604,7 +1606,7 @@ class UtahJazz(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1685,7 +1687,7 @@ class WashingtonWizards(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -1768,7 +1770,7 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []

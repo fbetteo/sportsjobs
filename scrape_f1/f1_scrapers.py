@@ -23,7 +23,7 @@ class FormulaOne(base_scraper.companyscraper.CompanyScraper):
         self.company = "Formula 1"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/F1_%28registered_trademark%29.svg/250px-F1_%28registered_trademark%29.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Formula_One_logo.svg/330px-Formula_One_logo.svg.png",
                 "filename": "formulaone.png",
             }
         ]
@@ -37,7 +37,9 @@ class FormulaOne(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load TeamworkOnline job listings")  # Raise exception instead of exit
+            raise Exception(
+                "Failed to load TeamworkOnline job listings"
+            )  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -125,7 +127,9 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings")  # Raise exception instead of exit
+            raise Exception(
+                "Failed to load  job listings"
+            )  # Raise exception instead of exit
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -217,7 +221,7 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -312,7 +316,7 @@ class RedBull(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -398,7 +402,7 @@ class Haas(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
@@ -502,7 +506,7 @@ class Williams(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
