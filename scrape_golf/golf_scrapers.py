@@ -12,6 +12,7 @@ import markdownify
 
 
 class GOLF_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
+    excluded_companies = {"hurricane junior golf tour"}
 
     def __init__(self, driver=None, keywords=None):
         super().__init__(driver=driver, keywords=keywords)
@@ -68,6 +69,9 @@ class GOLF_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
                 By.CSS_SELECTOR, "div.lic-header__name > h1"
             )
             self.company = team_name_element.text
+            if self.company.strip().lower() in self.excluded_companies:
+                print(f"Skipping excluded company: {self.company}")
+                return None
 
             image_element = self.driver.find_element(
                 By.CSS_SELECTOR,
