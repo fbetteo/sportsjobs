@@ -681,7 +681,7 @@ class IndianaPacers(base_scraper.companyscraper.CompanyScraper):
         self.company = "Indiana Pacers"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Indiana_Pacers.svg/200px-Indiana_Pacers.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Indiana_Pacers.svg/500px-Indiana_Pacers.svg.png",
                 "filename": "indianapacers.png",
             }
         ]
@@ -1496,7 +1496,7 @@ class SanAntonioSpurs(base_scraper.companyscraper.CompanyScraper):
         self.company = "San Antonio Spurs"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/240px-San_Antonio_Spurs.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/500px-San_Antonio_Spurs.svg.png",
                 "filename": "sananotniospurs.png",
             }
         ]
@@ -1752,7 +1752,7 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
         self.company = "WNBA"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/WNBA_logo.png/200px-WNBA_logo.png",
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/WNBA_logo.png/500px-WNBA_logo.png",
                 "filename": "wnba.png",
             }
         ]

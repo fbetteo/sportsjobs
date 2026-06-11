@@ -23,7 +23,7 @@ class Liverpool(base_scraper.companyscraper.CompanyScraper):
         self.company = "Liverpool FC"
         self.logo = [
             {
-                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/180px-Liverpool_FC.svg.png",
+                "url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/500px-Liverpool_FC.svg.png",
                 "filename": "liverpoolfc.png",
             }
         ]
@@ -37,7 +37,7 @@ class Liverpool(base_scraper.companyscraper.CompanyScraper):
             )
         except:
             print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
+            raise Exception("Failed to load  job listings")
 
     def get_jobs_available(self):
         jobs_rows = []
