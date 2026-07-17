@@ -239,6 +239,15 @@ try:
                     }
                 ],
             },
+            "smarkets": {
+                "name": "smarkets",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/c7affbdb-3281-4464-90f9-7edfb6170e07/43a1cba7-c354-49a8-ba61-0c5efd4c0735/01c6d6d3-c384-47fc-866a-abd13239615a.png",
+                        "filename": "smarkets.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():

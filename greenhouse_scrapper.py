@@ -502,6 +502,15 @@ try:
                     }
                 ],
             },
+            "playstation": {
+                "greenhouse_name": "sonyinteractiveentertainmentglobal",
+                "logo": [
+                    {
+                        "url": "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/015/800/original/Screenshot_2026-04-16_at_10.37.35%E2%80%AFAM.png?1777987163",
+                        "filename": "playstation.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
