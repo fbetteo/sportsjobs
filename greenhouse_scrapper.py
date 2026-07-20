@@ -511,6 +511,15 @@ try:
                     }
                 ],
             },
+            "seatgeek": {
+                "greenhouse_name": "seatgeek",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Seatgeek_logo.svg/500px-Seatgeek_logo.svg.png",
+                        "filename": "seatgeek.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
