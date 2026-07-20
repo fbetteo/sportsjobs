@@ -46,9 +46,17 @@ def get_recent_jobs_df(conn, days=1):
     return df
 
 
-def get_expired_jobs(conn, days=61):
+def get_expired_jobs(conn):
     with conn.cursor(cursor_factory=DictCursor) as cursor:
-        cursor.execute(f"SELECT * FROM jobs where CURRENT_DATE - start_date = {days}")
+        cursor.execute(
+            """
+            SELECT *
+            FROM jobs
+            WHERE creation_date IS NOT NULL
+              AND ((creation_date AT TIME ZONE 'UTC') + INTERVAL '2 months')::date
+                  = (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date
+            """
+        )
         records = cursor.fetchall()
         result = [dict(record) for record in records]
     return result
