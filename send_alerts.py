@@ -1,353 +1,307 @@
-import resend
-import os
-
-from pyairtable import Api
-import time
 import json
+import os
+from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
+from html import escape
+from typing import Any, Callable, Mapping, Sequence
+from urllib.parse import quote, urlencode
 
-import pandas as pd
-import numpy as np
-from hetzner_utils import (
-    start_postgres_connection,
-    get_recent_urls,
-    get_skills,
-    insert_records,
-    get_recent_jobs,
-    get_recent_jobs_df,
-    get_table,
-)
-
-# from dotenv import load_dotenv, find_dotenv
+from alert_matching import RankedJob, select_digest_jobs
+from hetzner_utils import get_jobs_for_alerts, get_table, start_postgres_connection
 
 
-# load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/sportsjobs/.env"))
-
-# AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-# AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
-# AIRTABLE_ALERTS_TABLE = os.getenv("AIRTABLE_ALERTS_TABLE")
-# AIRTABLE_USERS_TABLE = os.getenv("AIRTABLE_USERS_TABLE")
-# AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
-
-resend.api_key = os.environ["RESEND_API_KEY"]
-
-# api = Api(AIRTABLE_TOKEN)
+PAID_PLANS = {
+    "lifetime",
+    "yearly_subscription",
+    "monthly_subscription",
+    "weekly_subscription",
+}
+SITE_URL = "https://www.sportsjobs.online"
 
 
-# alerts_table = api.table(AIRTABLE_BASE, AIRTABLE_ALERTS_TABLE).all()
-# users_table = api.table(AIRTABLE_BASE, AIRTABLE_USERS_TABLE).all()
-# jobs_table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE).all()
+@dataclass(frozen=True)
+class AlertDigest:
+    email: str
+    name: str
+    frequency: str
+    strong: Sequence[RankedJob]
+    close: Sequence[RankedJob]
 
-from datetime import datetime, timedelta
 
-# fields_data = [item["fields"] for item in jobs_table]
-conn = start_postgres_connection()
+def normalize_email(value: Any) -> str:
+    return str(value or "").strip().casefold()
 
-try:
-    with conn as conn:
-        jobs_data = get_recent_jobs_df(conn, days=8)
-        alerts_data = get_table(conn, "alerts")
-        users_data = get_table(conn, "users")
-        user_alerts_df = pd.DataFrame(alerts_data)[["name", "email"]]
-        plan_user_df = pd.DataFrame(users_data)[["email", "plan"]]
 
-        # Get today's date
-        today = datetime.now()
+def _parse_datetime(value: Any) -> datetime | None:
+    if isinstance(value, datetime):
+        parsed = value
+    elif isinstance(value, str):
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    else:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
 
-        # Calculate the date 7 days ago
-        seven_days_ago = today - timedelta(days=7)
-        yesterday = today - timedelta(days=1)
 
-        jobs_data = jobs_data.query("@pd.to_datetime(`start_date`) >= @seven_days_ago ")
-        jobs_data["sport_list"] = jobs_data["sport_list"].apply(
-            lambda x: "Any" if pd.isna(x) else x
-        )
-        jobs_data["skills"] = jobs_data["skills"].apply(
-            lambda x: ["Any"] if x is np.nan else x
-        )
-        jobs_data_yesterday = jobs_data.query(
-            "@pd.to_datetime(`start_date`) >= @yesterday "
-        )
+def _paid_emails(users: Sequence[Mapping[str, Any]]) -> set[str]:
+    return {
+        normalize_email(user.get("email"))
+        for user in users
+        if normalize_email(user.get("email"))
+        and str(user.get("plan") or "").casefold() in PAID_PLANS
+    }
 
-        # def get_users_with_alerts(alerts_table):
-        #     new_records = []
-        #     keys_to_extract = ["Name", "email"]
-        #     for record in alerts_table:
-        #         filtered_dict = {
-        #             k: record["fields"][k] for k in keys_to_extract if k in record["fields"]
-        #         }
-        #         new_records.append(filtered_dict)
-        #     return new_records
 
-        # def get_plan_per_user(users_table):
-        #     new_records = []
-        #     keys_to_extract = ["email", "plan"]
-        #     for record in users_table:
-        #         filtered_dict = {
-        #             k: record["fields"][k] for k in keys_to_extract if k in record["fields"]
-        #         }
-        #         new_records.append(filtered_dict)
-        #     return new_records
+def _group_alerts(
+    alerts: Sequence[Mapping[str, Any]],
+) -> dict[str, list[Mapping[str, Any]]]:
+    grouped: dict[str, list[Mapping[str, Any]]] = {}
+    for alert in alerts:
+        email = normalize_email(alert.get("email"))
+        if email:
+            grouped.setdefault(email, []).append(alert)
+    return grouped
 
-        # user_alerts_df = pd.DataFrame(get_users_with_alerts(alerts_table))
-        # plan_user_df = pd.DataFrame(get_plan_per_user(users_table))
 
-        # Merge the two DataFrames
-        merged_df = pd.merge(user_alerts_df, plan_user_df, on="email", how="left")
-        merged_df["frequency"] = np.where(
-            merged_df["plan"].isin(
-                [
-                    "lifetime",
-                    "yearly_subscription",
-                    "monthly_subscription",
-                    "weekly_subscription",
-                ]
-            ),
-            "daily",
-            "weekly",
-        )
+def build_digests(
+    alerts: Sequence[Mapping[str, Any]],
+    users: Sequence[Mapping[str, Any]],
+    jobs: Sequence[Mapping[str, Any]],
+    now: datetime,
+) -> tuple[list[AlertDigest], dict[str, int]]:
+    now = now.astimezone(timezone.utc)
+    paid_emails = _paid_emails(users)
+    grouped_alerts = _group_alerts(alerts)
+    stats = {
+        "alerts": len(alerts),
+        "recipients": len(grouped_alerts),
+        "skipped_digests": 0,
+        "outside_schedule": 0,
+        "without_matches": 0,
+        "strong_matches": 0,
+        "close_matches": 0,
+        "jobs_without_slugs": sum(
+            1 for job in jobs if not str(job.get("slug") or "").strip()
+        ),
+    }
+    digests: list[AlertDigest] = []
 
-        PROTECTED_LIST = ["francobetteo@gmail.com", "gene.mrq@gmail.com"]
-        merged_df = merged_df.loc[~merged_df["email"].isin(PROTECTED_LIST), :]
+    for email, user_alerts in grouped_alerts.items():
+        frequency = "daily" if email in paid_emails else "weekly"
+        if frequency == "weekly" and now.strftime("%A") != "Wednesday":
+            stats["skipped_digests"] += 1
+            stats["outside_schedule"] += 1
+            continue
 
-        def create_filter(jobs_data, alert):
-            jobs_data_len = jobs_data.shape[0]
-            country_mask = [True] * jobs_data_len
-            seniority_mask = [True] * jobs_data_len
-            sport_mask = [True] * jobs_data_len
-            skills_mask = [True] * jobs_data_len
-            remote_office_mask = [True] * jobs_data_len
-            industry_mask = [True] * jobs_data_len
-            hours_mask = [True] * jobs_data_len
+        window = timedelta(days=1 if frequency == "daily" else 7)
+        cutoff = now - window
+        eligible_jobs = [
+            job
+            for job in jobs
+            if (created := _parse_datetime(job.get("creation_date"))) is not None
+            and created >= cutoff
+        ]
+        strong, close = select_digest_jobs(eligible_jobs, user_alerts)
+        if not strong and not close:
+            stats["skipped_digests"] += 1
+            stats["without_matches"] += 1
+            continue
 
-            if "country" in alert:
-                # like this because is single option in jobs
-                country_mask = jobs_data["country"].isin(alert["country"])
-            if "seniority" in alert:
-                # like this because is single option in jobs
-                seniority_mask = jobs_data["seniority"].isin(alert["seniority"])
-            if "sport_list" in alert:
-                sport_mask = jobs_data["sport_list"].apply(
-                    lambda x: (
-                        len(set(x) & (set(alert["sport_list"]))) > 0
-                        if x is not None
-                        else False
-                    )
-                )
-            if "skills" in alert:
-                skills_mask = jobs_data["skills"].apply(
-                    lambda x: (
-                        len(set(x) & (set(alert["skills"]))) > 0
-                        if x is not None
-                        else False
-                    )
-                )
-            if "remote_office" in alert:
-                remote_office_mask = jobs_data["remote_office"].isin(
-                    alert["remote_office"]
-                )
-            if "industry" in alert:
-                industry_mask = jobs_data["industry"].apply(
-                    lambda x: (
-                        len(set(x) & (set(alert["industry"]))) > 0
-                        if x is not None
-                        else False
-                    )
-                )
-            if "hours" in alert:
-                hours_mask = jobs_data["hours"].apply(
-                    lambda x: (
-                        len(set(x) & (set(alert["hours"]))) > 0
-                        if x is not None
-                        else False
-                    )
-                )
+        stats["strong_matches"] += len(strong)
+        stats["close_matches"] += len(close)
 
-            return (
-                np.array(country_mask)
-                & np.array(seniority_mask)
-                & np.array(sport_mask)
-                & np.array(skills_mask)
-                & np.array(remote_office_mask)
-                & np.array(industry_mask)
-                & np.array(hours_mask)
+        first_alert = user_alerts[0]
+        digests.append(
+            AlertDigest(
+                email=email,
+                name=str(first_alert.get("name") or "there").strip() or "there",
+                frequency=frequency,
+                strong=strong,
+                close=close,
             )
-
-        # aa = create_filter(jobs_data, alerts_table[1]["fields"])
-
-        # def get_jobs_per_alert(alerts_table, days_before):
-        #     new_records = []
-        #     keys_to_extract = ["email", "alert", "frequency"]
-        #     for record in alerts_table:
-        #         filtered_dict = {
-        #             k: record["fields"][k] for k in keys_to_extract if k in record["fields"]
-        #         }
-        #         new_records.append(filtered_dict)
-        #     return new_records
-
-        alerts_table_to_deplete = alerts_data.copy()
-
-        # to debug
-        alerts_table_to_deplete.append(
-            {
-                "alert_id": "999",
-                "createdTime": "2024-04-13T17:39:00.000Z",
-                "skills": ["Sports"],
-                "name": "example",
-                "email": "francobetteo@gmail.com",
-            }
         )
 
-        for premium_member in merged_df.loc[
-            merged_df["frequency"] == "daily"
-        ].iterrows():
-            alerts_used = []
-            for i, alert in enumerate(alerts_table_to_deplete):
-                if alert["email"] == premium_member[1]["email"]:
-                    print(alert["email"])
-                    alerts_used.append(i)
-                    try:
-                        job_filter = create_filter(jobs_data_yesterday, alert)
-                    except:
-                        continue
-                    jobs_to_send = jobs_data_yesterday[job_filter]
-                    if jobs_to_send.shape[0] == 0 or jobs_to_send is None:
-                        continue
-                    html_body = f"""
-                    <head>
-                    
-                </head>
+    return digests, stats
 
-                    <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; color: #333;">
-            <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                <h1 style="color: #0066cc;">Sportsjobs Online</h1>
-                <h2 style="color: #0066cc;">Hi {alert['fields']['Name']}</h2>
-                <h2 style="color: #0066cc;">These are the jobs we found for you</h2>
-                        """
-                    for job in jobs_to_send.iterrows():
-                        html_body += f"""
-                        <table style="margin: 20px auto; border-collapse: collapse; width: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><img src="{job[1]['logo_permanent_url']}" alt="Logo" width="75" style="vertical-align: middle;"></td>
-                            <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['new_job_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-                """
 
-                    r = resend.Emails.send(
-                        {
-                            "from": "noreply@alerts.sportsjobs.online",
-                            "to": alert["email"],
-                            "subject": "Sports Jobs of the day! - Check out the new jobs available",
-                            "html": html_body,
-                        }
-                    )
+def _job_url(job: Mapping[str, Any], frequency: str) -> str:
+    slug = quote(str(job.get("slug") or "").strip(), safe="-")
+    query = urlencode(
+        {
+            "utm_source": "alerts",
+            "utm_medium": "email",
+            "utm_campaign": f"{frequency}_job_alert",
+        }
+    )
+    return f"{SITE_URL}/jobs/{slug}?{query}"
 
-                alerts_table_to_deplete = [
-                    i
-                    for j, i in enumerate(alerts_table_to_deplete)
-                    if j not in alerts_used
-                ]
 
-                # To avoid bugs sending to other people
-                job_filter = None
+def _render_jobs(jobs: Sequence[RankedJob], frequency: str) -> str:
+    rows: list[str] = []
+    for ranked in jobs:
+        job = ranked.job
+        title = escape(str(job.get("name") or "Sports job"))
+        company = escape(str(job.get("company") or ""))
+        country = escape(str(job.get("country") or ""))
+        logo_url = escape(str(job.get("logo_permanent_url") or ""), quote=True)
+        image = (
+            f'<img src="{logo_url}" alt="" width="64" '
+            'style="display:block;max-height:64px;object-fit:contain;">'
+            if logo_url
+            else ""
+        )
+        details = " · ".join(part for part in (company, country) if part)
+        rows.append(
+            f"""
+            <tr>
+              <td style="padding:12px;border-bottom:1px solid #ddd;width:72px;">{image}</td>
+              <td style="padding:12px;border-bottom:1px solid #ddd;text-align:left;">
+                <a href="{escape(_job_url(job, frequency), quote=True)}" style="color:#0066cc;text-decoration:none;font-weight:bold;">{title}</a>
+                <div style="color:#555;margin-top:4px;">{details}</div>
+              </td>
+            </tr>
+            """
+        )
+    return '<table style="width:100%;border-collapse:collapse;">' + "".join(rows) + "</table>"
 
-        # PREMIUM
-        # loopear por los usuarios daily
-        # traer las alertas correspondiente
-        # loopear por ellas (si tiene mas de una alerta)
-        # traer los jobs del ultimo dia que cumplan los requisitos
-        # enviar el email
 
-        # FREE
-        # loopear por los usuarios weekly
-        # traer las alertas correspondiente
-        # loopear por ellas (si tiene mas de una alerta)
-        # traer los jobs de los ultimos 7 dias que cumplan los requisitos
-        # enviar el email
-        from datetime import datetime
+def render_digest(digest: AlertDigest) -> str:
+    period = "today" if digest.frequency == "daily" else "this week"
+    sections = [
+        f"<h2 style=\"color:#0066cc;\">Hi {escape(digest.name)}</h2>",
+        f"<p>Here are the strongest new job matches we found {period}.</p>",
+    ]
+    if digest.strong:
+        sections.append(_render_jobs(digest.strong, digest.frequency))
+    if digest.close:
+        sections.extend(
+            [
+                '<h3 style="color:#3d1f89;margin-top:28px;">Close matches</h3>',
+                "<p>These satisfy your location and work-mode choices and match some of your other preferences.</p>",
+                _render_jobs(digest.close, digest.frequency),
+            ]
+        )
+    if digest.frequency == "weekly":
+        sections.append(
+            '<p style="margin-top:28px;"><a href="https://www.sportsjobs.online/signup?utm_source=alerts&amp;utm_medium=email&amp;utm_campaign=weekly_alert_upgrade">Upgrade for daily alerts</a></p>'
+        )
+    return (
+        '<body style="font-family:Arial,sans-serif;margin:0;padding:20px;color:#333;">'
+        '<div style="max-width:640px;margin:auto;padding:24px;border:1px solid #ddd;border-radius:8px;background:#f9f9f9;">'
+        '<h1 style="color:#0066cc;">SportsJobs Online</h1>'
+        + "".join(sections)
+        + "</div></body>"
+    )
 
-        # Get today's date
-        today = datetime.now()
 
-        # Get the weekday name
-        weekday_name = today.strftime("%A")
+def deliver_digests(
+    digests: Sequence[AlertDigest],
+    send_email: Callable[[dict[str, Any]], Any],
+    dry_run: bool = False,
+) -> dict[str, int]:
+    results = {"prepared": len(digests), "sent": 0, "failed": 0, "dry_run": 0}
+    for digest in digests:
+        payload = {
+            "from": "noreply@alerts.sportsjobs.online",
+            "to": digest.email,
+            "subject": (
+                "Your daily SportsJobs matches"
+                if digest.frequency == "daily"
+                else "Your weekly SportsJobs matches"
+            ),
+            "html": render_digest(digest),
+        }
+        if dry_run:
+            results["dry_run"] += 1
+            print(
+                json.dumps(
+                    {
+                        "event": "alert_digest_dry_run",
+                        "email": digest.email,
+                        "strong": len(digest.strong),
+                        "close": len(digest.close),
+                    }
+                )
+            )
+            continue
+        try:
+            response = send_email(payload)
+            results["sent"] += 1
+            resend_id = (
+                response.get("id")
+                if isinstance(response, Mapping)
+                else getattr(response, "id", None)
+            )
+            print(
+                json.dumps(
+                    {
+                        "event": "alert_digest_sent",
+                        "email": digest.email,
+                        "strong": len(digest.strong),
+                        "close": len(digest.close),
+                        "resend_id": resend_id,
+                    },
+                    default=str,
+                )
+            )
+        except Exception as error:
+            results["failed"] += 1
+            print(
+                json.dumps(
+                    {
+                        "event": "alert_digest_failed",
+                        "email": digest.email,
+                        "error": str(error),
+                    }
+                )
+            )
+    return results
 
-        if weekday_name == "Wednesday":
 
-            alerts_used = []
-            for free_member in merged_df.loc[
-                merged_df["frequency"] == "weekly"
-            ].iterrows():
-                for i, alert in enumerate(alerts_table_to_deplete):
-                    if alert["email"] == free_member[1]["email"]:
-                        print(alert["email"])
-                        alerts_used.append(alert["id"])
-                        try:
-                            job_filter = create_filter(jobs_data, alert)
-                        except:
-                            continue
-                        jobs_to_send = jobs_data[job_filter]
-                        if jobs_to_send.shape[0] == 0 or jobs_to_send is None:
-                            continue
-                        html_body = f"""
-                        <head>
-                        
-                    </head>
+def _env_flag(name: str) -> bool:
+    return os.getenv(name, "").strip().casefold() in {"1", "true", "yes", "on"}
 
-                        <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; color: #333;">
-                <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                    <h1 style="color: #0066cc;">Sportsjobs Online</h1>
-                    <h2 style="color: #0066cc;">Hi {alert['fields']['Name']}</h2>
-                    <h2 style="color: #0066cc;">These are the jobs we found for you this week</h2>
-                    <h4 style="color: #3d1f89;">Become premium to get daily alerts and apply right on time!</h4>
-                            """
-                        for job in jobs_to_send.iterrows():
-                            html_body += f"""
-                            <table style="margin: 20px auto; border-collapse: collapse; width: 100%;">
-                        <tbody>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><img src="{job[1]['logo_permanent_url']}" alt="Logo" width="75" style="vertical-align: middle;"></td>
-                                <td style="padding: 10px; border: 1px solid #ddd; text-align: left;"><a href="{job[1]['new_job_url']}?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">{job[1]['Name']}</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    """
-                        html_body += f"""
-                                <h2><a href="https://www.sportsjobs.online/signup?utm_source=alerts" target="_blank" style="color: #0066cc; text-decoration: none;">Becoming a Premium Member</a></h2>
-                    <ol style="text-align: left; display: inline-block; text-align: left;">
-                        <li style="margin-bottom: 10px;">🔔 Premium members receive daily alerts instead of weekly. <strong>Apply before all your competition.</strong></li>
-                        <li style="margin-bottom: 10px;">🔎 By becoming a premium member you get <strong>access to all the jobs anytime.</strong></li>
-                        <li style="margin-bottom: 10px;">💹 You <strong>increase your chances of landing your dream job.</strong> This means looking for your job in one place and not opening 10 tabs every time, which is a waste of time and boring.</li>
-                        <li style="margin-bottom: 10px;">⏳ You get <strong>priority</strong> in support and feature request.</li>
-                        <li style="margin-bottom: 10px;">🏋️ You support me in this adventure -> I can add more jobs increasing the size of the database and use more time to find useful content.</li>
-                    </ol>
-                    
-                    <a href="https://www.sportsjobs.online/signup?utm_source=alerts" target="_blank" style="display: inline-block; background-color: #0066cc; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 19px; text-decoration: none;">Become Premium!</a>
-                </div>"""
 
-                        r = resend.Emails.send(
-                            {
-                                "from": "noreply@alerts.sportsjobs.online",
-                                "to": alert["email"],
-                                "subject": "Sports Jobs of the day! - Check out the new jobs available",
-                                "html": html_body,
-                            }
-                        )
+def main() -> None:
+    dry_run = _env_flag("ALERT_DRY_RUN")
+    now = datetime.now(timezone.utc)
+    conn = start_postgres_connection()
+    try:
+        with conn:
+            alerts = get_table(conn, "alerts")
+            users = get_table(conn, "users")
+            jobs = get_jobs_for_alerts(conn, now - timedelta(days=7))
 
-                    alerts_table_to_deplete = [
-                        i for i in alerts_table_to_deplete if i["id"] not in alerts_used
-                    ]
+        digests, matching_stats = build_digests(alerts, users, jobs, now)
+        if dry_run:
+            send_email = lambda _payload: None
+        else:
+            import resend
 
-                    # To avoid bugs sending to other people
-                    job_filter = None
+            resend.api_key = os.environ["RESEND_API_KEY"]
+            send_email = resend.Emails.send
+        delivery_stats = deliver_digests(digests, send_email, dry_run=dry_run)
+        print(
+            json.dumps(
+                {
+                    "event": "alert_run_complete",
+                    **matching_stats,
+                    **delivery_stats,
+                }
+            )
+        )
+    except Exception as error:
+        print(json.dumps({"event": "alert_run_failed", "error": str(error)}))
+        raise
+    finally:
+        if conn and conn.closed == 0:
+            conn.close()
+            print("Connection closed.")
 
-except Exception as e:
-    print(f"Error occurred: {e}")
-finally:
-    # Ensure the connection is closed if still open
-    if conn and conn.closed == 0:
-        conn.close()
-        print("Connection closed.")
-######################
+
+if __name__ == "__main__":
+    main()

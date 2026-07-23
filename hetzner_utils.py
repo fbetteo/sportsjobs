@@ -3,6 +3,7 @@ import os
 from psycopg2 import sql
 from psycopg2.extras import DictCursor
 import pandas as pd
+from datetime import datetime
 
 
 def start_postgres_connection():
@@ -44,6 +45,21 @@ def get_recent_jobs_df(conn, days=1):
     query = f"SELECT * FROM jobs WHERE CURRENT_DATE - start_date < {days}"
     df = pd.read_sql_query(query, conn)
     return df
+
+
+def get_jobs_for_alerts(conn, since: datetime):
+    with conn.cursor(cursor_factory=DictCursor) as cursor:
+        cursor.execute(
+            """
+            SELECT *
+            FROM jobs
+            WHERE creation_date >= %s
+            ORDER BY creation_date DESC, job_id DESC
+            """,
+            (since,),
+        )
+        records = cursor.fetchall()
+        return [dict(record) for record in records]
 
 
 def get_expired_jobs(conn):
