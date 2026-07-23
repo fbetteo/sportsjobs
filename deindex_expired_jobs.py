@@ -1,79 +1,71 @@
-from oauth2client.service_account import ServiceAccountCredentials
-import httplib2
 import json
-SCOPES = ["https://www.googleapis.com/auth/indexing"]
-ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
+from typing import Mapping, Optional
 
-# service_account_file.json is the private key that you created for your service account.
-JSON_KEY_FILE = "./sportsjobs-v2-key.json"
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    JSON_KEY_FILE, scopes=SCOPES
-)
-
-
-import os
-
-# from pyairtable import Api
-import requests.auth
-from dotenv import load_dotenv, find_dotenv
 from hetzner_utils import (
     start_postgres_connection,
-    get_recent_urls,
-    get_skills,
-    insert_records,
-    get_recent_jobs,
-    get_expired_jobs
+    get_expired_jobs,
 )
 
-os.getcwd()
-
-# load_dotenv(find_dotenv("C:/Users/Franco/Desktop/data_science/sportsjobs/.env"))
-
-# AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-# AIRTABLE_BASE = os.getenv("AIRTABLE_BASE")
-# AIRTABLE_JOBS_TABLE = os.getenv("AIRTABLE_JOBS_TABLE")
-# AIRTABLE_BLOG_TABLE = os.getenv("AIRTABLE_BLOG_TABLE")
+SCOPES = ["https://www.googleapis.com/auth/indexing"]
+ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
+JSON_KEY_FILE = "./sportsjobs-v2-key.json"
+SITE_URL = "https://www.sportsjobs.online"
 
 
-# api = Api(AIRTABLE_TOKEN)
+def build_update_notification(job: Mapping[str, object]) -> Optional[dict[str, str]]:
+    """Build the canonical Indexing API update for an expired job."""
+    slug = str(job.get("slug") or "").strip()
+    if not slug:
+        return None
 
-# # JOBS
-# table = api.table(AIRTABLE_BASE, AIRTABLE_JOBS_TABLE)
-# all = table.all(sort=["-creation_date"], max_records=20)
-conn = start_postgres_connection()
+    return {
+        "url": f"{SITE_URL}/jobs/{slug}",
+        "type": "URL_UPDATED",
+    }
 
-expired_jobs = get_expired_jobs(conn)
-try:
-    with conn as conn:
-        expired_jobs = get_expired_jobs(conn)
 
-        for job in expired_jobs:
-            http = credentials.authorize(httplib2.Http())
+def main() -> None:
+    import httplib2
+    from oauth2client.service_account import ServiceAccountCredentials
 
-            # Define contents here as a JSON string.
-            # This example shows a simple update request.
-            # Other types of requests are described in the next step.
-            # print(f"""{{
-            # "url": {job['fields']['job_detail_url']},
-            # "type": "URL_UPDATED"
-            # }}""")
-            content = json.dumps({
-                "url": f"https://www.sportsjobs.online/jobs/{job['job_id']}",
-                "type": "URL_DELETED"
-            })
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        JSON_KEY_FILE, scopes=SCOPES
+    )
+    conn = start_postgres_connection()
 
-            response, response_content = http.request(ENDPOINT, method="POST", body=content, headers={"Content-Type": "application/json"})
-            print(f"Status: {response.status}")
-            print(f"Response: {response}")
+    try:
+        with conn:
+            for job in get_expired_jobs(conn):
+                notification = build_update_notification(job)
+                if notification is None:
+                    print(
+                        "Skipping expired job without a canonical slug: "
+                        f"job_id={job.get('job_id')}"
+                    )
+                    continue
 
-except Exception as e:
-    print(f"Error occurred: {e}")
-finally:
-    # Ensure the connection is closed if still open
-    if conn and conn.closed == 0:
-        conn.close()
-        print("Connection closed.")
+                http = credentials.authorize(httplib2.Http())
+                response, _ = http.request(
+                    ENDPOINT,
+                    method="POST",
+                    body=json.dumps(notification),
+                    headers={"Content-Type": "application/json"},
+                )
+                print(
+                    f"Google Indexing API status={response.status} "
+                    f"url={notification['url']}"
+                )
+
+    except Exception as e:
+        print(f"Error occurred: {e}")
+    finally:
+        if conn and conn.closed == 0:
+            conn.close()
+            print("Connection closed.")
+
+
+if __name__ == "__main__":
+    main()
 # # BLOG
 # table = api.table(AIRTABLE_BASE, AIRTABLE_BLOG_TABLE)
 # all = table.all(sort=["-creation_date"], max_records=1)
