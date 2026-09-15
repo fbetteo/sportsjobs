@@ -10,12 +10,6 @@ from alert_matching import RankedJob, select_digest_jobs
 from hetzner_utils import get_jobs_for_alerts, get_table, start_postgres_connection
 
 
-PAID_PLANS = {
-    "lifetime",
-    "yearly_subscription",
-    "monthly_subscription",
-    "weekly_subscription",
-}
 SITE_URL = "https://www.sportsjobs.online"
 
 
@@ -47,12 +41,12 @@ def _parse_datetime(value: Any) -> datetime | None:
     return parsed.astimezone(timezone.utc)
 
 
-def _paid_emails(users: Sequence[Mapping[str, Any]]) -> set[str]:
+def _logged_in_emails(users: Sequence[Mapping[str, Any]]) -> set[str]:
     return {
         normalize_email(user.get("email"))
         for user in users
         if normalize_email(user.get("email"))
-        and str(user.get("plan") or "").casefold() in PAID_PLANS
+        and str(user.get("auth0_sub") or "").strip()
     }
 
 
@@ -74,13 +68,12 @@ def build_digests(
     now: datetime,
 ) -> tuple[list[AlertDigest], dict[str, int]]:
     now = now.astimezone(timezone.utc)
-    paid_emails = _paid_emails(users)
+    logged_in_emails = _logged_in_emails(users)
     grouped_alerts = _group_alerts(alerts)
     stats = {
         "alerts": len(alerts),
         "recipients": len(grouped_alerts),
         "skipped_digests": 0,
-        "outside_schedule": 0,
         "without_matches": 0,
         "strong_matches": 0,
         "close_matches": 0,
@@ -91,13 +84,12 @@ def build_digests(
     digests: list[AlertDigest] = []
 
     for email, user_alerts in grouped_alerts.items():
-        frequency = "daily" if email in paid_emails else "weekly"
-        if frequency == "weekly" and now.strftime("%A") != "Wednesday":
+        if email not in logged_in_emails:
             stats["skipped_digests"] += 1
-            stats["outside_schedule"] += 1
             continue
 
-        window = timedelta(days=1 if frequency == "daily" else 7)
+        frequency = "daily"
+        window = timedelta(days=1)
         cutoff = now - window
         eligible_jobs = [
             job
@@ -185,10 +177,10 @@ def render_digest(digest: AlertDigest) -> str:
                 _render_jobs(digest.close, digest.frequency),
             ]
         )
-    if digest.frequency == "weekly":
-        sections.append(
-            '<p style="margin-top:28px;"><a href="https://www.sportsjobs.online/signup?utm_source=alerts&amp;utm_medium=email&amp;utm_campaign=weekly_alert_upgrade">Upgrade for daily alerts</a></p>'
-        )
+    sections.append(
+        f'<p style="margin-top:28px;"><a href="{SITE_URL}/settings" '
+        'style="color:#0066cc;">Manage your job alerts</a></p>'
+    )
     return (
         '<body style="font-family:Arial,sans-serif;margin:0;padding:20px;color:#333;">'
         '<div style="max-width:640px;margin:auto;padding:24px;border:1px solid #ddd;border-radius:8px;background:#f9f9f9;">'
@@ -204,7 +196,7 @@ def deliver_digests(
     dry_run: bool = False,
 ) -> dict[str, int]:
     results = {"prepared": len(digests), "sent": 0, "failed": 0, "dry_run": 0}
-    for digest in digests:
+    for recipient_index, digest in enumerate(digests, start=1):
         payload = {
             "from": "noreply@alerts.sportsjobs.online",
             "to": digest.email,
@@ -221,7 +213,7 @@ def deliver_digests(
                 json.dumps(
                     {
                         "event": "alert_digest_dry_run",
-                        "email": digest.email,
+                        "recipient_index": recipient_index,
                         "strong": len(digest.strong),
                         "close": len(digest.close),
                     }
@@ -230,17 +222,30 @@ def deliver_digests(
             continue
         try:
             response = send_email(payload)
-            results["sent"] += 1
             resend_id = (
                 response.get("id")
                 if isinstance(response, Mapping)
                 else getattr(response, "id", None)
             )
+            if not isinstance(resend_id, str) or not resend_id.strip():
+                results["failed"] += 1
+                print(
+                    json.dumps(
+                        {
+                            "event": "alert_digest_failed",
+                            "recipient_index": recipient_index,
+                            "reason": "missing_resend_id",
+                        }
+                    )
+                )
+                continue
+
+            results["sent"] += 1
             print(
                 json.dumps(
                     {
                         "event": "alert_digest_sent",
-                        "email": digest.email,
+                        "recipient_index": recipient_index,
                         "strong": len(digest.strong),
                         "close": len(digest.close),
                         "resend_id": resend_id,
@@ -254,8 +259,10 @@ def deliver_digests(
                 json.dumps(
                     {
                         "event": "alert_digest_failed",
-                        "email": digest.email,
-                        "error": str(error),
+                        "recipient_index": recipient_index,
+                        "reason": "provider_exception",
+                        "error_type": type(error).__name__,
+                        "status_code": getattr(error, "status_code", None),
                     }
                 )
             )
@@ -285,18 +292,22 @@ def main() -> None:
             resend.api_key = os.environ["RESEND_API_KEY"]
             send_email = resend.Emails.send
         delivery_stats = deliver_digests(digests, send_email, dry_run=dry_run)
+    except Exception as error:
+        print(json.dumps({"event": "alert_run_failed", "error": str(error)}))
+        raise
+    else:
+        failed = delivery_stats["failed"]
         print(
             json.dumps(
                 {
-                    "event": "alert_run_complete",
+                    "event": "alert_run_failed" if failed else "alert_run_complete",
                     **matching_stats,
                     **delivery_stats,
                 }
             )
         )
-    except Exception as error:
-        print(json.dumps({"event": "alert_run_failed", "error": str(error)}))
-        raise
+        if failed:
+            raise RuntimeError(f"{failed} alert digest(s) failed")
     finally:
         if conn and conn.closed == 0:
             conn.close()

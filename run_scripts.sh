@@ -194,11 +194,10 @@ else
 fi
 
 # Run the final Python script
-# python send_alerts.py
-# if [ $? -ne 0 ]; then
-#     echo "send_alerts.py failed"
-#     exit 1
-# fi
+python send_alerts.py
+if [ $? -ne 0 ]; then
+    echo "send_alerts.py failed - continuing with other scripts"
+fi
 
 echo "running newsletter email sequence"
 python newsletter_email_sequence.py

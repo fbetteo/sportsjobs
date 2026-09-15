@@ -1,4 +1,5 @@
 import io
+import json
 import os
 import sys
 import types
@@ -70,7 +71,7 @@ class NormalizationAndMatchingTests(unittest.TestCase):
         self.assertEqual(result.tier, "strong")
         self.assertEqual(set(result.matched_categories), {"sport_list", "hours"})
 
-    def test_global_remote_can_cross_country_when_remote_is_allowed(self):
+    def test_country_and_work_mode_are_both_required(self):
         remote_job = job(
             1,
             country="canada",
@@ -79,9 +80,13 @@ class NormalizationAndMatchingTests(unittest.TestCase):
         self.assertEqual(
             match_job(
                 remote_job,
-                {"country": ["united states"], "remote_office": ["Remote"]},
+                {"country": ["canada", "united states"], "remote_office": ["Remote"]},
             ).tier,
             "strong",
+        )
+        self.assertEqual(
+            match_job(remote_job, {"country": ["united states"]}).tier,
+            "none",
         )
         self.assertEqual(
             match_job(
@@ -91,27 +96,22 @@ class NormalizationAndMatchingTests(unittest.TestCase):
             "none",
         )
 
-    def test_half_preferences_is_strong_and_one_of_four_is_close(self):
-        strong = match_job(
-            job(1),
-            {
-                "seniority": ["Junior"],
-                "sport_list": ["Basketball"],
-                "hours": ["Part time"],
-                "skills": ["R"],
-            },
-        )
-        close = match_job(
-            job(2),
-            {
-                "seniority": ["Junior"],
-                "sport_list": ["Baseball"],
-                "hours": ["Part time"],
-                "skills": ["R"],
-            },
-        )
-        self.assertEqual((strong.tier, strong.score), ("strong", 0.5))
-        self.assertEqual((close.tier, close.score), ("close", 0.25))
+    def test_any_value_within_each_filter_matches_but_every_filter_is_required(self):
+        alert = {
+            "country": ["canada", "united states"],
+            "seniority": ["Internship"],
+            "remote_office": ["Remote"],
+            "sport_list": ["Baseball", "Basketball"],
+        }
+        result = match_job(job(1, seniority="Internship", remote_office="Remote"), alert)
+        self.assertEqual(result.tier, "strong")
+        self.assertEqual(result.score, 1.0)
+        self.assertEqual(set(result.matched_categories), {"country", "seniority", "remote_office", "sport_list"})
+        self.assertEqual(match_job(job(2, country="canada", seniority="Internship", remote_office="Remote", sport_list="Baseball"), alert).tier, "strong")
+        self.assertEqual(match_job(job(3, seniority="Junior", remote_office="Remote"), alert).tier, "none")
+        self.assertEqual(match_job(job(4, country="spain", seniority="Internship", remote_office="Remote"), alert).tier, "none")
+        self.assertEqual(match_job(job(5, seniority="Internship", remote_office="Office"), alert).tier, "none")
+        self.assertEqual(match_job(job(6, seniority="Internship", remote_office="Remote", sport_list="Tennis"), alert).tier, "none")
 
     def test_combines_alerts_deduplicates_and_applies_limits(self):
         jobs = [job(index) for index in range(1, 20)]
@@ -126,7 +126,7 @@ class NormalizationAndMatchingTests(unittest.TestCase):
         self.assertEqual(len(close), 0)
         self.assertEqual(len({item.job["job_id"] for item in strong}), 10)
 
-    def test_close_matches_are_limited_to_three(self):
+    def test_old_extra_filters_are_also_required(self):
         jobs = [job(index) for index in range(1, 10)]
         strong, close = select_digest_jobs(
             jobs,
@@ -140,7 +140,7 @@ class NormalizationAndMatchingTests(unittest.TestCase):
             ],
         )
         self.assertEqual(strong, [])
-        self.assertEqual(len(close), 3)
+        self.assertEqual(close, [])
 
 
 class DigestTests(unittest.TestCase):
@@ -155,7 +155,7 @@ class DigestTests(unittest.TestCase):
         ]
         digests, _ = build_digests(
             alerts,
-            [{"email": "alex@example.com", "plan": "monthly_subscription"}],
+            [{"email": "alex@example.com", "auth0_sub": "auth0|alex", "plan": "free"}],
             jobs,
             NOW,
         )
@@ -163,15 +163,16 @@ class DigestTests(unittest.TestCase):
         self.assertEqual(digests[0].email, "alex@example.com")
         self.assertEqual([item.job["job_id"] for item in digests[0].strong], [1])
 
-    def test_weekly_alerts_only_run_on_wednesday(self):
+    def test_only_logged_in_users_receive_alerts(self):
         alerts = [{"name": "Alex", "email": "alex@example.com"}]
-        monday_digests, monday_stats = build_digests(alerts, [], [job(1)], NOW)
-        wednesday = NOW + timedelta(days=2)
-        wednesday_job = job(1, creation_date=wednesday - timedelta(hours=1))
-        wednesday_digests, _ = build_digests(alerts, [], [wednesday_job], wednesday)
-        self.assertEqual(monday_digests, [])
-        self.assertEqual(monday_stats["outside_schedule"], 1)
-        self.assertEqual(len(wednesday_digests), 1)
+        pre_auth_digests, _ = build_digests(alerts, [], [job(1)], NOW)
+        logged_in_digests, _ = build_digests(
+            alerts,
+            [{"email": "alex@example.com", "auth0_sub": "auth0|alex", "plan": "free", "subscription_status": "none"}],
+            [job(1)], NOW,
+        )
+        self.assertEqual(pre_auth_digests, [])
+        self.assertEqual(len(logged_in_digests), 1)
 
     def test_renderer_uses_slug_fields_and_escapes_content(self):
         ranked = RankedJob(
@@ -185,6 +186,8 @@ class DigestTests(unittest.TestCase):
         self.assertIn("/jobs/1-sports-data-role?utm_source=alerts", html)
         self.assertIn("&lt;script&gt;", html)
         self.assertIn("A&amp;B", html)
+        self.assertIn('href="https://www.sportsjobs.online/settings"', html)
+        self.assertIn("Manage your job alerts", html)
         self.assertNotIn("new_job_url", html)
 
     def test_one_recipient_failure_does_not_stop_the_next(self):
@@ -202,6 +205,24 @@ class DigestTests(unittest.TestCase):
         results = deliver_digests(digests, send_email)
         self.assertEqual(results["failed"], 1)
         self.assertEqual(results["sent"], 1)
+
+    def test_response_without_email_id_is_a_failure_and_next_digest_is_sent(self):
+        ranked = RankedJob(job=job(1), score=1.0, matched_categories=())
+        digests = [
+            AlertDigest("first@example.com", "First", "daily", [ranked], []),
+            AlertDigest("second@example.com", "Second", "daily", [ranked], []),
+        ]
+        responses = iter([{}, {"id": "email_123"}])
+        output = io.StringIO()
+
+        with redirect_stdout(output):
+            results = deliver_digests(digests, lambda _payload: next(responses))
+
+        events = [json.loads(line) for line in output.getvalue().splitlines()]
+        self.assertEqual(results, {"prepared": 2, "sent": 1, "failed": 1, "dry_run": 0})
+        self.assertEqual(events[0]["reason"], "missing_resend_id")
+        self.assertEqual(events[1]["resend_id"], "email_123")
+        self.assertNotIn("first@example.com", output.getvalue())
 
     def test_dry_run_never_calls_provider(self):
         ranked = RankedJob(job=job(1), score=1.0, matched_categories=())
@@ -236,7 +257,8 @@ class DigestTests(unittest.TestCase):
                 return [
                     {
                         "email": "alex@example.com",
-                        "plan": "monthly_subscription",
+                        "auth0_sub": "auth0|alex",
+                        "plan": "free",
                     }
                 ]
             raise AssertionError(f"Unexpected table: {table}")
@@ -258,6 +280,46 @@ class DigestTests(unittest.TestCase):
         ):
             main()
 
+        self.assertEqual(connection.closed, 1)
+
+    def test_main_reports_partial_send_failure_and_exits_unsuccessfully(self):
+        class FakeConnection:
+            closed = 0
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def close(self):
+                self.closed = 1
+
+        connection = FakeConnection()
+        ranked = RankedJob(job=job(1), score=1.0, matched_categories=())
+        digest = AlertDigest("alex@example.com", "Alex", "daily", [ranked], [])
+        fake_resend = types.SimpleNamespace(
+            Emails=types.SimpleNamespace(send=lambda _payload: {}),
+            api_key=None,
+        )
+        output = io.StringIO()
+
+        with (
+            patch.dict(os.environ, {"ALERT_DRY_RUN": "0", "RESEND_API_KEY": "test"}),
+            patch.dict(sys.modules, {"resend": fake_resend}),
+            patch("send_alerts.start_postgres_connection", return_value=connection),
+            patch("send_alerts.get_table", return_value=[]),
+            patch("send_alerts.get_jobs_for_alerts", return_value=[]),
+            patch("send_alerts.build_digests", return_value=([digest], {"recipients": 1})),
+            redirect_stdout(output),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "1 alert digest\\(s\\) failed"):
+                main()
+
+        events = [json.loads(line) for line in output.getvalue().splitlines() if line.startswith("{")]
+        self.assertEqual(events[-1]["event"], "alert_run_failed")
+        self.assertEqual(events[-1]["failed"], 1)
+        self.assertEqual(events[-1]["sent"], 0)
         self.assertEqual(connection.closed, 1)
 
 

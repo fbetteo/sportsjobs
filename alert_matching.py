@@ -5,7 +5,9 @@ from datetime import datetime, timezone
 from typing import Any, Iterable, Mapping, Sequence
 
 
-SOFT_FILTERS = (
+ALERT_FILTERS = (
+    ("country", "country"),
+    ("remote_office", "remote_office"),
     ("seniority", "seniority"),
     ("sport_list", "sport_list"),
     ("hours", "hours"),
@@ -90,56 +92,25 @@ def normalize_field_values(field: str, value: Any) -> set[str]:
     return values
 
 
-def _remote_is_eligible(job: Mapping[str, Any], alert: Mapping[str, Any]) -> bool:
-    selected = normalize_field_values("remote_office", alert.get("remote_office"))
-    if not selected:
-        return True
-
-    if "remote" in selected:
-        selected.add("global remote")
-    job_modes = normalize_field_values("remote_office", job.get("remote_office"))
-    return bool(selected & job_modes)
-
-
-def _country_is_eligible(job: Mapping[str, Any], alert: Mapping[str, Any]) -> bool:
-    selected = normalize_field_values("country", alert.get("country"))
-    if not selected:
-        return True
-
-    job_modes = normalize_field_values("remote_office", job.get("remote_office"))
-    if "global remote" in job_modes:
-        return True
-
-    job_countries = normalize_field_values("country", job.get("country"))
-    return bool(selected & job_countries)
-
-
 def match_job(job: Mapping[str, Any], alert: Mapping[str, Any]) -> MatchResult:
-    if not _remote_is_eligible(job, alert) or not _country_is_eligible(job, alert):
-        return MatchResult("none", 0.0, (), 0)
-
     selected_categories = 0
     matched_categories: list[str] = []
-    for alert_field, job_field in SOFT_FILTERS:
+    for alert_field, job_field in ALERT_FILTERS:
         selected = normalize_field_values(alert_field, alert.get(alert_field))
         if not selected:
             continue
         selected_categories += 1
+        if alert_field == "remote_office" and "remote" in selected:
+            selected.add("global remote")
         job_values = normalize_field_values(alert_field, job.get(job_field))
-        if selected & job_values:
-            matched_categories.append(alert_field)
+        if not selected & job_values:
+            return MatchResult("none", 0.0, tuple(matched_categories), selected_categories)
+        matched_categories.append(alert_field)
 
     if selected_categories == 0:
         return MatchResult("strong", 1.0, (), 0)
 
-    score = len(matched_categories) / selected_categories
-    if score >= 0.5:
-        tier = "strong"
-    elif matched_categories:
-        tier = "close"
-    else:
-        tier = "none"
-    return MatchResult(tier, score, tuple(matched_categories), selected_categories)
+    return MatchResult("strong", 1.0, tuple(matched_categories), selected_categories)
 
 
 def _job_key(job: Mapping[str, Any]) -> str:
