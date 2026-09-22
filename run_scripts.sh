@@ -162,6 +162,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "scraping ASPA jobs board"
+python scrape_others/aspa_scraper.py
+if [ $? -ne 0 ]; then
+    echo "aspa_scraper.py failed"
+    exit 1
+fi
+
 
 
 echo "indexing sportsjobs"
