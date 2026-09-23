@@ -248,6 +248,42 @@ try:
                     }
                 ],
             },
+            "owl": {
+                "name": "owl",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/27ced354-de86-42b7-b04c-e7808a0a8da5/1a37d1fc-1e0a-4aec-aeed-1f198c95b120/97c8cf41-75aa-4190-883c-bd73e30b62e9.png",
+                        "filename": "owl.png",
+                    }
+                ],
+            },
+            "polymarket": {
+                "name": "polymarket",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/ce2d62cc-71e2-459e-9158-e8d399cc6d8e/a875bd7c-50f0-48f3-92e7-9754a2892b9c/76b01afb-8c2b-4bae-b0a8-c505c586ac20.png",
+                        "filename": "polymarket.png",
+                    }
+                ],
+            },
+            "midnite": {
+                "name": "midnite",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/e1293fae-cd73-4cfa-a820-06c925488ea6/d78879e5-086c-4e9d-aaaa-7acca97e05a9/3a1cb2a2-bf6e-405f-a016-60506d459202.png",
+                        "filename": "midnite.png",
+                    }
+                ],
+            },
+            "leovegasgroup": {
+                "name": "leovegasgroup",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-wordmark/2b8d8782-f8f5-4822-8c49-712ee7af69f9/7e299412-9efe-45b2-8f31-fc85730c35a6/cc550f63-cccc-40d8-8cdf-ec18ac56f6f6.png",
+                        "filename": "leovegasgroup.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
