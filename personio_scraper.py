@@ -110,6 +110,24 @@ try:
                     }
                 ],
             },
+            "euroleague-entertainment-services-slu": {
+                "personio_name": "euroleague-entertainment-services-slu",
+                "logo": [
+                    {
+                        "url": "https://assets.cdn.personio.de/logos/214441/social/4e2405828cc8d34198265d98a14968e0.png",
+                        "filename": "euroleague.png",
+                    }
+                ],
+            },
+            "output-sports": {
+                "personio_name": "output-sports",
+                "logo": [
+                    {
+                        "url": "https://assets.cdn.personio.de/logos/87598/social/58c56d5473c7950f822255f8b2b82e74.png",
+                        "filename": "output-sports.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
