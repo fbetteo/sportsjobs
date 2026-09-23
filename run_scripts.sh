@@ -49,6 +49,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "workday running"
+python workday_scraper.py
+if [ $? -ne 0 ]; then
+    echo "script workday_scraper.py failed"
+    exit 1
+fi
+
 
 echo "scraping nba"
 python scrape_nba/nba_scrapers.py

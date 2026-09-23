@@ -54,7 +54,7 @@ KEYWORDS = [
 
 class CompanyScraper:
 
-    def __init__(self, driver=None, keywords=None, table=table):
+    def __init__(self, driver=None, keywords=None, table=table, existing_urls=None):
         self.now = datetime.now()
         self.keywords = (
             keywords if keywords is not None else self.get_default_keywords()
@@ -71,18 +71,22 @@ class CompanyScraper:
         ]
         self.base_url = ""
 
-        try:
-            conn = start_postgres_connection()
-            with conn as conn:
-                self.recent_urls = get_recent_urls(conn)
-        except Exception as e:
-            print(f"Error getting recent urls: {e}")
-            self.recent_urls = []
-        finally:
-            # Ensure the connection is closed if still open
-            if conn and conn.closed == 0:
-                conn.close()
-                print("Connection closed.")
+        if existing_urls is not None:
+            self.recent_urls = list(existing_urls)
+        else:
+            conn = None
+            try:
+                conn = start_postgres_connection()
+                with conn as conn:
+                    self.recent_urls = get_recent_urls(conn)
+            except Exception as e:
+                print(f"Error getting recent urls: {e}")
+                self.recent_urls = []
+            finally:
+                # Ensure the connection is closed if still open
+                if conn and conn.closed == 0:
+                    conn.close()
+                    print("Connection closed.")
         # self.recent_urls = utils.get_recent_urls()
 
     def get_default_keywords(self):
@@ -229,8 +233,16 @@ class CompanyScraper:
         if (job["url"] in self.recent_urls) or (none_skill):
             return None
 
-        country = utils.find_country(location_value)["country"]
-        country_code = utils.find_country(location_value)["country_code"]
+        country = other_data.get("country")
+        country_code = other_data.get("country_code")
+        if not country or not country_code:
+            country_data = utils.find_country(location_value)
+            if isinstance(country_data, dict):
+                country = country_data["country"]
+                country_code = country_data["country_code"]
+            else:
+                country = "united states"
+                country_code = "US"
         accepts_remote = utils.get_remote_status(
             full_description, location_value, job["title"]
         )

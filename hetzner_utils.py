@@ -33,6 +33,17 @@ def get_recent_urls(conn, days=65):
     return url_list
 
 
+def get_urls_by_domain(conn, domain):
+    """Return every stored URL for a domain, regardless of job age or status."""
+    with conn.cursor() as cursor:
+        cursor.execute(
+            "SELECT url FROM jobs WHERE url ILIKE %s",
+            (f"%{domain}%",),
+        )
+        records = cursor.fetchall()
+    return [url[0] for url in records if url[0]]
+
+
 def get_recent_jobs(conn, days=1):
     with conn.cursor(cursor_factory=DictCursor) as cursor:
         cursor.execute(f"SELECT * FROM jobs where CURRENT_DATE - start_date < {days}")
