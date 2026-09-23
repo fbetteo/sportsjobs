@@ -520,6 +520,33 @@ try:
                     }
                 ],
             },
+            "gr8tech": {
+                "greenhouse_name": "gr8tech",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/140/610/original/Avatar_Eight_New_4.png?1779116548",
+                        "filename": "gr8tech.png",
+                    }
+                ],
+            },
+            "super": {
+                "greenhouse_name": "super",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/134/810/original/Super-Logo.jpg?1765813793",
+                        "filename": "super.png",
+                    }
+                ],
+            },
+            "sportygroup": {
+                "greenhouse_name": "sportygroup",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/346/210/original/sportylogo.png?1768474368",
+                        "filename": "sportygroup.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
