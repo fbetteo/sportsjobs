@@ -91,6 +91,24 @@ try:
                     }
                 ],
             },
+            "bay-fc-jobs": {
+                "board_name": "bay-fc-jobs",
+                "logo": [
+                    {
+                        "url": "",
+                        "filename": "bay-fc-jobs.png",
+                    }
+                ],
+            },
+            "lovb": {
+                "board_name": "lovb",
+                "logo": [
+                    {
+                        "url": "",
+                        "filename": "lovb.png",
+                    }
+                ],
+            },
         }
 
         def html_to_markdown(element):
