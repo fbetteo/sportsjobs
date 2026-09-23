@@ -11,7 +11,6 @@ from workday_parsing import (
     title_matches_keywords,
 )
 
-
 COMPANIES = {
     "Tennis Australia": {
         "host": "tennis.wd3.myworkdayjobs.com",
@@ -33,6 +32,18 @@ COMPANIES = {
             {
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Razer_wordmark.svg",
                 "filename": "razer.svg",
+            }
+        ],
+        "industry": ["Esports"],
+    },
+    "xboxgaming": {
+        "host": "xboxgaming.wd1.myworkdayjobs.com",
+        "tenant": "xboxgaming",
+        "site": "King_External_Careers",
+        "logo": [
+            {
+                "url": "https://xboxgaming.wd1.myworkdayjobs.com/King_External_Careers/assets/logo",
+                "filename": "xboxgaming.svg",
             }
         ],
         "industry": ["Esports"],
@@ -67,8 +78,7 @@ class WorkdayCompanyScraper(base_scraper.companyscraper.CompanyScraper):
 
     def detail_api_url(self, external_path):
         return (
-            f"https://{self.host}/wday/cxs/"
-            f"{self.tenant}/{self.site}{external_path}"
+            f"https://{self.host}/wday/cxs/" f"{self.tenant}/{self.site}{external_path}"
         )
 
     def public_job_url(self, external_path):
@@ -167,9 +177,7 @@ class WorkdayCompanyScraper(base_scraper.companyscraper.CompanyScraper):
 
             country = (job_info.get("country") or {}).get("descriptor")
             requisition_location = job_info.get("jobRequisitionLocation") or {}
-            country_code = (
-                (requisition_location.get("country") or {}).get("alpha2Code")
-            )
+            country_code = (requisition_location.get("country") or {}).get("alpha2Code")
             other_data = {"company": self.company}
             if country:
                 other_data["country"] = country.lower()
