@@ -348,6 +348,15 @@ try:
                         }
                     ],
                 },
+                "kolibrigames": {
+                    "lever_name": "kolibrigames",
+                    "logo": [
+                        {
+                            "url": "https://lever-client-logos.s3-us-west-2.amazonaws.com/8e9bbc0e-3d99-4d11-af56-fdce7b84ffb2-1586436732207.png",
+                            "filename": "kolibrigames.png",
+                        }
+                    ],
+                },
             },
             # # "Betstamp": {
             # #     "lever_name": "Betstamp",
