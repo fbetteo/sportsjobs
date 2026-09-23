@@ -588909,3 +588909,1211 @@ Running airtable_api.py on scheduled day
 Connected to PostgreSQL database!
 Connection closed.
 All scripts executed successfully
+Starting scripts at 2026-09-23 13:00:01
+----------------------------------------
+Lever running
+Connected to PostgreSQL database!
+Error 404 for Kickoff
+Error 404 for GameTime
+Error 404 for Dream Sports
+Error 404 for Grundens
+Error 404 for Sporty
+Error 404 for Fnatic
+Error 404 for Decathlon
+Error 404 for Tactical
+Error 404 for Therabody
+Error 404 for Fanatics
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error 404 for Luni
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error 404 for Catena Media
+Connection closed.
+greenhouse running
+Connected to PostgreSQL database!
+Error in request for The Score
+Error in request for Golden State Warriors
+Error in request for UnderDog Fantasy
+Error in request for Swish Analytics
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Error in request for Second Spectrum
+Error in request for Philadelphia Phillies
+Error in request for LA2028
+Error in request for Superbet
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+ashbyhq running
+Connected to PostgreSQL database!
+Connection closed.
+riplling running
+Connected to PostgreSQL database!
+Error in request for teamworks: 404
+personio running
+Connected to PostgreSQL database!
+Connection closed.
+scraping nba
+Running AtlantaHawks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Chief Engineer was not created
+Job Director of Engineering (Maintenance and Facilities) was not created
+Running CharlotteHornets main()
+Connected to PostgreSQL database!
+Connection closed.
+Running ClevelandCavaliers main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Cleveland Cavaliers...
+Running DallasMavericks main()
+Connected to PostgreSQL database!
+Connection closed.
+Running DetroitPistons main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Detroit Pistons...
+Running GoldenStateWarriors main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Golden Stante Warriors...
+Running HoustonRockets main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Internship - Arena Marketing has no skills required, skipping...
+Job Internship - Arena Marketing was not created
+Job Internship - Community Relations has no skills required, skipping...
+Job Internship - Community Relations was not created
+Job Internship - Corporate Partnerships has no skills required, skipping...
+Job Internship - Corporate Partnerships was not created
+Job Internship - Corporate Strategy was not created
+Job Sr. Broadcast Engineer was not created
+Running IndianaPacers main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Corporate Partnerships Intern - Spring 2027 has no skills required, skipping...
+Job Corporate Partnerships Intern - Spring 2027 was not created
+Job Digital Content Intern - Spring 2027 has no skills required, skipping...
+Job Digital Content Intern - Spring 2027 was not created
+Job Digital Video Intern - Fall 2026 has no skills required, skipping...
+Job Digital Video Intern - Fall 2026 was not created
+Job Digital Photography Intern - Fall 2026 has no skills required, skipping...
+Job Digital Photography Intern - Fall 2026 was not created
+Job Game Operations Intern - Spring 2027 has no skills required, skipping...
+Job Game Operations Intern - Spring 2027 was not created
+Job Senior Microsoft Service Engineer has no skills required, skipping...
+Job Senior Microsoft Service Engineer was not created
+Job Fan Engagement Intern - Spring 2027 has no skills required, skipping...
+Job Fan Engagement Intern - Spring 2027 was not created
+Running LosAngelesLakers main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Los Angeles Lakers...
+Running MiamiHeat main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Engineering Helper has no skills required, skipping...
+Job Engineering Helper was not created
+Job Content Studio Intern (Seasonal) has no skills required, skipping...
+Job Content Studio Intern (Seasonal) was not created
+Job Intern, IT has no skills required, skipping...
+Job Intern, IT was not created
+Job Marketing & Game Ops Intern has no skills required, skipping...
+Job Marketing & Game Ops Intern was not created
+Job Engineer/ HVAC Technician has no skills required, skipping...
+Job Engineer/ HVAC Technician was not created
+Running MinnesotaTimberwolves main()
+Connected to PostgreSQL database!
+Connection closed.
+Running NewOrleansPelicans main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this New Orleans Pelicans / Saints...
+Running OklahomaThunder main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Oklahoma City Thunder...
+Running OrlandoMagic main()
+Connected to PostgreSQL database!
+Connection closed.
+Running PhoenixSuns main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Phoenix Suns...
+Running SacramentoKings main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Sacramento Kings...
+Running SanAntonioSpurs main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Ticket Sales Analyst was not created
+Job Financial Analyst has no skills required, skipping...
+Job Financial Analyst was not created
+Job Coaching Analyst was not created
+Running UtahJazz main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Utah Jazz...
+Running WashingtonWizards main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Washington Wizards...
+Running WNBA main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this WNBA...
+scraping f1
+Running Mclaren main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this McLaren Racing...
+Running Mercedes main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Mercedes...
+Running RedBull main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Senior Electrical Design Engineer - Formula1 has no skills required, skipping...
+Job Senior Electrical Design Engineer - Formula1 was not created
+Running Haas main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Haas F1 Team...
+Running Williams main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Williams Racing...
+Running FormulaOne main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Data Analyst - Formula1 was not created
+Job Database Administrator - Formula1 has no skills required, skipping...
+Job Database Administrator - Formula1 was not created
+Job Data Architect (12 Month FTC) - Formula1 was not created
+Job Electrical Design Engineer (2 Year FTC) - Formula1 has no skills required, skipping...
+Job Electrical Design Engineer (2 Year FTC) - Formula1 was not created
+Job Design Quality Engineer - Formula1 was not created
+Job Distribution Engineer - Formula1 has no skills required, skipping...
+Job Distribution Engineer - Formula1 was not created
+Job Mechanical Design Engineer (FTC) - Formula1 has no skills required, skipping...
+Job Mechanical Design Engineer (FTC) - Formula1 was not created
+scraping nfl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TampaBayBuccaneers main()
+Connected to PostgreSQL database!
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Running BaltimoreRavens main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Baltimore Ravens...
+scraping college
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping mma
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping golf
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping tennis
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping motorsports
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping sports tech
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping nhl
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running CalgaryFlames main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Hockey Analytics Specialist was not created
+Job Engineer has no skills required, skipping...
+Job Engineer was not created
+Job Internship - Corporate Partnerships has no skills required, skipping...
+Job Internship - Corporate Partnerships was not created
+Running VancouverCanucks main()
+Connected to PostgreSQL database!
+Connection closed.
+Job IT Security Analyst has no skills required, skipping...
+Job IT Security Analyst was not created
+scraping mls
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running VancouverWhitecaps main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this Vancouver Whitecaps...
+Running NWSL_Teamworkonline main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping jobsinfootball
+Running JobsInFootballDataScience main()
+Connected to PostgreSQL database!
+Connection closed.
+Job The Debut: Scholarship Data and AI Club Office was not created
+Job Data Scientist was not created
+Job Data Protection Manager has no skills required, skipping...
+Job Data Protection Manager was not created
+Job Associate, Data Strategy - Part-Time was not created
+Error extracting event: Message: 
+Stacktrace:
+#0 0x5bc0a477b1fa <unknown>
+#1 0x5bc0a428b810 <unknown>
+#2 0x5bc0a42da506 <unknown>
+#3 0x5bc0a42da7a1 <unknown>
+#4 0x5bc0a431fc24 <unknown>
+#5 0x5bc0a42fe5ad <unknown>
+#6 0x5bc0a431d007 <unknown>
+#7 0x5bc0a42fe323 <unknown>
+#8 0x5bc0a42ccde0 <unknown>
+#9 0x5bc0a42cddbe <unknown>
+#10 0x5bc0a474712b <unknown>
+#11 0x5bc0a474b0c7 <unknown>
+#12 0x5bc0a47346cc <unknown>
+#13 0x5bc0a474bc47 <unknown>
+#14 0x5bc0a471967f <unknown>
+#15 0x5bc0a476a288 <unknown>
+#16 0x5bc0a476a450 <unknown>
+#17 0x5bc0a477a076 <unknown>
+#18 0x7818f189cb84 <unknown>
+#19 0x7818f1929ecc <unknown>
+
+Running JobsInFootballDataAnalyst main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load  job listings
+Retrying... 1
+Error extracting event: Message: 
+Stacktrace:
+#0 0x5bc0a477b1fa <unknown>
+#1 0x5bc0a428b810 <unknown>
+#2 0x5bc0a42da506 <unknown>
+#3 0x5bc0a42da7a1 <unknown>
+#4 0x5bc0a431fc24 <unknown>
+#5 0x5bc0a42fe5ad <unknown>
+#6 0x5bc0a431d007 <unknown>
+#7 0x5bc0a42fe323 <unknown>
+#8 0x5bc0a42ccde0 <unknown>
+#9 0x5bc0a42cddbe <unknown>
+#10 0x5bc0a474712b <unknown>
+#11 0x5bc0a474b0c7 <unknown>
+#12 0x5bc0a47346cc <unknown>
+#13 0x5bc0a474bc47 <unknown>
+#14 0x5bc0a471967f <unknown>
+#15 0x5bc0a476a288 <unknown>
+#16 0x5bc0a476a450 <unknown>
+#17 0x5bc0a477a076 <unknown>
+#18 0x7818f189cb84 <unknown>
+#19 0x7818f1929ecc <unknown>
+
+Error extracting event: Message: 
+Stacktrace:
+#0 0x5bc0a477b1fa <unknown>
+#1 0x5bc0a428b810 <unknown>
+#2 0x5bc0a42da506 <unknown>
+#3 0x5bc0a42da7a1 <unknown>
+#4 0x5bc0a431fc24 <unknown>
+#5 0x5bc0a42fe5ad <unknown>
+#6 0x5bc0a431d007 <unknown>
+#7 0x5bc0a42fe323 <unknown>
+#8 0x5bc0a42ccde0 <unknown>
+#9 0x5bc0a42cddbe <unknown>
+#10 0x5bc0a474712b <unknown>
+#11 0x5bc0a474b0c7 <unknown>
+#12 0x5bc0a47346cc <unknown>
+#13 0x5bc0a474bc47 <unknown>
+#14 0x5bc0a471967f <unknown>
+#15 0x5bc0a476a288 <unknown>
+#16 0x5bc0a476a450 <unknown>
+#17 0x5bc0a477a076 <unknown>
+#18 0x7818f189cb84 <unknown>
+#19 0x7818f1929ecc <unknown>
+
+Job First Team Recruitment Analyst was not created
+Error extracting event: Message: 
+Stacktrace:
+#0 0x5bc0a477b1fa <unknown>
+#1 0x5bc0a428b810 <unknown>
+#2 0x5bc0a42da506 <unknown>
+#3 0x5bc0a42da7a1 <unknown>
+#4 0x5bc0a431fc24 <unknown>
+#5 0x5bc0a42fe5ad <unknown>
+#6 0x5bc0a431d007 <unknown>
+#7 0x5bc0a42fe323 <unknown>
+#8 0x5bc0a42ccde0 <unknown>
+#9 0x5bc0a42cddbe <unknown>
+#10 0x5bc0a474712b <unknown>
+#11 0x5bc0a474b0c7 <unknown>
+#12 0x5bc0a47346cc <unknown>
+#13 0x5bc0a474bc47 <unknown>
+#14 0x5bc0a471967f <unknown>
+#15 0x5bc0a476a288 <unknown>
+#16 0x5bc0a476a450 <unknown>
+#17 0x5bc0a477a076 <unknown>
+#18 0x7818f189cb84 <unknown>
+#19 0x7818f1929ecc <unknown>
+
+Job Sports Technology Analyst was not created
+Error extracting event: Message: 
+Stacktrace:
+#0 0x5bc0a477b1fa <unknown>
+#1 0x5bc0a428b810 <unknown>
+#2 0x5bc0a42da506 <unknown>
+#3 0x5bc0a42da7a1 <unknown>
+#4 0x5bc0a431fc24 <unknown>
+#5 0x5bc0a42fe5ad <unknown>
+#6 0x5bc0a431d007 <unknown>
+#7 0x5bc0a42fe323 <unknown>
+#8 0x5bc0a42ccde0 <unknown>
+#9 0x5bc0a42cddbe <unknown>
+#10 0x5bc0a474712b <unknown>
+#11 0x5bc0a474b0c7 <unknown>
+#12 0x5bc0a47346cc <unknown>
+#13 0x5bc0a474bc47 <unknown>
+#14 0x5bc0a471967f <unknown>
+#15 0x5bc0a476a288 <unknown>
+#16 0x5bc0a476a450 <unknown>
+#17 0x5bc0a477a076 <unknown>
+#18 0x7818f189cb84 <unknown>
+#19 0x7818f1929ecc <unknown>
+
+scraping soccer clubs
+Running Liverpool main()
+Connected to PostgreSQL database!
+Connection closed.
+Job Information Security Analyst has no skills required, skipping...
+Job Information Security Analyst was not created
+scraping scottpowers_scrapers
+Running ScottPowersScraper2 main()
+Connected to PostgreSQL database!
+Connection closed.
+Fetching LinkedIn job data for: https://www.linkedin.com/jobs/view/4469200950/
+Trigger successful. Snapshot ID: sd_mue53w1laiovdycc0
+Successfully fetched job data from Brightdata API
+Processing LinkedIn API response...
+Job ID: 4469200950
+Job Title: Manager, International Baseball Strategy and Information
+Successfully processed LinkedIn job: Manager, International Baseball Strategy and Information at Los Angeles Dodgers
+Location: Los Angeles, CA
+Hours: Fulltime
+Apply URL: https://www.linkedin.com/jobs/view/4469200950/?_l=en
+Applicants: 69
+Job International Baseball Strategy & Information Manager was not created
+Fetching LinkedIn job data for: https://www.linkedin.com/jobs/view/4469210721/
+Trigger successful. Snapshot ID: sd_mue5455018nuc7lr3
+Successfully fetched job data from Brightdata API
+Processing LinkedIn API response...
+Job ID: 4469210721
+Job Title: Analyst, International Baseball Strategy & Information
+Successfully processed LinkedIn job: Analyst, International Baseball Strategy & Information at Los Angeles Dodgers
+Location: Los Angeles, CA
+Hours: Fulltime
+Apply URL: https://www.linkedin.com/jobs/view/4469210721/?_l=en
+Applicants: 0
+Job International Baseball Strategy & Information Analyst was not created
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Not a linkedin job, I need to handle those differently
+Fetching LinkedIn job data for: https://www.linkedin.com/jobs/view/4468649643/
+Trigger successful. Snapshot ID: sd_mue54dqx2dkqtk3jrp
+Successfully fetched job data from Brightdata API
+Processing LinkedIn API response...
+Job ID: 4468649643
+Job Title: Indiana Pacers Basketball Analytics Intern - Spring 2027
+Successfully processed LinkedIn job: Indiana Pacers Basketball Analytics Intern - Spring 2027 at Pacers Sports & Entertainment
+Location: Indianapolis, IN
+Hours: Fulltime
+Apply URL: https://www.linkedin.com/jobs/view/4468649643/?_l=en
+Applicants: 0
+Job Basketball Analytics Spring Intern was not created
+Fetching LinkedIn job data for: https://www.linkedin.com/jobs/view/4466206852/
+Trigger successful. Snapshot ID: sd_mue54m9djt0uifei7
+Successfully fetched job data from Brightdata API
+Processing LinkedIn API response...
+Job ID: 4466206852
+Job Title: Developer
+Successfully processed LinkedIn job: Developer at Indianapolis Colts
+Location: Indianapolis, IN
+Hours: Fulltime
+Apply URL: https://www.linkedin.com/jobs/view/4466206852/?_l=en
+Applicants: 176
+Job Developer was not created
+Fetching LinkedIn job data for: https://www.linkedin.com/jobs/view/4467929527/
+Trigger successful. Snapshot ID: sd_mue54uqb508o62rvd
+Successfully fetched job data from Brightdata API
+Processing LinkedIn API response...
+Job ID: 4467929527
+Job Title: Intern, Strategy & Analytics
+Successfully processed LinkedIn job: Intern, Strategy & Analytics at Phoenix Suns
+Location: Phoenix, AZ
+Hours: Fulltime
+Apply URL: https://www.linkedin.com/jobs/view/4467929527/?_l=en
+Applicants: 0
+Job Strategy & Analytics Intern was not created
+Not a linkedin job, I need to handle those differently
+scraping MLB
+Running TeamworkOnline page 1 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 2 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 3 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+Running TeamworkOnline page 4 
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 1
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 2
+Failed to load job listings
+Error scraping jobs: Failed to load TeamworkOnline job listings
+Retrying... 3
+Max retries reached. Exiting this ...
+scraping Other Companies
+Running SIG main()
+Connected to PostgreSQL database!
+Connection closed.
+Failed to load job listings
+scraping ASPA jobs board
+Connected to PostgreSQL database!
+Connection closed.
+Found 3 recent, unique ASPA jobs
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Connected to PostgreSQL database!
+INSERT INTO "jobs" ("name", "status", "start_date", "url", "location", "country", "country_code", "seniority", "description", "sport_list", "skills", "job_area", "remote", "remote_office", "salary", "language", "company", "industry", "job_type", "hours", "logo_permanent_url", "post_duration", "post_tier", "featured", "creation_date") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+Data inserted successfully.
+Connection closed.
+Job Cricket Data Analyst / Cricket Trading Analyst has no skills required, skipping...
+Job Cricket Data Analyst / Cricket Trading Analyst was not created
+indexing sportsjobs
+Connected to PostgreSQL database!
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+Google Indexing API Status: 200
+IndexNow submission successful. Status: 200
+Connection closed.
+Today is a scheduled day for social media posting (Monday/Wednesday/Sunday)
+posting to linkedin
+2026-09-23 13:33:27,843 - INFO - Found 10 jobs to post
+2026-09-23 13:33:28,576 - INFO - Successfully posted job: Forward Deployed Engineer at Veo
+2026-09-23 13:33:29,436 - INFO - Successfully posted job: Frontend Developer - Node.js & React at Legend
+2026-09-23 13:33:30,215 - INFO - Successfully posted job: Country Manager at Kaizen Gaming
+2026-09-23 13:33:30,802 - INFO - Successfully posted job: Senior Technical Product Manager, AI at 2k
+2026-09-23 13:33:31,518 - INFO - Successfully posted job: Lead Analyst, Publishing Analytics at playstation
+2026-09-23 13:33:32,231 - INFO - Successfully posted job: Senior Manager, Data PMO at playstation
+2026-09-23 13:33:33,051 - INFO - Successfully posted job: Intern, Ticket Sales at Miami Heat
+2026-09-23 13:33:33,942 - INFO - Successfully posted job: Audio Engineer at Tampa Bay Buccaneers
+2026-09-23 13:33:34,980 - INFO - Successfully posted job: Performance Scientist – Men’s First Team at Newcastle United FC
+2026-09-23 13:33:35,655 - INFO - Successfully posted job: Data Scientist, Basketball Operations at Los Angeles Sparks
+Connected to PostgreSQL database!
+posting to twitter
+2026-09-23 13:33:36,115 - INFO - Found 10 jobs to post to Twitter
+2026-09-23 13:33:36,327 - ERROR - Failed to post tweet for Forward Deployed Engineer: 402 Payment Required
+credits depleted
+2026-09-23 13:33:36,474 - ERROR - Failed to post tweet for Frontend Developer - Node.js & React: 402 Payment Required
+credits depleted
+2026-09-23 13:33:36,644 - ERROR - Failed to post tweet for Country Manager: 402 Payment Required
+credits depleted
+2026-09-23 13:33:36,779 - ERROR - Failed to post tweet for Senior Technical Product Manager, AI: 402 Payment Required
+credits depleted
+2026-09-23 13:33:36,923 - ERROR - Failed to post tweet for Lead Analyst, Publishing Analytics: 402 Payment Required
+credits depleted
+2026-09-23 13:33:37,067 - ERROR - Failed to post tweet for Senior Manager, Data PMO: 402 Payment Required
+credits depleted
+2026-09-23 13:33:37,205 - ERROR - Failed to post tweet for Intern, Ticket Sales: 402 Payment Required
+credits depleted
+2026-09-23 13:33:37,340 - ERROR - Failed to post tweet for Audio Engineer: 402 Payment Required
+credits depleted
+2026-09-23 13:33:37,476 - ERROR - Failed to post tweet for Performance Scientist – Men’s First Team: 402 Payment Required
+credits depleted
+2026-09-23 13:33:37,621 - ERROR - Failed to post tweet for Data Scientist, Basketball Operations: 402 Payment Required
+credits depleted
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+{"event": "alert_digest_sent", "recipient_index": 1, "strong": 10, "close": 0, "resend_id": "01a0ce78-cc2b-7774-a037-c201ff1acaa9"}
+{"event": "alert_run_complete", "alerts": 2, "recipients": 1, "skipped_digests": 0, "without_matches": 0, "strong_matches": 10, "close_matches": 0, "jobs_without_slugs": 0, "prepared": 1, "sent": 1, "failed": 0, "dry_run": 0}
+Connection closed.
+running newsletter email sequence
+2026-09-23 13:33:38,722 - INFO - Starting newsletter email sequence...
+2026-09-23 13:33:38,736 - INFO - Processing 9 users for day2 emails
+2026-09-23 13:33:38,967 - INFO - Successfully sent day2 email to almirondamian014@gmail.com
+2026-09-23 13:33:38,977 - INFO - Updated day2_sent tracking for user 2353
+2026-09-23 13:33:39,725 - INFO - Successfully sent day2 email to tibovandenberghe1@gmail.com
+2026-09-23 13:33:39,735 - INFO - Updated day2_sent tracking for user 2354
+2026-09-23 13:33:40,476 - INFO - Successfully sent day2 email to galloway.madison33@gmail.com
+2026-09-23 13:33:40,493 - INFO - Updated day2_sent tracking for user 2355
+2026-09-23 13:33:41,238 - INFO - Successfully sent day2 email to clontscody@gmail.com
+2026-09-23 13:33:41,253 - INFO - Updated day2_sent tracking for user 2356
+2026-09-23 13:33:41,999 - INFO - Successfully sent day2 email to aviktsports@gmail.com
+2026-09-23 13:33:42,009 - INFO - Updated day2_sent tracking for user 2357
+2026-09-23 13:33:42,744 - INFO - Successfully sent day2 email to fadliamin269@gmail.com
+2026-09-23 13:33:42,754 - INFO - Updated day2_sent tracking for user 2358
+2026-09-23 13:33:43,494 - INFO - Successfully sent day2 email to yann18lambert@gmail.com
+2026-09-23 13:33:43,504 - INFO - Updated day2_sent tracking for user 2359
+2026-09-23 13:33:44,234 - INFO - Successfully sent day2 email to michaelrobertson1023@gmail.com
+2026-09-23 13:33:44,244 - INFO - Updated day2_sent tracking for user 2360
+2026-09-23 13:33:44,969 - INFO - Successfully sent day2 email to charlottewang@gmail.com
+2026-09-23 13:33:44,979 - INFO - Updated day2_sent tracking for user 2361
+2026-09-23 13:33:45,480 - INFO - Processing 4 users for day4 emails
+2026-09-23 13:33:45,709 - INFO - Successfully sent day4 email to mikec425@aol.com
+2026-09-23 13:33:45,721 - INFO - Updated day4_sent tracking for user 2348
+2026-09-23 13:33:46,445 - INFO - Successfully sent day4 email to twitchy_patents9n@icloud.com
+2026-09-23 13:33:46,457 - INFO - Updated day4_sent tracking for user 2349
+2026-09-23 13:33:47,174 - INFO - Successfully sent day4 email to nayanr505@gmail.com
+2026-09-23 13:33:47,183 - INFO - Updated day4_sent tracking for user 2350
+2026-09-23 13:33:47,945 - INFO - Successfully sent day4 email to footballmomnj@gmail.com
+2026-09-23 13:33:47,955 - INFO - Updated day4_sent tracking for user 2347
+2026-09-23 13:33:48,455 - INFO - Processing 12 users for day6 emails
+2026-09-23 13:33:48,690 - INFO - Successfully sent day6 email to lkkasych@gmail.com
+2026-09-23 13:33:48,700 - INFO - Updated day6_sent tracking for user 2333
+2026-09-23 13:33:49,437 - INFO - Successfully sent day6 email to ritawesnofske@gmail.com
+2026-09-23 13:33:49,449 - INFO - Updated day6_sent tracking for user 2334
+2026-09-23 13:33:50,180 - INFO - Successfully sent day6 email to princedoley07@gmail.com
+2026-09-23 13:33:50,190 - INFO - Updated day6_sent tracking for user 2335
+2026-09-23 13:33:50,924 - INFO - Successfully sent day6 email to simon@matricardi.ca
+2026-09-23 13:33:50,933 - INFO - Updated day6_sent tracking for user 2336
+2026-09-23 13:33:51,695 - INFO - Successfully sent day6 email to erekross10@gmail.com
+2026-09-23 13:33:51,705 - INFO - Updated day6_sent tracking for user 2337
+2026-09-23 13:33:52,437 - INFO - Successfully sent day6 email to nj652@umsystem.edu
+2026-09-23 13:33:52,446 - INFO - Updated day6_sent tracking for user 2338
+2026-09-23 13:33:53,180 - INFO - Successfully sent day6 email to cti.montgomery@gmail.com
+2026-09-23 13:33:53,195 - INFO - Updated day6_sent tracking for user 2339
+2026-09-23 13:33:53,946 - INFO - Successfully sent day6 email to merdeka.korunovski@gmail.com
+2026-09-23 13:33:53,955 - INFO - Updated day6_sent tracking for user 2340
+2026-09-23 13:33:54,688 - INFO - Successfully sent day6 email to snagzz2k22@gmail.com
+2026-09-23 13:33:54,699 - INFO - Updated day6_sent tracking for user 2341
+2026-09-23 13:33:55,456 - INFO - Successfully sent day6 email to gabiaiuto97@gmail.com
+2026-09-23 13:33:55,467 - INFO - Updated day6_sent tracking for user 2342
+2026-09-23 13:33:56,216 - INFO - Successfully sent day6 email to preston.doge@gmail.com
+2026-09-23 13:33:56,231 - INFO - Updated day6_sent tracking for user 2343
+2026-09-23 13:33:56,962 - INFO - Successfully sent day6 email to pattyandrade2990@gmail.com
+2026-09-23 13:33:56,972 - INFO - Updated day6_sent tracking for user 2332
+2026-09-23 13:33:57,472 - INFO - Newsletter sequence completed. Total emails sent: 25
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+running testimonial request sequence
+2026-09-23 13:33:57,922 INFO Eligible testimonial requests: 1
+2026-09-23 13:33:58,765 INFO Testimonial requests sent: 1
+Connected to PostgreSQL database!
+Connected to PostgreSQL database!
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13518-devops-engineer-uk
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13519-ai-engineer
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13520-computer-vision-engineer
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13521-lifecycle-campaign-specialist
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13522-senior-ai-platform-engineer
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13523-marketing-analyst
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13524-sr-mgr-marketing-analytics-consumer-insights
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13525-data-analyst-pga-tour-events-business-intelligence
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13526-fan-development-marketing-intern-nhl
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13527-marketing-intern-nhl
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13528-event-operations-intern-mls
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13529-chief-engineer-mls
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13530-recruitment-data-analyst-intern
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13531-business-intelligence-analyst
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13532-workforce-systems-tools-amp-data-coordinator
+Google Indexing API status=200 url=https://www.sportsjobs.online/jobs/13533-research-engineer
+Connection closed.
+Running airtable_api.py on scheduled day
+Connected to PostgreSQL database!
+Connection closed.
+All scripts executed successfully
