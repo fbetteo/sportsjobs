@@ -117,13 +117,17 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
         ]
         self.base_url = "https://www.mercedesamgf1.com/careers/vacancies"
 
+    # The CSS-module class names carry a build hash (e.g. "...__Jlg05W__vacancies__row"),
+    # so match on the stable suffix only.
+    ROW_SELECTOR = "[class*='vacancies__row']"
+    TITLE_SELECTOR = "[class*='vacancies__title']"
+    DETAILS_SELECTOR = "[class*='vacancies__details']"
+
     def open_site(self):
         self.driver.get(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "vacancylist_vacancies__row__gHcKz")
-                )
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.ROW_SELECTOR))
             )
         except:
             print("Failed to load job listings")
@@ -133,31 +137,18 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
 
     def get_jobs_available(self):
         jobs_rows = []
-        jobs = [
-            job
-            for job in self.driver.find_elements(
-                By.CLASS_NAME, "vacancylist_vacancies__row__gHcKz"
+        for row in self.driver.find_elements(By.CSS_SELECTOR, self.ROW_SELECTOR):
+            # Rows are hidden until a slide-in animation runs, so .text is empty.
+            title = (
+                row.find_element(By.CSS_SELECTOR, self.TITLE_SELECTOR)
+                .get_attribute("textContent")
+                .strip()
             )
-            if any(
-                keyword
-                in job.find_element(
-                    By.CLASS_NAME, "vacancylist_vacancies__title__YvFkz"
-                ).text.lower()
-                for keyword in self.keywords
-            )
-        ]
-
-        jobs_rows = [
-            {
-                "title": job.find_element(
-                    By.CLASS_NAME, "vacancylist_vacancies__title__YvFkz"
-                ).text,
-                "url": job.find_element(
-                    By.CSS_SELECTOR, "a.btn.btn--primary.slide-animation.full-xs"
-                ).get_attribute("href"),
-            }
-            for job in jobs
-        ]
+            if any(keyword in title.lower() for keyword in self.keywords):
+                url = row.find_element(
+                    By.CSS_SELECTOR, "a[href*='/careers/vacancies/']"
+                ).get_attribute("href")
+                jobs_rows.append({"title": title, "url": url})
         return jobs_rows
 
     def _scrape_job(self, job):
@@ -166,24 +157,20 @@ class Mercedes(base_scraper.companyscraper.CompanyScraper):
             self.driver.get(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
-                    (By.CLASS_NAME, "vacancylist_vacancies__details__jIOyz")
+                    (By.CSS_SELECTOR, self.DETAILS_SELECTOR)
                 )
             )
 
             location_value = "Brackley, United Kingdom"
             hours = "Full-time"
 
-            description_raw = driver.find_element(
-                By.CLASS_NAME, "vacancylist_vacancies__details__jIOyz"
+            description_raw = self.driver.find_element(
+                By.CSS_SELECTOR, self.DETAILS_SELECTOR
             ).get_attribute("innerHTML")
 
             full_description = markdownify.markdownify(
                 description_raw, heading_style="ATX"
             )
-
-            # soup = BeautifulSoup(description_raw, "html.parser")
-            # description = soup.get_text(separator="\n").strip()
-            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
@@ -209,14 +196,15 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
                 "filename": "McLaren.png",
             }
         ]
-        self.base_url = "https://racingcareers.mclaren.com/"
+        # Attrax careers site; /jobs lists every opening as a vacancy tile.
+        self.base_url = "https://racingcareers.mclaren.com/jobs"
 
     def open_site(self):
         self.driver.get(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, "table.sc-18rtkup-0 tbody tr")
+                    (By.CSS_SELECTOR, "a.attrax-vacancy-tile__title")
                 )
             )
         except:
@@ -225,27 +213,23 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
 
     def get_jobs_available(self):
         jobs_rows = []
-        jobs = [
-            job
-            for job in self.driver.find_elements(
-                By.CSS_SELECTOR, "table.sc-18rtkup-0 tbody tr"
+        for tile in self.driver.find_elements(By.CLASS_NAME, "attrax-vacancy-tile"):
+            link = tile.find_element(By.CSS_SELECTOR, "a.attrax-vacancy-tile__title")
+            title = link.text
+            if not any(keyword in title.lower() for keyword in self.keywords):
+                continue
+            locations = tile.find_elements(
+                By.CSS_SELECTOR,
+                ".attrax-vacancy-tile__location-freetext .attrax-vacancy-tile__item-value",
             )
-            if any(
-                keyword
-                in job.find_element(By.CSS_SELECTOR, "td a.sc-18rtkup-2").text.lower()
-                for keyword in self.keywords
+            jobs_rows.append(
+                {
+                    "title": title,
+                    "url": link.get_attribute("href"),
+                    # Full "City, Region, Country" text; the job page only shows the city.
+                    "location": locations[0].text if locations else "",
+                }
             )
-        ]
-
-        jobs_rows = [
-            {
-                "title": job.find_element(By.CSS_SELECTOR, "td a.sc-18rtkup-2").text,
-                "url": job.find_element(
-                    By.CSS_SELECTOR, "td a.sc-18rtkup-2"
-                ).get_attribute("href"),
-            }
-            for job in jobs
-        ]
         return jobs_rows
 
     def _scrape_job(self, job):
@@ -253,32 +237,19 @@ class Mclaren(base_scraper.companyscraper.CompanyScraper):
             # Extract job details
             self.driver.get(job["url"])
             WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, ".sc-qfruxy-5 .custom-css-style-job-location")
-                )
+                EC.presence_of_element_located((By.CLASS_NAME, "description-widget"))
             )
 
-            info_elements = self.driver.find_elements(
-                By.CLASS_NAME, "opportunity-preview__info-content-item"
-            )
-            location_value = self.driver.find_element(
-                By.CSS_SELECTOR, ".sc-qfruxy-5 .custom-css-style-job-location"
-            ).text
+            location_value = job.get("location") or "Woking, United Kingdom"
             hours = "Full-time"
 
-            description_raw = ""
-            for job_section in driver.find_elements(
-                By.CSS_SELECTOR, ".sc-1fwbcuw-0.lfJPrZ"
-            ):
-                description_raw += job_section.get_attribute("innerHTML")
+            description_raw = self.driver.find_element(
+                By.CLASS_NAME, "description-widget"
+            ).get_attribute("innerHTML")
 
             full_description = markdownify.markdownify(
                 description_raw, heading_style="ATX"
             )
-
-            # soup = BeautifulSoup(description_raw, "html.parser")
-            # description = soup.get_text(separator="\n").strip()
-            # full_description = f"{description}"
 
             job["title"] += " - Formula1"
 
