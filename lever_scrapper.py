@@ -8,7 +8,7 @@ import re
 import markdownify
 from datetime import datetime
 
-from utils import is_remote_global, add_job_area, search_for_png_image, extract_salary
+from utils import is_remote_global, add_job_area, search_for_png_image, extract_salary, country_from_code
 from hetzner_utils import (
     start_postgres_connection,
     get_recent_urls,
@@ -494,10 +494,12 @@ try:
                     "ar": "argentina",
                 }
 
-                try:
-                    country = country_map.get(raw_country.lower(), raw_country.lower())
-                except:
-                    country = ""
+                # Resolve the ISO code to the same English name find_country stores; codes missing
+                # from country_map used to be saved raw ("hr" next to "croatia" in filters).
+                country = country_map.get(raw_country.lower()) or country_from_code(raw_country)
+                if not country:
+                    print(f"Unknown Lever country code {raw_country!r}; storing it as-is")
+                    country = raw_country.lower()
 
                 country_code = raw_country.upper()
 

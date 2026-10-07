@@ -3,6 +3,7 @@ import os
 import requests
 from pyairtable import Api
 from geopy.geocoders import Nominatim
+from geopy.extra.rate_limiter import RateLimiter
 
 GOOGLE_API_LOGO = os.getenv("GOOGLE_API_LOGO")
 GOOGLE_SEARCHENGINE_KEY = os.getenv("GOOGLE_SEARCHENGINE_KEY")
@@ -231,37 +232,118 @@ def get_skills_required(description, skills_to_search=SKILLS_TO_SEARCH):
     return skills_required_format, all_skills_format
 
 
+# Separators between alternative locations ("London / Remote", "NYC or Boston", "Austin - Hybrid").
+# They must be whole separators: splitting on bare substrings turned "Baltimore" into "baltim" (Egypt)
+# and "Atlanta, Georgia" into "atlanta, ge" (Indonesia). "or" right after a comma is Oregon ("Portland, OR").
+# "·" is not one of them: "St. Petersburg · FL" is city and state, so it is read as a comma.
+LOCATION_ALTERNATIVES = re.compile(r"\s*(?:/|\||;|\s-\s|(?<!,)\s+or\s+)\s*", re.IGNORECASE)
+LOCATION_NOISE = re.compile(
+    r"\b(?:fully remote|remote|hybrid|in[- ]office|on[- ]site|onsite)\b", re.IGNORECASE
+)
+
+DEFAULT_COUNTRY = {"country": "united states", "country_code": "US"}
+
+# Locations that already state the country. Checked before geocoding, which misreads some
+# of them (Nominatim returns New Zealand for "Vancouver, BC V6B0N8, CAN").
+EXPLICIT_COUNTRIES = {
+    "us": DEFAULT_COUNTRY,
+    "usa": DEFAULT_COUNTRY,
+    "united states": DEFAULT_COUNTRY,
+    "united states of america": DEFAULT_COUNTRY,
+    "uk": {"country": "united kingdom", "country_code": "GB"},
+    "united kingdom": {"country": "united kingdom", "country_code": "GB"},
+    "england": {"country": "united kingdom", "country_code": "GB"},
+    "scotland": {"country": "united kingdom", "country_code": "GB"},
+    "wales": {"country": "united kingdom", "country_code": "GB"},
+    "northern ireland": {"country": "united kingdom", "country_code": "GB"},
+    "can": {"country": "canada", "country_code": "CA"},
+    "canada": {"country": "canada", "country_code": "CA"},
+}
+# US state codes that are not also country codes seen in job locations: "Berlin, DE",
+# "Bangalore, IN", "Toronto, CA", "Tel Aviv, IL" etc. are left to the geocoder.
+US_STATE_CODES = {
+    "ak", "az", "ct", "dc", "fl", "ga", "hi", "ia", "ks", "ky", "la", "me", "md", "mi", "mn",
+    "ms", "mo", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri",
+    "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy",
+}
+# None of these collide with US state codes.
+CANADIAN_PROVINCE_CODES = {"ab", "bc", "mb", "nb", "nl", "ns", "nt", "nu", "on", "pe", "qc", "sk", "yt"}
+
+# Nominatim allows at most one request per second; the old code made two unthrottled
+# calls per job with a 1s timeout, and every failure silently became "united states".
+_geolocator = Nominatim(user_agent="sportsjobs", timeout=10)
+_geocode = RateLimiter(
+    _geolocator.geocode, min_delay_seconds=1, max_retries=2, error_wait_seconds=5, swallow_exceptions=False
+)
+_country_cache = {}
+
+
 def clean_location(location):
-    location = location.lower()
-    location = location.split("/")[0]
-    location = location.split("-")[0]
-    location = location.split("or")[0]
-    location = location.replace("remote", "")
-    location = location.replace("hybrid", "")
-    location = location.replace("in office", "")
-    return location
+    """Lowercase the first real alternative in a location string, without remote/hybrid noise."""
+    for part in LOCATION_ALTERNATIVES.split(location.lower().replace("·", ",")):
+        part = LOCATION_NOISE.sub("", part)
+        part = re.sub(r"\s*,[\s,]*", ", ", part)  # "nj , , hybrid" -> "nj, hybrid"
+        part = re.sub(r"\s{2,}", " ", part).strip(" ,()-")
+        if part:
+            return part
+    return ""
+
+
+def _explicit_country(cleaned_location):
+    """Country stated in the text itself: a trailing country name, or a state/province code after a comma."""
+    # "UK based, with travel" -> "uk"
+    tokens = [re.sub(r"\s+based$", "", token.strip()) for token in cleaned_location.split(",") if token.strip()]
+    for token in reversed(tokens):
+        if token in EXPLICIT_COUNTRIES:
+            return EXPLICIT_COUNTRIES[token]
+    for token in tokens[1:]:
+        first_word = token.split()[0]
+        if first_word in US_STATE_CODES:
+            return DEFAULT_COUNTRY
+        if first_word in CANADIAN_PROVINCE_CODES:
+            return EXPLICIT_COUNTRIES["canada"]
+    return None
+
+
+def _geocode_country(query, **kwargs):
+    """Cached, rate-limited Nominatim lookup returning {"country", "country_code"} or None."""
+    cache_key = repr((query, sorted(kwargs.items())))
+    if cache_key in _country_cache:
+        return _country_cache[cache_key]
+    try:
+        location = _geocode(query, exactly_one=True, addressdetails=True, language="en", **kwargs)
+    except Exception as e:
+        print(f"Error finding country for {query!r}: {e}")
+        return None  # not cached, so a transient failure can succeed later in the run
+    address = location.raw.get("address", {}) if location else {}
+    result = None
+    if address.get("country") and address.get("country_code"):
+        result = {"country": address["country"].lower(), "country_code": address["country_code"].upper()}
+    _country_cache[cache_key] = result
+    return result
 
 
 def find_country(location_str):
-    try:
-        location_str = clean_location(location_str)
-        geolocator = Nominatim(user_agent="sportsjobs")
-        location = geolocator.geocode(
-            location_str, exactly_one=True, addressdetails=True, language="en"
-        )
+    """Always returns {"country", "country_code"}; falls back to the US, and logs when it does."""
+    cleaned = clean_location(location_str or "")
+    result = None
+    if cleaned:
+        result = _explicit_country(cleaned) or _geocode_country(cleaned)
+    if not result:
+        print(f"Country not found for location {location_str!r}; defaulting to united states")
+        return dict(DEFAULT_COUNTRY)
+    return dict(result)
 
-        if location:
-            # Access the address dictionary
-            address = location.raw.get("address", {})
-            # Get the country
-            country = address.get("country", "Country not found")
-            country_code = address.get("country_code", "Country code not found")
-            return {"country": country.lower(), "country_code": country_code.upper()}
-        else:
-            return {"country": "united states", "country_code": "US"}
-    except Exception as e:
-        print(f"Error finding country: {e}")
-        return "united states"
+
+def country_from_code(country_code):
+    """English country name for an ISO alpha-2 code, matching the names find_country stores."""
+    code = (country_code or "").strip().lower()
+    if not code:
+        return None
+    if code in ("us", "gb"):
+        return "united states" if code == "us" else "united kingdom"
+    result = _geocode_country({"country": code}, country_codes=[code], featuretype="country")
+    return result["country"] if result else None
 
 
 def get_remote_status(full_description, location, title):
