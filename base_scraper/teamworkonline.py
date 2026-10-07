@@ -19,16 +19,27 @@ session.headers.update(
     }
 )
 
-# Cloudflare also blocks datacenter IPs (e.g. the Hetzner server), so production
-# routes these requests through a rotating residential proxy, such as Webshare's
-# http://USERNAME:PASSWORD@p.webshare.io:80. Unset means a direct connection.
-PROXY_URL = os.getenv("TEAMWORK_PROXY_URL")
-if PROXY_URL:
-    session.proxies.update({"http": PROXY_URL, "https": PROXY_URL})
+# Cloudflare also challenges datacenter IPs (e.g. the Hetzner server) and shared
+# residential proxy pools. When a Bright Data Web Unlocker zone is configured, pages
+# are fetched through it instead; unset means a direct connection.
+UNLOCKER_ZONE = os.getenv("BRIGHTDATA_UNLOCKER_ZONE")
+BRIGHTDATA_API_TOKEN = os.getenv("BRIGHTDATA_API_TOKEN")
+UNLOCKER_URL = "https://api.brightdata.com/request"
 
 SECONDS_BETWEEN_REQUESTS = 1
-# A rotating proxy uses a new IP per request, so a blocked request is worth retrying.
+# Cloudflare blocks some requests and not others, so a 403 is worth retrying.
 ATTEMPTS_PER_PAGE = 3
+
+
+def get(url):
+    if UNLOCKER_ZONE:
+        return requests.post(
+            UNLOCKER_URL,
+            headers={"Authorization": f"Bearer {BRIGHTDATA_API_TOKEN}"},
+            json={"zone": UNLOCKER_ZONE, "url": url, "format": "raw"},
+            timeout=120,
+        )
+    return session.get(url, timeout=30)
 
 
 def clean_text(element):
@@ -50,7 +61,7 @@ class TeamworkOnlineScraper(CompanyScraper):
     def fetch(self, url):
         for attempt in range(1, ATTEMPTS_PER_PAGE + 1):
             time.sleep(SECONDS_BETWEEN_REQUESTS)
-            response = session.get(url, timeout=30)
+            response = get(url)
             if response.status_code != 403 or attempt == ATTEMPTS_PER_PAGE:
                 break
             print(f"403 from TeamWork Online, retrying ({attempt}/{ATTEMPTS_PER_PAGE}): {url}")
