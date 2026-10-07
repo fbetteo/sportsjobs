@@ -285,6 +285,10 @@ class CompanyScraper:
 
     def _scrape_jobs(self, jobs):
         for job in jobs:
+            # Skip known jobs before opening their page; _enrich_and_format_job
+            # would discard them anyway.
+            if job["url"] in self.recent_urls:
+                continue
             job_data = self._scrape_job(job)
             if job_data:
                 enriched_job = self._enrich_and_format_job(job_data)

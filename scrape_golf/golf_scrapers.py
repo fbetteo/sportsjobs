@@ -32,6 +32,7 @@ class GOLF_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
         job_data = super()._scrape_job(job)
         if job_data and self.company.strip().lower() in self.excluded_companies:
             print(f"Skipping excluded company: {self.company}")
+            base_scraper.teamworkonline.remember_rejected(job["url"])
             return None
         return job_data
 

@@ -1,5 +1,8 @@
+import json
 import os
 import time
+from datetime import date, timedelta
+from pathlib import Path
 from urllib.parse import urljoin
 
 import markdownify
@@ -42,6 +45,30 @@ def get(url):
     return session.get(url, timeout=30)
 
 
+# Jobs that were fetched and rejected (e.g. too few skills) are never inserted, so
+# recent_urls does not cover them. Remember them for as long as recent_urls looks
+# back, so each paid page fetch happens once instead of on every run.
+REJECTED_URLS_FILE = Path(__file__).resolve().parent.parent / "teamwork_rejected_urls.json"
+REJECTED_URL_DAYS = 65
+
+
+def load_rejected_urls():
+    try:
+        rejected = json.loads(REJECTED_URLS_FILE.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+    cutoff = (date.today() - timedelta(days=REJECTED_URL_DAYS)).isoformat()
+    return {url: day for url, day in rejected.items() if day >= cutoff}
+
+
+rejected_urls = load_rejected_urls()  # {url: "YYYY-MM-DD" it was rejected}
+
+
+def remember_rejected(url):
+    rejected_urls[url] = date.today().isoformat()
+    REJECTED_URLS_FILE.write_text(json.dumps(rejected_urls, indent=0))
+
+
 def clean_text(element):
     return " ".join(element.get_text(" ").split())
 
@@ -78,11 +105,19 @@ class TeamworkOnlineScraper(CompanyScraper):
         jobs_rows = []
         for link in self.listing_page.select(".organization-portal__job-title a"):
             title = clean_text(link)
+            url = urljoin(self.base_url, link["href"])
+            if url in rejected_urls:
+                continue
             if any(keyword in title.lower() for keyword in self.keywords):
-                jobs_rows.append(
-                    {"title": title, "url": urljoin(self.base_url, link["href"])}
-                )
+                jobs_rows.append({"title": title, "url": url})
         return jobs_rows
+
+    def _enrich_and_format_job(self, job_data):
+        enriched_job = super()._enrich_and_format_job(job_data)
+        # Known URLs are skipped before fetching, so None here means rejected.
+        if enriched_job is None:
+            remember_rejected(job_data["job"]["url"])
+        return enriched_job
 
     def _scrape_job(self, job):
         try:
