@@ -1,3 +1,4 @@
+import os
 import time
 from urllib.parse import urljoin
 
@@ -18,7 +19,16 @@ session.headers.update(
     }
 )
 
+# Cloudflare also blocks datacenter IPs (e.g. the Hetzner server), so production
+# routes these requests through a rotating residential proxy, such as Webshare's
+# http://USERNAME:PASSWORD@p.webshare.io:80. Unset means a direct connection.
+PROXY_URL = os.getenv("TEAMWORK_PROXY_URL")
+if PROXY_URL:
+    session.proxies.update({"http": PROXY_URL, "https": PROXY_URL})
+
 SECONDS_BETWEEN_REQUESTS = 1
+# A rotating proxy uses a new IP per request, so a blocked request is worth retrying.
+ATTEMPTS_PER_PAGE = 3
 
 
 def clean_text(element):
@@ -38,8 +48,12 @@ class TeamworkOnlineScraper(CompanyScraper):
     title_suffix = ""  # e.g. " - NHL", helps utils.add_sport_list() find the sport
 
     def fetch(self, url):
-        time.sleep(SECONDS_BETWEEN_REQUESTS)
-        response = session.get(url, timeout=30)
+        for attempt in range(1, ATTEMPTS_PER_PAGE + 1):
+            time.sleep(SECONDS_BETWEEN_REQUESTS)
+            response = session.get(url, timeout=30)
+            if response.status_code != 403 or attempt == ATTEMPTS_PER_PAGE:
+                break
+            print(f"403 from TeamWork Online, retrying ({attempt}/{ATTEMPTS_PER_PAGE}): {url}")
         response.raise_for_status()
         return BeautifulSoup(response.text, "html.parser")
 
