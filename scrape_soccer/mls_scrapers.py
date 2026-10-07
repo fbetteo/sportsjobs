@@ -3,6 +3,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import base_scraper.companyscraper
+import base_scraper.teamworkonline
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -16,7 +17,10 @@ import utils
 import markdownify
 
 
-class MLS_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
+class MLS_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    company_from_job_page = True
+    sport_list = ["Football - Soccer"]
+    title_suffix = " - MLS"
 
     def __init__(self, driver=None, keywords=None):
         super().__init__(driver=driver, keywords=keywords)
@@ -28,91 +32,6 @@ class MLS_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             }
         ]
         self.base_url = ""
-
-    def open_site(self):
-        self.get_page(self.base_url)
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "organization-portal__job-details")
-                )
-            )
-        except:
-            print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
-
-    def get_jobs_available(self):
-        jobs_rows = []
-        jobs = [
-            job
-            for job in self.driver.find_elements(
-                By.CLASS_NAME, "organization-portal__job-title"
-            )
-            if any(keyword in job.text.lower() for keyword in self.keywords)
-        ]
-
-        jobs_rows = [
-            {
-                "title": job.find_element(By.TAG_NAME, "a").text,
-                "url": job.find_element(By.TAG_NAME, "a").get_attribute("href"),
-            }
-            for job in jobs
-        ]
-        return jobs_rows
-
-    def _scrape_job(self, job):
-        try:
-            # Extract job details
-            self.get_page(job["url"])
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "opportunity-preview__body")
-                )
-            )
-
-            team_name_element = self.driver.find_element(
-                By.CSS_SELECTOR, "div.lic-header__name > h1"
-            )
-            self.company = team_name_element.text
-
-            # Locate the image element and extract the src attribute
-            image_element = self.driver.find_element(
-                By.CSS_SELECTOR,
-                "div.lic-header__logo-wrap a.lic-header__logo-wrap--link > img",
-            )
-            self.logo[0]["url"] = image_element.get_attribute("src")
-            self.logo[0]["filename"] = f"{self.company}.png"
-
-            info_elements = self.driver.find_elements(
-                By.CLASS_NAME, "opportunity-preview__info-content-item"
-            )
-            location_value = info_elements[1].text
-            hours = info_elements[0].text
-
-            description_raw = self.driver.find_element(
-                By.CLASS_NAME, "opportunity-preview__body"
-            ).get_attribute("innerHTML")
-
-            full_description = markdownify.markdownify(
-                description_raw, heading_style="ATX"
-            )
-            # soup = BeautifulSoup(description_raw, "html.parser")
-            # description = soup.get_text(separator="\n").strip()
-            # full_description = f"{description}"
-
-            # to be sure the sport is identified in utils.add_sport_list()
-            job["title"] += " - MLS"
-
-            return {
-                "job": job,
-                "location_value": location_value,
-                "hours": hours,
-                "full_description": full_description,
-                "other_data": {"sport_list": ["Football - Soccer"]},
-            }
-        except Exception as e:
-            print(f"Error extracting event: {e}")
-            return None
 
 
 class DallasFC(base_scraper.companyscraper.CompanyScraper):
@@ -212,7 +131,10 @@ class VancouverWhitecaps(base_scraper.companyscraper.CompanyScraper):
             return None
 
 
-class NWSL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
+class NWSL_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    company_from_job_page = True
+    sport_list = ["Football - Soccer"]
+    title_suffix = " - MLS"
 
     def __init__(self, driver=None, keywords=None):
         super().__init__(driver=driver, keywords=keywords)
@@ -227,91 +149,6 @@ class NWSL_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
             "https://www.teamworkonline.com/soccer-jobs/nwslsoccer/nwsl-league-office"
         )
 
-    def open_site(self):
-        self.get_page(self.base_url)
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "organization-portal__job-details")
-                )
-            )
-        except:
-            print("Failed to load job listings")
-            raise Exception("Failed to load  job listings") 
-
-    def get_jobs_available(self):
-        jobs_rows = []
-        jobs = [
-            job
-            for job in self.driver.find_elements(
-                By.CLASS_NAME, "organization-portal__job-title"
-            )
-            if any(keyword in job.text.lower() for keyword in self.keywords)
-        ]
-
-        jobs_rows = [
-            {
-                "title": job.find_element(By.TAG_NAME, "a").text,
-                "url": job.find_element(By.TAG_NAME, "a").get_attribute("href"),
-            }
-            for job in jobs
-        ]
-        return jobs_rows
-
-    def _scrape_job(self, job):
-        try:
-            # Extract job details
-            self.get_page(job["url"])
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "opportunity-preview__body")
-                )
-            )
-
-            team_name_element = self.driver.find_element(
-                By.CSS_SELECTOR, "div.lic-header__name > h1"
-            )
-            self.company = team_name_element.text
-
-            # Locate the image element and extract the src attribute
-            image_element = self.driver.find_element(
-                By.CSS_SELECTOR,
-                "div.lic-header__logo-wrap a.lic-header__logo-wrap--link > img",
-            )
-            self.logo[0]["url"] = image_element.get_attribute("src")
-            self.logo[0]["filename"] = f"{self.company}.png"
-
-            info_elements = self.driver.find_elements(
-                By.CLASS_NAME, "opportunity-preview__info-content-item"
-            )
-            location_value = info_elements[1].text
-            hours = info_elements[0].text
-
-            description_raw = self.driver.find_element(
-                By.CLASS_NAME, "opportunity-preview__body"
-            ).get_attribute("innerHTML")
-
-            full_description = markdownify.markdownify(
-                description_raw, heading_style="ATX"
-            )
-            # soup = BeautifulSoup(description_raw, "html.parser")
-            # description = soup.get_text(separator="\n").strip()
-            # full_description = f"{description}"
-
-            # to be sure the sport is identified in utils.add_sport_list()
-            job["title"] += " - MLS"
-
-            return {
-                "job": job,
-                "location_value": location_value,
-                "hours": hours,
-                "full_description": full_description,
-                "other_data": {"sport_list": ["Football - Soccer"]},
-            }
-        except Exception as e:
-            print(f"Error extracting event: {e}")
-            return None
-
 
 chrome_options = Options()
 # required with the current docker image
@@ -320,8 +157,6 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
 chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument(f"--user-agent={base_scraper.companyscraper.BROWSER_USER_AGENT}")
-chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 driver = webdriver.Chrome(options=chrome_options)
 

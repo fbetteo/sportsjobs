@@ -44,8 +44,8 @@ KEYWORDS = [
     "business intelligence",
 ]
 
-# TeamWork Online's Cloudflare check blocks the default "HeadlessChrome" user agent.
-# Pass this as --user-agent in headless runners; bump the version occasionally.
+# Browser user agent for plain HTTP scraping (see base_scraper/teamworkonline.py);
+# bump the version occasionally.
 BROWSER_USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
@@ -129,16 +129,6 @@ class CompanyScraper:
         #     print("Failed to load job listings")
         #     driver.quit()
         #     exit()
-
-    def get_page(self, url, attempts=3, retry_wait_seconds=20):
-        """Load a URL, reloading when Cloudflare serves its "Just a moment..." check."""
-        for attempt in range(1, attempts + 1):
-            self.driver.get(url)
-            if "Just a moment" not in self.driver.title:
-                return
-            if attempt < attempts:
-                print(f"Cloudflare check on {url}, retrying in {retry_wait_seconds}s")
-                time.sleep(retry_wait_seconds)
 
     def get_jobs_available(self):
         pass
