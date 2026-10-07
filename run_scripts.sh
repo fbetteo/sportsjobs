@@ -207,50 +207,50 @@ if [ $? -ne 0 ]; then
 fi
 
 # Check if today is Monday (1), Wednesday (3), or Sunday (7)
-day_of_week=$(date +%u)
-if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 3 ]  || [ "$day_of_week" -eq 4 ]; then
-    echo "Today is a scheduled day for social media posting (Monday/Wednesday/Sunday)"
-    
-    echo "posting to linkedin"
-    python post_to_linkedin.py
-    if [ $? -ne 0 ]; then
-        echo "post_to_linkedin failed"
-        exit 1
-    fi
-
-    echo "posting to twitter"
-    python twitter_bot.py
-    if [ $? -ne 0 ]; then
-        echo "post_to_twitter failed"
-        exit 1
-    fi
-else
-    echo "Skipping social media posting - today is not a scheduled day (Monday/Tuesday/Wednesday/Thursday)"
-fi
-
-# Run the final Python script
-python send_alerts.py
-if [ $? -ne 0 ]; then
-    echo "send_alerts.py failed - continuing with other scripts"
-fi
-
-echo "running newsletter email sequence"
-python newsletter_email_sequence.py
-if [ $? -ne 0 ]; then
-    echo "newsletter_email_sequence.py failed - continuing with other scripts"
-fi
-
-echo "running testimonial request sequence"
-python testimonial_request_sequence.py
-if [ $? -ne 0 ]; then
-    echo "testimonial_request_sequence.py failed - continuing with other scripts"
-fi
-
-python deindex_expired_jobs.py
-if [ $? -ne 0 ]; then
-    echo "deindex_expired_jobs.py failed"
-    exit 1
-fi
+#day_of_week=$(date +%u)
+#if [ "$day_of_week" -eq 1 ] || [ "$day_of_week" -eq 2 ] || [ "$day_of_week" -eq 3 ]  || [ "$day_of_week" -eq 4 ]; then
+#    echo "Today is a scheduled day for social media posting (Monday/Wednesday/Sunday)"
+#    
+#    echo "posting to linkedin"
+#    python post_to_linkedin.py
+#    if [ $? -ne 0 ]; then
+#        echo "post_to_linkedin failed"
+#        exit 1
+#    fi
+#
+#    echo "posting to twitter"
+#    python twitter_bot.py
+#    if [ $? -ne 0 ]; then
+#        echo "post_to_twitter failed"
+#        exit 1
+#    fi
+#else
+#    echo "Skipping social media posting - today is not a scheduled day (Monday/Tuesday/Wednesday/Thursday)"
+#fi
+#
+## Run the final Python script
+#python send_alerts.py
+#if [ $? -ne 0 ]; then
+#    echo "send_alerts.py failed - continuing with other scripts"
+#fi
+#
+#echo "running newsletter email sequence"
+#python newsletter_email_sequence.py
+#if [ $? -ne 0 ]; then
+#    echo "newsletter_email_sequence.py failed - continuing with other scripts"
+#fi
+#
+#echo "running testimonial request sequence"
+#python testimonial_request_sequence.py
+#if [ $? -ne 0 ]; then
+#    echo "testimonial_request_sequence.py failed - continuing with other scripts"
+#fi
+#
+#python deindex_expired_jobs.py
+#if [ $? -ne 0 ]; then
+#    echo "deindex_expired_jobs.py failed"
+#    exit 1
+#fi
 
 # Run the retryable script up to 5 times if it fails
 # in the end because it has 2 min wait and it is sync right now
