@@ -139,7 +139,7 @@ class BostonCeltics(base_scraper.companyscraper.CompanyScraper):
             # Extract job details
             # IMPLEMENT LINKEDIN SCRAPING
             # NOT USABLE NOW
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
 
             time.sleep(1)
             if "trk=expired_jd_redirect" in driver.current_url:
@@ -282,7 +282,7 @@ class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/basketball-jobs/cleveland-cavaliers/cleveland-cavaliers-jobs"
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -315,7 +315,7 @@ class ClevelandCavaliers(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -447,7 +447,7 @@ class DetroitPistons(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/basketball-jobs/palacenet/detroit-pistons-jobs-"
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -480,7 +480,7 @@ class DetroitPistons(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -525,7 +525,7 @@ class GoldenStateWarriors(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/basketball-jobs/warriors/golden-state-warriors-careers"
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -558,7 +558,7 @@ class GoldenStateWarriors(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -779,7 +779,7 @@ class LosAngelesLakers(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/basketball-jobs/los-angeles-lakers/los-angeles-lakers-jobs"
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -812,7 +812,7 @@ class LosAngelesLakers(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -1422,7 +1422,7 @@ class SacramentoKings(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/basketball-jobs/sacramento-kings-jobs/sacramento-kings"
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -1455,7 +1455,7 @@ class SacramentoKings(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -1597,7 +1597,7 @@ class UtahJazz(base_scraper.companyscraper.CompanyScraper):
         )
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -1630,7 +1630,7 @@ class UtahJazz(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -1678,7 +1678,7 @@ class WashingtonWizards(base_scraper.companyscraper.CompanyScraper):
         self.base_url = "https://www.teamworkonline.com/multiple-properties/monumentalsports/monumental-sports?employment_opportunity_search%5Bquery%5D=&employment_opportunity_search%5Bcategory_id%5D=&employment_opportunity_search%5Borganization_id%5D=30002&employment_opportunity_search%5Bcareer_level_id%5D="
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -1711,7 +1711,7 @@ class WashingtonWizards(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -1761,7 +1761,7 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
         )
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -1794,7 +1794,7 @@ class WNBA(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -1854,6 +1854,8 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
 chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument(f"--user-agent={base_scraper.companyscraper.BROWSER_USER_AGENT}")
+chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 driver = webdriver.Chrome(options=chrome_options)
 teams = [

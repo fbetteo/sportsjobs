@@ -25,7 +25,7 @@ class MLB_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
         self.base_url = ""
 
     def open_site(self):
-        self.driver.get(self.base_url)
+        self.get_page(self.base_url)
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
@@ -58,7 +58,7 @@ class MLB_Teamworkonline(base_scraper.companyscraper.CompanyScraper):
     def _scrape_job(self, job):
         try:
             # Extract job details
-            self.driver.get(job["url"])
+            self.get_page(job["url"])
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (By.CLASS_NAME, "opportunity-preview__body")
@@ -113,6 +113,8 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--remote-debugging-port=9222")
 chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument(f"--user-agent={base_scraper.companyscraper.BROWSER_USER_AGENT}")
+chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 driver = webdriver.Chrome(options=chrome_options)
 
