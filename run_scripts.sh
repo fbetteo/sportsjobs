@@ -63,6 +63,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "adp running"
+python adp_scraper.py
+if [ $? -ne 0 ]; then
+    echo "script adp_scraper.py failed"
+    exit 1
+fi
+
 
 echo "scraping nba"
 python scrape_nba/nba_scrapers.py

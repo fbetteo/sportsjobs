@@ -48,6 +48,18 @@ COMPANIES = {
         ],
         "industry": ["Esports"],
     },
+    "New York Mets": {
+        "host": "sterlingmets.wd5.myworkdayjobs.com",
+        "tenant": "sterlingmets",
+        "site": "Mets",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/7/7b/New_York_Mets.svg",
+                "filename": "new_york_mets.svg",
+            }
+        ],
+        "sport_list": ["Baseball"],
+    },
 }
 
 

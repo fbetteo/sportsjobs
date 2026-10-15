@@ -4,3 +4,4 @@ sportsjobs-v2-key.json
 *.deb
 *.pyc
 teamwork_rejected_urls.json
+.verify-evidence/
