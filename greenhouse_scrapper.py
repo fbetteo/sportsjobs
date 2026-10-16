@@ -14,6 +14,7 @@ import re
 from dotenv import load_dotenv, find_dotenv
 
 from utils import is_remote_global, add_job_area, search_for_png_image, find_country
+from job_titles import TECH_TITLE_KEYWORDS, title_matches_keywords
 import markdownify
 import utils
 from hetzner_utils import (
@@ -170,7 +171,7 @@ try:
 
         companies = {
             "The Score": {
-                "greenhouse_name": "scoremediaandgaminginc",
+                "greenhouse_name": "penninteractive",
                 "logo": [
                     {
                         "url": "https://play-lh.googleusercontent.com/dDjFtNHe0GExF_0ldvkanmLP3MR3khTepvsn_HrlwsKX7-50itYY3YT1ohxsvmyhcg",
@@ -206,7 +207,7 @@ try:
                 ],
             },
             "UnderDog Fantasy": {
-                "greenhouse_name": "underdogfantasy",
+                "greenhouse_name": "underdog",
                 "logo": [
                     {
                         "url": "https://media.licdn.com/dms/image/v2/D4E0BAQHd9DxN9YVoyg/company-logo_200_200/company-logo_200_200/0/1738175556198/underdogfantasy_logo?e=2147483647&v=beta&t=J189bhu5Y-PUU2hRy3MJiS8sIYjzPpeK8Zmg-u0qSFw",
@@ -466,15 +467,6 @@ try:
                     }
                 ],
             },
-            "Superbet": {
-                "greenhouse_name": "superbet",
-                "logo": [
-                    {
-                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/134/810/original/Super-Logo.jpg?1765813793",
-                        "filename": "superbet.png",
-                    }
-                ],
-            },
             "beat81": {
                 "greenhouse_name": "beat81",
                 "logo": [
@@ -547,6 +539,150 @@ try:
                     }
                 ],
             },
+            "Fanatics": {
+                "greenhouse_name": "fanaticsinc",
+                "logo": [
+                    {
+                        "url": "https://s9-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/259/400/original/Fanatics_Logo.png?1765303057",
+                        "filename": "fanatics.png",
+                    }
+                ],
+            },
+            "Fanatics Collectibles": {
+                "greenhouse_name": "fanaticscollectibles",
+                "logo": [
+                    {
+                        "url": "https://s9-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/319/900/original/Fanatics_Logo.png?1765302944",
+                        "filename": "fanatics_collectibles.png",
+                    }
+                ],
+            },
+            "GameTime": {
+                "greenhouse_name": "gametimeunited",
+                "logo": [
+                    {
+                        "url": "https://s8-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/362/700/original/Logo_Web-05_(2).jpg?1728352774",
+                        "filename": "gametime.png",
+                    }
+                ],
+            },
+            "PlayOn! Sports": {
+                "greenhouse_name": "playonsports",
+                "logo": [
+                    {
+                        "url": "https://s9-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/692/400/original/Logo.png?1785459221",
+                        "filename": "playonsports.png",
+                    }
+                ],
+            },
+            "PrizePicks": {
+                "greenhouse_name": "prizepicks",
+                "logo": [
+                    {
+                        "url": "https://www.google.com/s2/favicons?domain=prizepicks.com&sz=256",
+                        "filename": "prizepicks.png",
+                    }
+                ],
+            },
+            "KINEXON": {
+                "greenhouse_name": "kinexon",
+                "logo": [
+                    {
+                        "url": "https://www.google.com/s2/favicons?domain=kinexon.com&sz=256",
+                        "filename": "kinexon.png",
+                    }
+                ],
+            },
+            "Baltimore Orioles": {
+                "greenhouse_name": "baltimoreorioles",
+                "logo": [
+                    {
+                        "url": "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/653/300/original/Orioles_logo.png?1636050132",
+                        "filename": "baltimore_orioles.png",
+                    }
+                ],
+            },
+            "Betsson": {
+                "greenhouse_name": "betsson",
+                "logo": [
+                    {
+                        "url": "https://recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/000/008/427/original/Betsson_Group__Logo_1_(1).png?1751287131",
+                        "filename": "betsson.png",
+                    }
+                ],
+            },
+            "Rush Street Interactive": {
+                "greenhouse_name": "rushstreetinteractive",
+                "logo": [
+                    {
+                        "url": "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/631/600/original/rsi2020_(2).jpg?1649830938",
+                        "filename": "rush_street_interactive.png",
+                    }
+                ],
+            },
+            "Oura": {
+                "greenhouse_name": "oura",
+                "logo": [
+                    {
+                        "url": "https://s9-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/115/400/original/Logo-oura-blue_2x.png?1753726744",
+                        "filename": "oura.png",
+                    }
+                ],
+            },
+            "Peloton": {
+                "greenhouse_name": "peloton",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Peloton_%28Unternehmen%29_logo.svg",
+                        "filename": "peloton.svg",
+                    }
+                ],
+            },
+            "Zwift": {
+                "greenhouse_name": "zwift",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Zwift_Logo.png",
+                        "filename": "zwift.png",
+                    }
+                ],
+            },
+            "Riot Games": {
+                "greenhouse_name": "riotgames",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Riot_Games_2022_wordmark.svg",
+                        "filename": "riot_games.svg",
+                    }
+                ],
+            },
+            "On": {
+                "greenhouse_name": "onrunning",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/On-cloud-logo-white-background.svg",
+                        "filename": "on_running.svg",
+                    }
+                ],
+            },
+            "Fubo": {
+                "greenhouse_name": "fubotv",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Fubo_2023_Logo.png",
+                        "filename": "fubo.png",
+                    }
+                ],
+            },
+            "gruns": {
+                "greenhouse_name": "gruns",
+                "logo": [
+                    {
+                        "url": "https://s8-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/375/800/original/Group_2.png?1730954035",
+                        "filename": "gruns.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
@@ -560,6 +696,8 @@ try:
                 continue
 
             for job in response.json()["jobs"]:
+                if not title_matches_keywords(job["title"], TECH_TITLE_KEYWORDS):
+                    continue
 
                 description = job["content"]
                 # list_text = ""

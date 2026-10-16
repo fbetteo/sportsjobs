@@ -13,13 +13,6 @@ def canonicalize_workday_url(url: str) -> str:
     return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), path, "", ""))
 
 
-def title_matches_keywords(title: str, keywords: list[str]) -> bool:
-    for keyword in keywords:
-        pattern = rf"(?<!\w){re.escape(keyword)}(?!\w)"
-        if re.search(pattern, title, flags=re.IGNORECASE):
-            return True
-    return False
-
 
 def parse_workday_date(value: str | None) -> date | None:
     if not value:

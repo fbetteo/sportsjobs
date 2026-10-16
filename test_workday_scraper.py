@@ -2,10 +2,10 @@ import unittest
 from datetime import date
 
 from hetzner_utils import get_urls_by_domain
+from job_titles import title_matches_keywords
 from workday_parsing import (
     canonicalize_workday_url,
     is_active_posting,
-    title_matches_keywords,
 )
 
 

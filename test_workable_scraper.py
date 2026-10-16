@@ -1,10 +1,10 @@
 import unittest
 
+from job_titles import title_matches_keywords
 from workable_parsing import (
     canonicalize_workable_url,
     format_locations,
     is_active_workable_job,
-    title_matches_keywords,
 )
 
 

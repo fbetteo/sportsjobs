@@ -5,10 +5,10 @@ import requests
 
 import base_scraper.companyscraper
 from hetzner_utils import get_urls_by_domain, start_postgres_connection
+from job_titles import title_matches_keywords
 from workday_parsing import (
     canonicalize_workday_url,
     is_active_posting,
-    title_matches_keywords,
 )
 
 COMPANIES = {

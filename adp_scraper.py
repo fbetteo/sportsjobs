@@ -9,8 +9,8 @@ from adp_parsing import (
     minimum_salary,
     public_job_url,
 )
+from job_titles import title_matches_keywords
 from hetzner_utils import get_urls_by_domain, start_postgres_connection
-from workable_parsing import title_matches_keywords
 
 
 # To add a company, open its ADP "Current Openings" page and copy the

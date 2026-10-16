@@ -55,15 +55,6 @@ try:
                     }
                 ],
             },
-            "teamworks": {
-                "board_name": "teamworks-careers",
-                "logo": [
-                    {
-                        "url": "https://play-lh.googleusercontent.com/uEbrrKJCzy3G5z9gPLg3NBI4cd4jhbhtMNz6HWFnhtcUcnALdRAKrFgWlSnLcvuAUg=w240-h480-rw",
-                        "filename": "teamworks-careers.png",
-                    }
-                ],
-            },
             "boston_legacy_fc": {
                 "board_name": "nwsl-boston-open-positions",
                 "logo": [

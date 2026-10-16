@@ -101,15 +101,6 @@ try:
                     }
                 ],
             },
-            "PlayOn! Sports": {
-                "lever_name": "playonsports",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/41a41462-61a1-46dd-9190-73fd66fa11ee-1656096708496.png",
-                        "filename": "playonsports.png",
-                    }
-                ],
-            },
             "Brooks Running": {
                 "lever_name": "brooksrunning",
                 "logo": [
@@ -125,15 +116,6 @@ try:
                     {
                         "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/537a8842-2bd0-43b4-bb27-fc6c26450c29-1706218622648.png",
                         "filename": "kickoff.png",
-                    }
-                ],
-            },
-            "GameTime": {
-                "lever_name": "gametime",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.amazonaws.com/a0ca3046-353c-409d-bf49-22a954da734a-1568149219931.png",
-                        "filename": "gametime.png",
                     }
                 ],
             },
@@ -157,15 +139,6 @@ try:
                     {
                         "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/c7c1d8a4-cf7f-459f-8422-96ab19215b0f-1612978037834.png",
                         "filename": "grundens.png",
-                    }
-                ],
-            },
-            "Sporty": {
-                "lever_name": "sporty",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/6616a346-760f-4098-a325-0a582aa0542e-1608646767819.png",
-                        "filename": "sporty.png",
                     }
                 ],
             },
@@ -238,15 +211,6 @@ try:
                     {
                         "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/3fcd8203-00a9-4862-af38-f4319bcd5502-1632854624658.png",
                         "filename": "redsox.png",
-                    }
-                ],
-            },
-            "Fanatics": {
-                "lever_name": "fanatics",
-                "logo": [
-                    {
-                        "url": "https://lever-client-logos.s3.amazonaws.com/a26ea84a-d8a3-4394-9927-2b0243d2df5a-1552380484471.png",
-                        "filename": "fanatics.png",
                     }
                 ],
             },

@@ -13,6 +13,7 @@ import requests.auth
 import re
 from dotenv import load_dotenv, find_dotenv
 import markdownify
+from job_titles import TECH_TITLE_KEYWORDS, title_matches_keywords
 from utils import (
     is_remote_global,
     add_job_area,
@@ -284,6 +285,51 @@ try:
                     }
                 ],
             },
+            "Teamworks": {
+                "name": "teamworks",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/37fa69f8-6e80-41d9-9aa9-2c41fc234d01/b7e1cb5d-01ab-43ca-a65e-7abdda122f01/f74a4467-a72d-4b34-9552-8e8e75a54e3f.png",
+                        "filename": "teamworks.png",
+                    }
+                ],
+            },
+            "Kalshi": {
+                "name": "kalshi",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/35471f60-f9f5-484e-a92e-1779998fc78a/a77b52c5-2733-4d92-92a2-7f0432d611f4/b75382cf-f21d-4202-871f-6e6c8b0ee7d7.png",
+                        "filename": "kalshi.png",
+                    }
+                ],
+            },
+            "Novig": {
+                "name": "novig",
+                "logo": [
+                    {
+                        "url": "https://www.google.com/s2/favicons?domain=novig.us&sz=256",
+                        "filename": "novig.png",
+                    }
+                ],
+            },
+            "Whoop": {
+                "name": "whoop",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/0c2479be-fdf3-4a72-8b2b-15ad55cdbb57/22e6d694-a638-407a-96c7-6257c5497dfa/0e1041dc-3c52-4b4d-ac49-af6be0a903d4.png",
+                        "filename": "whoop.png",
+                    }
+                ],
+            },
+            "Strava": {
+                "name": "strava",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/2d7d8d0b-d7b3-4a26-9f4b-8d1ddf38a818/f94f1477-1a87-4d45-a2d5-0c3bf2674dd0/a6944541-1638-499a-b513-6fb61d965538.png",
+                        "filename": "strava.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():
@@ -295,6 +341,8 @@ try:
             if response.status_code != 200:
                 continue
             for job in response.json()["jobs"]:
+                if not title_matches_keywords(job["title"], TECH_TITLE_KEYWORDS):
+                    continue
 
                 description = job["descriptionHtml"]
                 # list_text = ""
