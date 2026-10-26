@@ -331,6 +331,15 @@ try:
             # #         }
             # #     ],
             # # },
+            "TeamSnap": {
+                "lever_name": "teamsnap",
+                "logo": [
+                    {
+                        "url": "https://lever-client-logos.s3.us-west-2.amazonaws.com/14141400-024e-4ff9-8e2b-2d50aa66a4d6-1602697004374.png",
+                        "filename": "teamsnap.png",
+                    }
+                ],
+            },
         }
 
         # companies = {

@@ -41,6 +41,15 @@ COMPANIES = {
             }
         ],
     },
+    "Playtech": {
+        "identifier": "Playtech",
+        "logo": [
+            {
+                "url": "https://c.smartrecruiters.com/sr-company-images-prod-aws-dc5/5a744ff7e4b0aff9e7ce86d0/default_social_logo/300x300?r=s3-eu-central-1",
+                "filename": "playtech.png",
+            }
+        ],
+    },
 }
 
 API_URL = "https://api.smartrecruiters.com/v1/companies"

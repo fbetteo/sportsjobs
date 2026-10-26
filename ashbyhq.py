@@ -330,6 +330,24 @@ try:
                     }
                 ],
             },
+            "Runna": {
+                "name": "runna",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/2d7d8d0b-d7b3-4a26-9f4b-8d1ddf38a818/1b7aafdb-c4a6-4b31-83b7-7112333a86af/6b8cfbd7-fe8a-4973-aa31-c24d94a4d08a.png",
+                        "filename": "runna.png",
+                    }
+                ],
+            },
+            "Tonal": {
+                "name": "tonal",
+                "logo": [
+                    {
+                        "url": "https://app.ashbyhq.com/api/images/org-theme-logo/2c44b54e-aba2-4ebf-87fd-5a3895240a98/f2d71a8e-e0fd-40c8-991c-2935b8fe3be5/c2b097bd-5658-4f5b-8413-fa1b138cc3de.png",
+                        "filename": "tonal.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():

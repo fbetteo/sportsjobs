@@ -683,6 +683,73 @@ try:
                     }
                 ],
             },
+            "AXS": {
+                "greenhouse_name": "axs",
+                "logo": [
+                    {
+                        "url": "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/905/000/original/axs_blue_1x.png?1627679111",
+                        "filename": "axs.png",
+                    }
+                ],
+            },
+            "iFIT": {
+                "greenhouse_name": "ifit",
+                "logo": [
+                    {
+                        "url": "https://www.ifit.com/apple-icon.png",
+                        "filename": "ifit.png",
+                    }
+                ],
+            },
+            "ClassPass": {
+                "greenhouse_name": "classpass",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/ClassPass_logo_%282026%29.png",
+                        "filename": "classpass.png",
+                    }
+                ],
+            },
+            "Mindbody": {
+                "greenhouse_name": "mindbody",
+                "logo": [
+                    {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Mindbody_logo.png",
+                        "filename": "mindbody.png",
+                    }
+                ],
+            },
+            "Brooklyn Sports & Entertainment": {
+                "greenhouse_name": "bseglobal",
+                "logo": [
+                    {
+                        "url": "https://bkse.com/images/metadata/logo.jpg",
+                        "filename": "bse.jpg",
+                    }
+                ],
+            },
+            "Gymshark": {
+                "greenhouse_name": "gymshark",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/019/210/original/Gymshark_Symbol_Logo_Black-01.jpg?1630003405",
+                        "filename": "gymshark.jpg",
+                    }
+                ],
+            },
+            "Octagon": {
+                "greenhouse_name": "octagon",
+                "logo": [],
+            },
+            "Kambi": {
+                "greenhouse_name": "kambi",
+                "logo": [
+                    {
+                        "url": "https://s101-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/043/510/original/Kambi_Logo_2023.png?1673968948",
+                        "filename": "kambi.png",
+                    }
+                ],
+            },
         }
 
         for company, attributes in companies.items():

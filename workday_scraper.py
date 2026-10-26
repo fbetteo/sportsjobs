@@ -60,6 +60,237 @@ COMPANIES = {
         ],
         "sport_list": ["Baseball"],
     },
+    "DraftKings": {
+        "host": "draftkings.wd1.myworkdayjobs.com",
+        "tenant": "draftkings",
+        "site": "DraftKings",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/a/a0/DraftKings_logo.svg",
+                "filename": "draftkings.svg",
+            }
+        ],
+    },
+    "NBA": {
+        "host": "nba.wd108.myworkdayjobs.com",
+        "tenant": "nba",
+        "site": "nbacareers",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/0/03/National_Basketball_Association_logo.svg",
+                "filename": "nba.svg",
+            }
+        ],
+        "sport_list": ["Basketball"],
+    },
+    "BetMGM": {
+        "host": "betmgminc.wd5.myworkdayjobs.com",
+        "tenant": "betmgminc",
+        "site": "BetMGM",
+        "logo": [
+            {
+                "url": "https://betmgminc.wd5.myworkdayjobs.com/BetMGM/assets/logo",
+                "filename": "betmgm.png",
+            }
+        ],
+    },
+    "Formula 1": {
+        "host": "formulaone.wd3.myworkdayjobs.com",
+        "tenant": "formulaone",
+        "site": "F1",
+        "logo": [
+            {
+                "url": "https://formulaone.wd3.myworkdayjobs.com/F1/assets/logo",
+                "filename": "formula1.png",
+            }
+        ],
+    },
+    "Alpine F1 Team": {
+        "host": "alliancewd.wd3.myworkdayjobs.com",
+        "tenant": "alliancewd",
+        "site": "alpine-racing-careers",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/BWT_Alpine_F1_Team_Logo.png",
+                "filename": "alpine_f1.png",
+            }
+        ],
+    },
+    "NASCAR": {
+        "host": "nascar.wd1.myworkdayjobs.com",
+        "tenant": "nascar",
+        "site": "NASCAR",
+        "logo": [
+            {
+                "url": "https://nascar.wd1.myworkdayjobs.com/NASCAR/assets/logo",
+                "filename": "nascar.jpg",
+            }
+        ],
+    },
+    "PGA TOUR": {
+        "host": "pgatour.wd5.myworkdayjobs.com",
+        "tenant": "pgatour",
+        "site": "PGATOUREXTERNAL",
+        "logo": [
+            {
+                "url": "https://pgatour.wd5.myworkdayjobs.com/PGATOUREXTERNAL/assets/logo",
+                "filename": "pga_tour.png",
+            }
+        ],
+        "sport_list": ["Golf"],
+    },
+    "PGA of America": {
+        "host": "pgahq.wd1.myworkdayjobs.com",
+        "tenant": "pgahq",
+        "site": "PGAHQ",
+        "logo": [
+            {
+                "url": "https://pgahq.wd1.myworkdayjobs.com/PGAHQ/assets/logo",
+                "filename": "pga_of_america.jpg",
+            }
+        ],
+        "sport_list": ["Golf"],
+    },
+    "Detroit Red Wings": {
+        "host": "ilitch.wd5.myworkdayjobs.com",
+        "tenant": "ilitch",
+        "site": "Detroit-Red-Wings",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/e/e0/Detroit_Red_Wings_logo.svg",
+                "filename": "detroit_red_wings.svg",
+            }
+        ],
+        "sport_list": ["Hockey"],
+    },
+    "MLSE": {
+        "host": "mlse.wd3.myworkdayjobs.com",
+        "tenant": "mlse",
+        "site": "MLSE",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/4/45/Maple_Leaf_Sports_%26_Entertainment_logo.svg",
+                "filename": "mlse.svg",
+            }
+        ],
+    },
+    "Paris Saint-Germain": {
+        "host": "parissaintgermain.wd3.myworkdayjobs.com",
+        "tenant": "parissaintgermain",
+        "site": "rejoigneznous",
+        "logo": [
+            {
+                "url": "https://parissaintgermain.wd3.myworkdayjobs.com/rejoigneznous/assets/logo",
+                "filename": "psg.png",
+            }
+        ],
+        "sport_list": ["Football - Soccer"],
+    },
+    "Aston Villa": {
+        "host": "avfc.wd502.myworkdayjobs.com",
+        "tenant": "avfc",
+        "site": "avfc_careers",
+        "logo": [
+            {
+                "url": "https://avfc.wd502.myworkdayjobs.com/avfc_careers/assets/logo",
+                "filename": "aston_villa.png",
+            }
+        ],
+        "sport_list": ["Football - Soccer"],
+    },
+    "Southampton FC": {
+        "host": "saintsfc.wd3.myworkdayjobs.com",
+        "tenant": "saintsfc",
+        "site": "SFC001",
+        "logo": [
+            {
+                "url": "https://saintsfc.wd3.myworkdayjobs.com/SFC001/assets/logo",
+                "filename": "southampton.png",
+            }
+        ],
+        "sport_list": ["Football - Soccer"],
+    },
+    "Brentford FC": {
+        "host": "brentfordfootballclub.wd107.myworkdayjobs.com",
+        "tenant": "brentfordfootballclub",
+        "site": "BrentfordFC",
+        "logo": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg",
+                "filename": "brentford.svg",
+            }
+        ],
+        "sport_list": ["Football - Soccer"],
+    },
+    "Exos": {
+        "host": "exos.wd501.myworkdayjobs.com",
+        "tenant": "exos",
+        "site": "EXOSCAREERS",
+        "logo": [
+            {
+                "url": "https://www.teamexos.com/hubfs/EXOS%20LOGO_RGB-BLACK.png",
+                "filename": "exos.png",
+            }
+        ],
+    },
+    "Nike": {
+        "host": "nike.wd1.myworkdayjobs.com",
+        "tenant": "nike",
+        "site": "nke",
+        "logo": [
+            {
+                "url": "https://nike.wd1.myworkdayjobs.com/nke/assets/logo",
+                "filename": "nike.jpg",
+            }
+        ],
+    },
+    "AMB Sports & Entertainment": {
+        "host": "ambgroup.wd1.myworkdayjobs.com",
+        "tenant": "ambgroup",
+        "site": "AMBSE",
+        "logo": [
+            {
+                "url": "https://ambgroup.wd1.myworkdayjobs.com/AMBSE/assets/logo",
+                "filename": "amb_sports.jpg",
+            }
+        ],
+    },
+    "Atlanta Braves": {
+        "host": "atlantabravesmlb.wd5.myworkdayjobs.com",
+        "tenant": "atlantabravesmlb",
+        "site": "AtlantaBraves",
+        "logo": [
+            {
+                "url": "https://atlantabravesmlb.wd5.myworkdayjobs.com/AtlantaBraves/assets/logo",
+                "filename": "atlanta_braves.jpg",
+            }
+        ],
+        "sport_list": ["Baseball"],
+    },
+    "Anaheim Ducks": {
+        "host": "anaheimducks.wd5.myworkdayjobs.com",
+        "tenant": "anaheimducks",
+        "site": "ADHCTW",
+        "logo": [
+            {
+                "url": "https://anaheimducks.wd5.myworkdayjobs.com/ADHCTW/assets/logo",
+                "filename": "anaheim_ducks.png",
+            }
+        ],
+        "sport_list": ["Hockey"],
+    },
+    "Vinik Sports Group": {
+        "host": "vsg.wd1.myworkdayjobs.com",
+        "tenant": "vsg",
+        "site": "VSG",
+        "logo": [
+            {
+                "url": "https://vsg.wd1.myworkdayjobs.com/VSG/assets/logo",
+                "filename": "vinik_sports_group.png",
+            }
+        ],
+        "sport_list": ["Hockey"],
+    },
 }
 
 
