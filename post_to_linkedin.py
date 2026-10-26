@@ -13,12 +13,58 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 LINKEDIN_ACCESS_TOKEN = os.getenv("LINKEDIN_ACCESS_TOKEN")
+LINKEDIN_REFRESH_TOKEN = os.getenv("LINKEDIN_REFRESH_TOKEN")
+LINKEDIN_CLIENT_ID = os.getenv("LINKEDIN_CLIENT_ID")
+LINKEDIN_CLIENT_SECRET = os.getenv("LINKEDIN_PRIMARY_CLIENT_SECRET")
 LINKEDIN_COMPANY_ID = os.getenv("LINKEDIN_COMPANY_ID")
 
-HEADERS_LINKEDIN = {
-    "Authorization": f"Bearer {LINKEDIN_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-}
+# Warn this many days before the refresh token (valid 365 days) runs out
+REFRESH_TOKEN_WARNING_DAYS = 30
+
+
+def get_access_token() -> Optional[str]:
+    """
+    Returns a LinkedIn access token. Access tokens expire after 60 days, so when
+    a refresh token is configured we exchange it for a fresh access token on every run.
+    Falls back to LINKEDIN_ACCESS_TOKEN when no refresh token is set.
+    """
+    if not LINKEDIN_REFRESH_TOKEN:
+        logger.warning("LINKEDIN_REFRESH_TOKEN not set, using LINKEDIN_ACCESS_TOKEN")
+        return LINKEDIN_ACCESS_TOKEN
+
+    response = requests.post(
+        "https://www.linkedin.com/oauth/v2/accessToken",
+        data={
+            "grant_type": "refresh_token",
+            "refresh_token": LINKEDIN_REFRESH_TOKEN,
+            "client_id": LINKEDIN_CLIENT_ID,
+            "client_secret": LINKEDIN_CLIENT_SECRET,
+        },
+    )
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to refresh LinkedIn token: {response.status_code} - {response.text}. "
+            "Generate a new refresh token in the LinkedIn developer portal."
+        )
+        return None
+
+    token_data = response.json()
+    refresh_days_left = token_data.get("refresh_token_expires_in", 0) // 86400
+    if refresh_days_left < REFRESH_TOKEN_WARNING_DAYS:
+        logger.warning(
+            f"LinkedIn refresh token expires in {refresh_days_left} days. "
+            "Generate a new one in the LinkedIn developer portal."
+        )
+    else:
+        logger.info(f"LinkedIn token refreshed, refresh token valid {refresh_days_left} more days")
+    return token_data["access_token"]
+
+
+def linkedin_headers(access_token: str) -> Dict[str, str]:
+    return {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+    }
 
 
 def get_todays_jobs() -> List[Tuple]:
@@ -51,7 +97,7 @@ def get_todays_jobs() -> List[Tuple]:
             logger.debug("Database connection closed")
 
 
-def upload_image_to_linkedin(image_url: str) -> Optional[str]:
+def upload_image_to_linkedin(image_url: str, headers: Dict[str, str]) -> Optional[str]:
     """
     Uploads an image to LinkedIn and returns the asset ID.
     Resizes image to be more appropriate for social media.
@@ -79,7 +125,7 @@ def upload_image_to_linkedin(image_url: str) -> Optional[str]:
 
         register_response = requests.post(
             "https://api.linkedin.com/v2/assets?action=registerUpload",
-            headers=HEADERS_LINKEDIN,
+            headers=headers,
             json=register_upload_request,
         )
 
@@ -149,10 +195,7 @@ def upload_image_to_linkedin(image_url: str) -> Optional[str]:
         upload_response = requests.put(
             upload_url,
             data=image_data,
-            headers={
-                "Authorization": f"Bearer {LINKEDIN_ACCESS_TOKEN}",
-                "Content-Type": "application/octet-stream",
-            },
+            headers={**headers, "Content-Type": "application/octet-stream"},
         )
 
         if upload_response.status_code not in (200, 201):
@@ -166,7 +209,7 @@ def upload_image_to_linkedin(image_url: str) -> Optional[str]:
         return None
 
 
-def post_job_to_linkedin(job_details: Tuple) -> bool:
+def post_job_to_linkedin(job_details: Tuple, headers: Dict[str, str]) -> bool:
     """
     Posts a job to LinkedIn with an image if available.
 
@@ -201,7 +244,7 @@ def post_job_to_linkedin(job_details: Tuple) -> bool:
 
         # Add image if logo URL exists
         # if logo_url:
-        #     asset_id = upload_image_to_linkedin(logo_url)
+        #     asset_id = upload_image_to_linkedin(logo_url, headers)
         #     if asset_id:
         #         # Update content to include the image
         #         content["specificContent"]["com.linkedin.ugc.ShareContent"][
@@ -219,7 +262,7 @@ def post_job_to_linkedin(job_details: Tuple) -> bool:
 
         response = requests.post(
             "https://api.linkedin.com/v2/ugcPosts",
-            headers=HEADERS_LINKEDIN,
+            headers=headers,
             json=content,
         )
 
@@ -248,8 +291,13 @@ def main():
 
         logger.info(f"Found {len(todays_jobs)} jobs to post")
 
+        access_token = get_access_token()
+        if not access_token:
+            return
+        headers = linkedin_headers(access_token)
+
         for job in todays_jobs:
-            post_job_to_linkedin(job)
+            post_job_to_linkedin(job, headers)
 
     except Exception as e:
         logger.error(f"Error occurred: {e}")
