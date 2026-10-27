@@ -28,6 +28,21 @@ class MLB_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
         self.base_url = ""
 
 
+class TorontoBlueJays(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    sport_list = ["Baseball"]
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Toronto Blue Jays"
+        self.logo = [
+            {
+                "url": "https://cf-production.teamworkonline.com/uploads/public/embed_d14a9392-b4ab-4ce7-8e6a-8e36e310dbde.png",
+                "filename": "torontobluejays.png",
+            }
+        ]
+        self.base_url = "https://www.teamworkonline.com/baseball-jobs/toronto-blue-jays-jobs/toronto-blue-jays"
+
+
 chrome_options = Options()
 # required with the current docker image
 chrome_options.add_argument("--headless=new")
@@ -49,6 +64,7 @@ while page < 4:
     team_instance.main()
 
 teams = [
+    TorontoBlueJays,
 ]
 
 for team in teams:

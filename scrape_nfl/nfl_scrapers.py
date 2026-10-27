@@ -27,6 +27,19 @@ class NFL_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
         self.base_url = ""
 
 
+class UnitedFootballLeague(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "United Football League"
+        self.logo = [
+            {
+                "url": "https://cf-production.teamworkonline.com/uploads/public/embed_536a2783-35e6-47fc-938d-0ee1329fcdf5.png",
+                "filename": "ufl.png",
+            }
+        ]
+        self.base_url = "https://www.teamworkonline.com/football-jobs/ufl/united-football-league-jobs"
+
+
 class PhiladelphiaEagles(base_scraper.companyscraper.CompanyScraper):
     pass
     # Greenhouse
@@ -350,6 +363,7 @@ teams = [
     # SeattleSeahawks, # Not working
     TampaBayBuccaneers,
     BaltimoreRavens,
+    UnitedFootballLeague,
     # ChicagoBears,
     # LosAngelesChargers,
     # NewEnglandPatriots,

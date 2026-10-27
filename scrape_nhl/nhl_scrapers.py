@@ -33,9 +33,19 @@ class NHL_Teamworkonline(base_scraper.teamworkonline.TeamworkOnlineScraper):
         self.base_url = ""
 
 
-class BostonBruins(base_scraper.companyscraper.CompanyScraper):
-    pass
-    # Implement
+class BostonBruins(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    sport_list = ["Hockey"]
+
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Boston Bruins"
+        self.logo = [
+            {
+                "url": "https://cf-production.teamworkonline.com/uploads/public/embed_4d10f528-0efc-4284-bcea-9721a4f4a444.png",
+                "filename": "bostonbruins.png",
+            }
+        ]
+        self.base_url = "https://www.teamworkonline.com/hockey-jobs/boston-bruins-jobs/boston-bruins-jobs"
 
 
 class CalgaryFlames(base_scraper.companyscraper.CompanyScraper):
@@ -254,6 +264,7 @@ while page < 4:
     team_instance.main()
 
 teams = [
+    BostonBruins,
     CalgaryFlames,
     VancouverCanucks,
 ]

@@ -3,6 +3,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import base_scraper.companyscraper
+import base_scraper.teamworkonline
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -237,6 +238,19 @@ class Disney(base_scraper.companyscraper.CompanyScraper):
             return None
 
 
+class PremierLacrosseLeague(base_scraper.teamworkonline.TeamworkOnlineScraper):
+    def __init__(self, driver=None, keywords=None):
+        super().__init__(driver=driver, keywords=keywords)
+        self.company = "Premier Lacrosse League"
+        self.logo = [
+            {
+                "url": "https://cf-production.teamworkonline.com/uploads/public/embed_09e631d3-7162-4670-aae3-d5fb5ce51b49.png",
+                "filename": "premierlacrosseleague.png",
+            }
+        ]
+        self.base_url = "https://www.teamworkonline.com/other-sports-jobs/premier-lacrosse-jobs/premier-lacrosse-league-careers"
+
+
 chrome_options = Options()
 # required with the current docker image
 chrome_options.add_argument("--headless=new")
@@ -248,7 +262,7 @@ chrome_options.add_argument("--disable-gpu")
 driver = webdriver.Chrome(options=chrome_options)
 
 # Disney not working, I need to filter by Espn (I'm tired)
-for team in [SIG]:
+for team in [SIG, PremierLacrosseLeague]:
     print(f"Running {team.__name__} main()")
     team_instance = team(driver=driver)
     team_instance.main()
